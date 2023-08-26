@@ -1,0 +1,6 @@
+[13-Aug-2023 12:24:01 Europe/Berlin] PHP Fatal error:  Uncaught mysqli_sql_exception: Duplicate entry 'admin' for key 'username' in C:\xampp\htdocs\SHIMS\Controller\loginController.php:24
+Stack trace:
+#0 C:\xampp\htdocs\SHIMS\Controller\loginController.php(24): mysqli_stmt->execute()
+#1 C:\xampp\htdocs\SHIMS\Controller\loginController.php(37): Login->addLogin()
+#2 {main}
+  thrown in C:\xampp\htdocs\SHIMS\Controller\loginController.php on line 24

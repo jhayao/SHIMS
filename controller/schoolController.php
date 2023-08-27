@@ -3,7 +3,7 @@
         function __construct(){
             //call database.php
             include_once('database.php');
-            
+            session_start();
             //enable log
             // error_reporting(E_ALL);
             // ini_set('display_errors', 1);
@@ -29,8 +29,23 @@
         }
 
         function getAllSchool(){
+            // print_r($_SESSION['userInfo']);
+            $nurse_type = $_SESSION['userInfo']['nurse_type'] ?? "";
+            $assigned = $_SESSION['userInfo']['assigned'] ?? "";
+            $where = "";
+            if($nurse_type == 'Division Nurse'){
+                $where = "AND sch.division_id = ".$assigned;
+            }
+            else if($nurse_type == 'District Nurse'){
+                $where = "AND sch.district_id = ".$assigned;
+            }
+            else if ($nurse_type == 'School Nurse'){
+                $where = "AND sch.id = ".$assigned;
+            }
+            
             $conn = new Connection();
-            $query = "SELECT sch.id,sch.school_name,sch.address,divi.division_name,dist.district_name FROM `school` sch inner join `division` divi inner join `district` dist WHERE sch.division_id = divi.id AND sch.district_id = dist.id;";
+            $query = "SELECT sch.id,sch.school_name,sch.address,divi.division_name,dist.district_name FROM `school` sch inner join `division` divi inner join `district` dist WHERE sch.division_id = divi.id AND sch.district_id = dist.id " . $where . ";";
+           
             $connection = new Connection();
             $conn = $connection->connect();
             $stmt = $conn->prepare($query);
@@ -40,6 +55,8 @@
             $conn->close();
             return $result;
         }
+
+        
 
         function editSchool(){
             $id = $_POST['id'];

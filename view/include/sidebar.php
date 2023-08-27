@@ -35,6 +35,7 @@
             <span class="hide-menu">Home</span>
           </a>
         </li>
+        <?php if($_SESSION['user_type'] == 'admin') {?>
         <li class="sidebar-item">
           <a class="sidebar-link has-arrow" href="#" aria-expanded="false">
             <span class="d-flex">
@@ -61,6 +62,7 @@
             </li>
           </ul>
         </li>
+        <?php }?>
         <li class="sidebar-item">
           <a class="sidebar-link has-arrow" href="#" aria-expanded="false">
             <span class="d-flex">
@@ -87,6 +89,7 @@
             </li>
           </ul>
         </li>
+        <?php if($_SESSION['user_type'] == 'admin' ||$_SESSION['userInfo']['nurse_type'] == "Division Nurse"){ ?>
         <li class="sidebar-item">
           <a class="sidebar-link has-arrow" href="#" aria-expanded="false">
             <span class="d-flex">
@@ -96,13 +99,15 @@
           </a>
           <ul aria-expanded="false" class="collapse first-level">
             <li class="sidebar-item">
-              <a href="viewDivision.php" class="sidebar-link">
+              <a href="viewDivision.php" class="sidebar-link" >
                 <div class="round-16 d-flex align-items-center justify-content-center">
                   <i class="ti ti-circle"></i>
                 </div>
                 <span class="hide-menu">List</span>
               </a>
             </li>
+            
+           
             <li class="sidebar-item">
               <a href="addDivision.php" class="sidebar-link">
                 <div class="round-16 d-flex align-items-center justify-content-center">
@@ -111,8 +116,11 @@
                 <span class="hide-menu">Add</span>
               </a>
             </li>
+            
           </ul>
         </li>
+        <?php }?>
+        <?php if($_SESSION['user_type'] == 'admin' || $_SESSION['userInfo']['nurse_type'] == "Division Nurse" || $_SESSION['userInfo']['nurse_type'] == "District Nurse"){ ?>
         <li class="sidebar-item">
           <a class="sidebar-link has-arrow" href="#" aria-expanded="false">
             <span class="d-flex">
@@ -139,6 +147,7 @@
             </li>
           </ul>
         </li>
+        <?php }?>
         <li class="sidebar-item">
           <a class="sidebar-link has-arrow" href="#" aria-expanded="false">
             <span class="d-flex">
@@ -155,6 +164,7 @@
                 <span class="hide-menu">List</span>
               </a>
             </li>
+            <?php if($_SESSION['user_type'] == 'admin' || $_SESSION['userInfo']['nurse_type'] == "Division Nurse" || $_SESSION['userInfo']['nurse_type'] =="District Nurse"){ ?>
             <li class="sidebar-item">
               <a href="addSchool.php" class="sidebar-link">
                 <div class="round-16 d-flex align-items-center justify-content-center">
@@ -163,6 +173,7 @@
                 <span class="hide-menu">Add</span>
               </a>
             </li>
+            <?php }?>
           </ul>
         </li>
        

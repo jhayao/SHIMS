@@ -6,7 +6,7 @@
         function __construct(){
             //call database.php
             include_once('database.php');
-            
+            session_start();
             //enable log
             // error_reporting(E_ALL);
             // ini_set('display_errors', 1);
@@ -44,15 +44,16 @@
             isset($_POST['nurse_province']) ? $nurse_province = $_POST['nurse_province'] : $nurse_province = '';
             isset($_POST['nurse_postal']) ? $nurse_postal = $_POST['nurse_postal'] : $nurse_postal = '';
             isset($_POST['nurse_type']) ? $nurse_type = $_POST['nurse_type'] : $nurse_type = '';
+            isset($_POST['assigned']) ? $assigned = $_POST['assigned'] : $assigned = '';
 
             //insert querry and prepare statement
 
-            $query = "INSERT INTO nurse (firstname, lastname, email, sex, contact, middlename, street, barangay, city, province, postal,nurse_type) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            $query = "INSERT INTO nurse (firstname, lastname, email, sex, contact, middlename, street, barangay, city, province, postal,nurse_type,assigned) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             // $conn = new Connection();
             $connection = new Connection();
             $conn = $connection->connect();
             $stmt = $conn->prepare($query);
-            $stmt->bind_param("ssssssssssss", $nurse_firstname, $nurse_lastname, $nurse_email, $nurse_sex, $nurse_contact, $nurse_middlename, $nurse_street, $nurse_barangay, $nurse_city, $nurse_province, $nurse_postal, $nurse_type);
+            $stmt->bind_param("sssssssssssss", $nurse_firstname, $nurse_lastname, $nurse_email, $nurse_sex, $nurse_contact, $nurse_middlename, $nurse_street, $nurse_barangay, $nurse_city, $nurse_province, $nurse_postal, $nurse_type, $assigned);
             // $stmt->execute();
             $result = $stmt->execute();
             $stmt->close();
@@ -91,13 +92,14 @@
             isset($_POST['nurse_province']) ? $nurse_province = $_POST['nurse_province'] : $nurse_province = '';
             isset($_POST['nurse_postal']) ? $nurse_postal = $_POST['nurse_postal'] : $nurse_postal = '';
             isset($_POST['nurse_type']) ? $nurse_type = $_POST['nurse_type'] : $nurse_type = '';
+            isset($_POST['assigned']) ? $assigned = $_POST['assigned'] : $assigned = '';
         
             //update Query
-            $query = "UPDATE nurse SET firstname=?, lastname=?, email=?, sex=?, contact=?, middlename=?, street=?, barangay=?, city=?, province=?, postal=?, nurse_type=? WHERE id=?";
+            $query = "UPDATE nurse SET firstname=?, lastname=?, email=?, sex=?, contact=?, middlename=?, street=?, barangay=?, city=?, province=?, postal=?, nurse_type=?, assigned=? WHERE id=?";
             $connection = new Connection();
             $conn = $connection->connect();
             $stmt = $conn->prepare($query);
-            $stmt->bind_param("ssssssssssssi", $nurse_firstname, $nurse_lastname, $nurse_email, $nurse_sex, $nurse_contact, $nurse_middlename, $nurse_street, $nurse_barangay, $nurse_city, $nurse_province, $nurse_postal, $nurse_type, $nurse_id);
+            $stmt->bind_param("sssssssssssssi", $nurse_firstname, $nurse_lastname, $nurse_email, $nurse_sex, $nurse_contact, $nurse_middlename, $nurse_street, $nurse_barangay, $nurse_city, $nurse_province, $nurse_postal, $nurse_type, $assigned, $nurse_id);
             $result = $stmt->execute();
             // $stmt->close();
             

@@ -1,14 +1,4 @@
-<?php 
-    
-    // if(!isset($_SESSION['userInfo'])){
-    //     header('location: login.php');
-    // }
-    //status of sesssion
-    // session_start();
-    echo ini_get('session.  ');
-    echo json_encode($_SESSION);
 
-?>
 <html lang="en">
 <!DOCTYPE html>
 <!-- Mirrored from demos.adminmart.com/premium/bootstrap/modernize-bootstrap/package/html/main/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 20 Jul 2023 11:10:58 GMT -->

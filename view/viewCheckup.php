@@ -61,8 +61,12 @@
                                     <!-- start row -->
                                     <tr>
                                         <th>ID</th>
-                                        <th>Division Name</th>
-                                        <th>Address</th>
+                                        <th>Student Name</th>
+                                        <th>Cheked By</th>
+                                        <th>Height</th>
+                                        <th>Temperature</th>
+                                        <th>Weight</th>
+                                        <th>Findings</th>
                                         <th>Options</th>
                                     </tr>
                                     <!-- end row -->
@@ -111,7 +115,7 @@
             //datatable
             var table = $('#file_export').DataTable({
                 dom: 'Bfrtip',
-                buttons: ["copy", "pdf", "print"],
+                buttons: [ "print"],
                 ajax: {
                     "url": "../controller/checkupController.php",
                     "type": "POST",
@@ -129,6 +133,18 @@
                     
                     {
                         "data": "nurseName"
+                    },
+                    {
+                        "data": "height"
+                    },
+                    {
+                        "data": "temperature"
+                    },
+                    {
+                        "data": "weight"
+                    },
+                    {
+                        "data": "findings"
                     },
                     {
                         "data": "id",
@@ -149,14 +165,16 @@
 
                                         //delete reuqest ajax
                                         $.ajax({
-                                            url: "../controller/divisionController.php",
+                                            url: "../controller/checkupController.php",
                                             type: "POST",
+                                            dataType: "json",
                                             data: {
-                                                "function": "deleteDivision",
+                                                "function": "deleteCheckup",
                                                 "id": cellData
                                             },
                                             success: function (data) {
-                                                if(data.trim() == "success"){
+                                                console.log(data);
+                                                if(data.success){
                                                     Swal.fire(
                                                         'Deleted!',
                                                         'Your file has been deleted.',
@@ -178,7 +196,7 @@
                         "render": function (data, type, row, meta) {
                             return `<div class="d-flex">
                                         
-                                        <a href="addDivision.php?edit=true&id=${data}" class="btn btn-primary   me-1"><i class="ti ti-edit"></i></a>
+                                        <a href="addCheckup.php?edit=true&id=${data}" class="btn btn-primary   me-1"><i class="ti ti-edit"></i></a>
                                         <button id="${data}"  class="btn btn-danger delete  me-1"><i class="ti ti-trash-x"></i></button>
                                     </div>`;
                         }

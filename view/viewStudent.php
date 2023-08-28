@@ -113,7 +113,7 @@
             //datatable
             var table = $('#file_export').DataTable({
                 dom: 'Bfrtip',
-                buttons: ["copy", "pdf", "print"],
+                buttons: [ "print"],
                 ajax: {
                     "url": "../controller/studentController.php",
                     "type": "POST",

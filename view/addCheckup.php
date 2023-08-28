@@ -158,6 +158,14 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                <div class="mb-4">
+                                                        <label for="findings"
+                                                            class="form-label fw-semibold">Findings</label>
+                                                            <textarea id="findings" class="form-control" name="findings" rows="5"  required></textarea>
+                                                        <div class="invalid-feedback">
+                                                            Please enter an Findings.
+                                                        </div>
+                                                    </div>
 
                                                 
                                                 <div class="col-12">
@@ -188,24 +196,6 @@
         $(document).ready(function () {
 
 
-            if ( <?php echo(isset($_GET['edit']) ? true : 0); ?> ) {
-                //request ajax to get data of Checkupby id
-
-                $.ajax({
-                    url: "../controller/checkupController.php",
-                    type: "POST",
-                    dataType: "json",
-                    data: {
-                        function: "editCheckup",
-                        id: <?php echo(isset($_GET['id']) ? $_GET['id'] : 0); ?>
-                    },
-                    success: function (data) {
-                        $('#checkup_name').val(data.checkup_name);
-                        $('#address').val(data.address);
-                    }
-                })
-            }
-
 
             //request ajax to get all division
             $.ajax({
@@ -222,19 +212,23 @@
                     division_id.append('<option value="" selected disabled>Select Division</option>');
                     data = data.data
                     $.each(data, function (index, value) {
-                        console.log(value)
+                        //console.log(value)
                         division_id.append('<option value="' + value.id + '">' + value.division_name +
                             '</option>');
                     });
-                    if ( <?php echo($edit);?> ) {
-                        division_id.val(<?php echo(isset($_GET['division_id']) ? $_GET['division_id'] : 0); ?>);
-                    }
+                    
                 }
             })
 
+
+            
+
            
             //select2 division_id on change
-            $('#division_id').on('change', function () {
+            $('#division_id').on('change', function (event,districtId = null,schoolId = null, studentID = null) {
+                //console.log("district ID" + districtId)
+                //console.log("school ID" + schoolId)
+                //console.log("student ID" + studentID)
                 var district_id = $('#district_id');
                 district_id.empty().trigger("change");
                 var division_id = $(this).val();
@@ -257,14 +251,20 @@
                             district_id.append('<option value="' + value.id + '">' + value.district_name +
                                 '</option>');
                         });
+                        if ( <?php echo($edit);?> && districtId != null) {
+                            district_id.val(districtId).trigger("change", [schoolId,studentID]);
+                        }
                     }
+                    
                 })
+
             })
 
             //district_id on change and call schoolController
-            $('#district_id').on('change', function () {
+            $('#district_id').on('change', function (event,schoolId = null,studentID= null) {
                 let school_id = $('#school_id');
                 school_id.empty();
+                //console.log(event);
                 //request ajax to get all school
                 $.ajax({
                     url: "../controller/schoolController.php",
@@ -277,22 +277,28 @@
                     success: function (data) {
                         data = data.data
                         //set all inputs from return data
-                        
                         school_id.empty();
                         school_id.append('<option value="" selected disabled>Select School</option>');
                         $.each(data, function (index, value) {
                             school_id.append('<option value="' + value.id + '">' + value.school_name +
                                 '</option>');
                         });
-                        if ( <?php echo($edit);?> ) {
-                            school_id.val(<?php echo(isset($_GET['school_id']) ? $_GET['school_id'] : 0); ?>);
+                        //console.log(schoolId)
+                        if ( <?php echo($edit);?> && schoolId != null) {
+                            
+                            school_id.val(schoolId).trigger("change", studentID);
                         }
+                    },
+                    complete: function() {
+                        
                     }
                 })
             })
 
+            
             //get all student when school change
-            $('#school_id').on('change', function () {
+            $('#school_id').on('change', function (event, studentID = null) {
+                //console.log("Student ID " + studentID)
                 var student_id = $('#student_id');
                 student_id.empty();
                 //request ajax to get all student
@@ -306,7 +312,7 @@
                     },
                     success: function (data) {
                         data = data.data
-                        console.log(data)
+                        //console.log(data)
                         //set all inputs from return data
                         
                         student_id.empty();
@@ -317,7 +323,7 @@
                                 '</option>');
                         });
                         if ( <?php echo($edit);?> ) {
-                            student_id.val(<?php echo(isset($_GET['student_id']) ? $_GET['student_id'] : 0); ?>);
+                            student_id.val(studentID).trigger("change");
                         }
                     }
                 })
@@ -358,15 +364,17 @@
                     $.ajax({
                         url: "../controller/checkupController.php",
                         type: "POST",
+                        dataType: "json",
                         data: formdata,
                         contentType: false,
                         processData: false,
                         success: function (data) {
-                            console.log(data);
+                            //console.log(data);
                             //trim data
-                            data = data.trim();
+                            // data = data.trim();
+                            // //console.log(data)
                             console.log(data)
-                            if (data == "success") {
+                            if (data.success) {
                                 window.location.href = "viewCheckup.php?success=1";
                             } else {
                                 noty.setText("Error", true);
@@ -377,7 +385,7 @@
                         },
                         error: function (data) {
                             data = data.trim();
-                            console.log(data);
+                            //console.log(data);
                             noty.setText("Error", true);
                             noty.setType("error");
                             noty.show();
@@ -388,6 +396,30 @@
             });
 
 
+
+            if ( <?php echo(isset($_GET['edit']) ? true : 0); ?> ) {
+                //request ajax to get data of Checkupby id
+
+                $.ajax({
+                    url: "../controller/checkupController.php",
+                    type: "POST",
+                    dataType: "json",
+                    data: {
+                        function: "editCheckup",
+                        id: <?php echo(isset($_GET['id']) ? $_GET['id'] : 0); ?>
+                    },
+                    success: function (data) {
+                        //set all inputs from return data
+                        //console.log(data.district_id,data.school_id,data.student_id)
+                        $('#division_id').val(data.division_id).trigger("change", [data.district_id,data.school_id,data.student_id]);
+                        $('#height').val(data.height);
+                        $('#weight').val(data.weight);
+                        $('#temperature').val(data.temperature);
+                        $('#findings').val(data.findings);
+                        
+                    }
+                })
+            }
 
         });
     </script>

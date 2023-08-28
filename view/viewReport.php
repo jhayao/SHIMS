@@ -31,12 +31,12 @@
                     <div class="card-body px-4 py-3">
                         <div class="row align-items-center">
                             <div class="col-9">
-                                <h4 class="fw-semibold mb-8">List of Districts</h4>
+                                <h4 class="fw-semibold mb-8">List of Student</h4>
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
-                                        <li class="breadcrumb-item"><a class="text-muted" href="district.php">District</a>
+                                        <li class="breadcrumb-item"><a class="text-muted" href="nurse.php">Nurse</a>
                                         </li>
-                                        <li class="breadcrumb-item" aria-current="page">List of Districts</li>
+                                        <li class="breadcrumb-item" aria-current="page">List of Student</li>
                                     </ol>
                                 </nav>
                             </div>
@@ -61,10 +61,11 @@
                                     <!-- start row -->
                                     <tr>
                                         <th>ID</th>
-                                        <th>District Name</th>
+                                        <th>Full Name</th>
+                                        <th>Email</th>
                                         <th>Address</th>
-                                        <th>Division Name</th>
-                                        <th>Options</th>
+                                        <th>Position</th>
+                                        <!-- <th>Options</th> -->
                                     </tr>
                                     <!-- end row -->
                                 </thead>
@@ -104,7 +105,7 @@
         //onload
         $(document).ready(function () {
 
-            if(<?php echo (isset($_GET['success']) ? true : 0); ?> ){
+            if(<?php echo (isset($_GET['success']) ? true : 0); ?>){
                 noty.setText("Successfully Added",true);
                 noty.show();
             }
@@ -114,83 +115,95 @@
                 dom: 'Bfrtip',
                 buttons: [ "print"],
                 ajax: {
-                    "url": "../controller/districtController.php",
+                    "url": "../controller/studentController.php",
                     "type": "POST",
                     "data": {
-                        "function": "getAllDistrict"
+                        "function": "getAllStudent"
                     },
                 },
                 columns: [{
                         "data": "id"
                     },
-                   
                     {
-                        "data": "district_name"
-                    },
-                    
-                    {
-                        "data": "address"
-                    },
-                    {
-                        "data": "division_name"
-                    },
-                    {
-                        "data": "id",
-                        createdCell: function(cell, cellData, rowData, rowIndex, colIndex) {
-                            
-                            $(cell).on('click', '.delete', function() {
-                                // Handle cell click event
-                                Swal.fire({
-                                    title: 'Are you sure?',
-                                    text: "You won't be able to revert this!",
-                                    icon: 'warning',
-                                    showCancelButton: true,
-                                    confirmButtonColor: '#3085d6',
-                                    cancelButtonColor: '#d33',
-                                    confirmButtonText: 'Yes, delete it!'
-                                    }).then((result) => {
-                                    if (result.isConfirmed) {
-
-                                        //delete reuqest ajax
-                                        $.ajax({
-                                            url: "../controller/districtController.php",
-                                            type: "POST",
-                                            data: {
-                                                "function": "deleteDistrict",
-                                                "id": cellData
-                                            },
-                                            success: function (data) {
-                                                if(data.trim() == "success"){
-                                                    Swal.fire(
-                                                        'Deleted!',
-                                                        'Your file has been deleted.',
-                                                        'success'
-                                                        ).then((result) => {
-                                                            if(result.isConfirmed){
-                                                                location.reload();
-                                                            }
-                                                        })
-                                                    
-                                                }
-                                            }
-                                        });
-                                        
-                                    }
-                                    })
-                            });
-                        },
-                        "render": function (data, type, row, meta) {
-                            return `<div class="d-flex">
-                                        
-                                        <a href="addDistrict.php?edit=true&id=${data}" class="btn btn-primary   me-1"><i class="ti ti-edit"></i></a>
-                                        <button id="${data}"  class="btn btn-danger delete  me-1"><i class="ti ti-trash-x"></i></button>
-                                    </div>`;
+                        "data": null,
+                        render: function (data, type, row) {
+                            return row.firstname + " " + row.middlename + " " + row.lastname;
                         }
-                    }
+                    },
+                    {
+                        "data": "email"
+                    },
+                    {
+                        "data": null,
+                        render: function (data, type, row) {
+                            return row.street + ", " + row.barangay + ", " + row.city + ", " +
+                                row.province + ", " + row.postal;
+                        }
+                    },
+                    {
+                        "data": "email"
+                    },
+                    // {
+                    //     "data": "id",
+                    //     createdCell: function(cell, cellData, rowData, rowIndex, colIndex) {
+                            
+                    //         $(cell).on('click', '.delete', function() {
+                    //             // Handle cell click event
+                    //             Swal.fire({
+                    //                 title: 'Are you sure?',
+                    //                 text: "You won't be able to revert this!",
+                    //                 icon: 'warning',
+                    //                 showCancelButton: true,
+                    //                 confirmButtonColor: '#3085d6',
+                    //                 cancelButtonColor: '#d33',
+                    //                 confirmButtonText: 'Yes, delete it!'
+                    //                 }).then((result) => {
+                    //                 if (result.isConfirmed) {
+
+                    //                     //delete reuqest ajax
+                    //                     $.ajax({
+                    //                         url: "../controller/studentController.php",
+                    //                         type: "POST",
+                    //                         data: {
+                    //                             "function": "deleteStudent",
+                    //                             "id": cellData
+                    //                         },
+                    //                         success: function (data) {
+                    //                             if(data.trim() == "success"){
+                    //                                 Swal.fire(
+                    //                                     'Deleted!',
+                    //                                     'Your file has been deleted.',
+                    //                                     'success'
+                    //                                     ).then((result) => {
+                    //                                         if(result.isConfirmed){
+                    //                                             location.reload();
+                    //                                         }
+                    //                                     })
+                                                    
+                    //                             }
+                    //                         }
+                    //                     });
+                                        
+                    //                 }
+                    //                 })
+                    //         });
+                    //     },
+                    //     "render": function (data, type, row, meta) {
+                    //         return `<div class="d-flex">
+                                        
+                    //                     <a href="addStudent.php?edit=true&id=${data}" class="btn btn-primary   me-1"><i class="ti ti-edit"></i></a>
+                    //                     <button id="${data}"  class="btn btn-danger delete  me-1"><i class="ti ti-trash-x"></i></button>
+                    //                 </div>`;
+                    //     }
+                    // }
                 ]
             });
             $(".buttons-copy, .buttons-csv, .buttons-print, .buttons-pdf, .buttons-excel").addClass(
                 "btn btn-primary mr-1");
+
+            $(".buttons-print").on("click",function(){
+                console.log("Hello");
+            })
 
             //delete
             

@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: database:3306
--- Generation Time: Aug 26, 2023 at 03:29 AM
--- Server version: 8.1.0
--- PHP Version: 8.2.9
+-- Host: 127.0.0.1
+-- Generation Time: Aug 28, 2023 at 01:13 PM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -28,13 +28,13 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `checkup` (
-  `id` int NOT NULL,
-  `student_id` int NOT NULL,
-  `nurse_id` int NOT NULL,
+  `id` int(11) NOT NULL,
+  `student_id` int(11) NOT NULL,
+  `nurse_id` int(11) NOT NULL,
   `temperature` float NOT NULL,
   `height` float NOT NULL,
   `weight` float NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -45,10 +45,10 @@ CREATE TABLE `checkup` (
 --
 
 CREATE TABLE `district` (
-  `id` int NOT NULL,
-  `district_name` varchar(45) COLLATE utf8mb4_general_ci NOT NULL,
-  `address` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  `division_id` int NOT NULL
+  `id` int(11) NOT NULL,
+  `district_name` varchar(45) NOT NULL,
+  `address` varchar(255) NOT NULL,
+  `division_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -66,9 +66,9 @@ INSERT INTO `district` (`id`, `district_name`, `address`, `division_id`) VALUES
 --
 
 CREATE TABLE `division` (
-  `id` int NOT NULL,
-  `division_name` varchar(45) COLLATE utf8mb4_general_ci NOT NULL,
-  `address` varchar(255) COLLATE utf8mb4_general_ci NOT NULL
+  `id` int(11) NOT NULL,
+  `division_name` varchar(45) NOT NULL,
+  `address` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -86,10 +86,10 @@ INSERT INTO `division` (`id`, `division_name`, `address`) VALUES
 --
 
 CREATE TABLE `grade` (
-  `id` int NOT NULL,
-  `level` int NOT NULL,
-  `section` varchar(20) COLLATE utf8mb4_general_ci NOT NULL,
-  `school_id` int NOT NULL
+  `id` int(11) NOT NULL,
+  `level` int(11) NOT NULL,
+  `section` varchar(20) NOT NULL,
+  `school_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -99,23 +99,26 @@ CREATE TABLE `grade` (
 --
 
 CREATE TABLE `information` (
-  `id` int NOT NULL,
-  `student_id` int NOT NULL,
-  `nurse_id` int NOT NULL,
+  `id` int(11) NOT NULL,
+  `student_id` int(11) NOT NULL,
+  `nurse_id` int(11) NOT NULL,
   `height` decimal(10,0) NOT NULL,
   `temperature` decimal(10,0) NOT NULL,
   `weight` decimal(10,0) NOT NULL,
-  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
+  `findings` text NOT NULL,
+  `created_at` timestamp NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `information`
 --
 
-INSERT INTO `information` (`id`, `student_id`, `nurse_id`, `height`, `temperature`, `weight`, `created_at`) VALUES
-(1, 1, 2, 222, 45, 45, NULL),
-(2, 1, 2, 222, 45, 45, NULL),
-(3, 1, 2, 222, 45, 45, '2023-08-12 05:15:47');
+INSERT INTO `information` (`id`, `student_id`, `nurse_id`, `height`, `temperature`, `weight`, `findings`, `created_at`) VALUES
+(9, 3, 15, 34, 35, 35, 'okay kaaus', '2023-08-28 03:14:08'),
+(10, 1, 15, 324, 2323, 345, 'dawaw', '2023-08-28 03:15:57'),
+(11, 1, 15, 324, 2323, 345, 'dawaw', '2023-08-28 03:16:08'),
+(12, 1, 15, 23, 24, 23, '42242', '2023-08-28 03:16:43'),
+(13, 1, 15, 232, 24, 42, 'dawd', '2023-08-28 03:17:16');
 
 -- --------------------------------------------------------
 
@@ -124,20 +127,20 @@ INSERT INTO `information` (`id`, `student_id`, `nurse_id`, `height`, `temperatur
 --
 
 CREATE TABLE `nurse` (
-  `id` int NOT NULL,
-  `firstname` varchar(45) COLLATE utf8mb4_general_ci NOT NULL,
-  `middlename` varchar(45) COLLATE utf8mb4_general_ci NOT NULL,
-  `lastname` varchar(45) COLLATE utf8mb4_general_ci NOT NULL,
-  `email` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  `sex` varchar(45) COLLATE utf8mb4_general_ci NOT NULL,
-  `contact` varchar(45) COLLATE utf8mb4_general_ci NOT NULL,
-  `street` varchar(45) COLLATE utf8mb4_general_ci NOT NULL,
-  `barangay` varchar(45) COLLATE utf8mb4_general_ci NOT NULL,
-  `city` varchar(45) COLLATE utf8mb4_general_ci NOT NULL,
-  `province` varchar(45) COLLATE utf8mb4_general_ci NOT NULL,
-  `postal` varchar(45) COLLATE utf8mb4_general_ci NOT NULL,
-  `nurse_type` varchar(45) COLLATE utf8mb4_general_ci NOT NULL,
-  `assigned` varchar(255) COLLATE utf8mb4_general_ci NOT NULL
+  `id` int(11) NOT NULL,
+  `firstname` varchar(45) NOT NULL,
+  `middlename` varchar(45) NOT NULL,
+  `lastname` varchar(45) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `sex` varchar(45) NOT NULL,
+  `contact` varchar(45) NOT NULL,
+  `street` varchar(45) NOT NULL,
+  `barangay` varchar(45) NOT NULL,
+  `city` varchar(45) NOT NULL,
+  `province` varchar(45) NOT NULL,
+  `postal` varchar(45) NOT NULL,
+  `nurse_type` varchar(45) NOT NULL,
+  `assigned` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -145,8 +148,8 @@ CREATE TABLE `nurse` (
 --
 
 INSERT INTO `nurse` (`id`, `firstname`, `middlename`, `lastname`, `email`, `sex`, `contact`, `street`, `barangay`, `city`, `province`, `postal`, `nurse_type`, `assigned`) VALUES
-(2, 'Junriel', 'Ordiniza', 'Hayao', 'junriel.hayao@ustp.edu.ph', 'Male', '09386767657', 'Purok 5', 'Mobod', 'Ozamiz', 'Misamis Occidental', '7207', 'Division Nurse', ''),
-(15, 'dawdawd', 'awdwad', 'wadawdaw', 'a@a.c', 'Male', 'dawdwadw', 'dawdwad', 'awdwadwa', 'Tangub', 'Misamis Occidental', 'wadwa', 'School Nurse', ''),
+(2, 'Junriel', 'Ordiniza', 'Hayao', 'junriel.hayao@ustp.edu.ph', 'Male', '09386767657', 'Purok 5', 'Mobod', 'Ozamiz', 'Misamis Occidental', '7207', 'School Nurse', '3'),
+(15, 'dawdawd', 'awdwad', 'wadawdaw', 'a@a.c', 'Male', 'dawdwadw', 'dawdwad', 'awdwadwa', 'Tangub', 'Misamis Occidental', 'wadwa', 'School Nurse', '1'),
 (16, 'dawdawd', 'awdwad', 'wadawdaw', 'a@a.c', 'Male', 'dawdwadw', 'dawdwad', 'awdwadwa', 'Oroquieta', 'Misamis Occidental', 'wadwa', 'School Nurse', ''),
 (18, 'Junriel', 'Ordiniza', 'Hayao', 'junriel.hayao@ustp.edu.ph', 'Male', '09386767657', 'Purok 5', 'Mobod', 'Oroquieta', 'Misamis Occidental', '72078', 'School Nurse', ''),
 (19, 'Junriel', 'Ordiniza', 'Hayao', 'junriel.hayao@ustp.edu.ph', '1', '09386767657', 'Purok 5', 'Mobod', 'Oroquieta', 'Misamis Occidental', '72078', 'School Nurse', ''),
@@ -173,11 +176,11 @@ INSERT INTO `nurse` (`id`, `firstname`, `middlename`, `lastname`, `email`, `sex`
 --
 
 CREATE TABLE `report` (
-  `id` int NOT NULL,
-  `information_id` int NOT NULL,
-  `generated_by` int NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `generated_for` int NOT NULL
+  `id` int(11) NOT NULL,
+  `information_id` int(11) NOT NULL,
+  `generated_by` int(11) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `generated_for` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -187,11 +190,11 @@ CREATE TABLE `report` (
 --
 
 CREATE TABLE `school` (
-  `id` int NOT NULL,
-  `school_name` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  `address` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  `division_id` int NOT NULL,
-  `district_id` int NOT NULL
+  `id` int(11) NOT NULL,
+  `school_name` varchar(255) NOT NULL,
+  `address` varchar(255) NOT NULL,
+  `division_id` int(11) NOT NULL,
+  `district_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -209,21 +212,21 @@ INSERT INTO `school` (`id`, `school_name`, `address`, `division_id`, `district_i
 --
 
 CREATE TABLE `student` (
-  `id` int NOT NULL,
-  `firstname` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  `middlename` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  `lastname` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  `sex` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `id` int(11) NOT NULL,
+  `firstname` varchar(255) NOT NULL,
+  `middlename` varchar(255) NOT NULL,
+  `lastname` varchar(255) NOT NULL,
+  `sex` varchar(255) NOT NULL,
   `dob` date NOT NULL,
-  `contact` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  `email` varchar(355) COLLATE utf8mb4_general_ci NOT NULL,
-  `guardian` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  `street` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  `barangay` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  `city` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  `province` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  `postal` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  `school_id` int NOT NULL
+  `contact` varchar(255) NOT NULL,
+  `email` varchar(355) NOT NULL,
+  `guardian` varchar(255) NOT NULL,
+  `street` varchar(255) NOT NULL,
+  `barangay` varchar(255) NOT NULL,
+  `city` varchar(255) NOT NULL,
+  `province` varchar(255) NOT NULL,
+  `postal` varchar(255) NOT NULL,
+  `school_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -241,11 +244,11 @@ INSERT INTO `student` (`id`, `firstname`, `middlename`, `lastname`, `sex`, `dob`
 --
 
 CREATE TABLE `users` (
-  `id` int NOT NULL,
-  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `password` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  `account_id` int NOT NULL,
-  `user_type` varchar(255) COLLATE utf8mb4_general_ci NOT NULL
+  `id` int(11) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `account_id` int(11) NOT NULL,
+  `user_type` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -253,7 +256,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `email`, `password`, `account_id`, `user_type`) VALUES
-(1002, 'test', '098f6bcd4621d373cade4e832627b4f6', 1, 'nurse');
+(1002, 'test', '098f6bcd4621d373cade4e832627b4f6', 15, 'nurse'),
+(1010, 'test2', 'ad0234829205b9033196ba818f7a872b', 5, 'nurse'),
+(1011, 'admin', '21232f297a57a5a743894a0e4a801fc3', 0, 'admin');
 
 --
 -- Indexes for dumped tables
@@ -340,61 +345,61 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `checkup`
 --
 ALTER TABLE `checkup`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `district`
 --
 ALTER TABLE `district`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `division`
 --
 ALTER TABLE `division`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `grade`
 --
 ALTER TABLE `grade`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `information`
 --
 ALTER TABLE `information`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `nurse`
 --
 ALTER TABLE `nurse`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT for table `report`
 --
 ALTER TABLE `report`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `school`
 --
 ALTER TABLE `school`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `student`
 --
 ALTER TABLE `student`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1003;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1012;
 
 --
 -- Constraints for dumped tables

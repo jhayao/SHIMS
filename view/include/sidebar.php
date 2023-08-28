@@ -209,7 +209,7 @@
 
         
         <li class="sidebar-item">
-          <a class="sidebar-link" href="index4.html" aria-expanded="false">
+          <a class="sidebar-link" href="viewReport.php" aria-expanded="false">
             <span>
               <i class="ti ti-cpu"></i>
             </span>

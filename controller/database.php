@@ -1,9 +1,9 @@
 <?php
     class Connection{
-        private $username = "root";
-        private $password = "";
+        private $username = "niwglkmv_root";
+        private $password = "gemmarie2023";
         private $host = "localhost";
-        private $dbname = "shims";
+        private $dbname = "niwglkmv_shims";
         private $conn;
 
         function __construct(){

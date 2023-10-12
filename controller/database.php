@@ -1,10 +1,17 @@
 <?php
     class Connection{
-        private $username = "niwglkmv_root";
-        private $password = "gemmarie2023";
+        // private $username = "niwglkmv_root";
+        // private $password = "gemmarie2023";
+        // private $host = "localhost";
+        // private $dbname = "niwglkmv_shims";
+        // private $conn;
+        
+        private $username = "root";
+        private $password = "";
         private $host = "localhost";
-        private $dbname = "niwglkmv_shims";
+        private $dbname = "shims";
         private $conn;
+
 
         function __construct(){
             if(session_status() !== PHP_SESSION_ACTIVE) session_start();

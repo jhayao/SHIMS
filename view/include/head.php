@@ -2,11 +2,7 @@
 <?php         //status of sesssion
         session_start();
     if(!isset($_SESSION['user_type'])){
-        header('location: login.php');
-    }
-
-
-      // echo json_encode($_SESSION);
+        header('location: login.php');}
     ?>
 <head>
     <!--  Title -->

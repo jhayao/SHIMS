@@ -2,7 +2,7 @@
   <!-- Sidebar scroll-->
   <div>
     <div class="brand-logo d-flex align-items-center justify-content-between">
-      <a href="index.html" class="text-nowrap logo-img">
+      <a href="../index.php" class="text-nowrap logo-img">
         <img
           src="https://demos.adminmart.com/premium/bootstrap/modernize-bootstrap/package/dist/images/logos/dark-logo.svg"
           class="dark-logo" width="180" alt="" />
@@ -216,16 +216,16 @@
             <span class="hide-menu">Reports</span>
           </a>
         </li>
-        <li class="sidebar-item">
+        <!-- <li class="sidebar-item">
           <a class="sidebar-link" href="index5.html" aria-expanded="false">
             <span>
               <i class="ti ti-activity-heartbeat"></i>
             </span>
             <span class="hide-menu">Accounts</span>
           </a>
-        </li>
+        </li> -->
         <li class="sidebar-item">
-          <a class="sidebar-link" href="index6.html" aria-expanded="false">
+          <a class="sidebar-link" href="accountPage.php" aria-expanded="false">
             <span>
               <i class="ti ti-playlist"></i>
             </span>

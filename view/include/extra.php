@@ -121,11 +121,11 @@
             <div class="theme-direction pb-4">
                 <h6 class="fw-semibold fs-4 mb-1">Theme Direction</h6>
                 <div class="d-flex align-items-center gap-3 my-3">
-                    <a href="index.html" class="rounded-2 p-9 customizer-box hover-img d-flex align-items-center gap-2">
+                    <a href="../index.php" class="rounded-2 p-9 customizer-box hover-img d-flex align-items-center gap-2">
                         <i class="ti ti-text-direction-ltr fs-6 text-primary"></i>
                         <span class="text-dark">LTR</span>
                     </a>
-                    <a href="https://demos.adminmart.com/premium/bootstrap/modernize-bootstrap/package/html/rtl/index.html"
+                    <a href="https://demos.adminmart.com/premium/bootstrap/modernize-bootstrap/package/html/rtl/../index.php"
                         class="rounded-2 p-9 customizer-box hover-img d-flex align-items-center gap-2">
                         <i class="ti ti-text-direction-rtl fs-6 text-dark"></i>
                         <span class="text-dark">RTL</span>
@@ -190,11 +190,11 @@
             <div class="layout-type pb-4">
                 <h6 class="fw-semibold fs-4 mb-1">Layout Type</h6>
                 <div class="d-flex align-items-center gap-3 my-3">
-                    <a href="index.html" class="rounded-2 p-9 customizer-box hover-img d-flex align-items-center gap-2">
+                    <a href="../index.php" class="rounded-2 p-9 customizer-box hover-img d-flex align-items-center gap-2">
                         <i class="ti ti-layout-sidebar fs-6 text-primary"></i>
                         <span class="text-dark">Vertical</span>
                     </a>
-                    <a href="https://demos.adminmart.com/premium/bootstrap/modernize-bootstrap/package/html/horizontal/index.html"
+                    <a href="https://demos.adminmart.com/premium/bootstrap/modernize-bootstrap/package/html/horizontal/../index.php"
                         class="rounded-2 p-9 customizer-box hover-img d-flex align-items-center gap-2">
                         <i class="ti ti-layout-navbar fs-6 text-dark"></i>
                         <span class="text-dark">Horizontal</span>

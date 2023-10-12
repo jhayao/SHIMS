@@ -34,7 +34,7 @@
         <div class="position-relative z-index-5">
           <div class="row">
             <div class="col-xl-7 col-xxl-8">
-              <a href="index.html" class="text-nowrap logo-img d-block px-4 py-9 w-100">
+              <a href="../index.php" class="text-nowrap logo-img d-block px-4 py-9 w-100">
                 <img src="https://demos.adminmart.com/premium/bootstrap/modernize-bootstrap/package/dist/images/logos/dark-logo.svg" width="180" alt="">
               </a>
               <div class="d-none d-xl-flex align-items-center justify-content-center" style="height: calc(100vh - 80px);">

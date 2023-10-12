@@ -1,7 +1,7 @@
 
 <html lang="en">
 <!DOCTYPE html>
-<!-- Mirrored from demos.adminmart.com/premium/bootstrap/modernize-bootstrap/package/html/main/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 20 Jul 2023 11:10:58 GMT -->
+<!-- Mirrored from demos.adminmart.com/premium/bootstrap/modernize-bootstrap/package/html/main/../index.php by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 20 Jul 2023 11:10:58 GMT -->
 <?php include_once('include/head.php'); ?>
   <body>
     <!-- Preloader -->
@@ -935,11 +935,11 @@
       <div class="theme-direction pb-4">
         <h6 class="fw-semibold fs-4 mb-1">Theme Direction</h6>
         <div class="d-flex align-items-center gap-3 my-3">
-          <a href="index.html" class="rounded-2 p-9 customizer-box hover-img d-flex align-items-center gap-2">
+          <a href="../index.php" class="rounded-2 p-9 customizer-box hover-img d-flex align-items-center gap-2">
             <i class="ti ti-text-direction-ltr fs-6 text-primary"></i>
             <span class="text-dark">LTR</span>
           </a>
-          <a href="https://demos.adminmart.com/premium/bootstrap/modernize-bootstrap/package/html/rtl/index.html" class="rounded-2 p-9 customizer-box hover-img d-flex align-items-center gap-2">
+          <a href="https://demos.adminmart.com/premium/bootstrap/modernize-bootstrap/package/html/rtl/../index.php" class="rounded-2 p-9 customizer-box hover-img d-flex align-items-center gap-2">
             <i class="ti ti-text-direction-rtl fs-6 text-dark"></i>
             <span class="text-dark">RTL</span>
           </a>
@@ -973,11 +973,11 @@
       <div class="layout-type pb-4">
         <h6 class="fw-semibold fs-4 mb-1">Layout Type</h6>
         <div class="d-flex align-items-center gap-3 my-3">
-          <a href="index.html" class="rounded-2 p-9 customizer-box hover-img d-flex align-items-center gap-2">              
+          <a href="../index.php" class="rounded-2 p-9 customizer-box hover-img d-flex align-items-center gap-2">              
             <i class="ti ti-layout-sidebar fs-6 text-primary"></i>
             <span class="text-dark">Vertical</span>
           </a>
-          <a href="https://demos.adminmart.com/premium/bootstrap/modernize-bootstrap/package/html/horizontal/index.html" class="rounded-2 p-9 customizer-box hover-img d-flex align-items-center gap-2">
+          <a href="https://demos.adminmart.com/premium/bootstrap/modernize-bootstrap/package/html/horizontal/../index.php" class="rounded-2 p-9 customizer-box hover-img d-flex align-items-center gap-2">
             <i class="ti ti-layout-navbar fs-6 text-dark"></i>
             <span class="text-dark">Horizontal</span>
           </a>
@@ -1031,5 +1031,5 @@
     <script src="../dist/js/dashboard.js"></script>
   </body>
 
-<!-- Mirrored from demos.adminmart.com/premium/bootstrap/modernize-bootstrap/package/html/main/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 20 Jul 2023 11:11:36 GMT -->
+<!-- Mirrored from demos.adminmart.com/premium/bootstrap/modernize-bootstrap/package/html/main/../index.php by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 20 Jul 2023 11:11:36 GMT -->
 </html>

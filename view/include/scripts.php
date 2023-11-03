@@ -31,4 +31,21 @@
     }
     });
 
+    //btn logout
+    $('#btn-logout').click(function(){
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You want to logout?",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#28a745',
+            cancelButtonColor: '#dc3545',
+            confirmButtonText: 'Yes, logout!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = 'logout.php';
+            }
+        })
+    });
+
 </script>

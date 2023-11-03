@@ -7,8 +7,8 @@
         // private $conn;
         
         private $username = "root";
-        private $password = "";
-        private $host = "localhost";
+        private $password = "tiger";
+        private $host = "database";
         private $dbname = "shims";
         private $conn;
 

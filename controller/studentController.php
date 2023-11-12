@@ -44,6 +44,21 @@
             return $result;
         }
 
+        function getStudentById(){
+            $id = isset($_POST['id']) ? $_POST['id'] : '';
+            $conn = new Connection();
+            $query = "select s.school_name,d.district_name,dv.division_name,st.* from school s , district d, division dv, student st where s.id = st.school_id and d.id = s.district_id and dv.id = s.division_id and st.id = ?";
+            $connection = new Connection();
+            $conn = $connection->connect();
+            $stmt = $conn->prepare($query);
+            $stmt->bind_param("i", $id);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            $stmt->close();
+            $conn->close();
+            return $result;
+        }
+
         function addStudent(){
             //get post parameteres
             // print_r($_POST);
@@ -153,6 +168,12 @@
  
         $student = new Student();
         switch($function){
+            case 'getStudentById':
+                $result = $student->getStudentById();
+                $editStudent = array();
+                $row = $result->fetch_assoc();
+                echo json_encode($row);
+                break;
             case 'getStudentbySchoolId':
                 $result = $student->getStudentbySchoolId();
                 $studentArray = array();

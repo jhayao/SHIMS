@@ -14,10 +14,25 @@ class Checkup
 
     function getAllCheckup(){
         $conn = new Connection();
-        $query = "select information.id, CONCAT(student.firstname,' ', student.middlename, ' ', student.lastname) as studentName, CONCAT(nurse.firstname,' ',nurse.middlename,' ',nurse.lastname) as nurseName,information.height,information.temperature, information.weight, information.created_at, information.findings from student inner join information on student.id = information.student_id inner join nurse on nurse.id = information.nurse_id;";
+        $query = "select information.id, CONCAT(student.firstname,' ', student.middlename, ' ', student.lastname) as studentName, CONCAT(nurse.firstname,' ',nurse.middlename,' ',nurse.lastname) as nurseName,information.height,information.temperature, information.weight, information.created_at, information.findings,information.prescription from student inner join information on student.id = information.student_id inner join nurse on nurse.id = information.nurse_id;";
         $connection = new Connection();
         $conn = $connection->connect();
         $stmt = $conn->prepare($query);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $stmt->close();
+        $conn->close();
+        return $result;
+    }
+
+    function getCheckupbyStudentId(){
+        $student_id = isset($_POST['student_id']) ? $_POST['student_id'] : '';
+        $conn = new Connection();
+        $query = "select information.id, CONCAT(student.firstname,' ', student.middlename, ' ', student.lastname) as studentName, CONCAT(nurse.firstname,' ',nurse.middlename,' ',nurse.lastname) as nurseName,information.height,information.temperature, information.weight, information.created_at, information.findings,information.prescription from student inner join information on student.id = information.student_id inner join nurse on nurse.id = information.nurse_id where student.id = ?";
+        $connection = new Connection();
+        $conn = $connection->connect();
+        $stmt = $conn->prepare($query);
+        $stmt->bind_param("i", $student_id);
         $stmt->execute();
         $result = $stmt->get_result();
         $stmt->close();
@@ -43,15 +58,15 @@ class Checkup
         $temperature =  isset($_POST['temperature']) ? $_POST['temperature'] : '';
         $weight = isset($_POST['weight']) ? $_POST['weight'] : '';
         $findings = isset($_POST['findings']) ? $_POST['findings'] : '';
+        $prescription = isset($_POST['prescription']) ? $_POST['prescription'] : '';
         // $created_at = isset($_POST['created_at']) ? $_POST['created_at'] : '';
 
         $conn = new Connection();
-        $query = "INSERT INTO `information`(`id`, `student_id`, `nurse_id`, `height`, `temperature`, `weight`,`findings`) VALUES (NULL,?,?,?,?,?,?)";
+        $query = "INSERT INTO `information`(`id`, `student_id`, `nurse_id`, `height`, `temperature`, `weight`,`findings`,`prescription`) VALUES (NULL,?,?,?,?,?,?,?)";
         $connection = new Connection();
         $conn = $connection->connect();
         $stmt = $conn->prepare($query);
-        $stmt->bind_param("ssssss", $student_id, $nurse_id, $height, $temperature, $weight, $findings);
-
+        $stmt->bind_param("sssssss", $student_id, $nurse_id, $height, $temperature, $weight, $findings,$prescription);
         try{
             
             $stmt->execute();
@@ -116,12 +131,13 @@ class Checkup
         $temperature =  isset($_POST['temperature']) ? $_POST['temperature'] : '';
         $weight = isset($_POST['weight']) ? $_POST['weight'] : '';
         $findings = isset($_POST['findings']) ? $_POST['findings'] : '';
+        $prescription = isset($_POST['prescription']) ? $_POST['prescription'] : '';
         $conn = new Connection();
-        $query = "UPDATE `information` SET `student_id`=?,`height`=?,`temperature`=?,`weight`=?,`findings` = ? WHERE `id`=?";
+        $query = "UPDATE `information` SET `student_id`=?,`height`=?,`temperature`=?,`weight`=?,`findings` = ? , `prescription` = ? WHERE `id`=?";
         $connection = new Connection();
         $conn = $connection->connect();
         $stmt = $conn->prepare($query);
-        $stmt->bind_param("sssssi", $student_id, $height, $temperature, $weight,$findings, $id);
+        $stmt->bind_param("ssssssi", $student_id, $height, $temperature, $weight,$findings,$prescription, $id);
         try{
             
             $stmt->execute();
@@ -163,6 +179,15 @@ if(isset($_POST['function'])){
             }
             $dataTable = array('data'=>$checkupArray,'draw'=>1,'recordsTotal'=>count($checkupArray),'recordsFiltered'=>count($checkupArray));
             echo json_encode($dataTable);
+            break;
+        case 'getCheckupbyStudentId' :
+            $result = $checkup->getCheckupbyStudentId();
+            $checkupArray = array();
+            while($row = $result->fetch_assoc()){
+                array_push($checkupArray, $row);
+            }
+            // $dataTable = array('data'=>$checkupArray,'draw'=>1,'recordsTotal'=>count($checkupArray),'recordsFiltered'=>count($checkupArray));
+            echo json_encode($checkupArray);
             break;
     }
 }

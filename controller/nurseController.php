@@ -17,7 +17,6 @@
         }
 
         function getAllNurse(){
-            $conn = new Connection();
             $query = "SELECT * FROM nurse";
             $connection = new Connection();
             $conn = $connection->connect();

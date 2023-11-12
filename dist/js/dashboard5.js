@@ -19,7 +19,7 @@ $(function () {
         show: false,
       },
       type: "line",
-      fontFamily: "DM Sans,sans-serif",
+      fontFamily: "Plus Jakarta Sans', sans-serif",
       foreColor: "#adb0bb",
       height: 200,
     },

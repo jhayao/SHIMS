@@ -1,7 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
+
 <?php isset($_GET['edit']) ? $edit = $_GET['edit'] : $edit = 0; ?>
-<!-- Mirrored from demos.adminmart.com/premium/bootstrap/modernize-bootstrap/package/html/main/page-account-settings.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 20 Jul 2023 11:13:34 GMT -->
 <?php include_once('include/head.php'); ?>
 
 <body>
@@ -155,7 +153,7 @@
                                                             class="form-label fw-semibold">Street</label>
                                                         <input type="text" class="form-control" id="nurse_street"
                                                             name="nurse_street"
-                                                            placeholder="814 Howard Street, 120065, India" required>
+                                                            placeholder="" required>
                                                         <div class="invalid-feedback">
                                                             Please enter a valid Street
                                                         </div>
@@ -165,7 +163,7 @@
                                                             class="form-label fw-semibold">Barangay</label>
                                                         <input type="text" class="form-control" id="nurse_barangay"
                                                             name="nurse_barangay"
-                                                            placeholder="814 Howard Street, 120065, India" required>
+                                                            placeholder="" required>
                                                         <div class="invalid-feedback">
                                                             Please enter a valid Barangay
                                                         </div>
@@ -222,7 +220,7 @@
                                                             class="form-label fw-semibold">Postal</label>
                                                         <input type="text" class="form-control" id="nurse_postal"
                                                             name="nurse_postal"
-                                                            placeholder="814 Howard Street, 120065, India" required>
+                                                            placeholder="" required>
                                                         <div class="invalid-feedback">
                                                             Please enter a valid Postal
                                                         </div>
@@ -427,7 +425,7 @@
                                 window.location.href = "viewNurse.php?success=1";
                             } else {
                                 noty.setText("Error", true);
-                                noty.setType("error");
+                                noty.setType("error",true);
                                 noty.show();
                             }
 
@@ -436,7 +434,7 @@
                             data = data.trim();
                             console.log(data);
                             noty.setText("Error", true);
-                            noty.setType("error");
+                            noty.setType("error",true);
                             noty.show();
                         }
                     });

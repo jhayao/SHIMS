@@ -1,8 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<!-- Mirrored from demos.adminmart.com/premium/bootstrap/modernize-bootstrap/package/html/main/page-account-settings.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 20 Jul 2023 11:13:34 GMT -->
-<?php include_once('include/head.php'); ?>
+<?php include_once('include/head.php'); ?> include_once('include/head.php'); ?>
 
 <body>
     <!-- Preloader -->
@@ -67,6 +63,7 @@
                                         <th>Temperature</th>
                                         <th>Weight</th>
                                         <th>Findings</th>
+                                        <th>Prescription</th>
                                         <th>Options</th>
                                     </tr>
                                     <!-- end row -->
@@ -145,6 +142,9 @@
                     },
                     {
                         "data": "findings"
+                    },
+                    {
+                        "data": "prescription"
                     },
                     {
                         "data": "id",

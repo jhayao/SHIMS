@@ -11,7 +11,7 @@ $(function () {
         },
       ],
       chart: {
-        ffontFamily: "Plus Jakarta Sans', sans-serif",
+       fontFamily: "Plus Jakarta Sans', sans-serif",
         foreColor: "#adb0bb",
         height: 325,
         type: "line",

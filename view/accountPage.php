@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
+
 <?php include_once('include/head.php'); ?>
 
 <body>
@@ -143,7 +142,7 @@
                             <div class="col-12">
                               <div class="">
                                 <label for="exampleInputPassword1" class="form-label fw-semibold">Address</label>
-                                <input type="text" class="form-control" id="exampleInputtext" placeholder="814 Howard Street, 120065, India">
+                                <input type="text" class="form-control" id="exampleInputtext" placeholder="">
                               </div>
                             </div>
                             <div class="col-12">

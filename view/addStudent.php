@@ -1,8 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php include_once('include/head.php'); ?> include_once('include/head.php'); ?>
 <?php isset($_GET['edit']) ? $edit = $_GET['edit'] : $edit = 0; ?>
-<!-- Mirrored from demos.adminmart.com/premium/bootstrap/modernize-bootstrap/package/html/main/page-account-settings.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 20 Jul 2023 11:13:34 GMT -->
-<?php include_once('include/head.php'); ?>
 <link rel="stylesheet" href="../dist/libs/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
 <body>
     <!-- Preloader -->
@@ -177,7 +174,7 @@
                                                             class="form-label fw-semibold">Street</label>
                                                         <input type="text" class="form-control" id="street"
                                                             name="street"
-                                                            placeholder="814 Howard Street, 120065, India" required>
+                                                            placeholder="" required>
                                                         <div class="invalid-feedback">
                                                             Please enter a valid Street
                                                         </div>
@@ -187,7 +184,7 @@
                                                             class="form-label fw-semibold">Barangay</label>
                                                         <input type="text" class="form-control" id="barangay"
                                                             name="barangay"
-                                                            placeholder="814 Howard Street, 120065, India" required>
+                                                            placeholder="" required>
                                                         <div class="invalid-feedback">
                                                             Please enter a valid Barangay
                                                         </div>
@@ -244,7 +241,7 @@
                                                             class="form-label fw-semibold">Postal</label>
                                                         <input type="text" class="form-control" id="postal"
                                                             name="postal"
-                                                            placeholder="814 Howard Street, 120065, India" required>
+                                                            placeholder="" required>
                                                         <div class="invalid-feedback">
                                                             Please enter a valid Postal
                                                         </div>
@@ -398,12 +395,12 @@
                                     let duplicate = data.errorMessage.split("'");
                                     noty.setText("Error : " + duplicate[1] + " already exist for " + duplicate[3] + " attribute", true);
                                     // noty.setText("Error : Email already exist", true);
-                                    noty.setType("error");
+                                    noty.setType("error",true);
                                     noty.show();
                                 }
                                 else{
                                     noty.setText("Error : " + data.errorCode, true);
-                                    noty.setType("error");
+                                    noty.setType("error",true);
                                     noty.show();
                                 }
                                 
@@ -414,7 +411,7 @@
                             // data = data.trim();
                             console.log(data);
                             noty.setText("Error", true);
-                            noty.setType("error");
+                            noty.setType("error",true);
                             noty.show();
                         }
                     });

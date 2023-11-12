@@ -1,7 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
+
 <?php isset($_GET['edit']) ? $edit = $_GET['edit'] : $edit = 0; ?>
-<!-- Mirrored from demos.adminmart.com/premium/bootstrap/modernize-bootstrap/package/html/main/page-account-settings.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 20 Jul 2023 11:13:34 GMT -->
 <?php include_once('include/head.php'); ?>
 
 <body>
@@ -31,13 +29,16 @@
                     <div class="card-body px-4 py-3">
                         <div class="row align-items-center">
                             <div class="col-9">
-                                <h4 class="fw-semibold mb-8"><?php echo ($edit ? "Edit Checkup" : "Add Checkup");?></h4>
+                                <h4 class="fw-semibold mb-8">
+                                    <?php echo ($edit ? "Edit Checkup" : "Add Checkup"); ?>
+                                </h4>
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
                                         <li class="breadcrumb-item"><a class="text-muted" href="checkup.php">Checkup</a>
                                         </li>
                                         <li class="breadcrumb-item" aria-current="page">
-                                            <?php echo ($edit ? "Edit Checkup" : "Add Checkup");?></li>
+                                            <?php echo ($edit ? "Edit Checkup" : "Add Checkup"); ?>
+                                        </li>
                                     </ol>
                                 </nav>
                             </div>
@@ -80,50 +81,50 @@
                                             <div class="row">
                                                 <div class="col-lg-6">
                                                     <div class="mb-4">
-                                                        <label for="division_id"
-                                                            class="form-label fw-semibold">Division Name</label>
+                                                        <label for="division_id" class="form-label fw-semibold">Division
+                                                            Name</label>
                                                         <select class="select2 form-control"
-                                                            aria-label="Default select example" id="division_id" required
-                                                            name="division_id">
+                                                            aria-label="Default select example" id="division_id"
+                                                            required name="division_id">
                                                         </select>
                                                         <div class="invalid-feedback">
-                                                        Division Name
+                                                            Division Name
                                                         </div>
                                                     </div>
                                                     <div class="mb-4">
-                                                        <label for="district_id"
-                                                            class="form-label fw-semibold">District Name</label>
+                                                        <label for="district_id" class="form-label fw-semibold">District
+                                                            Name</label>
                                                         <select class="select2 form-control"
-                                                            aria-label="Default select example" id="district_id" required
-                                                            name="district_id">
+                                                            aria-label="Default select example" id="district_id"
+                                                            required name="district_id">
                                                         </select>
                                                         <div class="invalid-feedback">
-                                                        District Name
+                                                            District Name
                                                         </div>
                                                     </div>
                                                     <div class="mb-4">
-                                                        <label for="school_id"
-                                                            class="form-label fw-semibold">School Name</label>
+                                                        <label for="school_id" class="form-label fw-semibold">School
+                                                            Name</label>
                                                         <select class="select2 form-control"
                                                             aria-label="Default select example" id="school_id" required
                                                             name="school_id">
                                                         </select>
                                                         <div class="invalid-feedback">
-                                                        School Name
+                                                            School Name
                                                         </div>
                                                     </div>
                                                     <div class="mb-4">
-                                                        <label for="student_id"
-                                                            class="form-label fw-semibold">Student Name</label>
+                                                        <label for="student_id" class="form-label fw-semibold">Student
+                                                            Name</label>
                                                         <select class="select2 form-control"
                                                             aria-label="Default select example" id="student_id" required
                                                             name="student_id">
                                                         </select>
                                                         <div class="invalid-feedback">
-                                                        Student Name
+                                                            Student Name
                                                         </div>
                                                     </div>
-                                                    
+
                                                 </div>
 
                                                 <div class="col-lg-6">
@@ -131,8 +132,7 @@
                                                         <label for="height"
                                                             class="form-label fw-semibold">Height</label>
                                                         <input type="text" class="form-control" id="height"
-                                                            name="height" placeholder="Height"
-                                                            required>
+                                                            name="height" placeholder="Height" required>
                                                         <div class="invalid-feedback">
                                                             Please enter an Height.
                                                         </div>
@@ -141,8 +141,7 @@
                                                         <label for="weight"
                                                             class="form-label fw-semibold">Weight</label>
                                                         <input type="text" class="form-control" id="weight"
-                                                            name="weight" placeholder="Weight"
-                                                            required>
+                                                            name="weight" placeholder="Weight" required>
                                                         <div class="invalid-feedback">
                                                             Please enter an Weight.
                                                         </div>
@@ -151,29 +150,41 @@
                                                         <label for="temperature"
                                                             class="form-label fw-semibold">Temperature</label>
                                                         <input type="text" class="form-control" id="temperature"
-                                                            name="temperature" placeholder="Temperature"
-                                                            required>
+                                                            name="temperature" placeholder="Temperature" required>
                                                         <div class="invalid-feedback">
                                                             Please enter an Temperature.
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="mb-4">
+                                                <!-- <div class="mb-4">
                                                         <label for="findings"
                                                             class="form-label fw-semibold">Findings</label>
                                                             <textarea id="findings" class="form-control" name="findings" rows="5"  required></textarea>
                                                         <div class="invalid-feedback">
                                                             Please enter an Findings.
                                                         </div>
-                                                    </div>
+                                                    </div> -->
+                                                <div class="mb-4">
+                                                    <label for="findings" class="form-label fw-semibold">Finding</label>
+                                                    <textarea id="editor" class="form-control findings" name="findings"
+                                                        rows="5"></textarea>
+                                                </div>
+                                                <div class="mb-4">
+                                                    <label for="prescription"
+                                                        class="form-label fw-semibold">Prescription</label>
+                                                    <textarea id="editor" class="form-control prescription"
+                                                        contenteditable="true" accesskey="" name="prescription"
+                                                        rows="5"></textarea>
+                                                </div>
 
-                                                
                                                 <div class="col-12">
                                                     <div
                                                         class="d-flex align-items-center justify-content-end mt-4 gap-3">
-                                                        <button
-                                                            class="btn btn-primary"><?php echo ($edit ? "Update" : "Save");?></button>
-                                                        <button class="btn btn-light-danger text-danger" onclick="window.location.href='viewCheckup.php'">Cancel</button>
+                                                        <button class="btn btn-primary">
+                                                            <?php echo ($edit ? "Update" : "Save"); ?>
+                                                        </button>
+                                                        <button class="btn btn-light-danger text-danger"
+                                                            onclick="window.location.href='viewCheckup.php'">Cancel</button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -188,7 +199,7 @@
             </div>
         </div>
     </div>
-    <?php include_once("./include/extra.php");?>
+    <?php include_once("./include/extra.php"); ?>
     <!--  Customizer -->
     <?php include_once("./include/scripts.php"); ?>
     <script>
@@ -216,16 +227,16 @@
                         division_id.append('<option value="' + value.id + '">' + value.division_name +
                             '</option>');
                     });
-                    
+
                 }
             })
 
 
-            
 
-           
+
+
             //select2 division_id on change
-            $('#division_id').on('change', function (event,districtId = null,schoolId = null, studentID = null) {
+            $('#division_id').on('change', function (event, districtId = null, schoolId = null, studentID = null) {
                 //console.log("district ID" + districtId)
                 //console.log("school ID" + schoolId)
                 //console.log("student ID" + studentID)
@@ -251,17 +262,17 @@
                             district_id.append('<option value="' + value.id + '">' + value.district_name +
                                 '</option>');
                         });
-                        if ( <?php echo($edit);?> && districtId != null) {
-                            district_id.val(districtId).trigger("change", [schoolId,studentID]);
+                        if (<?php echo ($edit); ?> && districtId != null) {
+                            district_id.val(districtId).trigger("change", [schoolId, studentID]);
                         }
                     }
-                    
+
                 })
 
             })
 
             //district_id on change and call schoolController
-            $('#district_id').on('change', function (event,schoolId = null,studentID= null) {
+            $('#district_id').on('change', function (event, schoolId = null, studentID = null) {
                 let school_id = $('#school_id');
                 school_id.empty();
                 //console.log(event);
@@ -284,18 +295,18 @@
                                 '</option>');
                         });
                         //console.log(schoolId)
-                        if ( <?php echo($edit);?> && schoolId != null) {
-                            
+                        if (<?php echo ($edit); ?> && schoolId != null) {
+
                             school_id.val(schoolId).trigger("change", studentID);
                         }
                     },
-                    complete: function() {
-                        
+                    complete: function () {
+
                     }
                 })
             })
 
-            
+
             //get all student when school change
             $('#school_id').on('change', function (event, studentID = null) {
                 //console.log("Student ID " + studentID)
@@ -314,7 +325,7 @@
                         data = data.data
                         //console.log(data)
                         //set all inputs from return data
-                        
+
                         student_id.empty();
                         student_id.append('<option value="" selected disabled>Select Student</option>');
                         $.each(data, function (index, value) {
@@ -322,15 +333,15 @@
                             student_id.append('<option value="' + value.id + '">' + student_name +
                                 '</option>');
                         });
-                        if ( <?php echo($edit);?> ) {
+                        if (<?php echo ($edit); ?>) {
                             student_id.val(studentID).trigger("change");
                         }
                     }
                 })
             })
-            
 
-            
+
+
 
 
             var checkupForm = document.getElementById('checkupForm');
@@ -352,15 +363,14 @@
                 } else {
                     // Submit the form
                     var formdata = new FormData(this);
-                    if( <?php echo($edit);?>)
-                    {
+                    if (<?php echo ($edit); ?>) {
                         formdata.append("function", "updateCheckup");
-                        formdata.append("id", <?php echo(isset($_GET['id']) ? $_GET['id'] : 0); ?>);
+                        formdata.append("id", <?php echo (isset($_GET['id']) ? $_GET['id'] : 0); ?>);
                     }
                     else {
                         formdata.append("function", "addCheckup");
                     }
-                    
+
                     $.ajax({
                         url: "../controller/checkupController.php",
                         type: "POST",
@@ -374,20 +384,22 @@
                             // data = data.trim();
                             // //console.log(data)
                             console.log(data)
-                            if (data.success) {
+                            if (data.success === "true") {
                                 window.location.href = "viewCheckup.php?success=1";
                             } else {
-                                noty.setText("Error", true);
-                                noty.setType("error");
+                                console.log(noty)
+                                noty.setText(data.errorMessage, true);
+                                noty.setType("error", true);
                                 noty.show();
                             }
 
                         },
                         error: function (data) {
+                            console.log(data)
                             data = data.trim();
                             //console.log(data);
                             noty.setText("Error", true);
-                            noty.setType("error");
+                            noty.setType("error", true);
                             noty.show();
                         }
                     });
@@ -397,7 +409,7 @@
 
 
 
-            if ( <?php echo(isset($_GET['edit']) ? true : 0); ?> ) {
+            if (<?php echo (isset($_GET['edit']) ? true : 0); ?>) {
                 //request ajax to get data of Checkupby id
 
                 $.ajax({
@@ -406,17 +418,24 @@
                     dataType: "json",
                     data: {
                         function: "editCheckup",
-                        id: <?php echo(isset($_GET['id']) ? $_GET['id'] : 0); ?>
+                        id: <?php echo (isset($_GET['id']) ? $_GET['id'] : 0); ?>
                     },
                     success: function (data) {
+                        console.log(data)
                         //set all inputs from return data
                         //console.log(data.district_id,data.school_id,data.student_id)
-                        $('#division_id').val(data.division_id).trigger("change", [data.district_id,data.school_id,data.student_id]);
+                        $('#division_id').val(data.division_id).trigger("change", [data.district_id, data.school_id, data.student_id]);
                         $('#height').val(data.height);
                         $('#weight').val(data.weight);
                         $('#temperature').val(data.temperature);
-                        $('#findings').val(data.findings);
-                        
+                        $('.findings').text(data.findings);
+                        $('input[name="findings"]').text(data.findings)
+                        console.log(data.prescription)
+
+                        // Use the editor instance API.
+                        findingsEditor.setData(data.findings);
+                        prescriptionEditor.setData(data.prescription)
+
                     }
                 })
             }

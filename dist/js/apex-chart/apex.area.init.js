@@ -161,7 +161,7 @@ $(function () {
       },
     ],
     chart: {
-      fontFamily: "DM Sans,sans-serif",
+      fontFamily: "Plus Jakarta Sans', sans-serif",
       type: "area",
       height: 350,
       zoom: {
@@ -240,7 +240,7 @@ $(function () {
       },
     ],
     chart: {
-      fontFamily: "DM Sans,sans-serif",
+      fontFamily: "Plus Jakarta Sans', sans-serif",
       height: 350,
       type: "area",
       toolbar: {
@@ -601,7 +601,7 @@ $(function () {
     ],
     chart: {
       id: "area-datetime",
-      fontFamily: "DM Sans,sans-serif",
+      fontFamily: "Plus Jakarta Sans', sans-serif",
       type: "area",
       height: 350,
       zoom: {

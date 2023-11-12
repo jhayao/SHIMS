@@ -1,8 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<!-- Mirrored from demos.adminmart.com/premium/bootstrap/modernize-bootstrap/package/html/main/page-account-settings.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 20 Jul 2023 11:13:34 GMT -->
-<?php include_once('include/head.php'); ?>
+<?php include_once('include/head.php'); ?> include_once('include/head.php'); ?>
 
 <body>
     <!-- Preloader -->
@@ -63,7 +59,6 @@
                                         <th>ID</th>
                                         <th>Full Name</th>
                                         <th>Email</th>
-                                        <th>Address</th>
                                         <th>Position</th>
                                         <th>Options</th>
                                     </tr>
@@ -80,10 +75,10 @@
             </div>
         </div>
     </div>
-    <?php include_once("./include/extra.php");?>
+    <?php include_once("./include/extra.php"); ?>
     <!--  Customizer -->
 
-    
+
     <?php include_once("./include/scripts.php"); ?>
     <script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
     <!-- <script src="../../../../../../../cdn.datatables.net/buttons/1.5.1/js/dataTables.buttons.min.js"></script> -->
@@ -96,24 +91,24 @@
     <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.print.min.js"></script>
 
     <!-- <script src="../dist/js/datatable/datatable-advanced.init.js"></script> -->
-<!-- Add the following code block before the closing </body> tag -->
+    <!-- Add the following code block before the closing </body> tag -->
 
-    
 
-   
+
+
     <script>
         //onload
         $(document).ready(function () {
 
-            if(<?php echo (isset($_GET['success']) ? true : 0); ?>){
-                noty.setText("Successfully Added",true);
+            if (<?php echo (isset($_GET['success']) ? true : 0); ?>) {
+                noty.setText("Successfully Added", true);
                 noty.show();
             }
-            
+
             //datatable
             var table = $('#file_export').DataTable({
                 dom: 'Bfrtip',
-                buttons: [ "print"],
+                buttons: ["print"],
                 ajax: {
                     "url": "../controller/nurseController.php",
                     "type": "POST",
@@ -122,92 +117,85 @@
                     },
                 },
                 columns: [{
-                        "data": "id"
-                    },
-                    {
-                        "data": null,
-                        render: function (data, type, row) {
-                            return row.firstname + " " + row.middlename + " " + row.lastname;
-                        }
-                    },
-                    {
-                        "data": "email"
-                    },
-                    {
-                        "data": null,
-                        render: function (data, type, row) {
-                            return row.street + ", " + row.barangay + ", " + row.city + ", " +
-                                row.province + ", " + row.postal;
-                        }
-                    },
-                    {
-                        "data": "nurse_type"
-                    },
-                    {
-                        "data": "id",
-                        createdCell: function(cell, cellData, rowData, rowIndex, colIndex) {
-                            
-                            $(cell).on('click', '.delete', function() {
-                                // Handle cell click event
-                                Swal.fire({
-                                    title: 'Are you sure?',
-                                    text: "You won't be able to revert this!",
-                                    icon: 'warning',
-                                    showCancelButton: true,
-                                    confirmButtonColor: '#3085d6',
-                                    cancelButtonColor: '#d33',
-                                    confirmButtonText: 'Yes, delete it!'
-                                    }).then((result) => {
-                                    if (result.isConfirmed) {
+                    "data": "id"
+                },
+                {
+                    "data": null,
+                    render: function (data, type, row) {
+                        return row.firstname + " " + row.middlename + " " + row.lastname;
+                    }
+                },
+                {
+                    "data": "email"
+                },
+                {
+                    "data": "nurse_type"
+                },
+                {
+                    "data": "id",
+                    createdCell: function (cell, cellData, rowData, rowIndex, colIndex) {
 
-                                        //delete reuqest ajax
-                                        $.ajax({
-                                            url: "../controller/nurseController.php",
-                                            type: "POST",
-                                            data: {
-                                                "function": "deleteNurse",
-                                                "id": cellData
-                                            },
-                                            success: function (data) {
-                                                if(data.trim() == "success"){
-                                                    Swal.fire(
-                                                        'Deleted!',
-                                                        'Your file has been deleted.',
-                                                        'success'
-                                                        ).then((result) => {
-                                                            if(result.isConfirmed){
-                                                                location.reload();
-                                                            }
-                                                        })
-                                                    
-                                                }
+                        $(cell).on('click', '.delete', function () {
+                            // Handle cell click event
+                            Swal.fire({
+                                title: 'Are you sure?',
+                                text: "You won't be able to revert this!",
+                                icon: 'warning',
+                                showCancelButton: true,
+                                confirmButtonColor: '#3085d6',
+                                cancelButtonColor: '#d33',
+                                confirmButtonText: 'Yes, delete it!'
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+
+                                    //delete reuqest ajax
+                                    $.ajax({
+                                        url: "../controller/nurseController.php",
+                                        type: "POST",
+                                        data: {
+                                            "function": "deleteNurse",
+                                            "id": cellData
+                                        },
+                                        success: function (data) {
+                                            if (data.trim() == "success") {
+                                                Swal.fire(
+                                                    'Deleted!',
+                                                    'Your file has been deleted.',
+                                                    'success'
+                                                ).then((result) => {
+                                                    if (result.isConfirmed) {
+                                                        location.reload();
+                                                    }
+                                                })
+
                                             }
-                                        });
-                                        
-                                    }
-                                    })
-                            });
-                        },
-                        "render": function (data, type, row, meta) {
-                            return `<div class="d-flex">
-                                        
+                                        }
+                                    });
+
+                                }
+                            })
+                        });
+                    },
+                    "render": function (data, type, row, meta) {
+                        return `<div class="d-flex justify-content-center">
+                            <a href="profileNurse.php?id=${data}&nurse_type=${row.nurse_type}" class="btn btn-success me-3"><i class="ti ti-eye"></i></a>
                                         <a href="addNurse.php?edit=true&id=${data}" class="btn btn-primary   me-1"><i class="ti ti-edit"></i></a>
                                         <button id="${data}"  class="btn btn-danger delete  me-1"><i class="ti ti-trash-x"></i></button>
                                     </div>`;
-                        }
                     }
+                }
                 ]
             });
             $(".buttons-copy, .buttons-csv, .buttons-print, .buttons-pdf, .buttons-excel").addClass(
                 "btn btn-primary mr-1");
 
             //delete
-            
-            
+
+
         });
     </script>
-    
-    
+
+
 
 </body>
 

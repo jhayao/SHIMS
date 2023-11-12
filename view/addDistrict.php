@@ -1,7 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
+
 <?php isset($_GET['edit']) ? $edit = $_GET['edit'] : $edit = 0; ?>
-<!-- Mirrored from demos.adminmart.com/premium/bootstrap/modernize-bootstrap/package/html/main/page-account-settings.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 20 Jul 2023 11:13:34 GMT -->
 <?php include_once('include/head.php'); ?>
 
 <body>
@@ -234,7 +232,7 @@
                                 window.location.href = "viewDistrict.php?success=1";
                             } else {
                                 noty.setText("Error", true);
-                                noty.setType("error");
+                                noty.setType("error",true);
                                 noty.show();
                             }
 
@@ -243,7 +241,7 @@
                             data = data.trim();
                             console.log(data);
                             noty.setText("Error", true);
-                            noty.setType("error");
+                            noty.setType("error",true);
                             noty.show();
                         }
                     });

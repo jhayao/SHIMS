@@ -55,8 +55,6 @@
             $result = $stmt->get_result();
             $stmt->close();
             $conn->close();
-            // print_r($result);
-            
             return $result;
         }
 
@@ -125,13 +123,12 @@
                 // print_r($result->fetch_assoc());
                 if($result->num_rows > 0){
                     $row = $result->fetch_assoc();
-                    // print_r($row);
                     $account_id = $row['account_id'] ?? '';
                     $user_type = $row['user_type'];
                     if($user_type == 'admin'){
                         echo json_encode(array('success'=>'true','user_type'=>$user_type));
                         $_SESSION['user_type'] = $user_type;
-                        $_SESSION['userInfo'] = null;
+                        $_SESSION['userInfo'] = array('id' => '5','firstname' => 'Admin','middlename' => '','lastname' => '','email' => 'contactme@admin.com','sex' => 'Male','contact' => '','street' => '','barangay' => '','city' => '','province' => 'Misamis Occidental','postal' => '7207','nurse_type' => 'admin','assigned' => '0');
                         return;
                     }
                     $result = $login->getUserInfo($user_type,$account_id);

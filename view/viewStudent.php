@@ -1,8 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<!-- Mirrored from demos.adminmart.com/premium/bootstrap/modernize-bootstrap/package/html/main/page-account-settings.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 20 Jul 2023 11:13:34 GMT -->
-<?php include_once('include/head.php'); ?>
+<?php include_once('include/head.php'); ?> include_once('include/head.php'); ?>
 
 <body>
     <!-- Preloader -->
@@ -63,8 +59,6 @@
                                         <th>ID</th>
                                         <th>Full Name</th>
                                         <th>Email</th>
-                                        <th>Address</th>
-                                        <th>Position</th>
                                         <th>Options</th>
                                     </tr>
                                     <!-- end row -->
@@ -134,16 +128,6 @@
                         "data": "email"
                     },
                     {
-                        "data": null,
-                        render: function (data, type, row) {
-                            return row.street + ", " + row.barangay + ", " + row.city + ", " +
-                                row.province + ", " + row.postal;
-                        }
-                    },
-                    {
-                        "data": "email"
-                    },
-                    {
                         "data": "id",
                         createdCell: function(cell, cellData, rowData, rowIndex, colIndex) {
                             
@@ -189,10 +173,10 @@
                             });
                         },
                         "render": function (data, type, row, meta) {
-                            return `<div class="d-flex">
-                                        
-                                        <a href="addStudent.php?edit=true&id=${data}" class="btn btn-primary   me-1"><i class="ti ti-edit"></i></a>
-                                        <button id="${data}"  class="btn btn-danger delete  me-1"><i class="ti ti-trash-x"></i></button>
+                            return `<div class="d-flex justify-content-center">
+                                        <a href="profileStudent.php?id=${data}" class="btn btn-success   me-3"><i class="ti ti-eye"></i></a>
+                                        <a href="addStudent.php?edit=true&id=${data}" class="btn btn-primary   me-3"><i class="ti ti-edit"></i></a>
+                                        <button id="${data}"  class="btn btn-danger delete  me-3"><i class="ti ti-trash-x"></i></button>
                                     </div>`;
                         }
                     }

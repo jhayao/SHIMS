@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
+
   
 <!-- Mirrored from demos.adminmart.com/premium/bootstrap/modernize-bootstrap/package/html/main/authentication-register.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 20 Jul 2023 11:15:11 GMT -->
 <head>

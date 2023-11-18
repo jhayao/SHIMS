@@ -60,9 +60,10 @@
             return $result ? 'success' : $conn->error;
         }
 
-        function editNurse(){
-            $id = $_POST['id'];
-
+        function editNurse($id = null){
+            if($id == null)
+                $id = $_POST['id'];
+            
             $query = "SELECT * FROM nurse WHERE id = ?";
             $connection = new Connection();
             $conn = $connection->connect();

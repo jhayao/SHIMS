@@ -1,4 +1,4 @@
-<?php include_once('include/head.php'); ?> include_once('include/head.php'); ?>
+<?php include_once('include/head.php'); ?> 
 <?php isset($_GET['edit']) ? $edit = $_GET['edit'] : $edit = 0; ?>
 <link rel="stylesheet" href="../dist/libs/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
 <body>

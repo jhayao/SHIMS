@@ -35,119 +35,121 @@
             <span class="hide-menu">Home</span>
           </a>
         </li>
-        <?php if($_SESSION['user_type'] == 'admin') {?>
-        <li class="sidebar-item">
-          <a class="sidebar-link has-arrow" href="#" aria-expanded="false">
-            <span class="d-flex">
-              <i class="ti ti-nurse"></i>
-            </span>
-            <span class="hide-menu">Nurse</span>
-          </a>
-          <ul aria-expanded="false" class="collapse first-level">
-            <li class="sidebar-item">
-              <a href="viewNurse.php" class="sidebar-link">
-                <div class="round-16 d-flex align-items-center justify-content-center">
-                  <i class="ti ti-circle"></i>
-                </div>
-                <span class="hide-menu">List</span>
-              </a>
-            </li>
-            <li class="sidebar-item">
-              <a href="addNurse.php" class="sidebar-link">
-                <div class="round-16 d-flex align-items-center justify-content-center">
-                  <i class="ti ti-circle"></i>
-                </div>
-                <span class="hide-menu">Add</span>
-              </a>
-            </li>
-          </ul>
-        </li>
-        <?php }?>
-        <li class="sidebar-item">
-          <a class="sidebar-link has-arrow" href="#" aria-expanded="false">
-            <span class="d-flex">
-              <i class="ti ti-id"></i>
-            </span>
-            <span class="hide-menu">Student</span>
-          </a>
-          <ul aria-expanded="false" class="collapse first-level">
-            <li class="sidebar-item">
-              <a href="viewStudent.php" class="sidebar-link">
-                <div class="round-16 d-flex align-items-center justify-content-center">
-                  <i class="ti ti-circle"></i>
-                </div>
-                <span class="hide-menu">List</span>
-              </a>
-            </li>
-            <li class="sidebar-item">
-              <a href="addStudent.php" class="sidebar-link">
-                <div class="round-16 d-flex align-items-center justify-content-center">
-                  <i class="ti ti-circle"></i>
-                </div>
-                <span class="hide-menu">Add</span>
-              </a>
-            </li>
-          </ul>
-        </li>
-        <?php if($_SESSION['user_type'] == 'admin' ||$_SESSION['userInfo']['nurse_type'] == "Division Nurse"){ ?>
-        <li class="sidebar-item">
-          <a class="sidebar-link has-arrow" href="#" aria-expanded="false">
-            <span class="d-flex">
-              <i class="ti ti-brand-google-home"></i>
-            </span>
-            <span class="hide-menu">Division</span>
-          </a>
-          <ul aria-expanded="false" class="collapse first-level">
-            <li class="sidebar-item">
-              <a href="viewDivision.php" class="sidebar-link" >
-                <div class="round-16 d-flex align-items-center justify-content-center">
-                  <i class="ti ti-circle"></i>
-                </div>
-                <span class="hide-menu">List</span>
-              </a>
-            </li>
-            
-           
-            <li class="sidebar-item">
-              <a href="addDivision.php" class="sidebar-link">
-                <div class="round-16 d-flex align-items-center justify-content-center">
-                  <i class="ti ti-circle"></i>
-                </div>
-                <span class="hide-menu">Add</span>
-              </a>
-            </li>
-            
-          </ul>
-        </li>
-        <?php }?>
-        <?php if($_SESSION['user_type'] == 'admin' || $_SESSION['userInfo']['nurse_type'] == "Division Nurse" || $_SESSION['userInfo']['nurse_type'] == "District Nurse"){ ?>
-        <li class="sidebar-item">
-          <a class="sidebar-link has-arrow" href="#" aria-expanded="false">
-            <span class="d-flex">
-              <i class="ti ti-chalkboard"></i>
-            </span>
-            <span class="hide-menu">District</span>
-          </a>
-          <ul aria-expanded="false" class="collapse first-level">
-            <li class="sidebar-item">
-              <a href="viewDistrict.php" class="sidebar-link">
-                <div class="round-16 d-flex align-items-center justify-content-center">
-                  <i class="ti ti-circle"></i>
-                </div>
-                <span class="hide-menu">List</span>
-              </a>
-            </li>
-            <li class="sidebar-item">
-              <a href="addDistrict.php" class="sidebar-link">
-                <div class="round-16 d-flex align-items-center justify-content-center">
-                  <i class="ti ti-circle"></i>
-                </div>
-                <span class="hide-menu">Add</span>
-              </a>
-            </li>
-          </ul>
-        </li>
-        <?php }?>
+        <?php if ($_SESSION['user_type'] == 'admin') { ?>
+          <li class="sidebar-item">
+            <a class="sidebar-link has-arrow" href="#" aria-expanded="false">
+              <span class="d-flex">
+                <i class="ti ti-nurse"></i>
+              </span>
+              <span class="hide-menu">Nurse</span>
+            </a>
+            <ul aria-expanded="false" class="collapse first-level">
+              <li class="sidebar-item">
+                <a href="viewNurse.php" class="sidebar-link">
+                  <div class="round-16 d-flex align-items-center justify-content-center">
+                    <i class="ti ti-circle"></i>
+                  </div>
+                  <span class="hide-menu">List</span>
+                </a>
+              </li>
+              <li class="sidebar-item">
+                <a href="addNurse.php" class="sidebar-link">
+                  <div class="round-16 d-flex align-items-center justify-content-center">
+                    <i class="ti ti-circle"></i>
+                  </div>
+                  <span class="hide-menu">Add</span>
+                </a>
+              </li>
+            </ul>
+          </li>
+        <?php } ?>
+        <?php if ($_SESSION['user_type'] == 'admin' || $_SESSION['user_type'] == 'nurse') { ?>
+          <li class="sidebar-item">
+            <a class="sidebar-link has-arrow" href="#" aria-expanded="false">
+              <span class="d-flex">
+                <i class="ti ti-id"></i>
+              </span>
+              <span class="hide-menu">Student</span>
+            </a>
+            <ul aria-expanded="false" class="collapse first-level">
+              <li class="sidebar-item">
+                <a href="viewStudent.php" class="sidebar-link">
+                  <div class="round-16 d-flex align-items-center justify-content-center">
+                    <i class="ti ti-circle"></i>
+                  </div>
+                  <span class="hide-menu">List</span>
+                </a>
+              </li>
+              <li class="sidebar-item">
+                <a href="addStudent.php" class="sidebar-link">
+                  <div class="round-16 d-flex align-items-center justify-content-center">
+                    <i class="ti ti-circle"></i>
+                  </div>
+                  <span class="hide-menu">Add</span>
+                </a>
+              </li>
+            </ul>
+          </li>
+        <?php } ?>
+        <?php if ($_SESSION['user_type'] == 'admin' || (isset($_SESSION['userInfo']['nurse_type']) && $_SESSION['userInfo']['nurse_type'] == "Division Nurse")) { ?>
+          <li class="sidebar-item">
+            <a class="sidebar-link has-arrow" href="#" aria-expanded="false">
+              <span class="d-flex">
+                <i class="ti ti-brand-google-home"></i>
+              </span>
+              <span class="hide-menu">Division</span>
+            </a>
+            <ul aria-expanded="false" class="collapse first-level">
+              <li class="sidebar-item">
+                <a href="viewDivision.php" class="sidebar-link">
+                  <div class="round-16 d-flex align-items-center justify-content-center">
+                    <i class="ti ti-circle"></i>
+                  </div>
+                  <span class="hide-menu">List</span>
+                </a>
+              </li>
+
+
+              <li class="sidebar-item">
+                <a href="addDivision.php" class="sidebar-link">
+                  <div class="round-16 d-flex align-items-center justify-content-center">
+                    <i class="ti ti-circle"></i>
+                  </div>
+                  <span class="hide-menu">Add</span>
+                </a>
+              </li>
+
+            </ul>
+          </li>
+        <?php } ?>
+        <?php if ($_SESSION['user_type'] == 'admin' || (isset($_SESSION['userInfo']['nurse_type']) && ($_SESSION['userInfo']['nurse_type'] == "Division Nurse" || $_SESSION['userInfo']['nurse_type'] == "District Nurse"))) { ?>
+          <li class="sidebar-item">
+            <a class="sidebar-link has-arrow" href="#" aria-expanded="false">
+              <span class="d-flex">
+                <i class="ti ti-chalkboard"></i>
+              </span>
+              <span class="hide-menu">District</span>
+            </a>
+            <ul aria-expanded="false" class="collapse first-level">
+              <li class="sidebar-item">
+                <a href="viewDistrict.php" class="sidebar-link">
+                  <div class="round-16 d-flex align-items-center justify-content-center">
+                    <i class="ti ti-circle"></i>
+                  </div>
+                  <span class="hide-menu">List</span>
+                </a>
+              </li>
+              <li class="sidebar-item">
+                <a href="addDistrict.php" class="sidebar-link">
+                  <div class="round-16 d-flex align-items-center justify-content-center">
+                    <i class="ti ti-circle"></i>
+                  </div>
+                  <span class="hide-menu">Add</span>
+                </a>
+              </li>
+            </ul>
+          </li>
+        <?php } ?>
         <li class="sidebar-item">
           <a class="sidebar-link has-arrow" href="#" aria-expanded="false">
             <span class="d-flex">
@@ -164,50 +166,50 @@
                 <span class="hide-menu">List</span>
               </a>
             </li>
-            <?php if($_SESSION['user_type'] == 'admin' || $_SESSION['userInfo']['nurse_type'] == "Division Nurse" || $_SESSION['userInfo']['nurse_type'] =="District Nurse"){ ?>
-            <li class="sidebar-item">
-              <a href="addSchool.php" class="sidebar-link">
-                <div class="round-16 d-flex align-items-center justify-content-center">
-                  <i class="ti ti-circle"></i>
-                </div>
-                <span class="hide-menu">Add</span>
-              </a>
-            </li>
-            <?php }?>
-          </ul>
-        </li>
-       
-
-
-        <li class="sidebar-item">
-          <a class="sidebar-link has-arrow" href="#" aria-expanded="false">
-            <span class="d-flex">
-              <i class="ti ti-stethoscope"></i>
-            </span>
-            <span class="hide-menu">Checkups</span>
-          </a>
-          <ul aria-expanded="false" class="collapse first-level">
-            <li class="sidebar-item">
-              <a href="viewCheckup.php" class="sidebar-link">
-                <div class="round-16 d-flex align-items-center justify-content-center">
-                  <i class="ti ti-circle"></i>
-                </div>
-                <span class="hide-menu">List</span>
-              </a>
-            </li>
-            <li class="sidebar-item">
-              <a href="addCheckup.php" class="sidebar-link">
-                <div class="round-16 d-flex align-items-center justify-content-center">
-                  <i class="ti ti-circle"></i>
-                </div>
-                <span class="hide-menu">Add</span>
-              </a>
-            </li>
+            <?php if ($_SESSION['user_type'] == 'admin' || (isset($_SESSION['userInfo']['nurse_type']) && ($_SESSION['userInfo']['nurse_type'] == "Division Nurse" || $_SESSION['userInfo']['nurse_type'] == "District Nurse"))) { ?>
+              <li class="sidebar-item">
+                <a href="addSchool.php" class="sidebar-link">
+                  <div class="round-16 d-flex align-items-center justify-content-center">
+                    <i class="ti ti-circle"></i>
+                  </div>
+                  <span class="hide-menu">Add</span>
+                </a>
+              </li>
+            <?php } ?>
           </ul>
         </li>
 
 
-        
+        <?php if ($_SESSION['user_type'] != 'student') { ?>
+          <li class="sidebar-item">
+            <a class="sidebar-link has-arrow" href="#" aria-expanded="false">
+              <span class="d-flex">
+                <i class="ti ti-stethoscope"></i>
+              </span>
+              <span class="hide-menu">Checkups</span>
+            </a>
+            <ul aria-expanded="false" class="collapse first-level">
+              <li class="sidebar-item">
+                <a href="viewCheckup.php" class="sidebar-link">
+                  <div class="round-16 d-flex align-items-center justify-content-center">
+                    <i class="ti ti-circle"></i>
+                  </div>
+                  <span class="hide-menu">List</span>
+                </a>
+              </li>
+              <li class="sidebar-item">
+                <a href="addCheckup.php" class="sidebar-link">
+                  <div class="round-16 d-flex align-items-center justify-content-center">
+                    <i class="ti ti-circle"></i>
+                  </div>
+                  <span class="hide-menu">Add</span>
+                </a>
+              </li>
+            </ul>
+          </li>
+        <?php } ?>
+
+
         <li class="sidebar-item">
           <a class="sidebar-link" href="viewReport.php" aria-expanded="false">
             <span>

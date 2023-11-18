@@ -1,4 +1,3 @@
-
 <?php isset($_GET['edit']) ? $edit = $_GET['edit'] : $edit = 0; ?>
 <?php include_once('include/head.php'); ?>
 
@@ -29,13 +28,16 @@
                     <div class="card-body px-4 py-3">
                         <div class="row align-items-center">
                             <div class="col-9">
-                                <h4 class="fw-semibold mb-8"><?php echo ($edit ? "Edit Nurse" : "Add Nurse");?></h4>
+                                <h4 class="fw-semibold mb-8">
+                                    <?php echo ($edit ? "Edit Nurse" : "Add Nurse"); ?>
+                                </h4>
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
                                         <li class="breadcrumb-item"><a class="text-muted" href="viewNurse.php">Nurse</a>
                                         </li>
                                         <li class="breadcrumb-item" aria-current="page">
-                                            <?php echo ($edit ? "Edit Nurse" : "Add Nurse");?></li>
+                                            <?php echo ($edit ? "Edit Nurse" : "Add Nurse"); ?>
+                                        </li>
                                     </ol>
                                 </nav>
                             </div>
@@ -48,26 +50,8 @@
                     </div>
                 </div>
                 <div class="card">
-
                     <div class="card-body">
                         <div class="row">
-                            <!-- <div class="col-lg-12 d-flex align-items-stretch">
-                                <div class="card w-100 position-relative overflow-hidden">
-                                    <div class="card-body p-4">
-                                        <h5 class="card-title fw-semibold">Change Profile</h5>
-                                        <p class="card-subtitle mb-4">Change your profile picture from here</p>
-                                        <div class="text-center">
-                                            <img src="../dist/images/profile/user-1.jpg" alt=""
-                                                class="img-fluid rounded-circle" width="120" height="120">
-                                            <div class="d-flex align-items-center justify-content-center my-4 gap-3">
-                                                <button class="btn btn-primary">Upload</button>
-                                                <button class="btn btn-outline-danger">Reset</button>
-                                            </div>
-                                            <p class="mb-0">Allowed JPG, GIF or PNG. Max size of 800K</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div> -->
                             <div class="col-12">
                                 <div class="card w-100 position-relative overflow-hidden mb-0">
                                     <div class="card-body p-4">
@@ -152,8 +136,7 @@
                                                         <label for="nurse_street"
                                                             class="form-label fw-semibold">Street</label>
                                                         <input type="text" class="form-control" id="nurse_street"
-                                                            name="nurse_street"
-                                                            placeholder="" required>
+                                                            name="nurse_street" placeholder="" required>
                                                         <div class="invalid-feedback">
                                                             Please enter a valid Street
                                                         </div>
@@ -162,8 +145,7 @@
                                                         <label for="nurse_barangay"
                                                             class="form-label fw-semibold">Barangay</label>
                                                         <input type="text" class="form-control" id="nurse_barangay"
-                                                            name="nurse_barangay"
-                                                            placeholder="" required>
+                                                            name="nurse_barangay" placeholder="" required>
                                                         <div class="invalid-feedback">
                                                             Please enter a valid Barangay
                                                         </div>
@@ -219,8 +201,7 @@
                                                         <label for="nurse_postal"
                                                             class="form-label fw-semibold">Postal</label>
                                                         <input type="text" class="form-control" id="nurse_postal"
-                                                            name="nurse_postal"
-                                                            placeholder="" required>
+                                                            name="nurse_postal" placeholder="" required>
                                                         <div class="invalid-feedback">
                                                             Please enter a valid Postal
                                                         </div>
@@ -245,21 +226,23 @@
                                                 <div class="col-12">
                                                     <div class="">
                                                         <label for="assigned" class="form-label fw-semibold">Nurse
-                                                                Assigned</label>
-                                                            <select class="select2 form-control"
-                                                                aria-label="Default select example" id="assigned"
-                                                                name="assigned">
-                                                                
-                                                                </optgroup>
-                                                            </select>
+                                                            Assigned</label>
+                                                        <select class="select2 form-control"
+                                                            aria-label="Default select example" id="assigned"
+                                                            name="assigned">
+
+                                                            </optgroup>
+                                                        </select>
                                                     </div>
                                                 </div>
                                                 <div class="col-12">
                                                     <div
                                                         class="d-flex align-items-center justify-content-end mt-4 gap-3">
-                                                        <button
-                                                            class="btn btn-primary"><?php echo ($edit ? "Update" : "Save");?></button>
-                                                        <button class="btn btn-light-danger text-danger" onclick="window.location.href='viewNurse.php'">Cancel</button>
+                                                        <button class="btn btn-primary">
+                                                            <?php echo ($edit ? "Update" : "Save"); ?>
+                                                        </button>
+                                                        <button class="btn btn-light-danger text-danger"
+                                                            onclick="window.location.href='viewNurse.php'">Cancel</button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -274,7 +257,7 @@
             </div>
         </div>
     </div>
-    <?php include_once("./include/extra.php");?>
+    <?php include_once("./include/extra.php"); ?>
     <!--  Customizer -->
     <?php include_once("./include/scripts.php"); ?>
     <script>
@@ -326,8 +309,8 @@
                             $('#assigned').html(options);
                         }
                     });
-                    
-                    
+
+
                 } else if (type == "School Nurse") {
                     $.ajax({
                         url: "../controller/schoolController.php",
@@ -350,7 +333,7 @@
             });
             $('#assigned').trigger('change');
 
-            if ( <?php echo(isset($_GET['edit']) ? true : 0); ?> ) {
+            if (<?php echo (isset($_GET['edit']) ? true : 0); ?>) {
                 //request ajax to get data of nurse by id
 
                 $.ajax({
@@ -359,7 +342,7 @@
                     dataType: "json",
                     data: {
                         function: "editNurse",
-                        id: <?php echo(isset($_GET['id']) ? $_GET['id'] : 0); ?>
+                        id: <?php echo (isset($_GET['id']) ? $_GET['id'] : 0); ?>
                     },
                     success: function (data) {
                         //set all inputs from return data
@@ -401,15 +384,14 @@
                 } else {
                     // Submit the form
                     var formdata = new FormData(this);
-                    if( <?php echo($edit);?>)
-                    {
+                    if (<?php echo ($edit); ?>) {
                         formdata.append("function", "updateNurse");
-                        formdata.append("id", <?php echo(isset($_GET['id']) ? $_GET['id'] : 0); ?>);
+                        formdata.append("id", <?php echo (isset($_GET['id']) ? $_GET['id'] : 0); ?>);
                     }
                     else {
                         formdata.append("function", "addNurse");
                     }
-                    
+
                     $.ajax({
                         url: "../controller/nurseController.php",
                         type: "POST",
@@ -425,7 +407,7 @@
                                 window.location.href = "viewNurse.php?success=1";
                             } else {
                                 noty.setText("Error", true);
-                                noty.setType("error",true);
+                                noty.setType("error", true);
                                 noty.show();
                             }
 
@@ -434,7 +416,7 @@
                             data = data.trim();
                             console.log(data);
                             noty.setText("Error", true);
-                            noty.setType("error",true);
+                            noty.setType("error", true);
                             noty.show();
                         }
                     });

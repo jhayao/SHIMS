@@ -85,13 +85,13 @@
                   <div class="col-8">
                     <h5 class="card-title mb-9 fw-semibold"> Monthly Checkups </h5>
                     <div class="d-flex align-items-center mb-3">
-                      <h4 class="fw-semibold mb-0 me-8">$6,820</h4>
+                      <h4 class="fw-semibold mb-0 me-8" id="monthlyCheckups"></h4>
                       <div class="d-flex align-items-center">
-                        <span
+                        <!-- <span
                           class="me-2 rounded-circle bg-light-success round-20 d-flex align-items-center justify-content-center">
                           <i class="ti ti-arrow-up-left text-success"></i>
                         </span>
-                        <p class="text-dark me-1 fs-3 mb-0">+9%</p>
+                        <p class="text-dark me-1 fs-3 mb-0">+9%</p> -->
                       </div>
                     </div>
                   </div>

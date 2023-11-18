@@ -15,10 +15,8 @@ $result = $stmt->get_result();
 $stmt->close();
 $conn->close();
 $row = $result->fetch_assoc();
-// print_r($row) ;
-$address = $row['street'] . ", " . $row['barangay'] . ", " . $row['city'] . ", " . $row['province'] . ", " . $row['postal'];
-// echo $address;
 
+$address = $row['street'] . ", " . $row['barangay'] . ", " . $row['city'] . ", " . $row['province'] . ", " . $row['postal'];
 
 $conn = new Connection();
 $query = "select information.id, CONCAT(student.firstname,' ', student.middlename, ' ', student.lastname) as studentName, CONCAT(nurse.firstname,' ',nurse.middlename,' ',nurse.lastname) as nurseName,information.height,information.temperature, information.weight, information.created_at, information.findings,information.prescription from student inner join information on student.id = information.student_id inner join nurse on nurse.id = information.nurse_id where student.id = ? order by information.created_at desc";
@@ -32,7 +30,7 @@ $stmt->close();
 $conn->close();
 
 
-?><?php include_once('include/head.php'); ?> include_once('include/head.php'); ?>
+?><?php include_once('include/head.php'); ?> 
 
 <body>
   <!-- Preloader -->

@@ -8,18 +8,6 @@ class Dashboard
 
     }
 
-    public function getNumberofStudents()
-    {
-        $query = $this->db->query('select id from student;');
-        $result = $query->fetch_assoc();
-        return $result->num_rows;
-    }
-    public function getNumberofNurse()
-    {
-        $query = $this->db->query('select id from nurse;');
-        $result = $query->fetch_assoc();
-        return $result->num_rows;
-    }
 
     public function generateRandomColor(int $count)
     {
@@ -29,10 +17,11 @@ class Dashboard
             $colors[$i] = sprintf('#%06X', mt_rand(0, 0xFFFFFF));
         }
         $colors[0] = "#5D87FF";
+        $colors[1] = "#49BEFF";
         return $colors;
     }
 
-    public function getMonthlyCheckups()
+    public function getMonthlyCheckups() : array
     {
         $month = date('m');
         $year = date('Y');
@@ -41,28 +30,45 @@ class Dashboard
         for ($i = 1; $i <= $days; $i++) {
             $day = $year . '-' . $month . '-' . $i;
             $data = $this->getDataByDay($day);
-            $count = $data->num_rows;
-            $result[$i] = $count;
+            while ($row = $data->fetch_assoc()) {
+                $result[$day][$row['school_name']] = $row['count'];
+            }
         }
-        return json_encode($result);
+        return $result;
     }
 
-    public function getDaysinMonth(){
+    public function getDaysinMonth()
+    {
         $month = date('m');
         $year = date('Y');
         $days = date('t', mktime(0, 0, 0, $month, 1, $year));
-        $d= "[";
+        $d = "[";
         for ($i = 1; $i <= $days; $i++) {
-            $i!=$days ?  $d .= '"' . $year . '-' . $month . '-' . $i . '"' . "," : $d .= '"' . $year . '-' . $month . '-' . $i . '"'.  "]";
-            
+            $i != $days ? $d .= '"' . $year . '-' . $month . '-' . $i . '"' . "," : $d .= '"' . $year . '-' . $month . '-' . $i . '"' . "]";
         }
         return $d;
+    }
+
+    public function getAllSchools(){
+        $connection = new Connection();
+        $conn = $connection->connect();
+        $query = "SELECT school_name FROM school;";
+        $stmt = $conn->prepare($query);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $stmt->close();
+        $conn->close();
+        $schools = [];
+        while ($row = $result->fetch_assoc()) {
+            $schools[] = $row['school_name'];
+        }
+        return $schools;
     }
     public function getDataByDay($day)
     {
         $connection = new Connection();
         $conn = $connection->connect();
-        $query = "SELECT * FROM information WHERE DATE(created_at) = ?";
+        $query = "SELECT school.school_name, COUNT(information.id) AS count  FROM school  LEFT JOIN information ON school.id = information.school_id AND DATE(information.created_at) = ? GROUP BY school.id;";
         $stmt = $conn->prepare($query);
         $stmt->bind_param("s", $day);
         $stmt->execute();
@@ -123,7 +129,7 @@ class Dashboard
         $conn = $connection->connect();
         $sicked = [];
         for ($x = 4; $x >= 0; $x--) {
-            $query = "SELECT student.id FROM student, information WHERE student.id = information.student_id AND DATE(information.created_at) = DATE_SUB(CURDATE(), INTERVAL $x MONTH);";
+            $query = "SELECT count(student.id) FROM student, information WHERE student.id = information.student_id AND MONTH(information.created_at) = MONTH(DATE_SUB(CURDATE(), INTERVAL $x MONTH)) GROUP BY student.id;";
             $stmt = $conn->prepare($query);
             $stmt->execute();
             $result = $stmt->get_result();
@@ -151,7 +157,7 @@ class Dashboard
         $conn = $connection->connect();
         $healthy = [];
         for ($x = 4; $x >= 0; $x--) {
-            $query = "SELECT student.id from student where id not in (SELECT student.id FROM student, information WHERE student.id = information.student_id AND DATE(information.created_at) = DATE_SUB(CURDATE(), INTERVAL $x MONTH));";
+            $query = "SELECT count(student.id) from student where id not in (SELECT student.id FROM student, information WHERE student.id = information.student_id AND MONTH(information.created_at) = MONTH(DATE_SUB(CURDATE(), INTERVAL $x MONTH))) GROUP BY student.id;";
             $stmt = $conn->prepare($query);
             $stmt->execute();
             $result = $stmt->get_result();
@@ -162,39 +168,18 @@ class Dashboard
         $conn->close();
         return $healthy;
     }
-}
 
-//listen to post with 'function' as parameter
-if (isset($_POST['function'])) {
-    $function = $_POST['function'];
-    // echo $function;
-    $dashboard = new Dashboard();
-    // session_start();
-    //call function based on parameter
-    switch ($function) {
-        case 'getNumberofStudents':
-            echo ($dashboard->getNumberofStudents());
-            break;
-        case 'getNumberofNurse':
-            echo ($dashboard->getNumberofNurse());
-            break;
-        case 'getNumberofSchool':
-            echo ($dashboard->getNumberofSchool());
-            break;
-        case 'getNumberofDailyCheckups':
-            echo ($dashboard->getNumberofDailyCheckups());
-            break;
-        case 'getNumberofTotalCheckups':
-            echo ($dashboard->getNumberofTotalCheckups());
-            break;
-        case 'getNumberofSicked':
-            echo ($dashboard->getNumberofSicked());
-            break;
-        case 'getNumberofHealthy':
-            echo ($dashboard->getNumberofHealthy());
-            break;
-        case 'studentHealth':
-            echo ($dashboard->studentHealth());
-            break;
+    public function getMonthlyCheckupCounts(){
+        $connection = new Connection();
+        $conn = $connection->connect();
+        $query = "SELECT COUNT(information.id) as count FROM information  WHERE MONTH(information.created_at) = MONTH(CURRENT_DATE()) AND YEAR(information.created_at) = YEAR(CURRENT_DATE());";
+        $stmt = $conn->prepare($query);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $stmt->close();
+        $conn->close();
+        $checkupCounts = [];
+        return $row = $result->fetch_assoc();
     }
 }
+?>

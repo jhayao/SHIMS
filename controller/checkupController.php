@@ -53,6 +53,7 @@ class Checkup
             return json_encode($errorMessageArray);
         }
         $student_id = isset($_POST['student_id']) ? $_POST['student_id'] : '';
+        $school_id = isset($_POST['school_id']) ? $_POST['school_id'] : '';
         // $nurse_id = isset($_POST['nurse_id']) ? $_POST['nurse_id'] : '';
         $height = isset($_POST['height']) ? $_POST['height'] : '';
         $temperature =  isset($_POST['temperature']) ? $_POST['temperature'] : '';
@@ -62,11 +63,11 @@ class Checkup
         // $created_at = isset($_POST['created_at']) ? $_POST['created_at'] : '';
 
         $conn = new Connection();
-        $query = "INSERT INTO `information`(`id`, `student_id`, `nurse_id`, `height`, `temperature`, `weight`,`findings`,`prescription`) VALUES (NULL,?,?,?,?,?,?,?)";
+        $query = "INSERT INTO `information`(`id`, `student_id`, `nurse_id`, `school_id`, `height`, `temperature`, `weight`,`findings`,`prescription`) VALUES (NULL,?,?,?,?,?,?,?,?)";
         $connection = new Connection();
         $conn = $connection->connect();
         $stmt = $conn->prepare($query);
-        $stmt->bind_param("sssssss", $student_id, $nurse_id, $height, $temperature, $weight, $findings,$prescription);
+        $stmt->bind_param("ssssssss", $student_id, $nurse_id,$school_id,$height, $temperature, $weight, $findings,$prescription);
         try{
             
             $stmt->execute();

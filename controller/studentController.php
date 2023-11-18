@@ -44,8 +44,9 @@
             return $result;
         }
 
-        function getStudentById(){
-            $id = isset($_POST['id']) ? $_POST['id'] : '';
+        function getStudentById($id = null){
+            if($id == null)
+                $id = isset($_POST['id']) ? $_POST['id'] : '';
             $conn = new Connection();
             $query = "select s.school_name,d.district_name,dv.division_name,st.* from school s , district d, division dv, student st where s.id = st.school_id and d.id = s.district_id and dv.id = s.division_id and st.id = ?";
             $connection = new Connection();
@@ -87,9 +88,18 @@
             // echo $dob;
             $stmt->bind_param("ssssssssssssss",  $firstname, $middlename, $lastname, $sex, $dob, $contact, $email, $guardian, $street, $barangay, $city, $province, $postal, $school_id);
             try{
-                $result = $stmt->execute();
-                $stmt->close();
-                return array('success'=>'true');
+                $stmt->execute();
+                include_once('loginController.php');
+                $id = $connection->insert_id;
+                $loginController = new Login();
+                if($loginController->createUserwhenCreated($lastname,$email,$contact, 'student',$id)){
+                    $stmt->close();
+                    return json_encode(array('success'=>'true'));
+                }
+                else{
+                    $stmt->close();
+                    return json_encode(array('success'=>'false'));
+                }
             }catch(Exception $e){
                 $errorMessageArray = array('success'=>'false','errorMessage'=>$stmt->error, 'errorCode'=>$stmt->errno);
                 return json_encode($errorMessageArray);
@@ -130,14 +140,14 @@
             $province = $_POST['province'];
             $postal = $_POST['postal'];
             $school_id = $_POST['type'];
-
-            $query = "UPDATE student SET firstname=?, middlename=?, lastname=?, sex=?, dob=?, contact=?, email=?, guardian=?, street=?, barangay=?, city=?, province=?, postal=?, school_id=? WHERE id=?";
+            
+            $query = "UPDATE student SET firstname=?, middlename=?, lastname=?, sex=?, dob=?, contact=?, email=?, guardian=?, street=?, barangay=?, city=?, province=?, postal=? WHERE id=?";
             $conn = new Connection();
             $connection = $conn->connect();
             $stmt = $connection->prepare($query);
-            $stmt->bind_param("ssssssssssssssi", $firstname, $middlename, $lastname, $sex, $dob, $contact, $email, $guardian, $street, $barangay, $city, $province, $postal, $school_id, $id);
+            $stmt->bind_param("sssssssssssssi", $firstname, $middlename, $lastname, $sex, $dob, $contact, $email, $guardian, $street, $barangay, $city, $province, $postal, $id);
             try{
-                $result = $stmt->execute();
+                $stmt->execute();
                 $stmt->close();
                 return json_encode(array('success'=>'true'));
             }catch(Exception $e){

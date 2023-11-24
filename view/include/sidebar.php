@@ -4,7 +4,7 @@
     <div class="brand-logo d-flex align-items-center justify-content-between">
       <a href="../index.php" class="text-nowrap logo-img">
         <img
-          src="https://demos.adminmart.com/premium/bootstrap/modernize-bootstrap/package/dist/images/logos/dark-logo.svg"
+          src="../dist/images/backgrounds/deped.svg"
           class="dark-logo" width="180" alt="" />
         <img
           src="https://demos.adminmart.com/premium/bootstrap/modernize-bootstrap/package/dist/images/logos/light-logo.svg"

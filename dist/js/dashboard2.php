@@ -1,5 +1,6 @@
 <?php
 if (file_exists("../controller/dashboardController.php")) {
+  echo "Exist";
   include_once("../controller/dashboardController.php");
 } else {
   echo "Not Exist";

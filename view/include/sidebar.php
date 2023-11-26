@@ -210,14 +210,14 @@
         <?php } ?>
 
 
-        <li class="sidebar-item">
+        <!-- <li class="sidebar-item">
           <a class="sidebar-link" href="viewReport.php" aria-expanded="false">
             <span>
               <i class="ti ti-cpu"></i>
             </span>
             <span class="hide-menu">Reports</span>
           </a>
-        </li>
+        </li> -->
         <!-- <li class="sidebar-item">
           <a class="sidebar-link" href="index5.html" aria-expanded="false">
             <span>

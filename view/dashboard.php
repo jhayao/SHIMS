@@ -24,7 +24,7 @@
       <!--  Header End -->
       <div class="container-fluid">
         <div class="row">
-          
+
           <div class="col-lg-12 d-flex align-items-stretch">
             <div class="card w-100 bg-light-info overflow-hidden shadow-none">
               <div class="card-body position-relative">
@@ -78,8 +78,8 @@
                 </div>
               </div>
             </div> -->
-            <div class="col-lg-12">
-          <div class="card">
+          <div class="col-lg-12">
+            <div class="card">
               <div class="card-body">
                 <div class="row alig n-items-start">
                   <div class="col-8">
@@ -156,13 +156,13 @@
               </div>
             </div>
           </div>
-          
-         
+
+
         </div>
       </div>
     </div>
   </div>
- 
+
   <!--  Mobilenavbar -->
   <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="mobilenavbar"
     aria-labelledby="offcanvasWithBothOptionsLabel">
@@ -592,7 +592,6 @@
   <script src="../dist/libs/owl.carousel/dist/owl.carousel.min.js"></script>
   <script src="../dist/libs/apexcharts/dist/apexcharts.min.js"></script>
   <script src="../dist/libs/apexcharts/dist/apexcharts.min.js"></script>
-  <!-- <script src="../dist/js/dashboard2.php"></script> -->
   <?php include_once("../dist/js/dashboard2.php") ?>
 </body>
 

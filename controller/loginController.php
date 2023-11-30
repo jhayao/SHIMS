@@ -130,8 +130,8 @@ class Login
         $db = new Connection();
         $conn = $db->connect();
         $password = $lastname . '_' . $contact;
-        // $passwordMd5 = md5($password);
-        $passwordMd5 = $password;
+        $passwordMd5 = md5($password);
+        // $passwordMd5 = $password;
         $stmt = $conn->prepare("INSERT INTO `users`(`id`, `email`, `password`, `user_type`,`account_id`) VALUES (NULL,?,?,?, ?)");
         $stmt->bind_param("ssss", $email, $passwordMd5, $user_type, $id);
         
@@ -199,11 +199,17 @@ if (isset($_POST['function'])) {
                 $account_id = $row['account_id'] ?? '';
                 $user_type = $row['user_type'];
                 $user_id = $row['id'] ?? '';
+                $_SESSION['userID'] = $user_id;
+                // echo $user_id;
                 // echo json_encode($row);
                 if ($user_type == 'admin') {
                     echo json_encode(array('success' => 'true', 'user_type' => $user_type));
                     $_SESSION['user_type'] = $user_type;
-                    $_SESSION['userInfo'] = array('id' => '5', 'firstname' => 'Admin', 'middlename' => '', 'lastname' => '', 'email' => 'contactme@admin.com', 'sex' => 'Male', 'contact' => '', 'street' => '', 'barangay' => '', 'city' => '', 'province' => 'Misamis Occidental', 'postal' => '7207', 'nurse_type' => 'admin', 'assigned' => '0');
+                    $fullname = "Admin";
+                    require_once('../controller/otpController.php');
+                    $template = new Otp();
+                    $template->sendMail('gemmarie.canlom@nmsc.edu.ph', $fullname);
+                    $_SESSION['userInfo'] = array('id' => '5', 'firstname' => 'Admin', 'middlename' => '', 'lastname' => '', 'email' => 'gemmarie.canlom@nmsc.edu.ph', 'sex' => 'Male', 'contact' => '', 'street' => '', 'barangay' => '', 'city' => '', 'province' => 'Misamis Occidental', 'postal' => '7207', 'nurse_type' => 'admin', 'assigned' => '0');
                     return;
                 }
                 $result = $login->getUserInfo($user_type, $account_id);
@@ -212,10 +218,15 @@ if (isset($_POST['function'])) {
                 // echo session_id();
 
                 $_SESSION['user_type'] = $user_type;
-                $_SESSION['userID'] = $user_id;
+               
                 $_SESSION['userInfo'] = $row;
+                $_SESSION['userInfo']['isVerified'] = false;
                 //count $row
                 if ($row) {
+                    require_once('../controller/otpController.php');
+                    $template = new Otp();
+                    $name = $row['firstname'] . ' ' . $row['middlename'] . ' ' . $row['lastname'];
+                    $template->sendMail($row['email'], $name);
                     echo json_encode(array('success' => 'true', 'user_id' => $user_id, 'user_type' => $user_type, 'userInfo' => $row));
                 } else {
                     echo json_encode(array('success' => 'false'));

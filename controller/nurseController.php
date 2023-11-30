@@ -54,10 +54,29 @@
             $stmt = $conn->prepare($query);
             $stmt->bind_param("sssssssssssss", $nurse_firstname, $nurse_lastname, $nurse_email, $nurse_sex, $nurse_contact, $nurse_middlename, $nurse_street, $nurse_barangay, $nurse_city, $nurse_province, $nurse_postal, $nurse_type, $assigned);
             // $stmt->execute();
-            $result = $stmt->execute();
-            $stmt->close();
-            $conn->close();
-            return $result ? 'success' : $conn->error;
+
+            try{
+                $stmt->execute();
+                include_once('loginController.php');
+                $id = $conn->insert_id;
+                $loginController = new Login();
+                if($loginController->createUserwhenCreated($nurse_lastname,$nurse_email,$nurse_contact, 'nurse',$id)){
+                    $stmt->close();
+                    return 'success';
+                }
+                else{
+                    $stmt->close();
+                    return $conn->error;
+                }
+            }catch(Exception $e){
+                $errorMessageArray = array('success'=>'false','errorMessage'=>$stmt->error, 'errorCode'=>$stmt->errno);
+                return json_encode($errorMessageArray);
+            }
+
+            // $result = $stmt->execute();
+            // $stmt->close();
+            // $conn->close();
+            // return $result ? 'success' : $conn->error;
         }
 
         function editNurse($id = null){

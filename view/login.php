@@ -1,4 +1,15 @@
+<?php //status of sesssion
+session_start();
+// print_r($_SESSION);
+unset($_SESSION);
+// if($_SESSION['userInfo']['isVerified'] == false && isset($_SESSION['userInfo']['isVerified'])){
+//   unset($_SESSION);
+// }
 
+if (isset($_SESSION['user_type'])) {
+    header('location: index.php');
+}
+?>
   
 <!-- Mirrored from demos.adminmart.com/premium/bootstrap/modernize-bootstrap/package/html/main/authentication-login.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 20 Jul 2023 11:15:11 GMT -->
 <head>
@@ -130,7 +141,7 @@
               if (data.success=="true") {
 
                 console.log(data)
-                window.location.href = "../view/dashboard.php";
+                window.location.href = "../view/otp-page.php";
                 
               } else {
                 alert('Invalid Username or Password');

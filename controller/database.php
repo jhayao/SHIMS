@@ -6,17 +6,17 @@
         // private $dbname = "niwglkmv_shims";
         // private $conn;
         
-        // private $username = "root";
-        // private $password = "tiger";
-        // private $host = "database";
-        // private $dbname = "shims";
-        // private $conn;
-
         private $username = "root";
-        private $password = "Hayao1101!";
-        private $host = "localhost";
-        private $dbname = "SHIMS";
+        private $password = "tiger";
+        private $host = "database";
+        private $dbname = "shims";
         private $conn;
+
+        // private $username = "root";
+        // private $password = "Hayao1101!";
+        // private $host = "localhost";
+        // private $dbname = "SHIMS";
+        // private $conn;
 
         function __construct(){
             if(session_status() !== PHP_SESSION_ACTIVE) session_start();
@@ -32,7 +32,3 @@
         }
     }
 ?>
-   
-
-
-    

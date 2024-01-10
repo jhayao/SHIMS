@@ -185,7 +185,9 @@ class Login
 if (isset($_POST['function'])) {
     $function = $_POST['function'];
     $login = new Login();
-    // session_start();
+    if (session_status() == PHP_SESSION_NONE) {
+        session_start();
+    }
     //call function based on parameter
     switch ($function) {
         case 'addLogin':

@@ -1,5 +1,7 @@
 <?php //status of sesssion
-session_start();
+if (session_status() == PHP_SESSION_NONE) {
+  session_start();
+}
 // print_r($_SESSION);
 unset($_SESSION);
 // if($_SESSION['userInfo']['isVerified'] == false && isset($_SESSION['userInfo']['isVerified'])){

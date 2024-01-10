@@ -1,4 +1,7 @@
 <?php
+if (session_status() == PHP_SESSION_NONE) {
+  session_start();
+}
 if (isset($_POST) && !empty($_POST)) {
   $otp = $_POST['t1'] . $_POST['t2'] . $_POST['t3'] . $_POST['t4'] . $_POST['t5'] . $_POST['t6'];
   require_once('../controller/database.php');

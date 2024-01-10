@@ -41,7 +41,9 @@ class Checkup
     }
 
     function addCheckup(){
-        session_start();
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
         $nurse_id ="";
         $userType = isset($_SESSION['user_type']) ? $_SESSION['user_type'] : '';
         // print_r($_SESSION['userInfo']);

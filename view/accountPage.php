@@ -301,7 +301,7 @@ if ($_SESSION['user_type'] == "nurse") {
                         </div>
                       </div>
                     </div>
-                  <? } else if ($_SESSION['user_type'] == 'nurse') { ?>
+                  <?php } else if ($_SESSION['user_type'] == 'nurse') { ?>
                     <div class="col-12">
                       <div class="card w-100 position-relative overflow-hidden mb-0">
                         <div class="card-body p-4">
@@ -441,7 +441,7 @@ if ($_SESSION['user_type'] == "nurse") {
                         </div>
                       </div>
                     </div>
-                  <? } ?>
+                  <?php } ?>
 
                 </div>
               </div>

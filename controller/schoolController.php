@@ -3,7 +3,9 @@
         function __construct(){
             //call database.php
             include_once('database.php');
-            session_start();
+            if (session_status() == PHP_SESSION_NONE) {
+                session_start();
+            }
             //enable log
             // error_reporting(E_ALL);
             // ini_set('display_errors', 1);

@@ -123,7 +123,9 @@
             </div>
         </div>
     </div>
-    
+    <?php include_once("./include/extra.php"); ?>
+    <!--  Customizer -->
+    <?php include_once("./include/scripts.php"); ?>
     
     <script>
         //onload

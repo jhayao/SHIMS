@@ -60,7 +60,7 @@
                                         <th>Full Name</th>
                                         <th>Email</th>
                                         <th>Address</th>
-                                        <th>Position</th>
+                                        <th>Assigned</th>
                                         <!-- <th>Options</th> -->
                                     </tr>
                                     <!-- end row -->

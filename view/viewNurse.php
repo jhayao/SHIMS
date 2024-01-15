@@ -59,7 +59,7 @@
                                         <th>ID</th>
                                         <th>Full Name</th>
                                         <th>Email</th>
-                                        <th>Position</th>
+                                        <th>Assigned</th>
                                         <th>Options</th>
                                     </tr>
                                     <!-- end row -->

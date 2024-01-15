@@ -3,9 +3,7 @@
   <div>
     <div class="brand-logo d-flex align-items-center justify-content-between">
       <a href="../index.php" class="text-nowrap logo-img">
-        <img
-          src="../dist/images/backgrounds/deped.svg"
-          class="dark-logo" width="180" alt="" />
+        <img src="../dist/images/backgrounds/deped.svg" class="dark-logo" width="180" alt="" />
         <img
           src="https://demos.adminmart.com/premium/bootstrap/modernize-bootstrap/package/dist/images/logos/light-logo.svg"
           class="light-logo" width="180" alt="" />
@@ -80,14 +78,17 @@
                   <span class="hide-menu">List</span>
                 </a>
               </li>
-              <li class="sidebar-item">
-                <a href="addStudent.php" class="sidebar-link">
-                  <div class="round-16 d-flex align-items-center justify-content-center">
-                    <i class="ti ti-circle"></i>
-                  </div>
-                  <span class="hide-menu">Add</span>
-                </a>
-              </li>
+              <?php if ($_SESSION['user_type'] == 'admin' || ($_SESSION['user_type'] === 'nurse' &&  $_SESSION["userInfo"]["nurse_type"] === 'school nurse')) { ?>
+                <li class="sidebar-item">
+                <li class="sidebar-item">
+                  <a href="addStudent.php" class="sidebar-link">
+                    <div class="round-16 d-flex align-items-center justify-content-center">
+                      <i class="ti ti-circle"></i>
+                    </div>
+                    <span class="hide-menu">Add</span>
+                  </a>
+                </li>
+              <?php } ?>
             </ul>
           </li>
         <?php } ?>
@@ -180,7 +181,7 @@
         </li>
 
 
-        <?php if ($_SESSION['user_type'] != 'student') { ?>
+        <?php if ($_SESSION['user_type'] == 'admin' || ($_SESSION['user_type'] === 'nurse' )) { ?>
           <li class="sidebar-item">
             <a class="sidebar-link has-arrow" href="#" aria-expanded="false">
               <span class="d-flex">
@@ -197,6 +198,7 @@
                   <span class="hide-menu">List</span>
                 </a>
               </li>
+              <?php if ($_SESSION['user_type'] == 'admin' || ($_SESSION['user_type'] === 'nurse' &&  $_SESSION["userInfo"]["nurse_type"] === 'school nurse')) { ?>
               <li class="sidebar-item">
                 <a href="addCheckup.php" class="sidebar-link">
                   <div class="round-16 d-flex align-items-center justify-content-center">
@@ -205,6 +207,7 @@
                   <span class="hide-menu">Add</span>
                 </a>
               </li>
+              <?php } ?>
             </ul>
           </li>
         <?php } ?>

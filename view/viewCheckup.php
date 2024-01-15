@@ -64,7 +64,9 @@
                                         <th>Weight</th>
                                         <th>Findings</th>
                                         <th>Prescription</th>
+                                        <?php if ($_SESSION['user_type'] == 'admin' || ($_SESSION['user_type'] === 'nurse' &&  $_SESSION["userInfo"]["nurse_type"] === 'school nurse')) { ?>
                                         <th>Options</th>
+                                        <?php } ?>  
                                     </tr>
                                     <!-- end row -->
                                 </thead>
@@ -146,6 +148,7 @@
                     {
                         "data": "prescription"
                     },
+                    <?php if ($_SESSION['user_type'] == 'admin' || ($_SESSION['user_type'] === 'nurse' &&  $_SESSION["userInfo"]["nurse_type"] === 'school nurse')) { ?>
                     {
                         "data": "id",
                         createdCell: function(cell, cellData, rowData, rowIndex, colIndex) {
@@ -201,6 +204,7 @@
                                     </div>`;
                         }
                     }
+                    <?php } ?>
                 ]
             });
             $(".buttons-copy, .buttons-csv, .buttons-print, .buttons-pdf, .buttons-excel").addClass(

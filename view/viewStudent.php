@@ -1,5 +1,5 @@
 <?php include_once('include/head.php'); ?> 
-
+<?php $nurseType = $_SESSION["userInfo"]["nurse_type"] ?>
 <body>
     <!-- Preloader -->
     <div class="preloader">
@@ -175,8 +175,11 @@
                         "render": function (data, type, row, meta) {
                             return `<div class="d-flex justify-content-center">
                                         <a href="profileStudent.php?id=${data}" class="btn btn-success   me-3"><i class="ti ti-eye"></i></a>
-                                        <a href="addStudent.php?edit=true&id=${data}" class="btn btn-primary   me-3"><i class="ti ti-edit"></i></a>
-                                        <button id="${data}"  class="btn btn-danger delete  me-3"><i class="ti ti-trash-x"></i></button>
+                                        <?php if ($nurseType === 'school nurse' || $nurseType === 'admin'): ?>
+                                            <a href="addStudent.php?edit=true&id=${data}" class="btn btn-primary   me-3"><i class="ti ti-edit"></i></a>
+                                            <button id="${data}"  class="btn btn-danger delete  me-3"><i class="ti ti-trash-x"></i></button>
+                                        <?php endif; ?>
+                                        
                                     </div>`;
                         }
                     }

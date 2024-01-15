@@ -138,7 +138,7 @@
                                                             class="form-label fw-semibold">Email</label>
                                                         <input type="email" class="form-control" id="email"
                                                             name="email" placeholder="info@modernize.com"
-                                                            required>
+                                                            >
                                                         <div class="invalid-feedback">
                                                             Please enter a valid Email.
                                                         </div>

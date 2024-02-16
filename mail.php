@@ -24,7 +24,7 @@ try {
     $mail->Host       = 'mail.smtp2go.com';                    
     $mail->SMTPAuth   = true;                             
     $mail->Username   = 'otp-notification';                 
-    $mail->Password   = 'hayao101422';                        
+    $mail->Password   = 'UFH7G628JL0eP4G2';                        
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;                              
     $mail->Port       = 465;  
  

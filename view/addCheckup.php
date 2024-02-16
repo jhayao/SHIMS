@@ -1,6 +1,6 @@
-
 <?php isset($_GET['edit']) ? $edit = $_GET['edit'] : $edit = 0; ?>
 <?php include_once('include/head.php'); ?>
+<?php print_r($_SESSION); ?>
 
 <body>
     <!-- Preloader -->
@@ -53,24 +53,9 @@
                 <div class="card">
 
                     <div class="card-body">
+
                         <div class="row">
-                            <!-- <div class="col-lg-12 d-flex align-items-stretch">
-                                <div class="card w-100 position-relative overflow-hidden">
-                                    <div class="card-body p-4">
-                                        <h5 class="card-title fw-semibold">Change Profile</h5>
-                                        <p class="card-subtitle mb-4">Change your profile picture from here</p>
-                                        <div class="text-center">
-                                            <img src="../dist/images/profile/user-1.jpg" alt=""
-                                                class="img-fluid rounded-circle" width="120" height="120">
-                                            <div class="d-flex align-items-center justify-content-center my-4 gap-3">
-                                                <button class="btn btn-primary">Upload</button>
-                                                <button class="btn btn-outline-danger">Reset</button>
-                                            </div>
-                                            <p class="mb-0">Allowed JPG, GIF or PNG. Max size of 800K</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div> -->
+
                             <div class="col-12">
                                 <div class="card w-100 position-relative overflow-hidden mb-0">
                                     <div class="card-body p-4">
@@ -78,42 +63,9 @@
                                         <p class="card-subtitle mb-4">To change your personal detail , edit and save
                                             from here</p>
                                         <form id="checkupForm" novalidate>
-                                            <div class="row">
-                                                <div class="col-lg-6">
-                                                    <div class="mb-4">
-                                                        <label for="division_id" class="form-label fw-semibold">Division
-                                                            Name</label>
-                                                        <select class="select2 form-control"
-                                                            aria-label="Default select example" id="division_id"
-                                                            required name="division_id">
-                                                        </select>
-                                                        <div class="invalid-feedback">
-                                                            Division Name
-                                                        </div>
-                                                    </div>
-                                                    <div class="mb-4">
-                                                        <label for="district_id" class="form-label fw-semibold">District
-                                                            Name</label>
-                                                        <select class="select2 form-control"
-                                                            aria-label="Default select example" id="district_id"
-                                                            required name="district_id">
-                                                        </select>
-                                                        <div class="invalid-feedback">
-                                                            District Name
-                                                        </div>
-                                                    </div>
-                                                    <div class="mb-4">
-                                                        <label for="school_id" class="form-label fw-semibold">School
-                                                            Name</label>
-                                                        <select class="select2 form-control"
-                                                            aria-label="Default select example" id="school_id" required
-                                                            name="school_id">
-                                                        </select>
-                                                        <div class="invalid-feedback">
-                                                            School Name
-                                                        </div>
-                                                    </div>
-                                                    <div class="mb-4">
+                                            <div class="row g-3">
+                                                <div class="col">
+                                                    <div class="mb-4 col-6">
                                                         <label for="student_id" class="form-label fw-semibold">Student
                                                             Name</label>
                                                         <select class="select2 form-control"
@@ -124,29 +76,20 @@
                                                             Student Name
                                                         </div>
                                                     </div>
-
                                                 </div>
 
-                                                <div class="col-lg-6">
-                                                    <div class="mb-4">
-                                                        <label for="height"
-                                                            class="form-label fw-semibold">Height</label>
-                                                        <input type="text" class="form-control" id="height"
-                                                            name="height" placeholder="Height" required>
+
+                                                <div class="row">
+                                                    <div class="mb-4 col-5">
+                                                        <label for="heart_rate" class="form-label fw-semibold">Heart
+                                                            Rate</label>
+                                                        <input type="text" class="form-control" id="heart_rate"
+                                                            name="heart_rate" placeholder="Heart Rate" required>
                                                         <div class="invalid-feedback">
-                                                            Please enter an Height.
+                                                            Please enter a Heart rate.
                                                         </div>
                                                     </div>
-                                                    <div class="mb-4">
-                                                        <label for="weight"
-                                                            class="form-label fw-semibold">Weight</label>
-                                                        <input type="text" class="form-control" id="weight"
-                                                            name="weight" placeholder="Weight" required>
-                                                        <div class="invalid-feedback">
-                                                            Please enter an Weight.
-                                                        </div>
-                                                    </div>
-                                                    <div class="mb-4">
+                                                    <div class="mb-4 col-5">
                                                         <label for="temperature"
                                                             class="form-label fw-semibold">Temperature</label>
                                                         <input type="text" class="form-control" id="temperature"
@@ -155,6 +98,302 @@
                                                             Please enter an Temperature.
                                                         </div>
                                                     </div>
+                                                    <div class="mb-4 col-5">
+                                                        <label for="height"
+                                                            class="form-label fw-semibold">Height</label>
+                                                        <input type="text" class="form-control" id="height"
+                                                            name="height" placeholder="Height" required>
+                                                        <div class="invalid-feedback">
+                                                            Please enter an Height.
+                                                        </div>
+                                                    </div>
+                                                    <div class="mb-4 col-5">
+                                                        <label for="weight"
+                                                            class="form-label fw-semibold">Weight</label>
+                                                        <input type="text" class="form-control" id="weight"
+                                                            name="weight" placeholder="Weight" required>
+                                                        <div class="invalid-feedback">
+                                                            Please enter an Weight.
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="mb-4 col-5">
+                                                        <label for="bmi" class="form-label fw-semibold">BMI</label>
+                                                        <select class="select2 form-control"
+                                                            aria-label="Default select example" id="bmi" name="bmi"
+                                                            required>
+                                                            <!-- Add options here -->
+                                                            <option value="Normal Weight">Normal Weight</option>
+                                                            <option value="Wasted Underweight">Wasted Underweight
+                                                            </option>
+                                                            <option value="Severely Wasted/Underweight">Severely
+                                                                Wasted/Underweight</option>
+                                                            <option value="Overweight">Overweight</option>
+                                                            <option value="Obese">Obese</option>
+
+                                                        </select>
+                                                        <div class="invalid-feedback">
+                                                            Please select a BMI.
+                                                        </div>
+                                                    </div>
+                                                    <div class="mb-4 col-5">
+                                                        <label for="height_for_age"
+                                                            class="form-label fw-semibold">Height for Age</label>
+                                                        <select class="select2 form-control"
+                                                            aria-label="Default select example" id="height_for_age"
+                                                            name="height_for_age" required>
+                                                            <option value="Normal height">Normal height</option>
+                                                            <option value="Stunted">Stunted</option>
+                                                            <option value="Severely Stunted">Severely Stunted</option>
+                                                            <option value="Tall">Tall</option>
+                                                        </select>
+                                                        <div class="invalid-feedback">
+                                                            Please select the Height for Age.
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="mb-4 col-5">
+                                                        <label for="vision_screening"
+                                                            class="form-label fw-semibold">Vision Screening</label>
+                                                        <select class="select2 form-control" id="vision_screening"
+                                                            name="vision_screening" required>
+                                                            <option value="Pass">Pass</option>
+                                                            <option value="Failed">Failed</option>
+                                                        </select>
+                                                        <div class="invalid-feedback">
+                                                            Please select a Vision Screening result.
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="mb-4 col-5">
+                                                        <label for="auditory_screening"
+                                                            class="form-label fw-semibold">Auditory Screening</label>
+                                                        <select class="select2 form-control" id="auditory_screening"
+                                                            name="auditory_screening" required>
+                                                            <option value="Pass">Pass</option>
+                                                            <option value="Failed">Failed</option>
+                                                        </select>
+                                                        <div class="invalid-feedback">
+                                                            Please select an Auditory Screening result.
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="mb-4 col-5">
+                                                        <label for="skin_scalp"
+                                                            class="form-label fw-semibold">Skin/Scalp</label>
+                                                        <select class="select2 form-control" id="skin_scalp"
+                                                            name="skin_scalp[]" multiple required>
+                                                            <option value="Normal">Normal</option>
+                                                            <option value="Presence of Lice">Presence of Lice</option>
+                                                            <option value="Redness of skin">Redness of skin</option>
+                                                            <option value="White spots">White spots</option>
+                                                            <option value="Flaky skin">Flaky skin</option>
+                                                            <option value="Impetigo/boil">Impetigo/boil</option>
+                                                            <option value="Hematoma">Hematoma</option>
+                                                            <option value="Bruises/Injuries">Bruises/Injuries</option>
+                                                            <option value="Itchiness">Itchiness</option>
+                                                            <option value="Skin lesions">Skin lesions</option>
+                                                            <option value="Acne/pimple">Acne/pimple</option>
+                                                        </select>
+                                                        <div class="invalid-feedback">
+                                                            Please select at least one option for Skin/Scalp.
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="mb-4 col-5">
+                                                        <label for="eyes_ear_nose"
+                                                            class="form-label fw-semibold">Eyes/Ear/Nose</label>
+                                                        <select class="select2 form-control" id="eyes_ear_nose"
+                                                            name="eyes_ear_nose[]" multiple required>
+                                                            <option value="Normal">Normal</option>
+                                                            <option value="Stye">Stye</option>
+                                                            <option value="Eye Redness">Eye Redness</option>
+                                                            <option value="Ocular misalignment">Ocular misalignment
+                                                            </option>
+                                                            <option value="Pale conjunctiva">Pale conjunctiva</option>
+                                                            <option value="Ear discharge">Ear discharge</option>
+                                                            <option value="Impacted cerumen">Impacted cerumen</option>
+                                                            <option value="Mucus discharge">Mucus discharge</option>
+                                                            <option value="Nose bleeding">Nose bleeding</option>
+                                                            <option value="Eye discharge">Eye discharge</option>
+                                                            <option value="Matted eyelashes">Matted eyelashes</option>
+                                                        </select>
+                                                        <div class="invalid-feedback">
+                                                            Please select at least one option for Eyes/Ear/Nose.
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="mb-4 col-5">
+                                                        <label for="mouth_throat_neck"
+                                                            class="form-label fw-semibold">Mouth/Throat/Neck</label>
+                                                        <select class="select2 form-control" id="mouth_throat_neck"
+                                                            name="mouth_throat_neck" required>
+                                                            <option value="Normal">Normal</option>
+                                                            <option value="Enlarged tonsils">Enlarged tonsils</option>
+                                                            <option value="Presence of lesions">Presence of lesions
+                                                            </option>
+                                                            <option value="Inflamed pharynx">Inflamed pharynx</option>
+                                                            <option value="Enlarged lymph nodes">Enlarged lymph nodes
+                                                            </option>
+                                                            <option value="Others">Others</option>
+                                                        </select>
+                                                        <div class="invalid-feedback">
+                                                            Please select an option for Mouth/Throat/Neck.
+                                                        </div>
+                                                    </div>
+
+
+
+                                                    <div class="mb-4 col-5" id="others_mouth_throat_neck_container"
+                                                        style="display: none;">
+                                                        <label for="others_mouth_throat_neck"
+                                                            class="form-label fw-semibold">Others
+                                                            (Mouth/Throat/Neck)</label>
+                                                        <input type="text" class="form-control"
+                                                            id="others_mouth_throat_neck"
+                                                            name="others_mouth_throat_neck" placeholder="Please specify"
+                                                            required>
+                                                        <div class="invalid-feedback">
+                                                            Please enter a value for Others (Mouth/Throat/Neck).
+                                                        </div>
+                                                    </div>
+
+
+
+                                                    <div class="mb-4 col-5">
+                                                        <label for="lungs_heart"
+                                                            class="form-label fw-semibold">Lungs/Heart</label>
+                                                        <select class="select2 form-control" id="lungs_heart"
+                                                            name="lungs_heart" required>
+                                                            <option value="Normal">Normal</option>
+                                                            <option value="Rales">Rales</option>
+                                                            <option value="Wheeze">Wheeze</option>
+                                                            <option value="Murmur">Murmur</option>
+                                                            <option value="Irregular heart rate">Irregular heart rate
+                                                            </option>
+                                                            <option value="Others">Others</option>
+                                                        </select>
+                                                        <div class="invalid-feedback">
+                                                            Please select an option for Lungs/Heart.
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="mb-4 col-5" id="others_lungs_heart_container"
+                                                        style="display: none;">
+                                                        <label for="others_lungs_heart"
+                                                            class="form-label fw-semibold">Others (Lungs/Heart)</label>
+                                                        <input type="text" class="form-control" id="others_lungs_heart"
+                                                            name="others_lungs_heart" placeholder="Please specify">
+                                                        <div class="invalid-feedback">
+                                                            Please enter a value for Others (Lungs/Heart).
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="mb-4 col-5">
+                                                        <label for="abdomen"
+                                                            class="form-label fw-semibold">Abdomen</label>
+                                                        <select class="select2 form-control" id="abdomen" name="abdomen"
+                                                            required>
+                                                            <option value="Normal">Normal</option>
+                                                            <option value="Distended">Distended</option>
+                                                            <option value="Abdominal pain">Abdominal pain</option>
+                                                            <option value="Tenderness">Tenderness</option>
+                                                            <option value="Dysmenorrhea">Dysmenorrhea</option>
+                                                            <option value="Others">Others</option>
+                                                        </select>
+                                                        <div class="invalid-feedback">
+                                                            Please select an option for Abdomen.
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="mb-4 col-5" id="others_abdomen_container"
+                                                        style="display: none;">
+                                                        <label for="others_abdomen"
+                                                            class="form-label fw-semibold">Others (Abdomen)</label>
+                                                        <input type="text" class="form-control" id="others_abdomen"
+                                                            name="others_abdomen" placeholder="Please specify">
+                                                        <div class="invalid-feedback">
+                                                            Please enter a value for Others (Abdomen).
+                                                        </div>
+                                                    </div>
+
+
+
+                                                    <div class="mb-4 col-5">
+                                                        <label for="deformities"
+                                                            class="form-label fw-semibold">Deformities</label>
+                                                        <select class="select2 form-control" id="deformities"
+                                                            name="deformities" required>
+                                                            <option value="Acquired">Acquired</option>
+                                                            <option value="Congenital">Congenital</option>
+                                                        </select>
+                                                        <div class="invalid-feedback">
+                                                            Please select an option for Deformities.
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="mb-4 col-5" id="deformities_input_container"
+                                                        style="display: none;">
+                                                        <label for="deformities_input"
+                                                            class="form-label fw-semibold">Deformities Input</label>
+                                                        <input type="text" class="form-control" id="deformities_input"
+                                                            name="deformities_input" placeholder="Deformities Input">
+                                                        <div class="invalid-feedback">
+                                                            Please enter a value for Deformities Input.
+                                                        </div>
+                                                    </div>
+
+
+
+                                                    <div class="mb-4 col-5">
+                                                        <label for="immunization"
+                                                            class="form-label fw-semibold">Immunization</label>
+                                                        <input type="text" class="form-control" id="immunization"
+                                                            name="immunization" placeholder="Immunization" required>
+                                                        <div class="invalid-feedback">
+                                                            Please enter Immunization.
+                                                        </div>
+                                                    </div>
+
+                                                    <table class="table">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Others</th>
+                                                                <th><i class="fas fa-check"></i></th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>Iron Supplementation</td>
+                                                                <td><input type="checkbox" id="iron_supplementation" name="iron_supplementation" value="check"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Deworming</td>
+                                                                <td><input type="checkbox" id="deworming" name="deworming" value="check"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>SBFP Beneficiary</td>
+                                                                <td><input type="checkbox" id="sbfp_beneficiary" name="sbfp_beneficiary" value="check"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>4P's Beneficiary</td>
+                                                                <td><input type="checkbox" id="fourps_beneficiary" name="fourps_beneficiary" value="check"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Menarche</td>
+                                                                <td><input type="checkbox" id="menarche" name="menarche" value="check"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Others</td>
+                                                                <td><input type="text" id="others" class="form-control" name="others"></td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+
+
+
+
+
                                                 </div>
                                                 <!-- <div class="mb-4">
                                                         <label for="findings"
@@ -164,7 +403,7 @@
                                                             Please enter an Findings.
                                                         </div>
                                                     </div> -->
-                                                <div class="mb-4">
+                                                <!-- <div class="mb-4">
                                                     <label for="findings" class="form-label fw-semibold">Finding</label>
                                                     <textarea id="editor" class="form-control findings" name="findings"
                                                         rows="5"></textarea>
@@ -175,7 +414,7 @@
                                                     <textarea id="editor" class="form-control prescription"
                                                         contenteditable="true" accesskey="" name="prescription"
                                                         rows="5"></textarea>
-                                                </div>
+                                                </div> -->
 
                                                 <div class="col-12">
                                                     <div
@@ -207,104 +446,179 @@
         $(document).ready(function () {
 
 
+            $('#deformities').on('change', function () {
+                var selectedOption = $(this).val();
+                var deformitiesInputContainer = $('#deformities_input_container');
+                if (selectedOption === 'Congenital') {
+                    deformitiesInputContainer.show();
+                } else {
+                    deformitiesInputContainer.hide();
+                }
+            });
+            $('#abdomen').on('change', function () {
+                if ($(this).val() === 'Others') {
+                    $('#others_abdomen_container').show();
+                } else {
+                    $('#others_abdomen_container').hide();
+                }
+            });
 
-            //request ajax to get all division
+            $('#mouth_throat_neck').on('change', function () {
+                var selectedOption = $(this).val();
+                var othersContainer = $('#others_mouth_throat_neck_container');
+                if (selectedOption === 'Others') {
+                    othersContainer.show();
+                } else {
+                    othersContainer.hide();
+                }
+            });
+
+            $('#lungs_heart').on('change', function () {
+                var selectedOption = $(this).val();
+                var othersContainer = $('#others_lungs_heart_container');
+                if (selectedOption === 'Others') {
+                    othersContainer.show();
+                } else {
+                    othersContainer.hide();
+                }
+            });
+
+            //init select2
+            // $('.select2').select2({
+            //     placeholder: "Select a option",
+            //     allowClear: true
+            // });
+
             $.ajax({
-                url: "../controller/divisionController.php",
+                url: "../controller/studentController.php",
                 type: "POST",
                 dataType: "json",
                 data: {
-                    function: "getAllDivision"
+                    function: "getStudentbySchoolId",
+                    school_id: <?php echo $_SESSION['userInfo']['assigned']; ?>
                 },
                 success: function (data) {
-                    //set all inputs from return data
-                    var division_id = $('#division_id');
-                    division_id.empty();
-                    division_id.append('<option value="" selected disabled>Select Division</option>');
+                    console.log(data)
                     data = data.data
+                    //console.log(data)
+                    //set all inputs from return data
+                    var student_id = $('#student_id');
+                    student_id.empty();
+                    student_id.append('<option value="" selected disabled>Select Student</option>');
                     $.each(data, function (index, value) {
-                        //console.log(value)
-                        division_id.append('<option value="' + value.id + '">' + value.division_name +
+                        student_name = value.firstname + ' ' + value.lastname;
+                        student_id.append('<option value="' + value.id + '">' + student_name +
                             '</option>');
                     });
-
+                    if (<?php echo ($edit); ?>) {
+                        student_id.val(studentID).trigger("change");
+                    }
                 }
             })
+
+
+
+            //request ajax to get all division
+            // $.ajax({
+            //     url: "../controller/divisionController.php",
+            //     type: "POST",
+            //     dataType: "json",
+            //     data: {
+            //         function: "getAllDivision",
+
+            //     },
+            //     success: function (data) {
+            //         //set all inputs from return data
+            //         var division_id = $('#division_id');
+            //         division_id.empty();
+            //         division_id.append('<option value="" selected disabled>Select Division</option>');
+            //         data = data.data
+            //         $.each(data, function (index, value) {
+            //             //console.log(value)
+            //             division_id.append('<option value="' + value.id + '">' + value.division_name +
+            //                 '</option>');
+            //         });
+
+            //     }
+            // })
 
 
 
 
 
             //select2 division_id on change
-            $('#division_id').on('change', function (event, districtId = null, schoolId = null, studentID = null) {
-                //console.log("district ID" + districtId)
-                //console.log("school ID" + schoolId)
-                //console.log("student ID" + studentID)
-                var district_id = $('#district_id');
-                district_id.empty().trigger("change");
-                var division_id = $(this).val();
-                //request ajax to get all district by division_id
-                $.ajax({
-                    url: "../controller/districtController.php",
-                    type: "POST",
-                    dataType: "json",
-                    data: {
-                        function: "getDistrictsByDivisionName",
-                        division_id: division_id
-                    },
-                    success: function (data) {
-                        //set all inputs from return data
-                        data = data.data
-                        var district_id = $('#district_id');
-                        district_id.empty();
-                        district_id.append('<option value="" selected disabled>Select District</option>');
-                        $.each(data, function (index, value) {
-                            district_id.append('<option value="' + value.id + '">' + value.district_name +
-                                '</option>');
-                        });
-                        if (<?php echo ($edit); ?> && districtId != null) {
-                            district_id.val(districtId).trigger("change", [schoolId, studentID]);
-                        }
-                    }
+            // $('#division_id').on('change', function (event, districtId = null, schoolId = null, studentID = null) {
+            //     //console.log("district ID" + districtId)
+            //     //console.log("school ID" + schoolId)
+            //     //console.log("student ID" + studentID)
+            //     var district_id = $('#district_id');
+            //     district_id.empty().trigger("change");
+            //     var division_id = $(this).val();
+            //     //request ajax to get all district by division_id
+            //     $.ajax({
+            //         url: "../controller/districtController.php",
+            //         type: "POST",
+            //         dataType: "json",
+            //         data: {
+            //             function: "getDistrictsByDivisionName",
+            //             division_id: division_id
+            //         },
+            //         success: function (data) {
+            //             //set all inputs from return data
+            //             data = data.data
+            //             var district_id = $('#district_id');
+            //             district_id.empty();
+            //             district_id.append('<option value="" selected disabled>Select District</option>');
+            //             $.each(data, function (index, value) {
+            //                 district_id.append('<option value="' + value.id + '">' + value.district_name +
+            //                     '</option>');
+            //             });
+            //             if (<?php echo ($edit); ?> && districtId != null) {
+            //                 district_id.val(districtId).trigger("change", [schoolId, studentID]);
+            //             }
+            //         }
 
-                })
+            //     })
 
-            })
+            // })
 
             //district_id on change and call schoolController
-            $('#district_id').on('change', function (event, schoolId = null, studentID = null) {
-                let school_id = $('#school_id');
-                school_id.empty();
-                //console.log(event);
-                //request ajax to get all school
-                $.ajax({
-                    url: "../controller/schoolController.php",
-                    type: "POST",
-                    dataType: "json",
-                    data: {
-                        function: "getSchoolbyDistrictId",
-                        district_id: $(this).val()
-                    },
-                    success: function (data) {
-                        data = data.data
-                        //set all inputs from return data
-                        school_id.empty();
-                        school_id.append('<option value="" selected disabled>Select School</option>');
-                        $.each(data, function (index, value) {
-                            school_id.append('<option value="' + value.id + '">' + value.school_name +
-                                '</option>');
-                        });
-                        //console.log(schoolId)
-                        if (<?php echo ($edit); ?> && schoolId != null) {
+            // $('#district_id').on('change', function (event, schoolId = null, studentID = null) {
+            //     let school_id = $('#school_id');
+            //     school_id.empty();
+            //     //console.log(event);
+            //     //request ajax to get all school
+            //     $.ajax({
+            //         url: "../controller/schoolController.php",
+            //         type: "POST",
+            //         dataType: "json",
+            //         data: {
+            //             function: "getSchoolbyDistrictId",
+            //             district_id: $(this).val()
+            //         },
+            //         success: function (data) {
+            //             data = data.data
+            //             //set all inputs from return data
+            //             school_id.empty();
+            //             school_id.append('<option value="" selected disabled>Select School</option>');
+            //             $.each(data, function (index, value) {
+            //                 school_id.append('<option value="' + value.id + '">' + value.school_name +
+            //                     '</option>');
+            //             });
+            //             //console.log(schoolId)
+            //             if (<?php echo ($edit); ?> && schoolId != null) {
 
-                            school_id.val(schoolId).trigger("change", studentID);
-                        }
-                    },
-                    complete: function () {
+            //                 school_id.val(schoolId).trigger("change", studentID);
+            //             }
+            //         },
+            //         complete: function () {
 
-                    }
-                })
-            })
+            //         }
+            //     })
+            // })
+
+
+
 
 
             //get all student when school change

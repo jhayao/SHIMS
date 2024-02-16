@@ -198,7 +198,7 @@
                   <span class="hide-menu">List</span>
                 </a>
               </li>
-              <?php if ($_SESSION['user_type'] == 'admin' || ($_SESSION['user_type'] === 'nurse' &&  $_SESSION["userInfo"]["nurse_type"] === 'school nurse')) { ?>
+                <?php if ($_SESSION['user_type'] == 'admin' || ($_SESSION['user_type'] === 'nurse' &&  strtolower($_SESSION["userInfo"]["nurse_type"]) === 'school nurse')) { ?>
               <li class="sidebar-item">
                 <a href="addCheckup.php" class="sidebar-link">
                   <div class="round-16 d-flex align-items-center justify-content-center">

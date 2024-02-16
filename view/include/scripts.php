@@ -16,7 +16,7 @@
 
 <script src="../dist/libs/sweetalert2/dist/sweetalert2.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.js"></script>
-<script src="https://cdn.ckeditor.com/ckeditor5/40.0.0/classic/ckeditor.js"></script>
+<!-- <script src="https://cdn.ckeditor.com/ckeditor5/40.0.0/classic/ckeditor.js"></script> -->
 <script>
     
 
@@ -33,21 +33,21 @@
 
     //         })
     // })
-    let findingsEditor,prescriptionEditor
-    ClassicEditor.
-            create(document.querySelector( '.findings' ), {
-                toolbar: ['bold', 'italic',  'bulletedList', 'numberedList'],
-            }).then(editor => {
-                window.editor = editor;
-                findingsEditor = editor;
-            })
-            ClassicEditor.
-            create(document.querySelector( '.prescription' ), {
-                toolbar: ['bold', 'italic',  'bulletedList', 'numberedList'],
-            }).then(editor => {
-                window.editor = editor;
-                prescriptionEditor = editor;
-            })
+    // let findingsEditor,prescriptionEditor
+    // ClassicEditor.
+    //         create(document.querySelector( '.findings' ), {
+    //             toolbar: ['bold', 'italic',  'bulletedList', 'numberedList'],
+    //         }).then(editor => {
+    //             window.editor = editor;
+    //             findingsEditor = editor;
+    //         })
+    //         ClassicEditor.
+    //         create(document.querySelector( '.prescription' ), {
+    //             toolbar: ['bold', 'italic',  'bulletedList', 'numberedList'],
+    //         }).then(editor => {
+    //             window.editor = editor;
+    //             prescriptionEditor = editor;
+    //         })
 
 
 

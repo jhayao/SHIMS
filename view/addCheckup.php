@@ -1,6 +1,6 @@
 <?php isset($_GET['edit']) ? $edit = $_GET['edit'] : $edit = 0; ?>
 <?php include_once('include/head.php'); ?>
-<?php print_r($_SESSION); ?>
+
 
 <body>
     <!-- Preloader -->
@@ -252,7 +252,7 @@
                                                         <input type="text" class="form-control"
                                                             id="others_mouth_throat_neck"
                                                             name="others_mouth_throat_neck" placeholder="Please specify"
-                                                            required>
+                                                            >
                                                         <div class="invalid-feedback">
                                                             Please enter a value for Others (Mouth/Throat/Neck).
                                                         </div>
@@ -337,9 +337,9 @@
                                                         <label for="deformities_input"
                                                             class="form-label fw-semibold">Deformities Input</label>
                                                         <input type="text" class="form-control" id="deformities_input"
-                                                            name="deformities_input" placeholder="Deformities Input">
+                                                            name="deformities_input" placeholder="Specify">
                                                         <div class="invalid-feedback">
-                                                            Please enter a value for Deformities Input.
+                                                            Please enter a value for Deformities Specify.
                                                         </div>
                                                     </div>
 
@@ -365,56 +365,38 @@
                                                         <tbody>
                                                             <tr>
                                                                 <td>Iron Supplementation</td>
-                                                                <td><input type="checkbox" id="iron_supplementation" name="iron_supplementation" value="check"></td>
+                                                                <td><input type="checkbox" id="iron_supplementation"
+                                                                        name="iron_supplementation" value="check"></td>
                                                             </tr>
                                                             <tr>
                                                                 <td>Deworming</td>
-                                                                <td><input type="checkbox" id="deworming" name="deworming" value="check"></td>
+                                                                <td><input type="checkbox" id="deworming"
+                                                                        name="deworming" value="check"></td>
                                                             </tr>
                                                             <tr>
                                                                 <td>SBFP Beneficiary</td>
-                                                                <td><input type="checkbox" id="sbfp_beneficiary" name="sbfp_beneficiary" value="check"></td>
+                                                                <td><input type="checkbox" id="sbfp_beneficiary"
+                                                                        name="sbfp_beneficiary" value="check"></td>
                                                             </tr>
                                                             <tr>
                                                                 <td>4P's Beneficiary</td>
-                                                                <td><input type="checkbox" id="fourps_beneficiary" name="fourps_beneficiary" value="check"></td>
+                                                                <td><input type="checkbox" id="fourps_beneficiary"
+                                                                        name="fourps_beneficiary" value="check"></td>
                                                             </tr>
                                                             <tr>
                                                                 <td>Menarche</td>
-                                                                <td><input type="checkbox" id="menarche" name="menarche" value="check"></td>
+                                                                <td><input type="checkbox" id="menarche" name="menarche"
+                                                                        value="check"></td>
                                                             </tr>
                                                             <tr>
                                                                 <td>Others</td>
-                                                                <td><input type="text" id="others" class="form-control" name="others"></td>
+                                                                <td><input type="text" id="others" class="form-control"
+                                                                        name="others"></td>
                                                             </tr>
                                                         </tbody>
                                                     </table>
 
-
-
-
-
                                                 </div>
-                                                <!-- <div class="mb-4">
-                                                        <label for="findings"
-                                                            class="form-label fw-semibold">Findings</label>
-                                                            <textarea id="findings" class="form-control" name="findings" rows="5"  required></textarea>
-                                                        <div class="invalid-feedback">
-                                                            Please enter an Findings.
-                                                        </div>
-                                                    </div> -->
-                                                <!-- <div class="mb-4">
-                                                    <label for="findings" class="form-label fw-semibold">Finding</label>
-                                                    <textarea id="editor" class="form-control findings" name="findings"
-                                                        rows="5"></textarea>
-                                                </div>
-                                                <div class="mb-4">
-                                                    <label for="prescription"
-                                                        class="form-label fw-semibold">Prescription</label>
-                                                    <textarea id="editor" class="form-control prescription"
-                                                        contenteditable="true" accesskey="" name="prescription"
-                                                        rows="5"></textarea>
-                                                </div> -->
 
                                                 <div class="col-12">
                                                     <div
@@ -482,13 +464,6 @@
                     othersContainer.hide();
                 }
             });
-
-            //init select2
-            // $('.select2').select2({
-            //     placeholder: "Select a option",
-            //     allowClear: true
-            // });
-
             $.ajax({
                 url: "../controller/studentController.php",
                 type: "POST",
@@ -510,173 +485,41 @@
                         student_id.append('<option value="' + value.id + '">' + student_name +
                             '</option>');
                     });
-                    if (<?php echo ($edit); ?>) {
-                        student_id.val(studentID).trigger("change");
-                    }
+                    // if (<?php echo ($edit); ?>) {
+                    //     student_id.val(studentID).trigger("change");
+                    // }
                 }
             })
 
 
 
-            //request ajax to get all division
-            // $.ajax({
-            //     url: "../controller/divisionController.php",
-            //     type: "POST",
-            //     dataType: "json",
-            //     data: {
-            //         function: "getAllDivision",
-
-            //     },
-            //     success: function (data) {
-            //         //set all inputs from return data
-            //         var division_id = $('#division_id');
-            //         division_id.empty();
-            //         division_id.append('<option value="" selected disabled>Select Division</option>');
-            //         data = data.data
-            //         $.each(data, function (index, value) {
-            //             //console.log(value)
-            //             division_id.append('<option value="' + value.id + '">' + value.division_name +
-            //                 '</option>');
-            //         });
-
-            //     }
-            // })
 
 
 
 
 
-            //select2 division_id on change
-            // $('#division_id').on('change', function (event, districtId = null, schoolId = null, studentID = null) {
-            //     //console.log("district ID" + districtId)
-            //     //console.log("school ID" + schoolId)
-            //     //console.log("student ID" + studentID)
-            //     var district_id = $('#district_id');
-            //     district_id.empty().trigger("change");
-            //     var division_id = $(this).val();
-            //     //request ajax to get all district by division_id
-            //     $.ajax({
-            //         url: "../controller/districtController.php",
-            //         type: "POST",
-            //         dataType: "json",
-            //         data: {
-            //             function: "getDistrictsByDivisionName",
-            //             division_id: division_id
-            //         },
-            //         success: function (data) {
-            //             //set all inputs from return data
-            //             data = data.data
-            //             var district_id = $('#district_id');
-            //             district_id.empty();
-            //             district_id.append('<option value="" selected disabled>Select District</option>');
-            //             $.each(data, function (index, value) {
-            //                 district_id.append('<option value="' + value.id + '">' + value.district_name +
-            //                     '</option>');
-            //             });
-            //             if (<?php echo ($edit); ?> && districtId != null) {
-            //                 district_id.val(districtId).trigger("change", [schoolId, studentID]);
-            //             }
-            //         }
-
-            //     })
-
-            // })
-
-            //district_id on change and call schoolController
-            // $('#district_id').on('change', function (event, schoolId = null, studentID = null) {
-            //     let school_id = $('#school_id');
-            //     school_id.empty();
-            //     //console.log(event);
-            //     //request ajax to get all school
-            //     $.ajax({
-            //         url: "../controller/schoolController.php",
-            //         type: "POST",
-            //         dataType: "json",
-            //         data: {
-            //             function: "getSchoolbyDistrictId",
-            //             district_id: $(this).val()
-            //         },
-            //         success: function (data) {
-            //             data = data.data
-            //             //set all inputs from return data
-            //             school_id.empty();
-            //             school_id.append('<option value="" selected disabled>Select School</option>');
-            //             $.each(data, function (index, value) {
-            //                 school_id.append('<option value="' + value.id + '">' + value.school_name +
-            //                     '</option>');
-            //             });
-            //             //console.log(schoolId)
-            //             if (<?php echo ($edit); ?> && schoolId != null) {
-
-            //                 school_id.val(schoolId).trigger("change", studentID);
-            //             }
-            //         },
-            //         complete: function () {
-
-            //         }
-            //     })
-            // })
-
-
-
-
-
-            //get all student when school change
-            $('#school_id').on('change', function (event, studentID = null) {
-                //console.log("Student ID " + studentID)
-                var student_id = $('#student_id');
-                student_id.empty();
-                //request ajax to get all student
-                $.ajax({
-                    url: "../controller/studentController.php",
-                    type: "POST",
-                    dataType: "json",
-                    data: {
-                        function: "getStudentbySchoolId",
-                        school_id: $(this).val()
-                    },
-                    success: function (data) {
-                        data = data.data
-                        //console.log(data)
-                        //set all inputs from return data
-
-                        student_id.empty();
-                        student_id.append('<option value="" selected disabled>Select Student</option>');
-                        $.each(data, function (index, value) {
-                            student_name = value.firstname + ' ' + value.lastname;
-                            student_id.append('<option value="' + value.id + '">' + student_name +
-                                '</option>');
-                        });
-                        if (<?php echo ($edit); ?>) {
-                            student_id.val(studentID).trigger("change");
-                        }
-                    }
-                })
-            })
-
-
-
-
-
-            var checkupForm = document.getElementById('checkupForm');
-            var checkupFormValidation = Array.prototype.filter.call(checkupForm, function (form) {
-                form.addEventListener('submit', function (event) {
-                    if (form.checkValidity() === false) {
-                        event.preventDefault();
-                        event.stopPropagation();
-                    }
-                    form.classList.add('was-validated');
-                }, false);
-            });
 
             $('#checkupForm').submit(function (event) {
+
                 event.preventDefault();
                 var form = $(this);
+                console.log(form[0]);
                 if (form[0].checkValidity() === false) {
+                    for (var i = 0; i < form[0].elements.length; i++) {
+                        var element = form[0].elements[i];
+                        if (!element.checkValidity()) {
+                            console.log(element.name + ' is not valid');
+                            console.log(element.validity);
+                        }
+                    }
+                    console.log("test ValidityState");
                     event.stopPropagation();
                 } else {
+
                     // Submit the form
                     var formdata = new FormData(this);
+                    console.log(formdata);
+                    formdata.append("school_id", <?php echo $_SESSION['userInfo']['assigned']; ?>);
                     if (<?php echo ($edit); ?>) {
                         formdata.append("function", "updateCheckup");
                         formdata.append("id", <?php echo (isset($_GET['id']) ? $_GET['id'] : 0); ?>);
@@ -684,7 +527,7 @@
                     else {
                         formdata.append("function", "addCheckup");
                     }
-
+                    console.log("formdata", formdata)
                     $.ajax({
                         url: "../controller/checkupController.php",
                         type: "POST",
@@ -738,17 +581,56 @@
                         console.log(data)
                         //set all inputs from return data
                         //console.log(data.district_id,data.school_id,data.student_id)
-                        $('#division_id').val(data.division_id).trigger("change", [data.district_id, data.school_id, data.student_id]);
+                        $('#student_id').val(data.student_id).prop("readonly", true).trigger("change");
+                        $('#heart_rate').val(data.heart_rate);
+                        $('#bmi').val(data.BMI).trigger("change");
+                        $('#height_for_age').val(data.height_for_age).trigger("change");
+                        $('#vision_screening').val(data.vision_screening).trigger("change");
+                        $('#auditory_screening').val(data.auditory_screening).trigger("change");
+                        $('#skin_scalp').val(data.skin_scalp.split(',')).trigger("change");
+                        $('#eyes_ear_nose').val(data.eyes_ear_nose.split(',')).trigger("change");
+                        console.log(data.mouth_throat_neck)
+                        if (!$("#mouth_throat_neck option[value='" + data.mouth_throat_neck + "']").length) {
+                            $('#others_mouth_throat_neck').val(data.mouth_throat_neck);
+                            data.mouth_throat_neck = "Others";
+                        }
+
+                        if (!$("#lungs_heart option[value='" + data.lungs_heart + "']").length) {
+                            $('#others_lungs_heart').val(data.lungs_heart);
+                            data.lungs_heart = "Others";
+                        }
+
+                        if (!$("#abdomen option[value='" + data.abdomen + "']").length) {
+                            $('#others_abdomen').val(data.abdomen);
+                            data.abdomen = "Others";
+                        }
+
+                        if (!$("#deformities option[value='" + data.deformities + "']").length) {
+                            $('#deformities_input').val(data.deformities);
+                            data.deformities = "Congenital";
+                        }
+                        
+                        $('#mouth_throat_neck').val(data.mouth_throat_neck).trigger("change");
+                        $('#lungs_heart').val(data.lungs_heart).trigger("change");
+                        $('#abdomen').val(data.abdomen).trigger("change");
+                        $('#deformities').val(data.deformities).trigger("change");
+                        $('#immunization').val(data.immunization);
+                        $('#iron_supplementation').prop('checked', data.iron_supplementation == 1);
+                        $('#deworming').prop('checked', data.deworming == 1);
+                        $('#sbfp_beneficiary').prop('checked', data.sbfp_beneficiary == 1);
+                        $('#fourps_beneficiary').prop('checked', data.fourps_beneficiary == 1);
+                        $('#menarche').prop('checked', data.menarche == 1);
+                        $('#others').val(data.others);
                         $('#height').val(data.height);
                         $('#weight').val(data.weight);
                         $('#temperature').val(data.temperature);
-                        $('.findings').text(data.findings);
-                        $('input[name="findings"]').text(data.findings)
-                        console.log(data.prescription)
+                        // $('.findings').text(data.findings);
+                        // $('input[name="findings"]').text(data.findings)
+                        // console.log(data.prescription)
 
                         // Use the editor instance API.
-                        findingsEditor.setData(data.findings);
-                        prescriptionEditor.setData(data.prescription)
+                        // findingsEditor.setData(data.findings);
+                        // prescriptionEditor.setData(data.prescription)
 
                     }
                 })

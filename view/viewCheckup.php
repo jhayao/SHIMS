@@ -62,9 +62,9 @@
                                         <th>Height</th>
                                         <th>Temperature</th>
                                         <th>Weight</th>
-                                        <th>Findings</th>
-                                        <th>Prescription</th>
-                                        <?php if ($_SESSION['user_type'] == 'admin' || ($_SESSION['user_type'] === 'nurse' &&  $_SESSION["userInfo"]["nurse_type"] === 'school nurse')) { ?>
+                                        <!-- <th>Findings</th>
+                                        <th>Prescription</th> -->
+                                        <?php if ($_SESSION['user_type'] == 'admin' || ($_SESSION['user_type'] === 'nurse' &&  strtolower($_SESSION["userInfo"]["nurse_type"]) === 'school nurse')) { ?>
                                         <th>Options</th>
                                         <?php } ?>  
                                     </tr>
@@ -119,7 +119,8 @@
                     "url": "../controller/checkupController.php",
                     "type": "POST",
                     "data": {
-                        "function": "getAllCheckup"
+                        "function": "getAllCheckupbySchoolId",
+                        "schoolId": "<?php echo $_SESSION['userInfo']['assigned']; ?>"
                     },
                 },
                 columns: [{
@@ -142,13 +143,13 @@
                     {
                         "data": "weight"
                     },
-                    {
-                        "data": "findings"
-                    },
-                    {
-                        "data": "prescription"
-                    },
-                    <?php if ($_SESSION['user_type'] == 'admin' || ($_SESSION['user_type'] === 'nurse' &&  $_SESSION["userInfo"]["nurse_type"] === 'school nurse')) { ?>
+                    // {
+                    //     "data": "findings"
+                    // },
+                    // {
+                    //     "data": "prescription"
+                    // },
+                    <?php if ($_SESSION['user_type'] == 'admin' || ($_SESSION['user_type'] === 'nurse' &&  strtolower($_SESSION["userInfo"]["nurse_type"]) === 'school nurse')) { ?>
                     {
                         "data": "id",
                         createdCell: function(cell, cellData, rowData, rowIndex, colIndex) {

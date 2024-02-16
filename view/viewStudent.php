@@ -112,7 +112,13 @@
                     "url": "../controller/studentController.php",
                     "type": "POST",
                     "data": {
-                        "function": "getAllStudent"
+                        <?php
+                        if ($_SESSION['user_type'] === 'nurse' && strtolower($_SESSION["userInfo"]["nurse_type"]) === 'school nurse') {
+                            echo ' "function": "getStudentbySchoolId" , "school_id": ' . $_SESSION["userInfo"]["assigned"] . '';
+                        } else {
+                            echo '"function": "getAllStudent"';
+                        }
+                        ?>
                     },
                 },
                 columns: [{

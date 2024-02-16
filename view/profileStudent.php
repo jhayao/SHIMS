@@ -1,4 +1,8 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 $id = isset($_GET['id']) ? $_GET['id'] : '';
 if ($id == '' || !isset($id)) {
   header('Location: dashboard.php');
@@ -19,7 +23,7 @@ $row = $result->fetch_assoc();
 $address = $row['street'] . ", " . $row['barangay'] . ", " . $row['city'] . ", " . $row['province'] . ", " . $row['postal'];
 
 $conn = new Connection();
-$query = "select information.id, CONCAT(student.firstname,' ', student.middlename, ' ', student.lastname) as studentName, CONCAT(nurse.firstname,' ',nurse.middlename,' ',nurse.lastname) as nurseName,information.height,information.temperature, information.weight, information.created_at, information.findings,information.prescription from student inner join information on student.id = information.student_id inner join nurse on nurse.id = information.nurse_id where student.id = ? order by information.created_at desc";
+$query = "select information.id, CONCAT(student.firstname,' ', student.middlename, ' ', student.lastname) as studentName, CONCAT(nurse.firstname,' ',nurse.middlename,' ',nurse.lastname) as nurseName,information.* from student inner join information on student.id = information.student_id inner join nurse on nurse.id = information.nurse_id where student.id = ? order by information.created_at desc";
 $connection = new Connection();
 $conn = $connection->connect();
 $stmt = $conn->prepare($query);
@@ -250,13 +254,29 @@ $conn->close();
                       <h6 class="fw-semibold mb-0 fs-4"><?php echo $row['nurseName'] ?></h6>
                       <span class="fs-2"><span class="p-1 bg-muted rounded-circle d-inline-block"></span> <?php echo $row['created_at']?></span>
                     </div>
-                    <p class="my-3"> <span class="h5">Height</span> : <?php echo $row['height']?></p>
-                    <p class="my-3"> <span class="h5">Weight</span> : <?php echo $row['weight']?></p>
-                    <p class="my-3"> <span class="h5">Temperature</span> : <?php echo $row['temperature']?></p>
-                    <p class="my-3"><span class="h5">Findings </span> : <?php echo  $row['findings'] !="" ? $row['findings'] : "None" ?>
-                    </p>
-                    <!-- <br> -->
-                    <p class="my-3"><span class="h5">Prescriptions</span> :  <?php echo $row['prescription'] != "" ? $row['prescription'] : "None" ?>
+                    <p class="my-3"> <span class="h5">Height</span> : <?php echo $row['height']?> meters</p>
+                    <p class="my-3"> <span class="h5">Weight</span> : <?php echo $row['weight']?> kilograms</p>
+                    <p class="my-3"> <span class="h5">Temperature</span> : <?php echo $row['temperature'] ?>&deg;C</p>
+                    <p class="my-3"> <span class="h5">BMI</span> : <?php echo $row['BMI']?></p>
+                    <p class="my-3"> <span class="h5">Heart Rate</span> : <?php echo $row['heart_rate']?></p>
+                    <p class="my-3"> <span class="h5">Height for Age</span> : <?php echo $row['height_for_age']?></p>
+                    <p class="my-3"> <span class="h5">Vision Screening</span> : <?php echo $row['vision_screening']?></p>
+                    <p class="my-3"> <span class="h5">Auditory Screening</span> : <?php echo $row['auditory_screening']?></p>
+                    <p class="my-3"> <span class="h5">Skin/Scalp</span> : <?php echo $row['skin_scalp']?></p>
+                    <p class="my-3"> <span class="h5">Eyes/Ear/Nose</span> : <?php echo $row['eyes_ear_nose']?></p>
+                    <p class="my-3"> <span class="h5">Mouth/Throat/Neck</span> : <?php echo $row['mouth_throat_neck']?></p>
+                    <p class="my-3"> <span class="h5">Lungs/Heart</span> : <?php echo $row['lungs_heart']?></p>
+                    <p class="my-3"> <span class="h5">Abdomen</span> : <?php echo $row['abdomen']?></p>
+                    <p class="my-3"> <span class="h5">Deformities</span> : <?php echo $row['deformities']?></p>
+                    <p class="my-3"> <span class="h5">Immunization</span> : <?php echo $row['immunization']?></p>
+                    <p class="my-3"> <span class="h5">Iron Supplementation</span> : <?php echo $row['iron_supplementation'] == 1 ? "Yes" : "No" ?></p>
+                    
+                    <p class="my-3"> <span class="h5">Deworming</span> : <?php echo $row['deworming'] == 1 ? "Yes" : "No" ?></p>
+                    <p class="my-3"> <span class="h5">SBFP Beneficiary</span> : <?php echo $row['sbfp_beneficiary']  == 1 ? "Yes" : "No"?></p>
+                    <p class="my-3"> <span class="h5">4P's Beneficiary</span> : <?php echo $row['fourps_beneficiary']  == 1 ? "Yes" : "No"?></p>
+                    <p class="my-3"> <span class="h5">Menarche</span> : <?php echo $row['menarche']  == 1 ? "Yes" : "No" ?></p>
+                    <p class="my-3"> <span class="h5">Others</span> : <?php echo $row['others']?></p>
+                    
                     </p>
                     
                   </div>

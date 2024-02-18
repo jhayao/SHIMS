@@ -27,12 +27,12 @@
                     <div class="card-body px-4 py-3">
                         <div class="row align-items-center">
                             <div class="col-9">
-                                <h4 class="fw-semibold mb-8">List of Student</h4>
+                                <h4 class="fw-semibold mb-8">Create new Report</h4>
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
-                                        <li class="breadcrumb-item"><a class="text-muted" href="nurse.php">Nurse</a>
+                                        <li class="breadcrumb-item"><a class="text-muted" href="#">Report</a>
                                         </li>
-                                        <li class="breadcrumb-item" aria-current="page">List of Student</li>
+                                        <li class="breadcrumb-item" aria-current="page">Create new Report</li>
                                     </ol>
                                 </nav>
                             </div>

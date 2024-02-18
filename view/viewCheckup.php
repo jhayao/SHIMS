@@ -62,6 +62,7 @@
                                         <th>Height</th>
                                         <th>Temperature</th>
                                         <th>Weight</th>
+                                        <th>Checkup Date</th>
                                         <!-- <th>Findings</th>
                                         <th>Prescription</th> -->
                                         <?php if ($_SESSION['user_type'] == 'admin' || ($_SESSION['user_type'] === 'nurse' &&  strtolower($_SESSION["userInfo"]["nurse_type"]) === 'school nurse')) { ?>
@@ -143,14 +144,11 @@
                     {
                         "data": "weight"
                     },
-                    // {
-                    //     "data": "findings"
-                    // },
-                    // {
-                    //     "data": "prescription"
-                    // },
-                    <?php if ($_SESSION['user_type'] == 'admin' || ($_SESSION['user_type'] === 'nurse' &&  strtolower($_SESSION["userInfo"]["nurse_type"]) === 'school nurse')) { ?>
                     {
+                        "data": "created_at"
+                    }
+                    <?php if ($_SESSION['user_type'] == 'admin' || ($_SESSION['user_type'] === 'nurse' &&  strtolower($_SESSION["userInfo"]["nurse_type"]) === 'school nurse')) { ?>
+                    ,{
                         "data": "id",
                         createdCell: function(cell, cellData, rowData, rowIndex, colIndex) {
                             

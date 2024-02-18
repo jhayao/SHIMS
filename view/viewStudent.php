@@ -118,7 +118,7 @@
                         } else {
                             echo '"function": "getAllStudent"';
                         }
-                        ?>
+                        ?>,
                     },
                 },
                 columns: [{

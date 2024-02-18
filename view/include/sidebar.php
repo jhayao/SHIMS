@@ -1,4 +1,6 @@
+
 <aside class="left-sidebar">
+
   <!-- Sidebar scroll-->
   <div>
     <div class="brand-logo d-flex align-items-center justify-content-between">
@@ -75,10 +77,10 @@
                   <div class="round-16 d-flex align-items-center justify-content-center">
                     <i class="ti ti-circle"></i>
                   </div>
-                  <span class="hide-menu">List</span>
+                  <span class="hide-menu">List </span>
                 </a>
               </li>
-              <?php if ($_SESSION['user_type'] == 'admin' || ($_SESSION['user_type'] === 'nurse' &&  $_SESSION["userInfo"]["nurse_type"] === 'school nurse')) { ?>
+              <?php if ($_SESSION['user_type'] == 'admin' || ($_SESSION['user_type'] === 'nurse' &&  strtolower($_SESSION["userInfo"]["nurse_type"]) == 'school nurse')) { ?>
                 <li class="sidebar-item">
                 <li class="sidebar-item">
                   <a href="addStudent.php" class="sidebar-link">
@@ -213,14 +215,14 @@
         <?php } ?>
 
 
-        <!-- <li class="sidebar-item">
+        <li class="sidebar-item">
           <a class="sidebar-link" href="viewReport.php" aria-expanded="false">
             <span>
               <i class="ti ti-cpu"></i>
             </span>
             <span class="hide-menu">Reports</span>
           </a>
-        </li> -->
+        </li>
         <!-- <li class="sidebar-item">
           <a class="sidebar-link" href="index5.html" aria-expanded="false">
             <span>

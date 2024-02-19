@@ -32,9 +32,12 @@ if (!isset($_SESSION['user_type'])) {
 
     <!-- Core Css -->
     <link id="themeColors" rel="stylesheet" href="../dist/css/style.min.css" />
-
+    <!-- <link rel="stylesheet" href="../dist/libs/flatpickr/dist/flatpickr.min.css"> -->
     <link rel="stylesheet" href="../dist/libs/datatables.net-bs5/css/dataTables.bootstrap5.min.css">
     <link rel="stylesheet" href="../dist/libs/sweetalert2/dist/sweetalert2.min.css">
+    <link rel="stylesheet" type="text/css" href=https://cdn.datatables.net/searchpanes/2.1.1/css/searchPanes.dataTables.min.css>
+    </head>
+    
     <style>
         .ck-editor__editable_inline {
             min-height: 250px;

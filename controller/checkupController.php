@@ -16,7 +16,7 @@ class Checkup
         $school_id = isset($_POST['schoolId']) ? $_POST['schoolId'] : '';
 
         $conn = new Connection();
-        $query = "select information.id, CONCAT(student.firstname,' ', student.middlename, ' ', student.lastname) as studentName, CONCAT(nurse.firstname,' ',nurse.middlename,' ',nurse.lastname) as nurseName,information.height,information.temperature, information.weight, information.created_at from student inner join information on student.id = information.student_id inner join nurse on nurse.id = information.nurse_id where student.school_id = ?";
+        $query = "select information.id, CONCAT(student.firstname,' ', student.middlename, ' ', student.lastname) as studentName, CONCAT(nurse.firstname,' ',nurse.middlename,' ',nurse.lastname) as nurseName,information.* from student inner join information on student.id = information.student_id inner join nurse on nurse.id = information.nurse_id where student.school_id = ?";
         $connection = new Connection();
         $conn = $connection->connect();
         $stmt = $conn->prepare($query);
@@ -245,6 +245,25 @@ class Checkup
             return json_encode($errorMessageArray);
         }
     }
+
+    function getCheckupDateByStudentId(){
+        ini_set('display_errors', 1);
+        ini_set('display_startup_errors', 1);
+        error_reporting(E_ALL);
+
+        $student_id = isset($_POST['student_id']) ? $_POST['student_id'] : '';
+        $conn = new Connection();
+        $query = "SELECT `id`, `created_at` FROM `information` WHERE `student_id` = ?";
+        $connection = new Connection();
+        $conn = $connection->connect();
+        $stmt = $conn->prepare($query);
+        $stmt->bind_param("i", $student_id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $stmt->close();
+        $conn->close();
+        return $result;
+    }
 }
 
 //listen all post request
@@ -252,6 +271,16 @@ if(isset($_POST['function'])){
     $action = $_POST['function'];
     $checkup = new Checkup();
     switch($action){
+        case 'getCheckupDateByStudentId':
+            // echo "test";
+            $result = $checkup->getCheckupDateByStudentId();
+            $checkupArray = array();
+            while($row = $result->fetch_assoc()){
+                $row['created_at'] = date("F j, Y, g:i a", strtotime($row['created_at']));
+                array_push($checkupArray, $row);
+            }
+            echo json_encode($checkupArray);
+            break;
         case 'addCheckup':
             echo $checkup->addCheckup();
             break;
@@ -271,6 +300,7 @@ if(isset($_POST['function'])){
             $result = $checkup->getAllCheckupbySchoolId();
             $checkupArray = array();
             while($row = $result->fetch_assoc()){
+                $row['created_at'] = date("F j, Y", strtotime($row['created_at']));
                 array_push($checkupArray, $row);
             }
             $dataTable = array('data'=>$checkupArray,'draw'=>1,'recordsTotal'=>count($checkupArray),'recordsFiltered'=>count($checkupArray));
@@ -280,6 +310,7 @@ if(isset($_POST['function'])){
             $result = $checkup->getAllCheckup();
             $checkupArray = array();
             while($row = $result->fetch_assoc()){
+               
                 array_push($checkupArray, $row);
             }
             $dataTable = array('data'=>$checkupArray,'draw'=>1,'recordsTotal'=>count($checkupArray),'recordsFiltered'=>count($checkupArray));

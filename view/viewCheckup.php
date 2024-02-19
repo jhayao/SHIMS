@@ -1,4 +1,4 @@
-<?php include_once('include/head.php'); ?> 
+<?php include_once('include/head.php'); ?>
 
 <body>
     <!-- Preloader -->
@@ -30,7 +30,8 @@
                                 <h4 class="fw-semibold mb-8">List of Checkups</h4>
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
-                                        <li class="breadcrumb-item"><a class="text-muted" href="viewCheckup.php">Checkups</a>
+                                        <li class="breadcrumb-item"><a class="text-muted"
+                                                href="viewCheckup.php">Checkups</a>
                                         </li>
                                         <li class="breadcrumb-item" aria-current="page">List of Checkups</li>
                                     </ol>
@@ -62,18 +63,72 @@
                                         <th>Height</th>
                                         <th>Temperature</th>
                                         <th>Weight</th>
+                                        <th>BMI</th>
+                                        <th>Heart Rate</th>
+                                        <th>Height for Age</th>
+                                        <th>Vision Screening</th>
+                                        <th>Auditory Screening</th>
+                                        <th>Skin Scalp</th>
+                                        <th>Eyes Ear Nose</th>
+                                        <th>Mouth Throat Neck</th>
+                                        <th>Lungs Heart</th>
+                                        <th>Abdomen</th>
+                                        <th>Deformities</th>
+                                        <th>Immunization</th>
+                                        <th>Iron Supplementation</th>
+                                        <th>Deworming</th>
+                                        <th>SBFP Beneficiary</th>
+                                        <th>FourPs Beneficiary</th>
+                                        <th>Menarche</th>
+                                        <th>Others</th>
                                         <th>Checkup Date</th>
                                         <!-- <th>Findings</th>
                                         <th>Prescription</th> -->
-                                        <?php if ($_SESSION['user_type'] == 'admin' || ($_SESSION['user_type'] === 'nurse' &&  strtolower($_SESSION["userInfo"]["nurse_type"]) === 'school nurse')) { ?>
-                                        <th>Options</th>
-                                        <?php } ?>  
+                                        <?php if ($_SESSION['user_type'] == 'admin' || ($_SESSION['user_type'] === 'nurse' && strtolower($_SESSION["userInfo"]["nurse_type"]) === 'school nurse')) { ?>
+                                            <th>Options</th>
+                                        <?php } ?>
                                     </tr>
                                     <!-- end row -->
                                 </thead>
                                 <tbody>
 
                                 </tbody>
+                                <tfoot>
+                                    <!-- start row -->
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Student Name</th>
+                                        <th>Cheked By</th>
+                                        <th>Height</th>
+                                        <th>Temperature</th>
+                                        <th>Weight</th>
+                                        <th>BMI</th>
+                                        <th>Heart Rate</th>
+                                        <th>Height for Age</th>
+                                        <th>Vision Screening</th>
+                                        <th>Auditory Screening</th>
+                                        <th>Skin Scalp</th>
+                                        <th>Eyes Ear Nose</th>
+                                        <th>Mouth Throat Neck</th>
+                                        <th>Lungs Heart</th>
+                                        <th>Abdomen</th>
+                                        <th>Deformities</th>
+                                        <th>Immunization</th>
+                                        <th>Iron Supplementation</th>
+                                        <th>Deworming</th>
+                                        <th>SBFP Beneficiary</th>
+                                        <th>FourPs Beneficiary</th>
+                                        <th>Menarche</th>
+                                        <th>Others</th>
+                                        <th>Checkup Date</th>
+                                        <!-- <th>Findings</th>
+                                        <th>Prescription</th> -->
+                                        <?php if ($_SESSION['user_type'] == 'admin' || ($_SESSION['user_type'] === 'nurse' && strtolower($_SESSION["userInfo"]["nurse_type"]) === 'school nurse')) { ?>
+                                            <th>Options</th>
+                                        <?php } ?>
+                                    </tr>
+                                    <!-- end row -->
+                                </tfoot>
                                 <!-- < -->
                             </table>
                         </div>
@@ -82,40 +137,53 @@
             </div>
         </div>
     </div>
-    <?php include_once("./include/extra.php");?>
+    <?php include_once("./include/extra.php"); ?>
     <!--  Customizer -->
 
-    
+
     <?php include_once("./include/scripts.php"); ?>
     <script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
-    <!-- <script src="../../../../../../../cdn.datatables.net/buttons/1.5.1/js/dataTables.buttons.min.js"></script> -->
-    <script src="https://cdn.datatables.net/buttons/2.4.1/js/dataTables.buttons.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/1.6.5/js/buttons.flash.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
-    <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.html5.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.print.min.js"></script>
+    <script src="https://cdn.datatables.net/select/2.0.0/js/select.dataTables.min.js"></script>
+    <script type="text/javascript"
+        src=https://cdn.datatables.net/searchpanes/2.1.1/js/dataTables.searchPanes.min.js></script>
+    <script src="https://cdn.datatables.net/select/1.3.1/js/dataTables.select.min.js"></script>
+
 
     <!-- <script src="../dist/js/datatable/datatable-advanced.init.js"></script> -->
-<!-- Add the following code block before the closing </body> tag -->
+    <!-- Add the following code block before the closing </body> tag -->
 
-    
 
-   
+
+
     <script>
         //onload
         $(document).ready(function () {
 
-            if(<?php echo (isset($_GET['success']) ? true : 0); ?> ){
-                noty.setText("Successfully Added",true);
+            if (<?php echo (isset($_GET['success']) ? true : 0); ?>) {
+                noty.setText("Successfully Added", true);
                 noty.show();
             }
-            
+
+            DataTable.ext.buttons.alert = {
+                className: 'buttons-alert',
+
+                action: function (e, dt, node, config) {
+
+                }
+            };
+
+
             //datatable
             var table = $('#file_export').DataTable({
-                dom: 'Bfrtip',
-                buttons: [ "print"],
+                // dom: 'Bfrtip',
+                searchPanes: {
+                    viewTotal: true,
+                    layout: 'columns-3',
+                    columns: [0, 1, 2, 3, 4]
+                },
+                buttons: [
+                    'searchPanes'
+                ],
                 ajax: {
                     "url": "../controller/checkupController.php",
                     "type": "POST",
@@ -124,14 +192,13 @@
                         "schoolId": "<?php echo $_SESSION['userInfo']['assigned']; ?>"
                     },
                 },
-                columns: [{
+                columns: [
+                    {
                         "data": "id"
                     },
-                   
                     {
                         "data": "studentName"
                     },
-                    
                     {
                         "data": "nurseName"
                     },
@@ -145,77 +212,152 @@
                         "data": "weight"
                     },
                     {
+                        "data": "BMI",
+                        searchable: true
+                    },
+                    {
+                        "data": "heart_rate"
+                    },
+                    {
+                        "data": "height_for_age"
+                    },
+                    {
+                        "data": "vision_screening"
+                    },
+                    {
+                        "data": "auditory_screening"
+                    },
+                    {
+                        "data": "skin_scalp"
+                    },
+                    {
+                        "data": "eyes_ear_nose"
+                    },
+                    {
+                        "data": "mouth_throat_neck"
+                    },
+                    {
+                        "data": "lungs_heart"
+                    },
+                    {
+                        "data": "abdomen"
+                    },
+                    {
+                        "data": "deformities"
+                    },
+                    {
+                        "data": "immunization"
+                    },
+                    {
+                        "data": "iron_supplementation"
+                    },
+                    {
+                        "data": "deworming"
+                    },
+                    {
+                        "data": "sbfp_beneficiary"
+                    },
+                    {
+                        "data": "fourps_beneficiary"
+                    },
+                    {
+                        "data": "menarche"
+                    },
+                    {
+                        "data": "others"
+                    },
+                    {
                         "data": "created_at"
                     }
-                    <?php if ($_SESSION['user_type'] == 'admin' || ($_SESSION['user_type'] === 'nurse' &&  strtolower($_SESSION["userInfo"]["nurse_type"]) === 'school nurse')) { ?>
-                    ,{
-                        "data": "id",
-                        createdCell: function(cell, cellData, rowData, rowIndex, colIndex) {
-                            
-                            $(cell).on('click', '.delete', function() {
-                                // Handle cell click event
-                                Swal.fire({
-                                    title: 'Are you sure?',
-                                    text: "You won't be able to revert this!",
-                                    icon: 'warning',
-                                    showCancelButton: true,
-                                    confirmButtonColor: '#3085d6',
-                                    cancelButtonColor: '#d33',
-                                    confirmButtonText: 'Yes, delete it!'
+                    <?php if ($_SESSION['user_type'] == 'admin' || ($_SESSION['user_type'] === 'nurse' && strtolower($_SESSION["userInfo"]["nurse_type"]) === 'school nurse')) { ?>
+                        , {
+                            "data": "id",
+                            createdCell: function (cell, cellData, rowData, rowIndex, colIndex) {
+                                $(cell).on('click', '.delete', function () {
+                                    // Handle cell click event
+                                    Swal.fire({
+                                        title: 'Are you sure?',
+                                        text: "You won't be able to revert this!",
+                                        icon: 'warning',
+                                        showCancelButton: true,
+                                        confirmButtonColor: '#3085d6',
+                                        cancelButtonColor: '#d33',
+                                        confirmButtonText: 'Yes, delete it!'
                                     }).then((result) => {
-                                    if (result.isConfirmed) {
-
-                                        //delete reuqest ajax
-                                        $.ajax({
-                                            url: "../controller/checkupController.php",
-                                            type: "POST",
-                                            dataType: "json",
-                                            data: {
-                                                "function": "deleteCheckup",
-                                                "id": cellData
-                                            },
-                                            success: function (data) {
-                                                console.log(data);
-                                                if(data.success){
-                                                    Swal.fire(
-                                                        'Deleted!',
-                                                        'Your file has been deleted.',
-                                                        'success'
+                                        if (result.isConfirmed) {
+                                            //delete reuqest ajax
+                                            $.ajax({
+                                                url: "../controller/checkupController.php",
+                                                type: "POST",
+                                                dataType: "json",
+                                                data: {
+                                                    "function": "deleteCheckup",
+                                                    "id": cellData
+                                                },
+                                                success: function (data) {
+                                                    console.log(data);
+                                                    if (data.success) {
+                                                        Swal.fire(
+                                                            'Deleted!',
+                                                            'Your file has been deleted.',
+                                                            'success'
                                                         ).then((result) => {
-                                                            if(result.isConfirmed){
+                                                            if (result.isConfirmed) {
                                                                 location.reload();
                                                             }
                                                         })
-                                                    
+                                                    }
                                                 }
-                                            }
-                                        });
-                                        
-                                    }
+                                            });
+                                        }
                                     })
-                            });
-                        },
-                        "render": function (data, type, row, meta) {
-                            return `<div class="d-flex">
-                                        
-                                        <a href="addCheckup.php?edit=true&id=${data}" class="btn btn-primary   me-1"><i class="ti ti-edit"></i></a>
-                                        <button id="${data}"  class="btn btn-danger delete  me-1"><i class="ti ti-trash-x"></i></button>
-                                    </div>`;
+                                });
+                            },
+                            "render": function (data, type, row, meta) {
+                                return `<div class="d-flex">
+                                                <a href="addCheckup.php?edit=true&id=${data}" class="btn btn-primary me-1"><i class="ti ti-edit"></i></a>
+                                                <button id="${data}" class="btn btn-danger delete me-1"><i class="ti ti-trash-x"></i></button>
+                                            </div>`;
+                            }
                         }
-                    }
                     <?php } ?>
+                ],
+                initComplete: function () {
+                    this.api().columns().every(function () {
+                        var column = this;
+                        var select = $('<select><option value=""></option></select>')
+                            .appendTo($(column.footer()).empty()) // Change $(column.header()) to $(column.footer())
+                            .on('change', function () {
+                                var val = $.fn.dataTable.util.escapeRegex(
+                                    $(this).val()
+                                );
+
+                                column
+                                    .search(val ? '^' + val + '$' : '', true, false)
+                                    .draw();
+                            });
+
+                        column.data().unique().sort().each(function (d, j) {
+                            select.append('<option value="' + d + '">' + d + '</option>')
+                        });
+                    });
+                },
+                buttons: [
+
                 ]
             });
+
+
             $(".buttons-copy, .buttons-csv, .buttons-print, .buttons-pdf, .buttons-excel").addClass(
                 "btn btn-primary mr-1");
 
             //delete
-            
-            
+
+
         });
     </script>
-    
-    
+
+
 
 </body>
 

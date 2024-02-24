@@ -137,6 +137,22 @@ class ReportController
         return $result;
 
     }
+
+    function getReportGroup(){
+        
+    }
+
+    function reportGenerator()
+    {
+        $file = '../assets/dompdf/autoload.inc.php';
+        require_once($file);
+        $html = file_get_contents('../assets/dompdf/template.html');
+        $dompdf = new \Dompdf\Dompdf();
+        $dompdf->loadHtml($html);
+        $dompdf->setPaper('A4', 'portrait');
+        $dompdf->render();
+        $dompdf->stream("report.pdf", array("Attachment" => 0));
+    }
 }
 
 
@@ -169,6 +185,7 @@ if (isset($_GET['action'])) {
             // return;
             $reportController->printPdf();
             break;
+        
     }
 }
 

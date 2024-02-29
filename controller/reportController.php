@@ -42,22 +42,121 @@ class ReportController
     }
 
 
-    function generateReport(array $data)
+    function generateReportGroup($array)
     {
 
-        
+        $daterange = $_POST['daterange'];
+        $bmi = $_POST['bmi'];
+        $height_for_age = $_POST['height_for_age'];
+        $vision_screening = $_POST['vision_screening'];
+        $auditory_screening = $_POST['auditory_screening'];
+        $mouth_throat_neck = $_POST['mouth_throat_neck'];
+        $lungs_heart = $_POST['lungs_heart'];
+        $others_lungs_heart = $_POST['others_lungs_heart'];
+        $abdomen = $_POST['abdomen'];
+        $deformities = $_POST['deformities'];
+        $deformities_input = $_POST['deformities_input'];
+        $immunization = $_POST['immunization'];
+        $iron_supplementation = $_POST['iron_supplementation'];
+        $deworming = $_POST['deworming'];
+        $sbfp_beneficiary = $_POST['sbfp_beneficiary'];
+        $fourps_beneficiary = $_POST['fourps_beneficiary'];
+        $menarche = $_POST['menarche'];
+
         $file = '../assets/dompdf/autoload.inc.php';
-        $htmlFile = '../assets/dompdf/template.html';
+        $htmlFile = '../assets/dompdf/group.html';
         $htmlTemplate = file_get_contents($htmlFile);
-        
-       
+
+
         // echo $htmlTemplate;
         // exit;
         require_once($file);
         // use Dompdf\Dompdf;
-      
-        $dompdf = new \Dompdf\Dompdf();;
-        
+
+        $dompdf = new \Dompdf\Dompdf();
+
+        $startLoop = strpos($htmlTemplate, '<!-- start loop -->') + strlen('<!-- start loop -->');
+        $endLoop = strpos($htmlTemplate, '<!-- end loop -->');
+        $tableTemplate = substr($htmlTemplate, $startLoop, $endLoop - $startLoop);
+
+        $COUNT = 1;
+        if ($array->num_rows > 0) {
+
+
+            foreach ($array as $key => $value) {
+
+                $tblTemp = $tableTemplate;
+                $tblTemp = str_replace('{count}', $COUNT, $tableTemplate);
+                $tblTemp = str_replace('{name}', $value['name'], $tblTemp);
+                $tblTemp = str_replace('{sex}', $value['sex'], $tblTemp);
+                $tblTemp = str_replace('{dob}', $value['dob'], $tblTemp);
+                $tblTemp = str_replace('{email}', $value['email'], $tblTemp);
+
+                $COUNT = $COUNT + 1;
+                $tableLoop = $tableLoop . $tblTemp;
+
+                // $tableTemp = str_replace
+            }
+        } else {
+                $tblTemp = str_replace('{count}', $COUNT, $tableTemplate);
+                $tblTemp = str_replace('{name}', $value['name'], $tblTemp);
+                $tblTemp = str_replace('{sex}', $value['sex'], $tblTemp);
+                $tblTemp = str_replace('{dob}', $value['dob'], $tblTemp);
+                $tblTemp = str_replace('{email}', $value['email'], $tblTemp);
+                $tableLoop = '<tr>
+                    <td colspan="5" style="text-align: center;">No Students available</td>
+                </tr>';
+        }
+
+        $htmlTemplate = str_replace($tableTemplate, $tableLoop, $htmlTemplate);
+        $htmlTemplate = str_replace('{date}', $daterange, $htmlTemplate);
+        $htmlTemplate = str_replace('{bmi}', $bmi, $htmlTemplate);
+        $htmlTemplate = str_replace('{height_for_age}', $height_for_age, $htmlTemplate);
+        $htmlTemplate = str_replace('{vision_screening}', $vision_screening, $htmlTemplate);
+        $htmlTemplate = str_replace('{auditory_screening}', $auditory_screening, $htmlTemplate);
+        $htmlTemplate = str_replace('{mouth_throat_neck}', $mouth_throat_neck, $htmlTemplate);
+        $htmlTemplate = str_replace('{lungs_heart}', $lungs_heart, $htmlTemplate);
+        $htmlTemplate = str_replace('{others_lungs_heart}', $others_lungs_heart, $htmlTemplate);
+        $htmlTemplate = str_replace('{abdomen}', $abdomen, $htmlTemplate);
+        $htmlTemplate = str_replace('{deformities}', $deformities, $htmlTemplate);
+        $htmlTemplate = str_replace('{deformities_input}', $deformities_input, $htmlTemplate);
+        $htmlTemplate = str_replace('{immunization}', $immunization, $htmlTemplate);
+        $htmlTemplate = str_replace('{iron_supplementation}', $iron_supplementation, $htmlTemplate);
+        $htmlTemplate = str_replace('{deworming}', $deworming, $htmlTemplate);
+        $htmlTemplate = str_replace('{sbfp_beneficiary}', $sbfp_beneficiary, $htmlTemplate);
+        $htmlTemplate = str_replace('{fourps_beneficiary}', $fourps_beneficiary, $htmlTemplate);
+        $htmlTemplate = str_replace('{menarche}', $menarche, $htmlTemplate);
+        $htmlTemplate = str_replace('{date}', date("F j, Y, g:i a"), $htmlTemplate);
+        // echo $htmlTemplate;
+        $nurseName = $_SESSION['userInfo']['firstname'] . ' ' . $_SESSION['userInfo']['middlename'] . ' ' . $_SESSION['userInfo']['lastname'];
+        // $nurseName = . /
+        $htmlTemplate = str_replace('{nurse_name}', $nurseName, $htmlTemplate);
+        // echo json_encode($_SESSION['userInfo']['firstname']);
+        // exit();
+        $dompdf->loadHtml($htmlTemplate);
+        // $dompdf->setOptions($options);
+        $dompdf->setPaper('legal', 'portrait');
+        $dompdf->render();
+        $dompdf->stream("report.pdf", array("Attachment" => 0));
+
+    }
+    function generateReport(array $data)
+    {
+
+        // echo json_encode($data);
+        $file = '../assets/dompdf/autoload.inc.php';
+        $htmlFile = '../assets/dompdf/template.html';
+        $htmlTemplate = file_get_contents($htmlFile);
+
+
+        // echo $htmlTemplate;
+        // exit;
+        require_once($file);
+        // use Dompdf\Dompdf;
+
+        $dompdf = new \Dompdf\Dompdf();
+        ;
+
 
 
 
@@ -94,7 +193,7 @@ class ReportController
             $tableLoop .= $tableTemp;
             // echo $tableTemp;
         }
-        
+
         $htmlTemplate = str_replace($tableTemplate, $tableLoop, $htmlTemplate);
         require_once('studentController.php');
         // require_once('nurseController.php');
@@ -108,11 +207,11 @@ class ReportController
         $htmlTemplate = str_replace('{school_name}', $studentData['school_name'], $htmlTemplate);
         $htmlTemplate = str_replace('{address}', $studentData['street'] . ', ' . $studentData['barangay'] . ', ' . $studentData['city'] . ', ' . $studentData['province'], $htmlTemplate);
         $htmlTemplate = str_replace('{dob}', date("F j, Y", strtotime($studentData['dob'])), $htmlTemplate);
-        $htmlTemplate = str_replace('{contact}', $studentData['contact'], $htmlTemplate);   
+        $htmlTemplate = str_replace('{contact}', $studentData['contact'], $htmlTemplate);
         $htmlTemplate = str_replace('{sex}', $studentData['sex'], $htmlTemplate);
         $nurseName = $_SESSION['userInfo']['firstname'] . ' ' . $_SESSION['userInfo']['middlename'] . ' ' . $_SESSION['userInfo']['lastname'];
         // $nurseName = . /
-        $htmlTemplate = str_replace('{nurse_name}',$nurseName , $htmlTemplate);
+        $htmlTemplate = str_replace('{nurse_name}', $nurseName, $htmlTemplate);
         // echo json_encode($_SESSION['userInfo']['firstname']);
         // exit();
         $dompdf->loadHtml($htmlTemplate);
@@ -122,10 +221,16 @@ class ReportController
         $dompdf->stream("report.pdf", array("Attachment" => 0));
     }
 
-    function getReportbyStudentId(){
-        $studentId = $_GET['student_id'];
-       
-        $query = "SELECT * FROM `information` WHERE student_id = ?";
+    function getReportbyStudentId()
+    {
+        $studentId = $_POST['student'];
+        $checkup_date = $_POST['checkup_date'];
+        if ($checkup_date != "") {
+            $query = "SELECT * FROM `information` WHERE student_id = ? and id = $checkup_date";
+        } else {
+            $query = "SELECT * FROM `information` WHERE student_id = ?";
+        }
+
         $connection = new Connection();
         $conn = $connection->connect();
         $stmt = $conn->prepare($query);
@@ -138,32 +243,106 @@ class ReportController
 
     }
 
-    function getReportGroup(){
-        
+    function getReportGroup()
+    {
+        // set a variable for each posted data
+
+        $daterange = $_POST['daterange'];
+        $bmi = $_POST['bmi'];
+        $height_for_age = $_POST['height_for_age'];
+        $vision_screening = $_POST['vision_screening'];
+        $auditory_screening = $_POST['auditory_screening'];
+        $mouth_throat_neck = $_POST['mouth_throat_neck'];
+        $lungs_heart = $_POST['lungs_heart'];
+        $others_lungs_heart = $_POST['others_lungs_heart'];
+        $abdomen = $_POST['abdomen'];
+        $deformities = $_POST['deformities'];
+        $deformities_input = $_POST['deformities_input'];
+        $immunization = $_POST['immunization'];
+        $iron_supplementation = $_POST['iron_supplementation'];
+        $deworming = $_POST['deworming'];
+        $sbfp_beneficiary = $_POST['sbfp_beneficiary'];
+        $fourps_beneficiary = $_POST['fourps_beneficiary'];
+        $menarche = $_POST['menarche'];
+
+        if ($daterange != "") {
+            $daterange = explode(' - ', $daterange);
+            $start = date('Y-m-d', strtotime($daterange[0]));
+            $end = date('Y-m-d', strtotime($daterange[1]));
+            $daterange = "AND created_at BETWEEN '$start' AND '$end'";
+        } else {
+            $daterange = '';
+        }
+
+        $bmi = $bmi != "" ? "AND BMI = '$bmi'" : '';
+        $height_for_age = $height_for_age != "" ? "AND height_for_age = '$height_for_age'" : '';
+        $vision_screening = $vision_screening != "" ? "AND vision_screening = '$vision_screening'" : '';
+        $auditory_screening = $auditory_screening != "" ? "AND auditory_screening = '$auditory_screening'" : '';
+        $mouth_throat_neck = $mouth_throat_neck != "" ? "AND mouth_throat_neck = '$mouth_throat_neck'" : '';
+        $lungs_heart = $lungs_heart != "" ? "AND lungs_heart = '$lungs_heart'" : '';
+        $others_lungs_heart = $others_lungs_heart != "" ? "AND others_lungs_heart = '$others_lungs_heart'" : '';
+        $abdomen = $abdomen != "" ? "AND abdomen = '$abdomen'" : '';
+        $deformities = $deformities != "" ? "AND deformities = '$deformities'" : '';
+        $deformities_input = $deformities_input != "" ? "AND deformities_input = '$deformities_input'" : '';
+        $immunization = $immunization != "" ? "AND immunization = '$immunization'" : '';
+        $iron_supplementation = $iron_supplementation != "" ? "AND iron_supplementation = '$iron_supplementation'" : '';
+        $deworming = $deworming != "" ? "AND deworming = '$deworming'" : '';
+        $sbfp_beneficiary = $sbfp_beneficiary != "" ? "AND sbfp_beneficiary = '$sbfp_beneficiary'" : '';
+        $fourps_beneficiary = $fourps_beneficiary != "" ? "AND fourps_beneficiary = '$fourps_beneficiary'" : '';
+        $menarche = $menarche != "" ? "AND menarche = '$menarche'" : '';
+
+
+        $sql = "SELECT student.*, CONCAT(student.firstname , ' ',student.middlename, ' ' , student.lastname) as `name` FROM `information` inner join student on student.id = information.student_id WHERE 1 $daterange $bmi $height_for_age $vision_screening $auditory_screening $mouth_throat_neck $lungs_heart $others_lungs_heart $abdomen $deformities $deformities_input $immunization $iron_supplementation $deworming $sbfp_beneficiary $fourps_beneficiary $menarche group by student.id";
+        // echo $sql;
+        $connection = new Connection();
+        $conn = $connection->connect();
+        $stmt = $conn->prepare($sql);
+        // $stmt->bind_param('s', $studentId);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        // $result = "";
+        // echo json_encode($result);
+        $stmt->close();
+        $conn->close();
+        return $result;
+
     }
 
     function reportGenerator()
     {
-        $file = '../assets/dompdf/autoload.inc.php';
-        require_once($file);
-        $html = file_get_contents('../assets/dompdf/template.html');
-        $dompdf = new \Dompdf\Dompdf();
-        $dompdf->loadHtml($html);
-        $dompdf->setPaper('A4', 'portrait');
-        $dompdf->render();
-        $dompdf->stream("report.pdf", array("Attachment" => 0));
+        $report = $_POST['report'];
+        // $student = $_POST['student'];
+        // $checkup_date = $_POST['checkup_date'];
+
+        // echo $report;
+
+        if ($report == 2) {
+            $result = $this->getReportGroup();
+            $this->generateReportGroup($result);
+            // $this->generateReportGroup();
+        } else {
+            $result = $this->getReportbyStudentId();
+            $reportArray = array();
+            while ($row = $result->fetch_assoc()) {
+                array_push($reportArray, $row);
+            }
+            $this->generateReport($reportArray);
+            // break;
+            // $this->getReportbyStudentId();
+        }
     }
 }
 
 
 //listen to get
-if (isset($_GET['action'])) {
-    $action = $_GET['action'];
+if (isset($_POST['function'])) {
+    $action = $_POST['function'];
     $reportController = new ReportController();
     switch ($action) {
-        // case 'generateReport':
-        //     $reportController->generateReport();
-        //     break;
+        case 'generateReport':
+            $reportController->reportGenerator();
+            break;
         case 'getReportbyStudentId':
             $result = $reportController->getReportbyStudentId();
             $reportArray = array();
@@ -185,7 +364,7 @@ if (isset($_GET['action'])) {
             // return;
             $reportController->printPdf();
             break;
-        
+
     }
 }
 

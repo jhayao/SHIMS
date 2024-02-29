@@ -74,7 +74,8 @@
                                         <h5 class="card-title fw-semibold">Personal Details</h5>
                                         <p class="card-subtitle mb-4">To change your personal detail , edit and save
                                             from here</p>
-                                        <form id="divisionForm" novalidate>
+                                        <form id="divisionForm" action="../controller/reportController.php" method="post" novalidate>
+                                            <input type="hidden" name="function" value="generateReport">
                                             <div class="row">
                                                 <div class="col">
 
@@ -82,7 +83,7 @@
                                                         <label for="report" class="form-label fw-semibold">Report
                                                             Type</label>
                                                         <select class="form-control select2" id="report" name="report"
-                                                            required>
+                                                            >
                                                             <option value="">Select a Report Type</option>
                                                             <option value="1">Individual Report</option>
                                                             <option value="2">Group Report</option>
@@ -96,8 +97,8 @@
                                                         <div class="mb-4">
                                                             <label for="student" class="form-label fw-semibold">Student
                                                                 Name</label>
-                                                            <select class="form-control select2 required"
-                                                                id="student required" name="student">
+                                                            <select class="form-control select2 "
+                                                                id="student" name="student">
                                                                 <option value="">Select a Student</option>
                                                                 <!-- Add options dynamically here -->
                                                             </select>
@@ -108,10 +109,10 @@
                                                         <div class="mb-4">
                                                             <label for="checkup_date"
                                                                 class="form-label fw-semibold">Checkup Date</label>
-                                                            <select class="form-control select2 required"
-                                                                id="checkup_date required" name="checkup_date" required
+                                                            <select class="form-control select2 "
+                                                                id="checkup_date" name="checkup_date" 
                                                                 disabled>
-                                                                <option value="">Select All</option>
+                                                                <option value="0" selected>Select All</option>
                                                             </select>
                                                             <div class="invalid-feedback">
                                                                 Please select a Checkup Date.
@@ -153,8 +154,8 @@
                                                             <div class="mb-4 col-4 schoolCol" id="schoolCol">
                                                                 <label for="school"
                                                                     class="form-label fw-semibold">School</label>
-                                                                <select class="form-control select2 required"
-                                                                    id="school" name="school" required>
+                                                                <select class="form-control select2 "
+                                                                    id="school" name="school" >
                                                                     <option value="">Select a School</option>
 
                                                                     <!-- Add options dynamically here -->
@@ -167,7 +168,7 @@
                                                                 <label for="checkup_date"
                                                                     class="form-label fw-semibold">Checkup Date</label>
                                                                 <input class="form-control" type="text" name="daterange"
-                                                                    value="<?php echo date('m/d/Y', strtotime('-10 days')) . " - " . date('m/d/Y'); ?>" required />
+                                                                    value="<?php echo date('m/d/Y', strtotime('-10 days')) . " - " . date('m/d/Y'); ?>"  />
                                                                 <div class="invalid-feedback">
                                                                     Please select a Checkup Date.
                                                                 </div>
@@ -552,7 +553,7 @@
     <script>
         //onload
         $(document).ready(function () {
-            <?php $_SESSION['userInfo']['nurse_type'] = "district nurse";
+            <?php $_SESSION['userInfo']['nurse_type'] = "school nurse";
             $_SESSION['userInfo']['assigned'] = 3 ?>
 
             function initDivision() {
@@ -652,8 +653,8 @@
 
 
 
-
-            $.ajax({
+            function getStudentbySchoolId(){
+                $.ajax({
                 url: '../controller/studentController.php',
                 type: 'POST',
                 dataType: 'json',
@@ -666,13 +667,18 @@
                     // console.log(data)
                     // var data = JSON.parse(response);
 
-                    var html = '';
+                    var html = '<option value="0" selected>Select All</option>';
                     for (var i = 0; i < data.length; i++) {
                         html += '<option value="' + data[i].id + '">' + data[i].firstname + " " + data[i].middlename + " " + data[i].lastname + '</option>';
+                        
                     }
+                    $('#student').empty(); // Clear the student before appending
                     $('#student').append(html);
+                    
                 }
             });
+            }
+            
 
 
             $("#student").on('change', function () {
@@ -688,7 +694,7 @@
                         student_id: student_id
                     },
                     success: function (data) {
-                        var html = '<option value="">Select All</option>';
+                        var html = '<option value="0">Select All</option>';
                         for (var i = 0; i < data.length; i++) {
                             html += '<option value="' + data[i].id + '">' + data[i].created_at + '</option>';
                         }
@@ -726,32 +732,35 @@
                     e.stopPropagation();
                 }
                 this.classList.add('was-validated');
+                
+                
 
             });
 
             $("#individual").hide()
             $("#group").hide()
             $("#h1group").hide()
-            // $("#individual").find('select').prop('required', false);
-            // $("#group").find('select').prop('required', false);
+            // $("#individual").find('select').prop('', false);
+            // $("#group").find('select').prop('', false);
 
             $("#report").on('change', function () {
                 var report = $(this).val();
                 if (report == 2) {
                     $("#individual").hide()
-                    $("#individual").find('.required').prop('required', false);
+                    // $("#individual").find('.').prop('', false);
                     $("#group").show()
-                    $("#group").find('.required').prop('required', true);
+                    // $("#group").find('.').prop('', true);
                 } else if (report == 1) {
                     $("#individual").show()
-                    $("#individual").find('.required').prop('required', true);
+                    // $("#individual").find('.').prop('', true);
                     $("#group").hide()
-                    $("#group").find('.required').prop('required', false);
+                    // $("#group").find('.').prop('', false);
+                    getStudentbySchoolId();
                 } else {
                     $("#individual").hide()
-                        ("#individual").prop('.required', false);
+                    // $("#individual").prop('.', false);
                     $("#group").hide()
-                    $("#group").find('.required').prop('required', false);
+                    // $("#group").find('.').prop('', false);
                     $("h1group").hide()
                 }
             });

@@ -225,7 +225,7 @@ class ReportController
     {
         $studentId = $_POST['student'];
         $checkup_date = $_POST['checkup_date'];
-        if ($checkup_date != "") {
+        if ($checkup_date != "0") {
             $query = "SELECT * FROM `information` WHERE student_id = ? and id = $checkup_date";
         } else {
             $query = "SELECT * FROM `information` WHERE student_id = ?";

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Feb 16, 2024 at 06:13 AM
+-- Generation Time: Feb 29, 2024 at 04:43 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -57,7 +57,11 @@ CREATE TABLE `district` (
 
 INSERT INTO `district` (`id`, `district_name`, `address`, `division_id`) VALUES
 (2, 'Dist1', 'Dist1', 2),
-(3, 'test', 'test', 4);
+(3, 'test', 'test', 4),
+(4, 'District 2 4', 'District2 ', 4),
+(5, 'District 3 4', 'District 3', 4),
+(6, 'District 2 2', 'District2 ', 2),
+(7, 'District 3 2', 'District 3', 2);
 
 -- --------------------------------------------------------
 
@@ -106,8 +110,24 @@ CREATE TABLE `information` (
   `height` decimal(10,0) NOT NULL,
   `temperature` decimal(10,0) NOT NULL,
   `weight` decimal(10,0) NOT NULL,
-  `findings` text NOT NULL,
-  `prescription` text NOT NULL,
+  `BMI` varchar(50) NOT NULL,
+  `heart_rate` varchar(50) NOT NULL,
+  `height_for_age` varchar(50) NOT NULL,
+  `vision_screening` varchar(50) NOT NULL,
+  `auditory_screening` varchar(50) NOT NULL,
+  `skin_scalp` varchar(50) NOT NULL,
+  `eyes_ear_nose` varchar(50) NOT NULL,
+  `mouth_throat_neck` varchar(50) NOT NULL,
+  `lungs_heart` varchar(50) NOT NULL,
+  `abdomen` varchar(50) NOT NULL,
+  `deformities` varchar(50) NOT NULL,
+  `immunization` varchar(50) NOT NULL,
+  `iron_supplementation` tinyint(4) NOT NULL,
+  `deworming` tinyint(4) NOT NULL,
+  `sbfp_beneficiary` tinyint(4) NOT NULL,
+  `fourps_beneficiary` tinyint(4) NOT NULL,
+  `menarche` tinyint(4) NOT NULL,
+  `others` varchar(50) NOT NULL,
   `created_at` timestamp NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -115,12 +135,17 @@ CREATE TABLE `information` (
 -- Dumping data for table `information`
 --
 
-INSERT INTO `information` (`id`, `student_id`, `nurse_id`, `school_id`, `height`, `temperature`, `weight`, `findings`, `prescription`, `created_at`) VALUES
-(1, 3, 5, 1, 45, 45, 45, '<ol><li>dwadawawdawd</li></ol>', '<ol><li>dawdawdawdaw</li></ol>', '2023-11-12 00:24:00'),
-(2, 3, 15, 1, 45, 45, 45, '<ol><li>dawdawd</li></ol>', '<ol><li>dawdawdaw</li></ol>', '2023-11-13 00:02:06'),
-(3, 1, 5, 3, 45, 35, 42, '<ol><li>dwadawdawdawd</li><li>dawdawdaw</li></ol>', '<ol><li>dawdawdawd</li><li>adwdawdwa</li></ol>', '2023-11-13 00:05:15'),
-(4, 1, 5, 3, 24, 23, 45, '<ol><li>dawdawdawdawd</li></ol>', '<ol><li>dawdawdawd</li></ol>', '2023-11-13 01:18:46'),
-(5, 50, 5, 3, 24, 23, 45, '<ol><li>dawdawdawdawd</li></ol>', '<ol><li>dawdawdawd</li></ol>', '2023-11-13 01:18:46');
+INSERT INTO `information` (`id`, `student_id`, `nurse_id`, `school_id`, `height`, `temperature`, `weight`, `BMI`, `heart_rate`, `height_for_age`, `vision_screening`, `auditory_screening`, `skin_scalp`, `eyes_ear_nose`, `mouth_throat_neck`, `lungs_heart`, `abdomen`, `deformities`, `immunization`, `iron_supplementation`, `deworming`, `sbfp_beneficiary`, `fourps_beneficiary`, `menarche`, `others`, `created_at`) VALUES
+(1, 3, 42, 3, 35, 53, 35, 'Normal Weight', '35', 'Normal height', 'Pass', 'Pass', 'Array', 'Array', 'Normal', 'Normal', 'Normal', 'Acquired', '34343', 1, 1, 1, 1, 1, 'dawdawdwa', '2024-02-16 06:19:56'),
+(2, 1, 42, 3, 35, 53, 35, 'Normal Weight', '35', 'Normal height', 'Pass', 'Pass', 'Normal', 'Array', 'Normal', 'Normal', 'Normal', 'Acquired', '34343', 1, 1, 1, 1, 1, 'dawdawdwa', '2024-02-16 06:21:34'),
+(3, 1, 42, 3, 35, 53, 35, 'Normal Weight', '35', 'Normal height', 'Pass', 'Pass', 'Normal,Presence of Lice', 'Array', 'Normal', 'Normal', 'Normal', 'Acquired', '34343', 1, 1, 1, 1, 1, 'dawdawdwa', '2024-02-16 06:22:15'),
+(4, 1, 42, 3, 35, 53, 35, 'Normal Weight', '35', 'Normal height', 'Pass', 'Pass', 'Normal,Presence of Lice', 'Array', 'Normal', 'Normal', 'Normal', 'Acquired', '34343', 1, 1, 1, 1, 1, 'dawdawdwa', '2024-02-16 06:22:33'),
+(5, 1, 42, 3, 35, 53, 35, 'Normal Weight', '35', 'Normal height', 'Pass', 'Pass', 'Normal,Presence of Lice', 'Normal,Eye Redness', 'Normal', 'Normal', 'Normal', 'Acquired', '34343', 1, 1, 1, 1, 1, 'dawdawdwa', '2024-02-16 06:23:01'),
+(6, 1, 42, 3, 35, 53, 35, 'Normal Weight', '35', 'Normal height', 'Pass', 'Pass', 'Normal,Presence of Lice,Skin lesions', 'Normal,Eye Redness,Ocular misalignment', 'Others', 'Normal', 'Normal', 'Acquired', '34343', 1, 1, 1, 1, 1, 'dawdawdwa', '2024-02-16 06:25:32'),
+(7, 1, 42, 3, 35, 53, 35, 'Normal Weight', '35', 'Normal height', 'Pass', 'Pass', 'Normal,Presence of Lice,Skin lesions', 'Normal,Eye Redness,Ocular misalignment', 'fawadw', 'Normal', 'Normal', 'Acquired', '34343', 1, 1, 1, 1, 1, 'dawdawdwa', '2024-02-16 06:27:33'),
+(8, 1, 42, 3, 35, 53, 35, 'Normal Weight', '35', 'Normal height', 'Pass', 'Pass', 'Normal,Presence of Lice,Skin lesions', 'Normal,Eye Redness,Ocular misalignment', 'fawadw', 'dawdawd', 'wdawdwad', 'Congenital', '34343', 1, 1, 1, 1, 1, 'dawdawdwa', '2024-02-16 06:28:41'),
+(10, 1, 42, 3, 35, 53, 35, 'Normal Weight', '35', 'Normal height', 'Pass', 'Pass', 'Normal,Presence of Lice,Skin lesions', 'Normal,Eye Redness,Ocular misalignment', 'fawadw', 'dawdawd', 'wdawdwad', 'dawdwadaw', '34343', 1, 1, 1, 0, 1, 'test', '2024-02-16 06:30:02'),
+(11, 1, 42, 3, 35, 53, 35, 'Normal Weight', '35', 'Normal height', 'Pass', 'Pass', 'Normal,Presence of Lice,Skin lesions', 'Normal,Eye Redness,Ocular misalignment', 'fawadw', 'dawdawd', 'wdawdwad', 'dawdwadaw', '34343', 1, 1, 1, 0, 0, '', '2024-02-16 06:30:04');
 
 -- --------------------------------------------------------
 
@@ -233,7 +258,14 @@ INSERT INTO `otp` (`id`, `user_id`, `OTP`, `created_at`, `valid_at`) VALUES
 (38, 1011, 166037, '2024-02-16 02:42:39', '2024-02-16 10:47:39'),
 (39, 1011, 948232, '2024-02-16 02:46:15', '2024-02-16 10:51:15'),
 (40, 1020, 225016, '2024-02-16 02:48:06', '2024-02-16 10:53:06'),
-(41, 1020, 431424, '2024-02-16 02:48:10', '2024-02-16 10:53:10');
+(41, 1020, 431424, '2024-02-16 02:48:10', '2024-02-16 10:53:10'),
+(42, 1020, 134654, '2024-02-16 23:08:58', '2024-02-17 07:13:58'),
+(43, 1020, 751234, '2024-02-19 00:47:00', '2024-02-19 08:52:00'),
+(44, 1020, 859681, '2024-02-21 01:37:34', '2024-02-21 09:42:34'),
+(45, 1020, 662027, '2024-02-24 01:39:21', '2024-02-24 09:44:21'),
+(46, 1020, 584932, '2024-02-29 00:41:16', '2024-02-29 08:46:16'),
+(47, 1020, 339110, '2024-02-29 02:44:50', '2024-02-29 10:49:50'),
+(48, 1020, 376179, '2024-02-29 02:44:53', '2024-02-29 10:49:53');
 
 -- --------------------------------------------------------
 
@@ -455,7 +487,7 @@ ALTER TABLE `checkup`
 -- AUTO_INCREMENT for table `district`
 --
 ALTER TABLE `district`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `division`
@@ -473,7 +505,7 @@ ALTER TABLE `grade`
 -- AUTO_INCREMENT for table `information`
 --
 ALTER TABLE `information`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `nurse`
@@ -485,7 +517,7 @@ ALTER TABLE `nurse`
 -- AUTO_INCREMENT for table `otp`
 --
 ALTER TABLE `otp`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- AUTO_INCREMENT for table `report`

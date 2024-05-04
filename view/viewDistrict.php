@@ -129,7 +129,11 @@
                     "data": "address"
                 },
                 {
-                    "data": "division_name"
+                    "data": null,
+                    "render": function (data, type, row) {
+                        return "<a href='profileDivision.php?id=" + data.division_id + "'>" + data.division_name +
+                            "</a>";
+                    }
                 },
                 {
                     "data": "id",
@@ -178,7 +182,7 @@
                     },
                     "render": function (data, type, row, meta) {
                         return `<div class="d-flex">
-                                        
+                                        <a href="profileDistrict.php?id=${data}" class="btn btn-success   me-1"><i class="ti ti-eye"></i></a>
                                         <a href="addDistrict.php?edit=true&id=${data}" class="btn btn-primary   me-1"><i class="ti ti-edit"></i></a>
                                         <button id="${data}"  class="btn btn-danger delete  me-1"><i class="ti ti-trash-x"></i></button>
                                     </div>`;

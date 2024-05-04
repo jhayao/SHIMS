@@ -1,6 +1,7 @@
-<?php include_once('include/head.php'); ?> 
+<?php include_once ('include/head.php'); ?>
 <?php isset($_GET['edit']) ? $edit = $_GET['edit'] : $edit = 0; ?>
 <link rel="stylesheet" href="../dist/libs/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+
 <body>
     <!-- Preloader -->
     <div class="preloader">
@@ -16,25 +17,27 @@
     <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-sidebartype="full"
         data-sidebar-position="fixed" data-header-position="fixed">
         <!-- Sidebar Start -->
-        <?php include_once('include/sidebar.php'); ?>
+        <?php include_once ('include/sidebar.php'); ?>
         <!--  Sidebar End -->
         <!--  Main wrapper -->
         <div class="body-wrapper">
             <!--  Header Start -->
-            <?php include_once('include/header.php'); ?>
+            <?php include_once ('include/header.php'); ?>
             <!--  Header End -->
             <div class="container-fluid">
                 <div class="card bg-light-info shadow-none position-relative overflow-hidden">
                     <div class="card-body px-4 py-3">
                         <div class="row align-items-center">
                             <div class="col-9">
-                                <h4 class="fw-semibold mb-8"><?php echo ($edit ? "Edit Student" : "Add Student");?></h4>
+                                <h4 class="fw-semibold mb-8"><?php echo ($edit ? "Edit Student" : "Add Student"); ?></h4>
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
-                                        <li class="breadcrumb-item"><a class="text-muted" href="viewStudent.php">Student</a>
+                                        <li class="breadcrumb-item"><a class="text-muted"
+                                                href="viewStudent.php">Student</a>
                                         </li>
                                         <li class="breadcrumb-item" aria-current="page">
-                                            <?php echo ($edit ? "Edit Student" : "Add Student");?></li>
+                                            <?php echo ($edit ? "Edit Student" : "Add Student"); ?>
+                                        </li>
                                     </ol>
                                 </nav>
                             </div>
@@ -77,21 +80,19 @@
                                             <div class="row">
                                                 <div class="col-lg-6">
                                                     <div class="mb-4">
-                                                        <label for="firstname"
-                                                            class="form-label fw-semibold">First Name</label>
+                                                        <label for="firstname" class="form-label fw-semibold">First
+                                                            Name</label>
                                                         <input type="text" class="form-control " id="firstname"
-                                                            name="firstname" placeholder="Mathew Anderson"
-                                                            required>
+                                                            name="firstname" placeholder="Mathew Anderson" required>
                                                         <div class="invalid-feedback">
                                                             Please enter a First Name.
                                                         </div>
                                                     </div>
                                                     <div class="mb-4">
-                                                        <label for="middlename"
-                                                            class="form-label fw-semibold">Middle Name</label>
+                                                        <label for="middlename" class="form-label fw-semibold">Middle
+                                                            Name</label>
                                                         <input type="text" class="form-control" id="middlename"
-                                                            name="middlename" placeholder="Mathew Anderson"
-                                                            required>
+                                                            name="middlename" placeholder="Mathew Anderson" required>
                                                         <div class="invalid-feedback">
                                                             Please enter a Middle Name.
                                                         </div>
@@ -100,22 +101,21 @@
                                                         <label for="lastname" class="form-label fw-semibold">Last
                                                             Name</label>
                                                         <input type="text" class="form-control" id="lastname"
-                                                            name="lastname" placeholder="Mathew Anderson"
-                                                            required>
+                                                            name="lastname" placeholder="Mathew Anderson" required>
                                                         <div class="invalid-feedback">
                                                             Please enter a Last Name.
                                                         </div>
                                                     </div>
                                                     <div class="mb-4">
-                                                        <label for="dob"
-                                                            class="form-label fw-semibold">Birthday</label>
-                                                            <div class="input-group">
-                                                            <input type="text" class="form-control mydatepicker" id ="dob" name="dob" placeholder="mm/dd/yyyy" />
+                                                        <label for="dob" class="form-label fw-semibold">Birthday</label>
+                                                        <div class="input-group">
+                                                            <input type="text" class="form-control mydatepicker"
+                                                                id="dob" name="dob" placeholder="mm/dd/yyyy" />
 
                                                             <span class="input-group-text">
                                                                 <i class="ti ti-calendar fs-5"></i>
                                                             </span>
-                                                            </div>
+                                                        </div>
                                                         <div class="invalid-feedback">
                                                             Please enter a Birthday.
                                                         </div>
@@ -125,20 +125,18 @@
                                                 </div>
                                                 <div class="col-lg-6">
                                                     <div class="mb-4">
-                                                        <label for="guardian" class="form-label fw-semibold">Guardian Name</label>
+                                                        <label for="guardian" class="form-label fw-semibold">Guardian
+                                                            Name</label>
                                                         <input type="text" class="form-control" id="guardian"
-                                                            name="guardian" placeholder="Mathew Anderson"
-                                                            required>
+                                                            name="guardian" placeholder="Mathew Anderson" required>
                                                         <div class="invalid-feedback">
                                                             Please enter a Guardian Name.
                                                         </div>
                                                     </div>
                                                     <div class="mb-4">
-                                                        <label for="email"
-                                                            class="form-label fw-semibold">Email</label>
-                                                        <input type="email" class="form-control" id="email"
-                                                            name="email" placeholder="info@modernize.com"
-                                                            >
+                                                        <label for="email" class="form-label fw-semibold">Email</label>
+                                                        <input type="email" class="form-control" id="email" name="email"
+                                                            placeholder="info@modernize.com">
                                                         <div class="invalid-feedback">
                                                             Please enter a valid Email.
                                                         </div>
@@ -154,8 +152,7 @@
                                                     </div>
 
                                                     <div class="mb-4">
-                                                        <label for="sex"
-                                                            class="form-label fw-semibold">Sex</label>
+                                                        <label for="sex" class="form-label fw-semibold">Sex</label>
                                                         <select class="select2 form-control"
                                                             aria-label="Default select example" id="sex" required
                                                             name="sex">
@@ -173,8 +170,7 @@
                                                         <label for="street"
                                                             class="form-label fw-semibold">Street</label>
                                                         <input type="text" class="form-control" id="street"
-                                                            name="street"
-                                                            placeholder="" required>
+                                                            name="street" placeholder="" required>
                                                         <div class="invalid-feedback">
                                                             Please enter a valid Street
                                                         </div>
@@ -183,18 +179,15 @@
                                                         <label for="barangay"
                                                             class="form-label fw-semibold">Barangay</label>
                                                         <input type="text" class="form-control" id="barangay"
-                                                            name="barangay"
-                                                            placeholder="" required>
+                                                            name="barangay" placeholder="" required>
                                                         <div class="invalid-feedback">
                                                             Please enter a valid Barangay
                                                         </div>
                                                     </div>
                                                     <div class="mb-4">
-                                                        <label for="city"
-                                                            class="form-label fw-semibold">City</label>
+                                                        <label for="city" class="form-label fw-semibold">City</label>
                                                         <select class="select2 form-control"
-                                                            aria-label="Default select example" id="city"
-                                                            name="city">
+                                                            aria-label="Default select example" id="city" name="city">
                                                             <!-- City of Misamis Occidenta-->
                                                             <option selected>Tangub</option>
                                                             <optgroup label="Cities">
@@ -240,18 +233,17 @@
                                                         <label for="postal"
                                                             class="form-label fw-semibold">Postal</label>
                                                         <input type="text" class="form-control" id="postal"
-                                                            name="postal"
-                                                            placeholder="" required>
+                                                            name="postal" placeholder="" required>
                                                         <div class="invalid-feedback">
                                                             Please enter a valid Postal
                                                         </div>
                                                     </div>
                                                     <div class="mb-4">
-                                                        <label for="type" class="form-label fw-semibold">School Name</label>
+                                                        <label for="type" class="form-label fw-semibold">School
+                                                            Name</label>
                                                         <select class="select2 form-control"
-                                                            aria-label="Default select example" id="type"
-                                                            name="type">
-                                                            
+                                                            aria-label="Default select example" id="type" name="type">
+
                                                         </select>
                                                     </div>
                                                 </div>
@@ -259,8 +251,9 @@
                                                     <div
                                                         class="d-flex align-items-center justify-content-end mt-4 gap-3">
                                                         <button
-                                                            class="btn btn-primary"><?php echo ($edit ? "Update" : "Save");?></button>
-                                                        <button class="btn btn-light-danger text-danger" onclick="window.location.href='viewStudent.php'">Cancel</button>
+                                                            class="btn btn-primary"><?php echo ($edit ? "Update" : "Save"); ?></button>
+                                                        <button class="btn btn-light-danger text-danger"
+                                                            onclick="window.location.href='viewStudent.php'">Cancel</button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -275,9 +268,9 @@
             </div>
         </div>
     </div>
-    <?php include_once("./include/extra.php");?>
+    <?php include_once ("./include/extra.php"); ?>
     <!--  Customizer -->
-    <?php include_once("./include/scripts.php"); ?>
+    <?php include_once ("./include/scripts.php"); ?>
     <script src="../dist/libs/moment-js/moment.js"></script>
     <script src="../dist/libs/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
     <script>
@@ -303,11 +296,11 @@
                         option.value = data[i].id;
                         select.add(option);
                     }
-                   //
+                    //
                 }
             })
 
-            if ( <?php echo(isset($_GET['edit']) ? true : 0); ?> ) {
+            if (<?php echo (isset($_GET['edit']) ? true : 0); ?>) {
                 //request ajax to get data of student by id
 
                 $.ajax({
@@ -316,7 +309,7 @@
                     dataType: "json",
                     data: {
                         function: "editStudent",
-                        id: <?php echo(isset($_GET['id']) ? $_GET['id'] : 0); ?>
+                        id: <?php echo (isset($_GET['id']) ? $_GET['id'] : 0); ?>
                     },
                     success: function (data) {
                         //set all inputs from return data
@@ -329,7 +322,7 @@
                         $('#email').val(data.email);
                         $('#contact').val(data.contact);
                         $('#guardian').val(data.guardian);
-                        $('#dob').datepicker('setDate',data.dob);
+                        $('#dob').datepicker('setDate', data.dob);
                         // datepickerElement.datepicker('setDate', '2022-01-01');
                         $('#street').val(data.street);
                         $('#barangay').val(data.barangay);
@@ -361,49 +354,48 @@
                 } else {
                     // Submit the form
                     var formdata = new FormData(this);
-                    if( <?php echo($edit);?>)
-                    {
+                    if (<?php echo ($edit); ?>) {
                         formdata.append("function", "updateStudent");
-                        formdata.append("id", <?php echo(isset($_GET['id']) ? $_GET['id'] : 0); ?>);
+                        formdata.append("id", <?php echo (isset($_GET['id']) ? $_GET['id'] : 0); ?>);
                     }
                     else {
                         formdata.append("function", "addStudent");
                     }
-                    
+
                     $.ajax({
                         url: "../controller/studentController.php",
                         type: "POST",
                         data: formdata,
                         contentType: false,
                         processData: false,
-                        dataType: "json",   
+                        dataType: "json",
                         success: function (data) {
                             // console.log(data);
                             //trim data
                             // data = data.trim();
                             console.log(data)
-                            
+
                             // const myArray = data.split(":");
-                            
+
                             // console.log(error)
 
 
                             if (data.success == 'true') {
                                 window.location.href = "viewStudent.php?success=1";
                             } else {
-                                if (data.errorCode == 1062){
+                                if (data.errorCode == 1062) {
                                     let duplicate = data.errorMessage.split("'");
                                     noty.setText("Error : " + duplicate[1] + " already exist for " + duplicate[3] + " attribute", true);
                                     // noty.setText("Error : Email already exist", true);
-                                    noty.setType("error",true);
+                                    noty.setType("error", true);
                                     noty.show();
                                 }
-                                else{
+                                else {
                                     noty.setText("Error : " + data.errorCode, true);
-                                    noty.setType("error",true);
+                                    noty.setType("error", true);
                                     noty.show();
                                 }
-                                
+
                             }
 
                         },
@@ -411,7 +403,7 @@
                             // data = data.trim();
                             console.log(data);
                             noty.setText("Error", true);
-                            noty.setType("error",true);
+                            noty.setType("error", true);
                             noty.show();
                         }
                     });
@@ -423,7 +415,7 @@
 
         });
 
-        jQuery(".mydatepicker, #datepicker, .input-group.date").datepicker({format: "yyyy-mm-dd",});
+        jQuery(".mydatepicker, #datepicker, .input-group.date").datepicker({ format: "yyyy-mm-dd", });
     </script>
 </body>
 

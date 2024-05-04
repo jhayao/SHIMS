@@ -1,5 +1,5 @@
 <?php isset($_GET['edit']) ? $edit = $_GET['edit'] : $edit = 0; ?>
-<?php include_once('include/head.php'); ?>
+<?php include_once ('include/head.php'); ?>
 
 <body>
     <!-- Preloader -->
@@ -16,12 +16,12 @@
     <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-sidebartype="full"
         data-sidebar-position="fixed" data-header-position="fixed">
         <!-- Sidebar Start -->
-        <?php include_once('include/sidebar.php'); ?>
+        <?php include_once ('include/sidebar.php'); ?>
         <!--  Sidebar End -->
         <!--  Main wrapper -->
         <div class="body-wrapper">
             <!--  Header Start -->
-            <?php include_once('include/header.php'); ?>
+            <?php include_once ('include/header.php'); ?>
             <!--  Header End -->
             <div class="container-fluid">
                 <div class="card bg-light-info shadow-none position-relative overflow-hidden">
@@ -74,7 +74,8 @@
                                         <h5 class="card-title fw-semibold">Personal Details</h5>
                                         <p class="card-subtitle mb-4">To change your personal detail , edit and save
                                             from here</p>
-                                        <form id="divisionForm" action="../controller/reportController.php" method="post" novalidate>
+                                        <form id="divisionForm" action="../controller/reportController.php"
+                                            method="post" novalidate>
                                             <input type="hidden" name="function" value="generateReport">
                                             <div class="row">
                                                 <div class="col">
@@ -82,11 +83,12 @@
                                                     <div class="mb-4 col-4 ">
                                                         <label for="report" class="form-label fw-semibold">Report
                                                             Type</label>
-                                                        <select class="form-control select2" id="report" name="report"
-                                                            >
+                                                        <select class="form-control select2" id="report" name="report">
                                                             <option value="">Select a Report Type</option>
                                                             <option value="1">Individual Report</option>
-                                                            <option value="2">Group Report</option>
+                                                            <option value="2">Monthly Report</option>
+                                                            <option value="3">Quarterly Report</option>
+                                                            <option value="4">Annual Report</option>
                                                             <!-- Add options dynamically here -->
                                                         </select>
                                                         <div class="invalid-feedback">
@@ -97,8 +99,8 @@
                                                         <div class="mb-4">
                                                             <label for="student" class="form-label fw-semibold">Student
                                                                 Name</label>
-                                                            <select class="form-control select2 "
-                                                                id="student" name="student">
+                                                            <select class="form-control select2 " id="student"
+                                                                name="student">
                                                                 <option value="">Select a Student</option>
                                                                 <!-- Add options dynamically here -->
                                                             </select>
@@ -109,9 +111,8 @@
                                                         <div class="mb-4">
                                                             <label for="checkup_date"
                                                                 class="form-label fw-semibold">Checkup Date</label>
-                                                            <select class="form-control select2 "
-                                                                id="checkup_date" name="checkup_date" 
-                                                                disabled>
+                                                            <select class="form-control select2 " id="checkup_date"
+                                                                name="checkup_date" disabled>
                                                                 <option value="0" selected>Select All</option>
                                                             </select>
                                                             <div class="invalid-feedback">
@@ -154,8 +155,8 @@
                                                             <div class="mb-4 col-4 schoolCol" id="schoolCol">
                                                                 <label for="school"
                                                                     class="form-label fw-semibold">School</label>
-                                                                <select class="form-control select2 "
-                                                                    id="school" name="school" >
+                                                                <select class="form-control select2 " id="school"
+                                                                    name="school">
                                                                     <option value="">Select a School</option>
 
                                                                     <!-- Add options dynamically here -->
@@ -168,7 +169,7 @@
                                                                 <label for="checkup_date"
                                                                     class="form-label fw-semibold">Checkup Date</label>
                                                                 <input class="form-control" type="text" name="daterange"
-                                                                    value="<?php echo date('m/d/Y', strtotime('-10 days')) . " - " . date('m/d/Y'); ?>"  />
+                                                                    value="" />
                                                                 <div class="invalid-feedback">
                                                                     Please select a Checkup Date.
                                                                 </div>
@@ -544,12 +545,18 @@
             </div>
         </div>
     </div>
-    <?php include_once("./include/extra.php"); ?>
+    <?php include_once ("./include/extra.php"); ?>
     <!--  Customizer -->
-    <?php include_once("./include/scripts.php"); ?>
+    <?php include_once ("./include/scripts.php"); ?>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.10.0/js/bootstrap-datepicker.min.js"
+        integrity="sha512-LsnSViqQyaXpD4mBBdRYeP6sRwJiJveh2ZIbW41EBrNmKxgr/LFZIiWT6yr+nycvhvauz8c2nYMhrP80YhG7Cw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.10.0/css/bootstrap-datepicker.min.css"
+        integrity="sha512-34s5cpvaNG3BknEWSuOncX28vz97bRI59UnVtEEpFX536A7BtZSJHsDyFoCl8S7Dt2TPzcrCEoHBGeM4SUBDBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <script>
         //onload
         $(document).ready(function () {
@@ -653,32 +660,32 @@
 
 
 
-            function getStudentbySchoolId(){
+            function getStudentbySchoolId() {
                 $.ajax({
-                url: '../controller/studentController.php',
-                type: 'POST',
-                dataType: 'json',
-                data: {
-                    function: "getStudentbySchoolId",
-                    school_id: <?php echo $_SESSION['userInfo']['assigned']; ?>
-                },
-                success: function (data) {
-                    data = data.data
-                    // console.log(data)
-                    // var data = JSON.parse(response);
+                    url: '../controller/studentController.php',
+                    type: 'POST',
+                    dataType: 'json',
+                    data: {
+                        function: "getStudentbySchoolId",
+                        school_id: <?php echo $_SESSION['userInfo']['assigned']; ?>
+                    },
+                    success: function (data) {
+                        data = data.data
+                        // console.log(data)
+                        // var data = JSON.parse(response);
 
-                    var html = '<option value="0" selected>Select All</option>';
-                    for (var i = 0; i < data.length; i++) {
-                        html += '<option value="' + data[i].id + '">' + data[i].firstname + " " + data[i].middlename + " " + data[i].lastname + '</option>';
-                        
+                        var html = '<option value="0" selected>Select All</option>';
+                        for (var i = 0; i < data.length; i++) {
+                            html += '<option value="' + data[i].id + '">' + data[i].firstname + " " + data[i].middlename + " " + data[i].lastname + '</option>';
+
+                        }
+                        $('#student').empty(); // Clear the student before appending
+                        $('#student').append(html);
+
                     }
-                    $('#student').empty(); // Clear the student before appending
-                    $('#student').append(html);
-                    
-                }
-            });
+                });
             }
-            
+
 
 
             $("#student").on('change', function () {
@@ -732,10 +739,25 @@
                     e.stopPropagation();
                 }
                 this.classList.add('was-validated');
-                
-                
+
+
 
             });
+
+
+            $.fn.datepicker.dates['qtrs'] = {
+                days: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+                daysShort: ["Sun", "Moon", "Tue", "Wed", "Thu", "Fri", "Sat"],
+                daysMin: ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"],
+                months: ["Q1", "Q2", "Q3", "Q4", "", "", "", "", "", "", "", ""],
+                monthsShort: ["Q1", "Q2", "Q3", "Q4", "", "", "", "", "", "", "", ""],
+                today: "Today",
+                clear: "Clear",
+                format: "mm/dd/yyyy",
+                titleFormat: "MM yyyy",
+                /* Leverages same syntax as 'format' */
+                weekStart: 0
+            };
 
             $("#individual").hide()
             $("#group").hide()
@@ -745,10 +767,42 @@
 
             $("#report").on('change', function () {
                 var report = $(this).val();
-                if (report == 2) {
+                if (report == 2 || report == 3 || report == 4) {
                     $("#individual").hide()
                     // $("#individual").find('.').prop('', false);
                     $("#group").show()
+                    if (report == 2) {
+                        $('input[name="daterange"]').datepicker('destroy').datepicker({
+                            format: "mm/yyyy",
+                            startView: "year",
+                            minView: "year",
+                            defaultDate: new Date()
+                        });
+                    }
+                    else if (report == 3) {
+                        $('input[name="daterange"]').datepicker('destroy').datepicker({
+                            format: "MM yyyy",
+                            minViewMode: 1,
+                            autoclose: true,
+                            language: "qtrs",
+                            forceParse: false
+                        }).on("show", function (event) {
+
+                            $(".month").each(function (index, element) {
+                                if (index > 3) $(element).hide();
+                            });
+                        });
+
+                    }
+                    else if (report == 4) {
+                        $('input[name="daterange"]').datepicker('destroy').datepicker({
+                            format: "yyyy",
+                            viewMode: "years",
+                            minViewMode: "years",
+                            defaultDate: new Date()
+                        });
+
+                    }
                     // $("#group").find('.').prop('', true);
                 } else if (report == 1) {
                     $("#individual").show()
@@ -765,11 +819,7 @@
                 }
             });
 
-            $('input[name="daterange"]').daterangepicker({
-                opens: 'left'
-            }, function (start, end, label) {
-                console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
-            });
+
         });
 
 

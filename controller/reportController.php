@@ -4,7 +4,7 @@ class ReportController
     function __construct()
     {
         //call database.php
-        include_once('database.php');
+        include_once ('database.php');
 
         //enable log
         // error_reporting(E_ALL);
@@ -36,7 +36,7 @@ class ReportController
 
     function printPdf()
     {
-        require_once('../view/include/fpdf/templates/ex.php');
+        require_once ('../view/include/fpdf/templates/ex.php');
         $ex = new Ex();
         $ex->test();
     }
@@ -70,7 +70,7 @@ class ReportController
 
         // echo $htmlTemplate;
         // exit;
-        require_once($file);
+        require_once ($file);
         // use Dompdf\Dompdf;
 
         $dompdf = new \Dompdf\Dompdf();
@@ -98,12 +98,12 @@ class ReportController
                 // $tableTemp = str_replace
             }
         } else {
-                $tblTemp = str_replace('{count}', $COUNT, $tableTemplate);
-                $tblTemp = str_replace('{name}', $value['name'], $tblTemp);
-                $tblTemp = str_replace('{sex}', $value['sex'], $tblTemp);
-                $tblTemp = str_replace('{dob}', $value['dob'], $tblTemp);
-                $tblTemp = str_replace('{email}', $value['email'], $tblTemp);
-                $tableLoop = '<tr>
+            $tblTemp = str_replace('{count}', $COUNT, $tableTemplate);
+            $tblTemp = str_replace('{name}', $value['name'], $tblTemp);
+            $tblTemp = str_replace('{sex}', $value['sex'], $tblTemp);
+            $tblTemp = str_replace('{dob}', $value['dob'], $tblTemp);
+            $tblTemp = str_replace('{email}', $value['email'], $tblTemp);
+            $tableLoop = '<tr>
                     <td colspan="5" style="text-align: center;">No Students available</td>
                 </tr>';
         }
@@ -151,7 +151,7 @@ class ReportController
 
         // echo $htmlTemplate;
         // exit;
-        require_once($file);
+        require_once ($file);
         // use Dompdf\Dompdf;
 
         $dompdf = new \Dompdf\Dompdf();
@@ -195,7 +195,7 @@ class ReportController
         }
 
         $htmlTemplate = str_replace($tableTemplate, $tableLoop, $htmlTemplate);
-        require_once('studentController.php');
+        require_once ('studentController.php');
         // require_once('nurseController.php');
         // $nurseController = new Nurse();
 
@@ -246,7 +246,7 @@ class ReportController
     function getReportGroup()
     {
         // set a variable for each posted data
-
+        $report = $_POST['report'];
         $daterange = $_POST['daterange'];
         $bmi = $_POST['bmi'];
         $height_for_age = $_POST['height_for_age'];
@@ -264,15 +264,24 @@ class ReportController
         $sbfp_beneficiary = $_POST['sbfp_beneficiary'];
         $fourps_beneficiary = $_POST['fourps_beneficiary'];
         $menarche = $_POST['menarche'];
-
-        if ($daterange != "") {
-            $daterange = explode(' - ', $daterange);
-            $start = date('Y-m-d', strtotime($daterange[0]));
-            $end = date('Y-m-d', strtotime($daterange[1]));
-            $daterange = "AND created_at BETWEEN '$start' AND '$end'";
-        } else {
-            $daterange = '';
+        if ($report == 2) {
+            if ($daterange != "") {
+                $daterange = explode(' - ', $daterange);
+                $start = date('Y-m-d', strtotime($daterange[0]));
+                $end = date('Y-m-d', strtotime($daterange[1]));
+                $daterange = "AND created_at BETWEEN '$start' AND '$end'";
+            } else {
+                $daterange = '';
+            }
+        } else if ($report == 3) {
+            $parts = explode(' ', $daterange);
+            $year = intval($parts[1]);
+            $quarter = str_replace('Q', '', $parts[0]);
+            $daterange = "AND QUARTER(created_at) = $quarter AND YEAR(created_at) = $year";
+        } else if ($report == 4) {
+            $daterange = "AND YEAR(created_at) = $daterange ";
         }
+
 
         $bmi = $bmi != "" ? "AND BMI = '$bmi'" : '';
         $height_for_age = $height_for_age != "" ? "AND height_for_age = '$height_for_age'" : '';
@@ -317,7 +326,7 @@ class ReportController
 
         // echo $report;
 
-        if ($report == 2) {
+        if ($report == 2 || $report == 3 || $report == 4) {
             $result = $this->getReportGroup();
             $this->generateReportGroup($result);
             // $this->generateReportGroup();

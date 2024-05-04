@@ -4,7 +4,7 @@ if (session_status() == PHP_SESSION_NONE) {
 }
 if (!isset($_SESSION['user_type'])) {
     header('location: login.php');
-}else if ($_SESSION['userInfo']['isVerified'] == false && isset($_SESSION['userInfo']['isVerified'])){
+} else if ($_SESSION['userInfo']['isVerified'] == false && isset($_SESSION['userInfo']['isVerified'])) {
     header('location: otp-page.php');
 }
 ?>
@@ -22,8 +22,7 @@ if (!isset($_SESSION['user_type'])) {
     <meta name="keywords" content="Mordenize" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <!--  Favicon -->
-    <link rel="shortcut icon" type="image/png"
-        href="../dist/images/logos/deped.svg" />
+    <link rel="shortcut icon" type="image/png" href="../dist/images/logos/deped.svg" />
     <!-- Owl Carousel  -->
     <link rel="stylesheet" href="../dist/libs/owl.carousel/dist/assets/owl.carousel.min.css">
 
@@ -35,12 +34,13 @@ if (!isset($_SESSION['user_type'])) {
     <!-- <link rel="stylesheet" href="../dist/libs/flatpickr/dist/flatpickr.min.css"> -->
     <link rel="stylesheet" href="../dist/libs/datatables.net-bs5/css/dataTables.bootstrap5.min.css">
     <link rel="stylesheet" href="../dist/libs/sweetalert2/dist/sweetalert2.min.css">
-    <link rel="stylesheet" type="text/css" href=https://cdn.datatables.net/searchpanes/2.1.1/css/searchPanes.dataTables.min.css>
-    </head>
-    
-    <style>
-        .ck-editor__editable_inline {
-            min-height: 250px;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css"
+        href=https://cdn.datatables.net/searchpanes/2.1.1/css/searchPanes.dataTables.min.css>
+</head>
+
+<style>
+    .ck-editor__editable_inline {
+        min-height: 250px;
+    }
+</style>
 </head>

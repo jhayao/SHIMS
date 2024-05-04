@@ -3,7 +3,7 @@ class Login
 {
     public function __construct()
     {
-        include_once('database.php');
+        include_once ('database.php');
         error_reporting(E_ALL);
         ini_set('display_errors', 1);
         // ini_set('error_log', 'error.log');
@@ -22,10 +22,10 @@ class Login
         $confirmPassword = isset($_POST['confirmPassword']) ? $_POST['confirmPassword'] : '';
         $oldPasswordMd5 = md5($oldPassword);
         $passwordMd5 = md5($password);
-        if($confirmPassword == $password){
+        if ($confirmPassword == $password) {
             if (strlen($password) < 8) {
                 // $_SESSION['notyMessage'] = 'Password must be at least 8 characters';
-                return json_encode(array('success' => 'false','message'=>'Password must be at least 8 characters'));
+                return json_encode(array('success' => 'false', 'message' => 'Password must be at least 8 characters'));
             }
             if ($this->checkCurrentPassword($oldPasswordMd5, $userID) > 0) {
                 $db = new Connection();
@@ -36,18 +36,16 @@ class Login
                 $stmt->close();
                 $conn->close();
                 $_SESSION['notyMessage'] = 'Password changed successfully';
-                return json_encode(array('success' => 'true','message'=>'Password changed successfully'));
+                return json_encode(array('success' => 'true', 'message' => 'Password changed successfully'));
             } else {
                 // $_SESSION['notyMessage'] = 'Current password is not correct';
-                return json_encode(array('success' => 'false','message'=>'Current password is not correct'));
+                return json_encode(array('success' => 'false', 'message' => 'Current password is not correct'));
             }
-        }
-        else
-        {
+        } else {
             // $_SESSION['notyMessage'] = 'Password does not match';
-            return json_encode(array('success' => 'false','message'=>'Password does not match'));
+            return json_encode(array('success' => 'false', 'message' => 'Password does not match'));
         }
-       
+
     }
 
     public function checkCurrentPassword($password, $userID)
@@ -125,7 +123,7 @@ class Login
         return $result;
     }
 
-    public function createUserwhenCreated(string $lastname,string $email,string $contact, string $user_type,int $id)
+    public function createUserwhenCreated(string $lastname, string $email, string $contact, string $user_type, int $id)
     {
         $db = new Connection();
         $conn = $db->connect();
@@ -134,13 +132,13 @@ class Login
         // $passwordMd5 = $password;
         $stmt = $conn->prepare("INSERT INTO `users`(`id`, `email`, `password`, `user_type`,`account_id`) VALUES (NULL,?,?,?, ?)");
         $stmt->bind_param("ssss", $email, $passwordMd5, $user_type, $id);
-        
-        if($stmt->execute()){
+
+        if ($stmt->execute()) {
             return true;
-        }else{
+        } else {
             return false;
         }
-        
+
     }
 
     public function getUserInfo($userType, $userId)
@@ -208,7 +206,7 @@ if (isset($_POST['function'])) {
                     echo json_encode(array('success' => 'true', 'user_type' => $user_type));
                     $_SESSION['user_type'] = $user_type;
                     $fullname = "Admin";
-                    require_once('../controller/otpController.php');
+                    require_once ('../controller/otpController.php');
                     $template = new Otp();
                     $template->sendMail('gemmarie.canlom@nmsc.edu.ph', $fullname);
                     $_SESSION['userInfo'] = array('id' => '5', 'firstname' => 'Admin', 'middlename' => '', 'lastname' => '', 'email' => 'gemmarie.canlom@nmsc.edu.ph', 'sex' => 'Male', 'contact' => '', 'street' => '', 'barangay' => '', 'city' => '', 'province' => 'Misamis Occidental', 'postal' => '7207', 'nurse_type' => 'admin', 'assigned' => '0');
@@ -220,12 +218,12 @@ if (isset($_POST['function'])) {
                 // echo session_id();
 
                 $_SESSION['user_type'] = $user_type;
-               
+
                 $_SESSION['userInfo'] = $row;
                 $_SESSION['userInfo']['isVerified'] = false;
                 //count $row
                 if ($row) {
-                    require_once('../controller/otpController.php');
+                    require_once ('../controller/otpController.php');
                     $template = new Otp();
                     $name = $row['firstname'] . ' ' . $row['middlename'] . ' ' . $row['lastname'];
                     $template->sendMail($row['email'], $name);

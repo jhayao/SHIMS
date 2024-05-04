@@ -1,5 +1,5 @@
 <?php isset($_GET['edit']) ? $edit = $_GET['edit'] : $edit = 0; ?>
-<?php include_once('include/head.php'); ?>
+<?php include_once ('include/head.php'); ?>
 
 <body>
     <!-- Preloader -->
@@ -16,12 +16,12 @@
     <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-sidebartype="full"
         data-sidebar-position="fixed" data-header-position="fixed">
         <!-- Sidebar Start -->
-        <?php include_once('include/sidebar.php'); ?>
+        <?php include_once ('include/sidebar.php'); ?>
         <!--  Sidebar End -->
         <!--  Main wrapper -->
         <div class="body-wrapper">
             <!--  Header Start -->
-            <?php include_once('include/header.php'); ?>
+            <?php include_once ('include/header.php'); ?>
             <!--  Header End -->
             <div class="container-fluid">
                 <div class="card bg-light-info shadow-none position-relative overflow-hidden">
@@ -225,8 +225,8 @@
                                                 </div>
                                                 <div class="col-12">
                                                     <div class="">
-                                                        <label for="assigned" class="form-label fw-semibold">Nurse
-                                                            Assigned</label>
+                                                        <label for="assigned" class="form-label fw-semibold">Designate
+                                                            to</label>
                                                         <select class="select2 form-control"
                                                             aria-label="Default select example" id="assigned"
                                                             name="assigned">
@@ -257,9 +257,9 @@
             </div>
         </div>
     </div>
-    <?php include_once("./include/extra.php"); ?>
+    <?php include_once ("./include/extra.php"); ?>
     <!--  Customizer -->
-    <?php include_once("./include/scripts.php"); ?>
+    <?php include_once ("./include/scripts.php"); ?>
     <script>
         //onload
         $(document).ready(function () {

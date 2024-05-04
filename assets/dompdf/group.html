@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table,
+        th,
+        td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+
+        .tblh2 {
+            font-weight: bold;
+            text-transform: capitalize;
+            height: 30px;
+            text-align: justify;
+            padding-left: 1%;
+        }
+
+        .tblh1 {
+            text-align: center;
+            font-weight: 600;
+            padding-left: 1%;
+        }
+    </style>
+</head>
+
+<body>
+    <center>
+        <p>Department of Education</p>
+        <p>BUREAU OF LEARNER SUPPORT SERVICES - SCHOOL HEALTH DIVISION</p>
+        <p>Pasig City</p>
+    </center>
+    <table style="width: 100%;">
+
+        <tr style="text-align: center;">
+            <th style="text-align: center; width: 100%; height: 50px">SCHOOL HEALTH EXAMINATION CARD</th>
+        </tr>
+    </table>
+    <table style="width: 100%;">
+        <tr>
+            <td>
+                <table style="width: 100%;">
+                    <tr>
+                        <td style="width: 50%;">Date Range: {date}</td>
+                        <td style="width: 50%;">BMI: {bmi}</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 50%;">Height for Agee: {height_for_age}</td>
+                        <td style="width: 50%;">Vision Screening: {vision_screening}</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 50%;">Mouth/Throat/Neck: {mouth_throat_neck}</td>
+                        <td style="width: 50%;">Lungs/heart: {lungs_heart}</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 50%;">Abdomen: {abdomen}</td>
+                        <td style="width: 50%;">Deformities: {deformities}</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 50%;">Immunization: {immunization}</td>
+                        <td style="width: 50%;">Iron Sumplementaion: {iron_supplementation}</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 50%;">Sbfp Beneficiary: {sbfp_beneficiary}</td>
+                        <td style="width: 50%;">4P's Benneficiary: {fourps_beneficiary}</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 50%;">Menarche: {menarche}</td>
+                        <td style="width: 50%;">Auditory Screening: {auditory_screening}</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 50%;">Deworming: {deworming}</td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+    
+    <table style="width: 100%;">
+        <tr>
+            <table style="width: 100%;">
+                <tr>
+                    <th style=" height: 50px;" colspan="5">List of Students</th>
+                </tr>
+                <tr>
+                    <th style="width: 5%; height: 50px;">Count</th>
+                    <th style="width: 15%;">Student Name</th>
+                    <th style="width: 10%;">Sex</th>
+                    <th style="width: 10%;">Date of Birth</th>
+                    <th style="width: 10%;">Email</th>
+                </tr>
+                <!-- start loop -->
+                <tr>
+                    <td class="tblh2">{count}</td>
+                    <td class="tblh1">{name}</td>
+                    <td class="tblh1">{sex}</td>
+                    <td class="tblh1">{dob}</td>
+                    <td class="tblh1">{email}</td>
+                </tr>
+                
+                <!-- end loop -->
+            </table>
+        </tr>
+        
+    </table>
+    
+    <br>
+    <div style="float: right; ">
+        <h5>Prepared by:</h5>
+        <h5 style="text-decoration: underline; text-align: center;">{nurse_name}</h5>
+        <h5>Signature over Printed Name</h5>
+    </div>
+</body>
+
+</html>

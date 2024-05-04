@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table,
+        th,
+        td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+
+        .tblh2 {
+            font-weight: bold;
+            text-transform: capitalize;
+            height: 30px;
+            text-align: justify;
+            padding-left: 1%;
+        }
+
+        .tblh1 {
+            text-align: center;
+            font-weight: 600;
+            padding-left: 1%;
+        }
+    </style>
+</head>
+
+<body>
+    <center>
+        <p>Department of Education</p>
+        <p>BUREAU OF LEARNER SUPPORT SERVICES - SCHOOL HEALTH DIVISION</p>
+        <p>Pasig City</p>
+    </center>
+    <table style="width: 100%;">
+
+        <tr style="text-align: center;">
+            <th style="text-align: center; width: 100%;">SCHOOL HEALTH EXAMINATION CARD</th>
+        </tr>
+    </table>
+    <table style="width: 100%;">
+        <tr>
+            <td>
+                <table style="width: 100%;">
+                    <tr>
+                        <td style="width: 50%;">Learner's Name: {student_name}</td>
+                        <td style="width: 50%;">Student ID: {student_id}</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 50%;">School ID: {school_id}</td>
+                        <td style="width: 50%;">School Name: {school_name}</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 50%;">Student Address: {address}</td>
+                        <td style="width: 50%;">Date of Birth: {dob}</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 50%;">Contact: {contact}</td>
+                        <td style="width: 50%;">Sex: {sex}</td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+    <!-- start loop -->
+    <table style="width: 100%;">
+        <tr>
+            <table style="width: 100%;">
+                <tr>
+                    <th style="height: 50px;" colspan="2">Examination Date : {date}</th>
+                </tr>
+                <tr>
+                    <th style="width: 40%; height: 50px;">Description</th>
+                    <th style="width: 60%;">Findings</th>
+                </tr>
+                <tr>
+                    <td class="tblh2">height</td>
+                    <td class="tblh1">{height}</td>
+                </tr>
+                <tr>
+                    <td class="tblh2">temperature</td>
+                    <td class="tblh1">{temperature}</td>
+                </tr>
+                <tr>
+                    <td class="tblh2">weight</td>
+                    <td class="tblh1">{weight}</td>
+                </tr>
+                <tr>
+                    <td class="tblh2">BMI</td>
+                    <td class="tblh1">{BMI}</td>
+                </tr>
+                <tr>
+                    <td class="tblh2">heart_rate</td>
+                    <td class="tblh1">{heart_rate}</td>
+                </tr>
+                <tr>
+                    <td class="tblh2">height_for_age</td>
+                    <td class="tblh1">{height_for_age}</td>
+                </tr>
+                <tr>
+                    <td class="tblh2">vision_screening</td>
+                    <td class="tblh1">{vision_screening}</td>
+                </tr>
+                <tr>
+                    <td class="tblh2">auditory_screening</td>
+                    <td class="tblh1">{auditory_screening}</td>
+                </tr>
+                <tr>
+                    <td class="tblh2">skin_scalp</td>
+                    <td class="tblh1">{skin_scalp}</td>
+                </tr>
+                <tr>
+                    <td class="tblh2">eyes_ear_nose</td>
+                    <td class="tblh1">{eyes_ear_nose}</td>
+                </tr>
+                <tr>
+                    <td class="tblh2">mouth_throat_neck</td>
+                    <td class="tblh1">{mouth_throat_neck}</td>
+                </tr>
+                <tr>
+                    <td class="tblh2">lungs_heart</td>
+                    <td class="tblh1">{lungs_heart}</td>
+                </tr>
+                <tr>
+                    <td class="tblh2">abdomen</td>
+                    <td class="tblh1">{abdomen}</td>
+                </tr>
+                <tr>
+                    <td class="tblh2">deformities</td>
+                    <td class="tblh1">{deformities}</td>
+                </tr>
+                <tr>
+                    <td class="tblh2">immunization</td>
+                    <td class="tblh1">{immunization}</td>
+                </tr>
+                <tr>
+                    <td class="tblh2">iron_supplementation</td>
+                    <td class="tblh1">{iron_supplementation}</td>
+                </tr>
+                <tr>
+                    <td class="tblh2">deworming</td>
+                    <td class="tblh1">{deworming}</td>
+                </tr>
+                <tr>
+                    <td class="tblh2">sbfp_beneficiary</td>
+                    <td class="tblh1">{sbfp_beneficiary}</td>
+                </tr>
+                <tr>
+                    <td class="tblh2">fourps_beneficiary</td>
+                    <td class="tblh1">{fourps_beneficiary}</td>
+                </tr>
+                <tr>
+                    <td class="tblh2">menarche</td>
+                    <td class="tblh1">{menarche}</td>
+                </tr>
+                <tr>
+                    <td class="tblh2">others</td>
+                    <td class="tblh1">{others}</td>
+                </tr>
+            </table>
+        </tr>
+        
+    </table>
+    <!-- end loop -->
+    <br>
+    <div style="float: right; ">
+        <h5>Prepared by:</h5>
+        <h5 style="text-decoration: underline; text-align: center;">{nurse_name}</h5>
+        <h5>Signature over Printed Name</h5>
+    </div>
+</body>
+
+</html>

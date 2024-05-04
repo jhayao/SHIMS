@@ -1,0 +1,446 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet"> -->
+<!-- Bootstrap CDN -->
+
+<!-- <link id="themeColors" rel="stylesheet" href="../../shims/dist/css/style.min.css" /> -->
+<style>
+  body {
+    background: white;
+    font-family: 'Lato', sans-serif;
+  }
+
+  .wrapper {
+    width: 100%;
+    margin-top: 50px;
+  }
+
+
+  /* Header */
+
+  .header_inner {
+    display: flex;
+    width: 100%;
+    margin: auto;
+    margin-top: 20px;
+    display: flex;
+  }
+
+  .logo-1 h5 {
+    color: #0077b6;
+    font-style: italic;
+  }
+
+  .parennt2 {
+    flex-basis: 45%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+
+
+
+
+  .logo-1 {
+    display: flex;
+    flex-basis: 35%;
+  }
+
+  .logo-1 img {
+    padding-right: 10px;
+    height: 50px;
+    width: 50px;
+  }
+
+  .flex {
+    display: flex;
+  }
+
+  .version {
+    margin-left: 20px;
+  }
+
+  .line-hr {
+    width: 100%;
+    padding: 1px;
+    background-color: rgb(63, 171, 207);
+  }
+
+
+  /* Part-second */
+
+  .quote-1 {
+    display: flex;
+    width: 100%;
+  }
+
+  .auto {
+    flex-basis: 25%;
+  }
+
+  .auto-1 {
+    flex-basis: 75%;
+    margin-left: 20px;
+  }
+
+  .Quotation {
+    margin-left: 27%;
+  }
+
+  hr {
+    background-color: rgb(224 224 224);
+    width: 100%;
+    height: 3px;
+    border: none;
+    outline: none;
+  }
+
+  .heading-robin {
+    width: 100%;
+  }
+
+  .robin {
+    width: 73%;
+    float: right;
+  }
+
+  table {
+    width: 100%;
+    margin: auto;
+    border-collapse: collapse;
+    page-break-inside: avoid;
+  }
+
+  thead {
+    height: 30px;
+    background-color: rgb(223, 223, 223);
+    color: black;
+  }
+
+  tbody tr {
+    height: 30px;
+  }
+
+  .td-first {
+    width: 40%;
+  }
+
+  th,
+  td {
+    padding-left: 4px;
+    font-weight: normal;
+    border: 1px solid #c1c1c1;
+  }
+
+  th {
+    font-weight: bold;
+    text-align: left
+  }
+
+
+  /* Footer */
+
+  .hr {
+    width: 100%;
+    padding: 1px;
+    background-color: rgb(63, 171, 207);
+    margin-top: 7rem;
+    margin-bottom: 10px;
+  }
+
+  .footer_inner {
+    width: 100%;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .flex1 {
+    flex-basis: 23%;
+  }
+
+  .flex2 {
+    flex-basis: 25%;
+  }
+
+  .flex3 {
+    flex-basis: 25%;
+  }
+
+
+  /* starts here */
+  @media screen and (max-width: 668px) {
+    .parennt2 {
+      font-size: 14px;
+    }
+
+    .logo-1 {
+      flex-direction: column;
+      flex-basis: 20%;
+    }
+
+    .quote_wrapper h1,
+    .robin h1 {
+      font-size: 25px;
+    }
+
+    .auto h3,
+    .Quotation h3 {
+      font-size: 17px;
+    }
+
+    .Quotation {
+      margin-left: 23%;
+    }
+
+    .auto-1 {
+      flex-basis: 100%;
+    }
+
+  }
+
+  h3,
+  p {
+    margin: 5px 0px 5px 0px !important;
+    font-size: 15px;
+  }
+
+  h1 {
+    font-size: 23px;
+  }
+
+  @page {
+    margin-top: 100px;
+  }
+
+  header {
+    margin-top: -67px;
+    /* display:inline-block; */
+  }
+</style>
+
+<style>
+  .headerH5  {
+    float: right;
+    margin-right: 30%;
+    /* text-align: justify; */
+    /* padding: 0%; */
+  }
+  .headerH5 h5 {
+    margin: 10px;
+    padding: 0;
+    text-align: justify;
+  }
+
+  .noBorder {
+    border:none !important;
+}
+ 
+</style>
+
+<body>
+  <!-- <header>
+    <h1>Sticky Header Pow!</h1>
+  </header> -->
+  <header>
+    <table class="tblhead" cellspacing="0" cellpadding="0">
+      <tr colspan="">
+        <th colspan="2" class="noBorder">
+          <img src="../../shims/assets/dompdf/deped.svg" width="180">
+          
+        </td>
+        <td class="noBorder" style="text-align: justify;">
+          <h5>Department of Education</h5>
+          <h5>Division of {division}</h5>
+          <h5>School of {school}</h5>
+        
+      </tr>
+    </table>
+    <!-- <div class="parennt2">
+      <img src="../../shims/assets/dompdf/deped.svg" width="180">
+      <div class="headerH5">
+        <h5>Department of Education</h5>
+        <h5>Division of {division}</h5>
+        <h5>School of {school}</h5>
+      </div> -->
+  </header>
+
+  <div class="wrapper">
+    <!-- Quotes section starts here -->
+    <!-- <hr> -->
+    <div class="quote_wrapper">
+      
+      <h1>Medical Report</h1>
+
+      <div class="quote-1">
+        <div class="auto">
+          <h3>Report #</h3>
+        </div>
+        <div class="auto-1">
+          <p>{{automated_num}}</p>
+        </div>
+      </div>
+
+      <hr>
+
+      <div class="quote-1">
+        <div class="auto">
+          <h3>Prepared for</h3>
+        </div>
+        <div class="auto-1">
+          <p> {{prepared_for}}</p>
+        </div>
+      </div>
+      <hr>
+      <div class="quote-1">
+        <div class="auto">
+          <h3>Date</h3>
+        </div>
+        <div class="auto-1">
+          <p> {{date}}</p>
+        </div>
+      </div>
+      <hr>
+      <div class="quote-1">
+        <div class="auto">
+          <h3>Prepared By</h3>
+        </div>
+        <div class="auto-1">
+          <p> {{bilding_site}}</p>
+        </div>
+      </div>
+      <hr>
+      <!-- <div class="Quotation">
+        <h3>{{quote_arg}}</h3>
+        <h3>This quote will remain valid until {{quote_validity}}</h3>
+      </div> -->
+
+    </div>
+    <!-- Quote section ends here -->
+
+    <div class="heading-robin">
+
+      <div class="robin">
+        <h1>ESTIMATED COSTS</h1>
+        <h5>Broken down by category</h5>
+      </div>
+    </div>
+
+    <!-- <hr> -->
+
+    <table>
+      <div class="morgin">
+        <h4>General Requirements</h4>
+      </div>
+      <thead>
+        <tr>
+          <th>Description</th>
+          <th>Labour Cost</th>
+          <th>Materials Cost</th>
+          <th>Total Cost</th>
+        </tr>
+      </thead>
+      <tbody>
+        {%for item in general_requirements%}
+        <tr>
+          <td class="td-first">{{item.description}}</td>
+          <td>{{item.labour_cost}}</td>
+          <td>{{item.material_cost}}</td>
+          <td>{{item.total_cost}}</td>
+        </tr>
+        {%endfor%}
+      </tbody>
+
+    </table>
+
+    <!-- Table-2nd -->
+
+
+    <table border="1">
+      <div>
+        <h4>Site prep</h4>
+      </div>
+      <thead>
+
+        <tr>
+          <th>Description</th>
+          <th>Labour Cost</th>
+          <th>Materials Cost</th>
+          <th>Total Cost</th>
+        </tr>
+      </thead>
+      <tbody>
+        {%for item in site_prep%}
+        <tr>
+          <td class="td-first">{{item.description}}</td>
+          <td>{{item.labour_cost}}</td>
+          <td>{{item.material_cost}}</td>
+          <td>{{item.total_cost}}</td>
+        </tr>
+        {%endfor%}
+      </tbody>
+
+    </table>
+
+    <!-- Table-3rd -->
+
+    <table>
+      <div class="morgin">
+        <h4>Utilities</h4>
+      </div>
+      <thead>
+        <tr>
+
+          <th>Description</th>
+          <th>Labour Cost</th>
+          <th>Materials Cost</th>
+          <th>Total Cost</th>
+        </tr>
+      </thead>
+      <tbody>
+        {%for item in utilities%}
+        <tr>
+          <td class="td-first">{{item.description}}</td>
+          <td>{{item.labour_cost}}</td>
+          <td>{{item.material_cost}}</td>
+          <td>{{item.total_cost}}</td>
+        </tr>
+        {%endfor%}
+      </tbody>
+
+    </table>
+
+    <!-- Table-4th -->
+
+    <table>
+      <div class="morgin">
+        <h4>Excavation and Earth work</h4>
+      </div>
+      <thead>
+        <tr>
+
+          <th>Description</th>
+          <th>Labour Cost</th>
+          <th>Materials Cost</th>
+          <th>Total Cost</th>
+        </tr>
+      </thead>
+      <tbody>
+        {%for item in exvacation_work%}
+        <tr>
+          <td class="td-first">{{item.description}}</td>
+          <td>{{item.labour_cost}}</td>
+          <td>{{item.material_cost}}</td>
+          <td>{{item.total_cost}}</td>
+        </tr>
+        {%endfor%}
+
+      </tbody>
+
+    </table>
+
+
+  </div>
+</body>

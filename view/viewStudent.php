@@ -1,5 +1,6 @@
-<?php include_once('include/head.php'); ?> 
+<?php include_once ('include/head.php'); ?>
 <?php $nurseType = $_SESSION["userInfo"]["nurse_type"] ?>
+
 <body>
     <!-- Preloader -->
     <div class="preloader">
@@ -15,12 +16,12 @@
     <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-sidebartype="full"
         data-sidebar-position="fixed" data-header-position="fixed">
         <!-- Sidebar Start -->
-        <?php include_once('include/sidebar.php'); ?>
+        <?php include_once ('include/sidebar.php'); ?>
         <!--  Sidebar End -->
         <!--  Main wrapper -->
         <div class="body-wrapper">
             <!--  Header Start -->
-            <?php include_once('include/header.php'); ?>
+            <?php include_once ('include/header.php'); ?>
             <!--  Header End -->
             <div class="container-fluid">
                 <div class="card bg-light-info shadow-none position-relative overflow-hidden">
@@ -30,7 +31,8 @@
                                 <h4 class="fw-semibold mb-8">List of Student</h4>
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
-                                        <li class="breadcrumb-item"><a class="text-muted" href="nurse.php">Nurse</a>
+                                        <li class="breadcrumb-item"><a class="text-muted"
+                                                href="viewStudent.php">Student</a>
                                         </li>
                                         <li class="breadcrumb-item" aria-current="page">List of Student</li>
                                     </ol>
@@ -46,9 +48,9 @@
                 </div>
                 <div class="card">
                     <div class="card-body">
-                        <div class="mb-2">
+                        <!-- <div class="mb-2">
                             <h5 class="mb-0">List</h5>
-                        </div>
+                        </div> -->
 
                         <div class="table-responsive">
                             <table id="file_export"
@@ -74,11 +76,11 @@
             </div>
         </div>
     </div>
-    <?php include_once("./include/extra.php");?>
+    <?php include_once ("./include/extra.php"); ?>
     <!--  Customizer -->
 
-    
-    <?php include_once("./include/scripts.php"); ?>
+
+    <?php include_once ("./include/scripts.php"); ?>
     <script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
     <!-- <script src="../../../../../../../cdn.datatables.net/buttons/1.5.1/js/dataTables.buttons.min.js"></script> -->
     <script src="https://cdn.datatables.net/buttons/2.4.1/js/dataTables.buttons.min.js"></script>
@@ -90,24 +92,24 @@
     <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.print.min.js"></script>
 
     <!-- <script src="../dist/js/datatable/datatable-advanced.init.js"></script> -->
-<!-- Add the following code block before the closing </body> tag -->
+    <!-- Add the following code block before the closing </body> tag -->
 
-    
 
-   
+
+
     <script>
         //onload
         $(document).ready(function () {
 
-            if(<?php echo (isset($_GET['success']) ? true : 0); ?>){
-                noty.setText("Successfully Added",true);
+            if (<?php echo (isset($_GET['success']) ? true : 0); ?>) {
+                noty.setText("Successfully Added", true);
                 noty.show();
             }
-            
+
             //datatable
             var table = $('#file_export').DataTable({
                 dom: 'Bfrtip',
-                buttons: [ "print"],
+                buttons: ["print"],
                 ajax: {
                     "url": "../controller/studentController.php",
                     "type": "POST",
@@ -122,85 +124,85 @@
                     },
                 },
                 columns: [{
-                        "data": "id"
-                    },
-                    {
-                        "data": null,
-                        render: function (data, type, row) {
-                            return row.firstname + " " + row.middlename + " " + row.lastname;
-                        }
-                    },
-                    {
-                        "data": "email"
-                    },
-                    {
-                        "data": "id",
-                        createdCell: function(cell, cellData, rowData, rowIndex, colIndex) {
-                            
-                            $(cell).on('click', '.delete', function() {
-                                // Handle cell click event
-                                Swal.fire({
-                                    title: 'Are you sure?',
-                                    text: "You won't be able to revert this!",
-                                    icon: 'warning',
-                                    showCancelButton: true,
-                                    confirmButtonColor: '#3085d6',
-                                    cancelButtonColor: '#d33',
-                                    confirmButtonText: 'Yes, delete it!'
-                                    }).then((result) => {
-                                    if (result.isConfirmed) {
+                    "data": "id"
+                },
+                {
+                    "data": null,
+                    render: function (data, type, row) {
+                        return row.firstname + " " + row.middlename + " " + row.lastname;
+                    }
+                },
+                {
+                    "data": "email"
+                },
+                {
+                    "data": "id",
+                    createdCell: function (cell, cellData, rowData, rowIndex, colIndex) {
 
-                                        //delete reuqest ajax
-                                        $.ajax({
-                                            url: "../controller/studentController.php",
-                                            type: "POST",
-                                            data: {
-                                                "function": "deleteStudent",
-                                                "id": cellData
-                                            },
-                                            success: function (data) {
-                                                if(data.trim() == "success"){
-                                                    Swal.fire(
-                                                        'Deleted!',
-                                                        'Your file has been deleted.',
-                                                        'success'
-                                                        ).then((result) => {
-                                                            if(result.isConfirmed){
-                                                                location.reload();
-                                                            }
-                                                        })
-                                                    
-                                                }
+                        $(cell).on('click', '.delete', function () {
+                            // Handle cell click event
+                            Swal.fire({
+                                title: 'Are you sure?',
+                                text: "You won't be able to revert this!",
+                                icon: 'warning',
+                                showCancelButton: true,
+                                confirmButtonColor: '#3085d6',
+                                cancelButtonColor: '#d33',
+                                confirmButtonText: 'Yes, delete it!'
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+
+                                    //delete reuqest ajax
+                                    $.ajax({
+                                        url: "../controller/studentController.php",
+                                        type: "POST",
+                                        data: {
+                                            "function": "deleteStudent",
+                                            "id": cellData
+                                        },
+                                        success: function (data) {
+                                            if (data.trim() == "success") {
+                                                Swal.fire(
+                                                    'Deleted!',
+                                                    'Your file has been deleted.',
+                                                    'success'
+                                                ).then((result) => {
+                                                    if (result.isConfirmed) {
+                                                        location.reload();
+                                                    }
+                                                })
+
                                             }
-                                        });
-                                        
-                                    }
-                                    })
-                            });
-                        },
-                        "render": function (data, type, row, meta) {
-                            return `<div class="d-flex justify-content-center">
+                                        }
+                                    });
+
+                                }
+                            })
+                        });
+                    },
+                    "render": function (data, type, row, meta) {
+                        return `<div class="d-flex justify-content-center">
                                         <a href="profileStudent.php?id=${data}" class="btn btn-success   me-3"><i class="ti ti-eye"></i></a>
                                         <?php if ($nurseType === 'school nurse' || $nurseType === 'admin'): ?>
-                                            <a href="addStudent.php?edit=true&id=${data}" class="btn btn-primary   me-3"><i class="ti ti-edit"></i></a>
-                                            <button id="${data}"  class="btn btn-danger delete  me-3"><i class="ti ti-trash-x"></i></button>
+                                                                <a href="addStudent.php?edit=true&id=${data}" class="btn btn-primary   me-3"><i class="ti ti-edit"></i></a>
+                                                                <button id="${data}"  class="btn btn-danger delete  me-3"><i class="ti ti-trash-x"></i></button>
                                         <?php endif; ?>
                                         
                                     </div>`;
-                        }
                     }
+                }
                 ]
             });
             $(".buttons-copy, .buttons-csv, .buttons-print, .buttons-pdf, .buttons-excel").addClass(
                 "btn btn-primary mr-1");
 
             //delete
-            
-            
+
+
         });
     </script>
-    
-    
+
+
 
 </body>
 

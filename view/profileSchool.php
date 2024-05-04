@@ -9,7 +9,7 @@ if ($id == '' || !isset($id)) {
 }
 include_once ('../controller/database.php');
 $id = isset($_GET['id']) ? $_GET['id'] : '';
-$query = "select concat(st.firstname, ' ', st.middlename,  ' ', st.lastname) as studentName, s.school_name,d.district_name,dv.division_name,st.* from school s , district d, division dv, student st where s.id = st.school_id and d.id = s.district_id and dv.id = s.division_id and st.id = ?";
+$query = "select s.id,s.school_name,s.address,d1.division_name,d2.district_name from school as s inner join division as d1 on s.division_id = d1.id inner join district as d2 on d2.id = s.district_id where s.id = ?";
 $connection = new Connection();
 $conn = $connection->connect();
 $stmt = $conn->prepare($query);
@@ -20,7 +20,7 @@ $stmt->close();
 $conn->close();
 $row = $result->fetch_assoc();
 
-$address = $row['street'] . ", " . $row['barangay'] . ", " . $row['city'] . ", " . $row['province'] . ", " . $row['postal'];
+// $address = $row['street'] . ", " . $row['barangay'] . ", " . $row['city'] . ", " . $row['province'] . ", " . $row['postal'];
 
 $conn = new Connection();
 $query = "select information.id, CONCAT(student.firstname,' ', student.middlename, ' ', student.lastname) as studentName, CONCAT(nurse.firstname,' ',nurse.middlename,' ',nurse.lastname) as nurseName,information.* from student inner join information on student.id = information.student_id inner join nurse on nurse.id = information.nurse_id where student.id = ? order by information.created_at desc";
@@ -66,11 +66,11 @@ $conn->close();
           <div class="card-body px-4 py-3">
             <div class="row align-items-center">
               <div class="col-9">
-                <h4 class="fw-semibold mb-8">User Profile</h4>
+                <h4 class="fw-semibold mb-8">School Profile</h4>
                 <nav aria-label="breadcrumb">
                   <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a class="text-muted " href="index.php">Dashboard</a></li>
-                    <li class="breadcrumb-item" aria-current="page">User Profile</li>
+                    <li class="breadcrumb-item" aria-current="page">School Profile</li>
                   </ol>
                 </nav>
               </div>
@@ -161,13 +161,13 @@ $conn->close();
                 </button>
               </li>
               <li class="nav-item" role="presentation">
-                <button
+                <!-- <button
                   class="nav-link position-relative rounded-0 d-flex align-items-center justify-content-center bg-transparent fs-3 py-6"
                   id="pills-followers-tab" data-bs-toggle="pill" data-bs-target="#pills-followers" type="button"
                   role="tab" aria-controls="pills-followers" aria-selected="false">
                   <i class="ti ti-heart me-2 fs-6"></i>
                   <span class="d-none d-md-block">Records</span>
-                </button>
+                </button> -->
               </li>
               <!-- <li class="nav-item" role="presentation">
                   <button class="nav-link position-relative rounded-0 d-flex align-items-center justify-content-center bg-transparent fs-3 py-6" id="pills-friends-tab" data-bs-toggle="pill" data-bs-target="#pills-friends" type="button" role="tab" aria-controls="pills-friends" aria-selected="false">
@@ -192,27 +192,27 @@ $conn->close();
                 <div class="card shadow-none border">
                   <div class="card-body">
                     <h4 class="fw-semibold mb-3">Introduction</h4>
-                    <p>Hello, I am <strong><?= $row['studentName'] ?></strong> . </p>
+                    <p>This is the details of School Name: <strong><?= $row['school_name'] ?></strong></p>
                     <ul class="list-unstyled mb-0">
-                      <li class="d-flex align-items-center gap-3 mb-4">
-                        <i class="ti ti-briefcase text-dark fs-6"></i>
-                        <h6 class="fs-4 fw-semibold mb-0" id="schoolName">
-                          <?php echo $row['school_name'] ?>
+                      <li class="d-flex align-items-center gap-3 mb-2">
+                        <h6>District Name: </h6>
+                        <h6 class="fs-4 fw-semibold " id="schoolName">
+                          <?php echo $row['district_name'] ?>
                         </h6>
                       </li>
-                      <li class="d-flex align-items-center gap-3 mb-4">
-                        <i class="ti ti-mail text-dark fs-6"></i>
-                        <h6 class="fs-4 fw-semibold mb-0" id="email">
-                          <?php echo $row['email'] ?>
+                      <li class="d-flex align-items-center gap-3 mb-2">
+                        <h6>Division Name: </h6>
+                        <h6 class="fs-4 fw-semibold " id="schoolName">
+                          <?php echo $row['division_name'] ?>
                         </h6>
                       </li>
-                      <li class="d-flex align-items-center gap-3 mb-4">
-                        <i class="ti ti ti-friends text-dark fs-6"></i>
-                        <h6 class="fs-4 fw-semibold mb-0" id="guardian">
-                          <?php echo $row['guardian'] ?>
+                      <li class="d-flex align-items-center gap-3 mb-2">
+                        <h6>Address: </h6>
+                        <h6 class="fs-4 fw-semibold " id="schoolName">
+                          <?php echo $row['address'] ?>
                         </h6>
                       </li>
-                      <li class="d-flex align-items-center gap-3 mb-4">
+                      <!-- <li class="d-flex align-items-center gap-3 mb-4">
                         <i class="ti ti-map-pin text-dark fs-6"></i>
                         <h6 class="fs-4 fw-semibold mb-0" id="address">
                           <?php echo $address ?>
@@ -223,7 +223,7 @@ $conn->close();
                         <h6 class="fs-4 fw-semibold mb-0" id="contact">
                           <?php echo $row['contact'] ?>
                         </h6>
-                      </li>
+                      </li> -->
                     </ul>
                   </div>
                 </div>
@@ -466,7 +466,7 @@ $conn->close();
                     <img src="../dist/images/svgs/icon-dd-cart.svg" alt="" class="img-fluid" width="24" height="24">
                   </div>
                   <div class="d-inline-block">
-                    <h6 class="mb-1 bg-hover-primary">User Profile</h6>
+                    <h6 class="mb-1 bg-hover-primary">School Profile</h6>
                     <span class="fs-2 d-block fw-normal text-muted">learn more information</span>
                   </div>
                 </a>

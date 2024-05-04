@@ -1,4 +1,4 @@
-<?php include_once('include/head.php'); ?>
+<?php include_once ('include/head.php'); ?>
 
 <body>
     <!-- Preloader -->
@@ -15,12 +15,12 @@
     <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-sidebartype="full"
         data-sidebar-position="fixed" data-header-position="fixed">
         <!-- Sidebar Start -->
-        <?php include_once('include/sidebar.php'); ?>
+        <?php include_once ('include/sidebar.php'); ?>
         <!--  Sidebar End -->
         <!--  Main wrapper -->
         <div class="body-wrapper">
             <!--  Header Start -->
-            <?php include_once('include/header.php'); ?>
+            <?php include_once ('include/header.php'); ?>
             <!--  Header End -->
             <div class="container-fluid">
                 <div class="card bg-light-info shadow-none position-relative overflow-hidden">
@@ -47,9 +47,9 @@
                 </div>
                 <div class="card">
                     <div class="card-body">
-                        <div class="mb-2">
+                        <!-- <div class="mb-2">
                             <h5 class="mb-0">List</h5>
-                        </div>
+                        </div> -->
 
                         <div class="table-responsive">
                             <table id="file_export"
@@ -137,11 +137,11 @@
             </div>
         </div>
     </div>
-    <?php include_once("./include/extra.php"); ?>
+    <?php include_once ("./include/extra.php"); ?>
     <!--  Customizer -->
 
 
-    <?php include_once("./include/scripts.php"); ?>
+    <?php include_once ("./include/scripts.php"); ?>
     <script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/select/2.0.0/js/select.dataTables.min.js"></script>
     <script type="text/javascript"
@@ -315,9 +315,9 @@
                             },
                             "render": function (data, type, row, meta) {
                                 return `<div class="d-flex">
-                                                <a href="addCheckup.php?edit=true&id=${data}" class="btn btn-primary me-1"><i class="ti ti-edit"></i></a>
-                                                <button id="${data}" class="btn btn-danger delete me-1"><i class="ti ti-trash-x"></i></button>
-                                            </div>`;
+                                                    <a href="addCheckup.php?edit=true&id=${data}" class="btn btn-primary me-1"><i class="ti ti-edit"></i></a>
+                                                    <button id="${data}" class="btn btn-danger delete me-1"><i class="ti ti-trash-x"></i></button>
+                                                </div>`;
                             }
                         }
                     <?php } ?>

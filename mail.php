@@ -24,7 +24,7 @@ try {
     $mail->Host = "mail.nmscstshims.com";
     $mail->SMTPAuth = true;
     $mail->Username = 'notification@nmscstshims.com';
-    $mail->Password = '0,&l+r-Gc0_J';oc
+    $mail->Password = '0,&l+r-Gc0_J';
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
     $mail->Port = 465;
 

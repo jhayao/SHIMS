@@ -174,7 +174,7 @@
                     },
                     "render": function (data, type, row, meta) {
                         return `<div class="d-flex">
-                                        
+                                        <a href="profileDivision.php?id=${data}" class="btn btn-success   me-1"><i class="ti ti-eye"></i></a>
                                         <a href="addDivision.php?edit=true&id=${data}" class="btn btn-primary   me-1"><i class="ti ti-edit"></i></a>
                                         <button id="${data}"  class="btn btn-danger delete  me-1"><i class="ti ti-trash-x"></i></button>
                                     </div>`;

@@ -7,7 +7,7 @@ class Student
     function __construct()
     {
         //call database.php
-        include_once('database.php');
+        include_once ('database.php');
 
         //enable log
         // error_reporting(E_ALL);
@@ -95,11 +95,11 @@ class Student
         $stmt->bind_param("ssssssssssssss", $firstname, $middlename, $lastname, $sex, $dob, $contact, $email, $guardian, $street, $barangay, $city, $province, $postal, $school_id);
         try {
             $stmt->execute();
-            include_once('loginController.php');
+            include_once ('loginController.php');
             $id = $connection->insert_id;
             $loginController = new Login();
             if ($email != null || $email != '')
-                if ($loginController->createUserwhenCreated($lastname, $email, $contact, 'student', $id)) {
+                if ($loginController->createUserWhenCreated($lastname, $email, $contact, 'student', $id)) {
                     $stmt->close();
                     return json_encode(array('success' => 'true'));
                 } else {

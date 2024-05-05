@@ -95,15 +95,15 @@ class Nurse
             include_once ('loginController.php');
             $id = $conn->insert_id;
             $loginController = new Login();
-            if ($loginController->createUserwhenCreated($nurse_lastname, $nurse_email, $nurse_contact, 'nurse', $id)) {
+            if ($loginController->createUserWhenCreated($nurse_lastname, $nurse_email, $nurse_contact, 'nurse', $id)) {
                 $stmt->close();
-                return 'success';
+                return json_encode(array('success' => 'true', 'message' => 'Nurse added successfully'));
             } else {
                 $stmt->close();
                 return $conn->error;
             }
         } catch (Exception $e) {
-            $errorMessageArray = array('success' => 'false', 'errorMessage' => $stmt->error, 'errorCode' => $stmt->errno);
+            $errorMessageArray = array('success' => 'false', 'errorMessage' => $e->getMessage(), 'errorCode' => $e->getCode());
             return json_encode($errorMessageArray);
         }
 
@@ -193,7 +193,7 @@ if (isset($_POST['function'])) {
             echo json_encode($nurseArray);
             break;
         case 'addNurse':
-            echo $nurse->addNurse();
+            echo ($nurse->addNurse());
             break;
         case 'getAllNurse':
             $result = $nurse->getAllNurse();

@@ -30,9 +30,39 @@ class Otp
             $body = $template->OtpTemplate();
 
             $mail->isHTML(true);
-            $mail->Subject = 'Subject';
+            $mail->Subject = 'OTP Verification';
             $mail->Body = $body;
             $mail->send();
+        } catch (Exception $e) {
+            echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+        }
+    }
+
+    public function sendPasswordNotification(string $email, string $name, string $password): string
+    {
+        // $password = "password";
+        $template = new Template();
+        $mail = new PHPMailer(true);
+        try {
+            $mail->SMTPDebug = false;
+            $mail->isSMTP();
+            $mail->Host = 'mail.nmscstshims.com';
+            $mail->SMTPAuth = true;
+            $mail->Username = 'notification@nmscstshims.com';
+            $mail->Password = '0,&l+r-Gc0_J';
+            $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
+            $mail->Port = 465;
+
+            $mail->setFrom('notification@nmscstshims.com', 'Account Notification');
+            $mail->addAddress($email, $name);
+            $template = new Template;
+            $body = $template->emailPasswordTemplate($password);
+
+            $mail->isHTML(true);
+            $mail->Subject = 'Account Created';
+            $mail->Body = $body;
+            $mail->send();
+            return "Email sent";
         } catch (Exception $e) {
             echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
         }

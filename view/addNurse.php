@@ -398,22 +398,33 @@
                         data: formdata,
                         contentType: false,
                         processData: false,
+                        dataType: 'json',
                         success: function (data) {
                             console.log(data);
                             //trim data
-                            data = data.trim();
+                            // data = data.trim();
                             console.log(data)
-                            if (data == "success") {
+
+                            if (data.success === 'true') {
                                 window.location.href = "viewNurse.php?success=1";
                             } else {
+                                if (data.errorMessage.indexOf("username") > -1) {
+                                    noty.setText("Error", true);
+                                    noty.setType("error", true);
+                                    noty.setText("Email already exist", true)
+                                    noty.show();
+                                    return;
+                                }
                                 noty.setText("Error", true);
                                 noty.setType("error", true);
+                                noty.setText(data.errorMessage, true)
                                 noty.show();
                             }
 
                         },
                         error: function (data) {
-                            data = data.trim();
+                            // data = data.trim();
+
                             console.log(data);
                             noty.setText("Error", true);
                             noty.setType("error", true);

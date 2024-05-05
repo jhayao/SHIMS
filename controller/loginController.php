@@ -1,4 +1,6 @@
 <?php
+
+require_once ('otpController.php');
 class Login
 {
     public function __construct()
@@ -123,7 +125,7 @@ class Login
         return $result;
     }
 
-    public function createUserwhenCreated(string $lastname, string $email, string $contact, string $user_type, int $id)
+    public function createUserWhenCreated(string $lastname, string $email, string $contact, string $user_type, int $id, string $firstname = null)
     {
         $db = new Connection();
         $conn = $db->connect();
@@ -132,8 +134,12 @@ class Login
         // $passwordMd5 = $password;
         $stmt = $conn->prepare("INSERT INTO `users`(`id`, `email`, `password`, `user_type`,`account_id`) VALUES (NULL,?,?,?, ?)");
         $stmt->bind_param("ssss", $email, $passwordMd5, $user_type, $id);
-
+        $name = $firstname . ' ' . $lastname;
         if ($stmt->execute()) {
+            if (isset($email)) {
+                $emailTemplate = new OTP();
+                $emailTemplate->sendPasswordNotification($email, $name, $password);
+            }
             return true;
         } else {
             return false;

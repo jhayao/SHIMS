@@ -36,7 +36,7 @@ class Log
     {
         $db = new Connection();
         $conn = $db->connect();
-        $sql = "select * from log as l inner join combined_accounts as c on c.id = l.user_id ORDER BY created_at DESC";
+        $sql = "select * from log as l inner join combined_accounts as c on c.id = l.user_id ORDER BY l.id DESC";
         $stmt = $conn->prepare($sql);
         $stmt->execute();
         $result = $stmt->get_result();

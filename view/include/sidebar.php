@@ -246,23 +246,26 @@
           </li>
         <?php } ?>
 
+        <?php if ($_SESSION['user_type'] == 'admin' || ($_SESSION['user_type'] === 'nurse')) { ?>
 
-        <li class="sidebar-item">
-          <a class="sidebar-link" href="viewReport.php" aria-expanded="false">
-            <span>
-              <i class="ti ti-cpu"></i>
-            </span>
-            <span class="hide-menu">Reports</span>
-          </a>
-        </li>
-        <li class="sidebar-item">
-          <a class="sidebar-link" href="viewLog.php" aria-expanded="false">
-            <span>
-              <i class="ti ti-file-settings"></i>
-            </span>
-            <span class="hide-menu">Logs</span>
-          </a>
-        </li>
+          <li class="sidebar-item">
+            <a class="sidebar-link" href="viewReport.php" aria-expanded="false">
+              <span>
+                <i class="ti ti-cpu"></i>
+              </span>
+              <span class="hide-menu">Reports</span>
+            </a>
+          </li>
+        <?php } else if ($_SESSION['user_type'] == 'admin') { ?>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="viewLog.php" aria-expanded="false">
+                <span>
+                  <i class="ti ti-file-settings"></i>
+                </span>
+                <span class="hide-menu">Logs</span>
+              </a>
+            </li>
+        <?php } ?>
         <!-- <li class="sidebar-item">
           <a class="sidebar-link" href="index5.html" aria-expanded="false">
             <span>

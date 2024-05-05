@@ -232,7 +232,7 @@ class Student
         return $result ? 'success' : $conn->error;
     }
 
-    private function getStudentsById($id)
+    public function getStudentsById($id)
     {
         $conn = new Connection();
         $query = "SELECT * FROM student WHERE id = ?";

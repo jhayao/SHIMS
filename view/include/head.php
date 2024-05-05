@@ -2,8 +2,9 @@
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
-
-
+// echo '<pre>';
+// print_r($_SESSION);
+// die();
 
 if (!isset($_SESSION['user_type'])) {
     header('location: login.php');

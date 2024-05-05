@@ -8,16 +8,17 @@ class Nurse
     {
         //call database.php
         include_once ('database.php');
+        require_once ('logController.php');
         if (session_status() == PHP_SESSION_NONE) {
             session_start();
         }
         //enable log
-        error_reporting(E_ALL);
-        ini_set('display_errors', 1);
-        ini_set('error_log', 'error.log');
-        ini_set('display_errors', 1);
-        ini_set('display_startup_errors', 1);
-        error_reporting(E_ALL);
+        // error_reporting(E_ALL);
+        // ini_set('display_errors', 1);
+        // ini_set('error_log', 'error.log');
+        // ini_set('display_errors', 1);
+        // ini_set('display_startup_errors', 1);
+        // error_reporting(E_ALL);
     }
 
     function getAllNurse()
@@ -137,6 +138,8 @@ class Nurse
             $loginController = new Login();
             if ($loginController->createUserWhenCreated($nurse_lastname, $nurse_email, $nurse_contact, 'nurse', $id)) {
                 $stmt->close();
+                $log = new Log();
+                $log->createLog($_SESSION['userID'], 'Added Nurse ' . $nurse_firstname . ' ' . $nurse_lastname);
                 return json_encode(array('success' => 'true', 'message' => 'Nurse added successfully'));
             } else {
                 $stmt->close();
@@ -157,6 +160,10 @@ class Nurse
     {
         if ($id == null)
             $id = $_POST['id'];
+        $nurseDetails = $this->getNurse($id);
+        $nurseDetails = $nurseDetails->fetch_assoc();
+        $nurse_firstname = $nurseDetails['firstname'];
+        $nurse_lastname = $nurseDetails['lastname'];
 
         $query = "UPDATE nurse SET archived = '1' WHERE id = ?";
         $connection = new Connection();
@@ -166,6 +173,8 @@ class Nurse
         $result = $stmt->execute();
         $stmt->close();
         $conn->close();
+        $log = new Log();
+        $log->createLog($_SESSION['userID'], 'Archived Nurse ' . $nurse_firstname . ' ' . $nurse_lastname);
         return $result ? 'success' : $conn->error;
     }
 
@@ -212,6 +221,8 @@ class Nurse
         $stmt = $conn->prepare($query);
         $stmt->bind_param("sssssssssssssi", $nurse_firstname, $nurse_lastname, $nurse_email, $nurse_sex, $nurse_contact, $nurse_middlename, $nurse_street, $nurse_barangay, $nurse_city, $nurse_province, $nurse_postal, $nurse_type, $assigned, $nurse_id);
         $result = $stmt->execute();
+        $log = new Log();
+        $log->createLog($_SESSION['userID'], 'Updated Nurse ' . $nurse_firstname . ' ' . $nurse_lastname);
         // $stmt->close();
 
         return $result ? 'success' : $conn->error;
@@ -221,14 +232,21 @@ class Nurse
     function deleteNurse()
     {
         $id = $_POST['id'];
+
         $query = "DELETE FROM nurse WHERE id = ?";
         $connection = new Connection();
         $conn = $connection->connect();
+        $nurseDetails = $this->getNurse($id);
+        $nurseDetails = $nurseDetails->fetch_assoc();
+        $nurse_firstname = $nurseDetails['firstname'];
+        $nurse_lastname = $nurseDetails['lastname'];
         $stmt = $conn->prepare($query);
         $stmt->bind_param("i", $id);
         $result = $stmt->execute();
         $stmt->close();
         $conn->close();
+        $log = new Log();
+        $log->createLog($_SESSION['userID'], 'Deleted Nurse ' . $nurse_firstname . ' ' . $nurse_lastname);
         return $result ? 'success' : $conn->error;
     }
 
@@ -237,7 +255,10 @@ class Nurse
     {
         if ($id == null)
             $id = $_POST['id'];
-
+        $nurseDetails = $this->getNurse($id);
+        $nurseDetails = $nurseDetails->fetch_assoc();
+        $nurse_firstname = $nurseDetails['firstname'];
+        $nurse_lastname = $nurseDetails['lastname'];
         $query = "UPDATE nurse SET archived = '0' WHERE id = ?";
         $connection = new Connection();
         $conn = $connection->connect();
@@ -246,7 +267,23 @@ class Nurse
         $result = $stmt->execute();
         $stmt->close();
         $conn->close();
+        $log = new Log();
+        $log->createLog($_SESSION['userID'], 'Unarchived Nurse ' . $nurse_firstname . ' ' . $nurse_lastname);
         return $result ? 'success' : $conn->error;
+    }
+
+    private function getNurse($id)
+    {
+        $query = "SELECT * FROM nurse WHERE id = ?";
+        $connection = new Connection();
+        $conn = $connection->connect();
+        $stmt = $conn->prepare($query);
+        $stmt->bind_param("i", $id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $stmt->close();
+        $conn->close();
+        return $result;
     }
 
 }

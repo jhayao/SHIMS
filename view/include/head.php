@@ -34,9 +34,11 @@ if (!isset($_SESSION['user_type'])) {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.css" />
 
     <!-- Core Css -->
-    <link id="themeColors" rel="stylesheet" href="../dist/css/style.min.css" />
+    <link id="themeColors" rel="stylesheet" href="../dist/css/style.css" />
     <!-- <link rel="stylesheet" href="../dist/libs/flatpickr/dist/flatpickr.min.css"> -->
     <link rel="stylesheet" href="../dist/libs/datatables.net-bs5/css/dataTables.bootstrap5.min.css">
+    <!-- <link rel="stylesheet" href="../assets/libs/datatables.net-bs5/css/dataTables.bootstrap5.min.css"> -->
+    <!-- <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.4.2/css/buttons.dataTables.min.css"> -->
     <link rel="stylesheet" href="../dist/libs/sweetalert2/dist/sweetalert2.min.css">
     <link rel="stylesheet" type="text/css"
         href=https://cdn.datatables.net/searchpanes/2.1.1/css/searchPanes.dataTables.min.css>
@@ -45,6 +47,14 @@ if (!isset($_SESSION['user_type'])) {
 <style>
     .ck-editor__editable_inline {
         min-height: 250px;
+    }
+
+    .table-responsive .dataTables_wrapper .dataTables_paginate .paginate_button {
+        cursor: pointer;
+        padding: 6px 12px;
+        border: 1px solid var(--bs-border-color);
+        border-radius: var(--bs-border-radius);
+        margin: 0 3px;
     }
 </style>
 </head>

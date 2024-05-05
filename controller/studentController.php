@@ -8,7 +8,7 @@ class Student
     {
         //call database.php
         include_once ('database.php');
-
+        require_once ('logController.php');
         //enable log
         // error_reporting(E_ALL);
         // ini_set('display_errors', 1);
@@ -78,6 +78,10 @@ class Student
         $result = $stmt->execute();
         $stmt->close();
         $conn->close();
+        $studentDetails = $this->getStudentsById($id);
+        $student = $studentDetails->fetch_assoc();
+        $log = new Log();
+        $log->createLog($_SESSION['userID'], 'Archived Student ' . $student['firstname'] . ' ' . $student['lastname']);
         return $result ? 'success' : $conn->error;
     }
 
@@ -94,6 +98,10 @@ class Student
         $result = $stmt->execute();
         $stmt->close();
         $conn->close();
+        $studentDetails = $this->getStudentsById($id);
+        $student = $studentDetails->fetch_assoc();
+        $log = new Log();
+        $log->createLog($_SESSION['userID'], 'Unarchived Student ' . $student['firstname'] . ' ' . $student['lastname']);
         return $result ? 'success' : $conn->error;
     }
 
@@ -130,14 +138,17 @@ class Student
             include_once ('loginController.php');
             $id = $connection->insert_id;
             $loginController = new Login();
-            if ($email != null || $email != '')
+            $log = new Log();
+            $log->createLog($_SESSION['userID'], 'Added Student ' . $firstname . ' ' . $lastname);
+            if ($email != null || $email != '') {
                 if ($loginController->createUserWhenCreated($lastname, $email, $contact, 'student', $id)) {
                     $stmt->close();
                     return json_encode(array('success' => 'true'));
                 } else {
                     $stmt->close();
                     return json_encode(array('success' => 'false'));
-                } else {
+                }
+            } else {
                 $stmt->close();
                 return json_encode(array('success' => 'true'));
             }
@@ -192,6 +203,8 @@ class Student
         try {
             $stmt->execute();
             $stmt->close();
+            $log = new Log();
+            $log->createLog($_SESSION['userID'], 'Updated Student ' . $firstname . ' ' . $lastname);
             return json_encode(array('success' => 'true'));
         } catch (Exception $e) {
             $errorMessageArray = array('success' => 'false', 'errorMessage' => $stmt->error, 'errorCode' => $stmt->errno);
@@ -203,6 +216,8 @@ class Student
     function deleteStudent()
     {
         $id = $_POST['id'];
+        $studentDetails = $this->getStudentsById($id);
+        $student = $studentDetails->fetch_assoc();
         $query = "DELETE FROM student WHERE id = ?";
         $connection = new Connection();
         $conn = $connection->connect();
@@ -211,9 +226,26 @@ class Student
         $result = $stmt->execute();
         $stmt->close();
         $conn->close();
+
+        $log = new Log();
+        $log->createLog($_SESSION['userID'], 'Deleted Student ' . $student['firstname'] . ' ' . $student['lastname']);
         return $result ? 'success' : $conn->error;
     }
 
+    private function getStudentsById($id)
+    {
+        $conn = new Connection();
+        $query = "SELECT * FROM student WHERE id = ?";
+        $connection = new Connection();
+        $conn = $connection->connect();
+        $stmt = $conn->prepare($query);
+        $stmt->bind_param("i", $id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $stmt->close();
+        $conn->close();
+        return $result;
+    }
     function getAllArchived()
     {
         $conn = new Connection();

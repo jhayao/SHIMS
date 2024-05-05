@@ -9,6 +9,7 @@ class Log
         if (session_status() == PHP_SESSION_NONE) {
             session_start();
         }
+        $this->createSqlView();
         //enable log
         // error_reporting(E_ALL);
         // ini_set('display_errors', 1);
@@ -31,18 +32,49 @@ class Log
         return $result ? 'success' : $conn->error;
     }
 
-    public function getLogs($user_id)
+    public function getLogs()
     {
         $db = new Connection();
         $conn = $db->connect();
-        $sql = "SELECT * FROM log  ORDER BY created_at DESC";
+        $sql = "select * from log as l inner join combined_accounts as c on c.id = l.user_id ORDER BY created_at DESC";
         $stmt = $conn->prepare($sql);
-        $stmt->bind_param("i", $user_id);
         $stmt->execute();
         $result = $stmt->get_result();
         $stmt->close();
         $conn->close();
         return $result;
+    }
+
+    private function createSqlView()
+    {
+        $db = new Connection();
+        $conn = $db->connect();
+        $sql = "CREATE VIEW IF NOT EXISTS combined_accounts AS
+        SELECT * FROM (
+            SELECT u.id, n.firstname, n.middlename, n.lastname, n.email, n.nurse_type as role
+            FROM users AS u
+            INNER JOIN nurse AS n ON n.id = u.account_id
+            WHERE u.user_type = 'nurse'
+        ) AS nurse_accounts
+        UNION
+        SELECT * FROM (
+            SELECT u.id, n.firstname, n.middlename, n.lastname, n.email, 'student' as role
+            FROM users AS u
+            INNER JOIN student AS n ON n.id = u.account_id
+            WHERE u.user_type = 'student'
+        ) AS student_accounts
+        UNION
+        SELECT * FROM (
+            SELECT u.id, 'Admin' AS firstname, '' AS middlename, '' AS lastname, u.email, 'admin' as role
+            FROM users AS u
+            WHERE u.user_type = 'admin'
+            LIMIT 1
+        ) AS admin_account;;
+        ";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+        $stmt->close();
+        $conn->close();
     }
 }
 

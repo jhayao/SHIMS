@@ -113,7 +113,7 @@
                     "url": "../controller/nurseController.php",
                     "type": "POST",
                     "data": {
-                        "function": "getAllNurse"
+                        "function": "<?php echo (isset($_GET['archived']) && $_GET['archived'] == 'true') ? 'getArchivedNurse' : 'getAllNurse' ?>"
                     },
                 },
                 columns: [{
@@ -145,6 +145,47 @@
                     "data": "id",
                     createdCell: function (cell, cellData, rowData, rowIndex, colIndex) {
 
+                        $(cell).on('click', '.unarchived', function () {
+                            // Handle cell click event
+                            Swal.fire({
+                                title: 'Are you sure?',
+                                text: "You want to unarchive this file?",
+                                icon: 'warning',
+                                showCancelButton: true,
+                                confirmButtonColor: '#3085d6',
+                                cancelButtonColor: '#d33',
+                                confirmButtonText: 'Yes, Unarchive it!'
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+
+                                    //delete reuqest ajax
+                                    $.ajax({
+                                        url: "../controller/nurseController.php",
+                                        type: "POST",
+                                        data: {
+                                            "function": "unarchivedNurse",
+                                            "id": cellData
+                                        },
+                                        success: function (data) {
+                                            if (data.trim() == "success") {
+                                                Swal.fire(
+                                                    'Unarchived!',
+                                                    'Your file has been unarchived.',
+                                                    'success'
+                                                ).then((result) => {
+                                                    if (result.isConfirmed) {
+                                                        location.reload();
+                                                    }
+                                                })
+
+                                            }
+                                        }
+                                    });
+
+                                }
+                            })
+                        });
+
                         $(cell).on('click', '.delete', function () {
                             // Handle cell click event
                             Swal.fire({
@@ -154,7 +195,7 @@
                                 showCancelButton: true,
                                 confirmButtonColor: '#3085d6',
                                 cancelButtonColor: '#d33',
-                                confirmButtonText: 'Yes, delete it!'
+                                confirmButtonText: 'Yes, <?php echo (isset($_GET['archived']) && $_GET['archived'] == 'true') ? 'Delete' : 'Archived' ?> it!'
                             }).then((result) => {
                                 if (result.isConfirmed) {
 
@@ -163,14 +204,14 @@
                                         url: "../controller/nurseController.php",
                                         type: "POST",
                                         data: {
-                                            "function": "deleteNurse",
+                                            "function": "<?php echo (isset($_GET['archived']) && $_GET['archived'] == 'true') ? 'deleteNurse' : 'archivedNurse' ?>",
                                             "id": cellData
                                         },
                                         success: function (data) {
                                             if (data.trim() == "success") {
                                                 Swal.fire(
-                                                    'Deleted!',
-                                                    'Your file has been deleted.',
+                                                    '<?php echo (isset($_GET['archived']) && $_GET['archived'] == 'true') ? 'Deleted!' : 'Archived!' ?>',
+                                                    'Your file has been <?php echo (isset($_GET['archived']) && $_GET['archived'] == 'true') ? 'deleted' : 'archived' ?>.',
                                                     'success'
                                                 ).then((result) => {
                                                     if (result.isConfirmed) {
@@ -189,8 +230,12 @@
                     "render": function (data, type, row, meta) {
                         return `<div class="d-flex justify-content-center">
                             <a href="profileNurse.php?id=${data}&nurse_type=${row.nurse_type}" class="btn btn-success me-1"><i class="ti ti-eye"></i></a>
-                                        <a href="addNurse.php?edit=true&id=${data}" class="btn btn-primary   me-1"><i class="ti ti-edit"></i></a>
-                                        <button id="${data}"  class="btn btn-danger delete  me-1"><i class="ti ti-trash-x"></i></button>
+                            <?php if (isset($_GET['archived']) && $_GET['archived'] == 'true'): ?>
+                                                                                                    <button id="${data}"  class="btn btn-info unarchived  me-1"><i class="ti ti-archive-off"></i></button>
+                                <?php else: ?>
+                                                                                                            <a href="addNurse.php?edit=true&id=${data}" class="btn btn-primary   me-1"><i class="ti ti-edit"></i></a>
+                                        <?php endif; ?>
+                                        <button id="${data}"  class="btn btn-danger delete  me-1"><i class="ti <?php echo (isset($_GET['archived']) && $_GET['archived'] == 'true') ? 'ti-trash-x' : 'ti-archive' ?>"></i></button>
                                     </div>`;
                     }
                 }

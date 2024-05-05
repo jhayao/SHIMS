@@ -115,7 +115,9 @@
                     "type": "POST",
                     "data": {
                         <?php
-                        if ($_SESSION['user_type'] === 'nurse' && strtolower($_SESSION["userInfo"]["nurse_type"]) === 'school nurse') {
+                        if (isset($_GET['archived']) && $_GET['archived'] === 'true') {
+                            echo '"function": "getAllArchived"';
+                        } else if ($_SESSION['user_type'] === 'nurse' && strtolower($_SESSION["userInfo"]["nurse_type"]) === 'school nurse') {
                             echo ' "function": "getStudentbySchoolId" , "school_id": ' . $_SESSION["userInfo"]["assigned"] . '';
                         } else {
                             echo '"function": "getAllStudent"';
@@ -139,32 +141,32 @@
                     "data": "id",
                     createdCell: function (cell, cellData, rowData, rowIndex, colIndex) {
 
-                        $(cell).on('click', '.delete', function () {
+
+                        $(cell).on('click', '.unarchived', function () {
                             // Handle cell click event
                             Swal.fire({
                                 title: 'Are you sure?',
-                                text: "You won't be able to revert this!",
+                                text: "You want to unarchived this student!",
                                 icon: 'warning',
                                 showCancelButton: true,
                                 confirmButtonColor: '#3085d6',
                                 cancelButtonColor: '#d33',
-                                confirmButtonText: 'Yes, delete it!'
+                                confirmButtonText: 'Yes, unarchived it!'
                             }).then((result) => {
                                 if (result.isConfirmed) {
-
                                     //delete reuqest ajax
                                     $.ajax({
                                         url: "../controller/studentController.php",
                                         type: "POST",
                                         data: {
-                                            "function": "deleteStudent",
+                                            "function": "unarchivedStudent",
                                             "id": cellData
                                         },
                                         success: function (data) {
                                             if (data.trim() == "success") {
                                                 Swal.fire(
-                                                    'Deleted!',
-                                                    'Your file has been deleted.',
+                                                    'Unarchived!',
+                                                    'Your file has been unarchived.',
                                                     'success'
                                                 ).then((result) => {
                                                     if (result.isConfirmed) {
@@ -175,17 +177,87 @@
                                             }
                                         }
                                     });
+                                }
+                            })
 
+                        })
+
+                        $(cell).on('click', '.delete', function () {
+                            // Handle cell click event
+                            Swal.fire({
+                                title: 'Are you sure?',
+                                text: "You won't be able to revert this!",
+                                icon: 'warning',
+                                showCancelButton: true,
+                                confirmButtonColor: '#3085d6',
+                                cancelButtonColor: '#d33',
+                                confirmButtonText: 'Yes, <?php echo (isset($_GET['archived']) && $_GET['archived'] === 'true') ? "delete" : "archived" ?> it!'
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+                                    <?php if (isset($_GET['archived']) && $_GET['archived'] === 'true') { ?>
+                                        //delete reuqest ajax
+                                        $.ajax({
+                                            url: "../controller/studentController.php",
+                                            type: "POST",
+                                            data: {
+                                                "function": "deleteStudent",
+                                                "id": cellData
+                                            },
+                                            success: function (data) {
+                                                if (data.trim() == "success") {
+                                                    Swal.fire(
+                                                        'Deleted!',
+                                                        'Your file has been deleted.',
+                                                        'success'
+                                                    ).then((result) => {
+                                                        if (result.isConfirmed) {
+                                                            location.reload();
+                                                        }
+                                                    })
+
+                                                }
+                                            }
+                                        });
+
+                                    <?php } else { ?>
+                                        //delete reuqest ajax
+                                        $.ajax({
+                                            url: "../controller/studentController.php",
+                                            type: "POST",
+                                            data: {
+                                                "function": "archivedStudent",
+                                                "id": cellData
+                                            },
+                                            success: function (data) {
+                                                if (data.trim() == "success") {
+                                                    Swal.fire(
+                                                        'Archived!',
+                                                        'Your file has been archived.',
+                                                        'success'
+                                                    ).then((result) => {
+                                                        if (result.isConfirmed) {
+                                                            location.reload();
+                                                        }
+                                                    })
+
+                                                }
+                                            }
+                                        });
+                                    <?php } ?>
                                 }
                             })
                         });
                     },
                     "render": function (data, type, row, meta) {
                         return `<div class="d-flex justify-content-center">
-                                        <a href="profileStudent.php?id=${data}" class="btn btn-success   me-3"><i class="ti ti-eye"></i></a>
+                                        <a href="profileStudent.php?id=${data}" class="btn btn-success   me-2"><i class="ti ti-eye"></i></a>
                                         <?php if ($nurseType === 'school nurse' || $nurseType === 'admin'): ?>
-                                                                <a href="addStudent.php?edit=true&id=${data}" class="btn btn-primary   me-3"><i class="ti ti-edit"></i></a>
-                                                                <button id="${data}"  class="btn btn-danger delete  me-3"><i class="ti ti-trash-x"></i></button>
+                                                                                <?php if (isset($_GET['archived']) && $_GET['archived'] === 'true'): ?>
+                                                                                                                        <button id="${data}"  class="btn btn-info unarchived  me-2"><i class="ti ti-archive-off"></i></button>
+                                                                                <?php else: ?>
+                                                                                                                    <a href="addStudent.php?edit=true&id=${data}"  class="btn btn-primary unarchived me-2"><i class="ti <?php echo ((isset($_GET['archived']) && $_GET['archived'] === 'true') ? "ti-archive-off" : "ti-edit") ?> "></i></a>
+                                                                                    <?php endif; ?>
+                                                                                <button id="${data}"  class="btn btn-danger delete  me-2"><i class="ti <?php echo ((isset($_GET['archived']) && $_GET['archived'] === 'true') ? "ti-trash-x" : "ti-archive") ?>"></i></button>
                                         <?php endif; ?>
                                         
                                     </div>`;

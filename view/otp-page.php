@@ -4,7 +4,7 @@ if (session_status() == PHP_SESSION_NONE) {
 }
 if (isset($_POST) && !empty($_POST)) {
   $otp = $_POST['t1'] . $_POST['t2'] . $_POST['t3'] . $_POST['t4'] . $_POST['t5'] . $_POST['t6'];
-  require_once('../controller/database.php');
+  require_once ('../controller/database.php');
   $id = $_SESSION['userID'];
   $db = new Connection();
   $conn = $db->connect();
@@ -24,8 +24,7 @@ if (isset($_POST) && !empty($_POST)) {
     } else {
       $error = "Expired OTP";
     }
-  }
-  else {
+  } else {
     $error = "Invalid OTP";
   }
 
@@ -108,9 +107,13 @@ if (isset($_POST) && !empty($_POST)) {
                       </div>
                     </div>
                     <button type="submit" class="btn btn-primary w-100 py-8 mb-4">Verify My Account</button>
-                    <div class="d-flex align-items-center">
+                    <!-- <div class="d-flex align-items-center">
                       <p class="fs-4 mb-0 text-dark">Didn't get the code?</p>
                       <a class="text-primary fw-medium ms-2" href="javascript:void(0)">Resend</a>
+                    </div> -->
+                    <div class="d-flex align-items-center mt-2">
+                      <p class="fs-4 mb-0 text-dark">Go back to login page?</p>
+                      <a class="text-primary fw-medium ms-2" href="login.php">LOGIN</a>
                     </div>
                   </form>
                 </div>

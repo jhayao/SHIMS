@@ -1,4 +1,3 @@
-
 <aside class="left-sidebar">
 
   <!-- Sidebar scroll-->
@@ -80,7 +79,7 @@
                   <span class="hide-menu">List </span>
                 </a>
               </li>
-              <?php if ($_SESSION['user_type'] == 'admin' || ($_SESSION['user_type'] === 'nurse' &&  strtolower($_SESSION["userInfo"]["nurse_type"]) == 'school nurse')) { ?>
+              <?php if ($_SESSION['user_type'] == 'admin' || ($_SESSION['user_type'] === 'nurse' && strtolower($_SESSION["userInfo"]["nurse_type"]) == 'school nurse')) { ?>
                 <li class="sidebar-item">
                 <li class="sidebar-item">
                   <a href="addStudent.php" class="sidebar-link">
@@ -183,7 +182,7 @@
         </li>
 
 
-        <?php if ($_SESSION['user_type'] == 'admin' || ($_SESSION['user_type'] === 'nurse' )) { ?>
+        <?php if ($_SESSION['user_type'] == 'admin' || ($_SESSION['user_type'] === 'nurse')) { ?>
           <li class="sidebar-item">
             <a class="sidebar-link has-arrow" href="#" aria-expanded="false">
               <span class="d-flex">
@@ -200,15 +199,48 @@
                   <span class="hide-menu">List</span>
                 </a>
               </li>
-                <?php if ($_SESSION['user_type'] == 'admin' || ($_SESSION['user_type'] === 'nurse' &&  strtolower($_SESSION["userInfo"]["nurse_type"]) === 'school nurse')) { ?>
+              <?php if ($_SESSION['user_type'] == 'admin' || ($_SESSION['user_type'] === 'nurse' && strtolower($_SESSION["userInfo"]["nurse_type"]) === 'school nurse')) { ?>
+                <li class="sidebar-item">
+                  <a href="addCheckup.php" class="sidebar-link">
+                    <div class="round-16 d-flex align-items-center justify-content-center">
+                      <i class="ti ti-circle"></i>
+                    </div>
+                    <span class="hide-menu">Add</span>
+                  </a>
+                </li>
+              <?php } ?>
+            </ul>
+          </li>
+        <?php } ?>
+
+
+
+        <?php if ($_SESSION['user_type'] == 'admin' || ($_SESSION['user_type'] === 'nurse')) { ?>
+          <li class="sidebar-item">
+            <a class="sidebar-link has-arrow" href="#" aria-expanded="false">
+              <span class="d-flex">
+                <i class="ti ti-archive"></i>
+              </span>
+              <span class="hide-menu">Archived</span>
+            </a>
+            <ul aria-expanded="false" class="collapse first-level">
               <li class="sidebar-item">
-                <a href="addCheckup.php" class="sidebar-link">
+                <a href="viewStudent.php?archived=true" class="sidebar-link">
                   <div class="round-16 d-flex align-items-center justify-content-center">
                     <i class="ti ti-circle"></i>
                   </div>
-                  <span class="hide-menu">Add</span>
+                  <span class="hide-menu">Student</span>
                 </a>
               </li>
+              <?php if ($_SESSION['user_type'] == 'admin' || ($_SESSION['user_type'] === 'nurse' && strtolower($_SESSION["userInfo"]["nurse_type"]) === 'school nurse')) { ?>
+                <li class="sidebar-item">
+                  <a href="viewNurse.php?archived=true" class="sidebar-link">
+                    <div class="round-16 d-flex align-items-center justify-content-center">
+                      <i class="ti ti-circle"></i>
+                    </div>
+                    <span class="hide-menu">Nurse</span>
+                  </a>
+                </li>
               <?php } ?>
             </ul>
           </li>

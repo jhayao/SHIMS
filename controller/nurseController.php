@@ -25,7 +25,7 @@ class Nurse
 
         try {
             $nurseArray = array();
-            $query = "SELECT *
+            $query = "SELECT * FROM (SELECT *
             FROM (
                 SELECT n.*, s.school_name 
                 FROM nurse AS n
@@ -47,7 +47,7 @@ class Nurse
                     FROM nurse AS n
                     INNER JOIN division AS di ON di.id = n.assigned
                     WHERE n.nurse_type = 'Division Nurse'
-                ) AS di;";
+                ) AS di) as n where n.archived = 0";
             $connection = new Connection();
             $conn = $connection->connect();
             $stmt = $conn->prepare($query);
@@ -60,6 +60,46 @@ class Nurse
             return $e->getMessage();
         }
 
+    }
+
+    public function getArchivedNurse()
+    {
+        try {
+            $nurseArray = array();
+            $query = "SELECT * FROM (SELECT *
+            FROM (
+                SELECT n.*, s.school_name 
+                FROM nurse AS n
+                INNER JOIN school AS s ON s.id = n.assigned
+                    WHERE n.nurse_type = 'School Nurse'
+                ) AS s
+                UNION
+                SELECT *
+                FROM (
+                    SELECT n.*, d.district_name
+                    FROM nurse AS n
+                    INNER JOIN district AS d ON d.id = n.assigned
+                    WHERE n.nurse_type = 'District Nurse'
+                ) AS d
+                UNION
+                SELECT *
+                FROM (
+                    SELECT n.*, di.division_name
+                    FROM nurse AS n
+                    INNER JOIN division AS di ON di.id = n.assigned
+                    WHERE n.nurse_type = 'Division Nurse'
+                ) AS di) as n where n.archived = 1";
+            $connection = new Connection();
+            $conn = $connection->connect();
+            $stmt = $conn->prepare($query);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            $stmt->close();
+            $conn->close();
+            return $result;
+        } catch (Exception $e) {
+            return $e->getMessage();
+        }
     }
 
     function addNurse()
@@ -111,6 +151,22 @@ class Nurse
         // $stmt->close();
         // $conn->close();
         // return $result ? 'success' : $conn->error;
+    }
+
+    function archivedNurse($id = null)
+    {
+        if ($id == null)
+            $id = $_POST['id'];
+
+        $query = "UPDATE nurse SET archived = '1' WHERE id = ?";
+        $connection = new Connection();
+        $conn = $connection->connect();
+        $stmt = $conn->prepare($query);
+        $stmt->bind_param("i", $id);
+        $result = $stmt->execute();
+        $stmt->close();
+        $conn->close();
+        return $result ? 'success' : $conn->error;
     }
 
     function editNurse($id = null)
@@ -176,6 +232,23 @@ class Nurse
         return $result ? 'success' : $conn->error;
     }
 
+
+    public function unarchivedNurse($id = null)
+    {
+        if ($id == null)
+            $id = $_POST['id'];
+
+        $query = "UPDATE nurse SET archived = '0' WHERE id = ?";
+        $connection = new Connection();
+        $conn = $connection->connect();
+        $stmt = $conn->prepare($query);
+        $stmt->bind_param("i", $id);
+        $result = $stmt->execute();
+        $stmt->close();
+        $conn->close();
+        return $result ? 'success' : $conn->error;
+    }
+
 }
 
 if (isset($_POST['function'])) {
@@ -215,6 +288,21 @@ if (isset($_POST['function'])) {
             break;
         case 'deleteNurse':
             echo $nurse->deleteNurse();
+            break;
+        case 'archivedNurse':
+            echo $nurse->archivedNurse();
+            break;
+        case 'getArchivedNurse':
+            $result = $nurse->getArchivedNurse();
+            $nurseArray = array();
+            while ($row = $result->fetch_assoc()) {
+                array_push($nurseArray, $row);
+            }
+            $dataTable = array('data' => $nurseArray, 'draw' => 1, 'recordsTotal' => count($nurseArray), 'recordsFiltered' => count($nurseArray));
+            echo json_encode($dataTable);
+            break;
+        case 'unarchivedNurse':
+            echo $nurse->unarchivedNurse();
             break;
     }
 }

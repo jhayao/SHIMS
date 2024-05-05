@@ -21,7 +21,7 @@ class Student
     function getAllStudent()
     {
         $conn = new Connection();
-        $query = "SELECT * FROM student";
+        $query = "SELECT * FROM student where archived = 0";
         $connection = new Connection();
         $conn = $connection->connect();
         $stmt = $conn->prepare($query);
@@ -63,6 +63,38 @@ class Student
         $stmt->close();
         $conn->close();
         return $result;
+    }
+
+    function archivedStudent($id = null)
+    {
+        if ($id == null)
+            $id = isset($_POST['id']) ? $_POST['id'] : '';
+        $conn = new Connection();
+        $query = "UPDATE student SET archived = '1' WHERE id = ?";
+        $connection = new Connection();
+        $conn = $connection->connect();
+        $stmt = $conn->prepare($query);
+        $stmt->bind_param("i", $id);
+        $result = $stmt->execute();
+        $stmt->close();
+        $conn->close();
+        return $result ? 'success' : $conn->error;
+    }
+
+    function unarchivedStudent($id = null)
+    {
+        if ($id == null)
+            $id = isset($_POST['id']) ? $_POST['id'] : '';
+        $conn = new Connection();
+        $query = "UPDATE student SET archived = '0' WHERE id = ?";
+        $connection = new Connection();
+        $conn = $connection->connect();
+        $stmt = $conn->prepare($query);
+        $stmt->bind_param("i", $id);
+        $result = $stmt->execute();
+        $stmt->close();
+        $conn->close();
+        return $result ? 'success' : $conn->error;
     }
 
     function addStudent()
@@ -182,6 +214,20 @@ class Student
         return $result ? 'success' : $conn->error;
     }
 
+    function getAllArchived()
+    {
+        $conn = new Connection();
+        $query = "SELECT * FROM student where archived = 1";
+        $connection = new Connection();
+        $conn = $connection->connect();
+        $stmt = $conn->prepare($query);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $stmt->close();
+        $conn->close();
+        return $result;
+    }
+
 }
 
 if (isset($_POST['function'])) {
@@ -229,18 +275,30 @@ if (isset($_POST['function'])) {
         case 'deleteStudent':
             echo $student->deleteStudent();
             break;
+        case 'archivedStudent':
+            echo $student->archivedStudent();
+            break;
+        case 'unarchivedStudent':
+            echo $student->unarchivedStudent();
+            break;
+        case 'getAllArchived':
+            $result = $student->getAllArchived();
+            $studentArray = array();
+            while ($row = $result->fetch_assoc()) {
+                array_push($studentArray, $row);
+            }
+            $dataTable = array('data' => $studentArray, 'draw' => 1, 'recordsTotal' => count($studentArray), 'recordsFiltered' => count($studentArray));
+            echo json_encode($dataTable);
+            break;
     }
 }
 
 if (isset($_GET['function'])) {
     $function = $_GET['function'];
-    $nurse = new Nurse();
+    $nurse = new Student();
     switch ($function) {
-        case 'editNurse':
-            $result = $nurse->editNurse();
-            $editNurse = array();
-            $row = $result->fetch_assoc();
-            echo json_encode($row);
+        case 'unarchivedNurse':
+            echo $nurse->unarchivedStudent($_GET['id']);
             break;
 
     }

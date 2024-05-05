@@ -2,9 +2,12 @@
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
+
+
+
 if (!isset($_SESSION['user_type'])) {
     header('location: login.php');
-} else if ($_SESSION['userInfo']['isVerified'] == false && isset($_SESSION['userInfo']['isVerified'])) {
+} else if ($_SESSION['userInfo']['isVerified'] == false || !isset($_SESSION['userInfo']['isVerified'])) {
     header('location: otp-page.php');
 }
 ?>

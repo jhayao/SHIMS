@@ -1,0 +1,2 @@
+[06-May-2024 02:09:42 UTC] PHP Warning:  mysqli::__construct(): (HY000/1045): Access denied for user 'root'@'localhost' (using password: NO) in /home/niwglkmv/public_html/controller/database.php on line 26
+[06-May-2024 02:09:54 UTC] PHP Warning:  mysqli::__construct(): (HY000/1045): Access denied for user 'root'@'localhost' (using password: NO) in /home/niwglkmv/public_html/controller/database.php on line 26

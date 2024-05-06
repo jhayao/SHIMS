@@ -11,12 +11,12 @@ class Log
         }
         $this->createSqlView();
         //enable log
-        // error_reporting(E_ALL);
-        // ini_set('display_errors', 1);
-        // ini_set('error_log', 'error.log');
-        // ini_set('display_errors', 1);
-        // ini_set('display_startup_errors', 1);
-        // error_reporting(E_ALL);
+        error_reporting(E_ALL);
+        ini_set('display_errors', 1);
+        ini_set('error_log', 'error.log');
+        ini_set('display_errors', 1);
+        ini_set('display_startup_errors', 1);
+        error_reporting(E_ALL);
     }
 
     public function createLog($user_id, $log)
@@ -49,7 +49,7 @@ class Log
     {
         $db = new Connection();
         $conn = $db->connect();
-        $sql = "CREATE VIEW IF NOT EXISTS combined_accounts AS
+        $sql = "CREATE VIEW combined_accounts AS
         SELECT * FROM (
             SELECT u.id, n.firstname, n.middlename, n.lastname, n.email, n.nurse_type as role
             FROM users AS u

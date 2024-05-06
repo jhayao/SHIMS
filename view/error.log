@@ -1,0 +1,11 @@
+[06-May-2024 02:23:05 UTC] PHP Warning:  require_once(../controller/LogController.php): Failed to open stream: No such file or directory in /home/niwglkmv/public_html/view/viewLog.php on line 9
+[06-May-2024 02:23:05 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '../controller/LogController.php' (include_path='.:/opt/alt/php80/usr/share/pear:/opt/alt/php80/usr/share/php:/usr/share/pear:/usr/share/php') in /home/niwglkmv/public_html/view/viewLog.php:9
+Stack trace:
+#0 {main}
+  thrown in /home/niwglkmv/public_html/view/viewLog.php on line 9
+[06-May-2024 02:23:48 UTC] PHP Fatal error:  Uncaught Error: Call to a member function execute() on bool in /home/niwglkmv/public_html/controller/logController.php:75
+Stack trace:
+#0 /home/niwglkmv/public_html/controller/logController.php(12): Log->createSqlView()
+#1 /home/niwglkmv/public_html/view/viewLog.php(10): Log->__construct()
+#2 {main}
+  thrown in /home/niwglkmv/public_html/controller/logController.php on line 75

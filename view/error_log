@@ -918,3 +918,43 @@
 [26-Apr-2024 14:09:01 UTC] PHP Warning:  Trying to access array offset on value of type null in /home/niwglkmv/public_html/view/dashboard.php on line 38
 [26-Apr-2024 14:09:01 UTC] PHP Warning:  Undefined array key "userInfo" in /home/niwglkmv/public_html/view/dashboard.php on line 38
 [26-Apr-2024 14:09:01 UTC] PHP Warning:  Trying to access array offset on value of type null in /home/niwglkmv/public_html/view/dashboard.php on line 38
+[06-May-2024 02:14:47 UTC] PHP Warning:  require_once(../controller/LogController.php): Failed to open stream: No such file or directory in /home/niwglkmv/public_html/view/viewLog.php on line 3
+[06-May-2024 02:14:47 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '../controller/LogController.php' (include_path='.:/opt/alt/php80/usr/share/pear:/opt/alt/php80/usr/share/php:/usr/share/pear:/usr/share/php') in /home/niwglkmv/public_html/view/viewLog.php:3
+Stack trace:
+#0 {main}
+  thrown in /home/niwglkmv/public_html/view/viewLog.php on line 3
+[06-May-2024 02:16:18 UTC] PHP Warning:  require_once(../controller/LogController.php): Failed to open stream: No such file or directory in /home/niwglkmv/public_html/view/viewLog.php on line 3
+[06-May-2024 02:16:18 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '../controller/LogController.php' (include_path='.:/opt/alt/php80/usr/share/pear:/opt/alt/php80/usr/share/php:/usr/share/pear:/usr/share/php') in /home/niwglkmv/public_html/view/viewLog.php:3
+Stack trace:
+#0 {main}
+  thrown in /home/niwglkmv/public_html/view/viewLog.php on line 3
+[06-May-2024 02:16:20 UTC] PHP Warning:  require_once(../controller/LogController.php): Failed to open stream: No such file or directory in /home/niwglkmv/public_html/view/viewLog.php on line 3
+[06-May-2024 02:16:20 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '../controller/LogController.php' (include_path='.:/opt/alt/php80/usr/share/pear:/opt/alt/php80/usr/share/php:/usr/share/pear:/usr/share/php') in /home/niwglkmv/public_html/view/viewLog.php:3
+Stack trace:
+#0 {main}
+  thrown in /home/niwglkmv/public_html/view/viewLog.php on line 3
+[06-May-2024 02:18:14 UTC] PHP Warning:  require_once(../controller/LogController.php): Failed to open stream: No such file or directory in /home/niwglkmv/public_html/view/viewLog.php on line 3
+[06-May-2024 02:18:14 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '../controller/LogController.php' (include_path='.:/opt/alt/php80/usr/share/pear:/opt/alt/php80/usr/share/php:/usr/share/pear:/usr/share/php') in /home/niwglkmv/public_html/view/viewLog.php:3
+Stack trace:
+#0 {main}
+  thrown in /home/niwglkmv/public_html/view/viewLog.php on line 3
+[06-May-2024 02:21:07 UTC] PHP Warning:  require_once(../controller/LogController.php): Failed to open stream: No such file or directory in /home/niwglkmv/public_html/view/viewLog.php on line 3
+[06-May-2024 02:21:07 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '../controller/LogController.php' (include_path='.:/opt/alt/php80/usr/share/pear:/opt/alt/php80/usr/share/php:/usr/share/pear:/usr/share/php') in /home/niwglkmv/public_html/view/viewLog.php:3
+Stack trace:
+#0 {main}
+  thrown in /home/niwglkmv/public_html/view/viewLog.php on line 3
+[06-May-2024 02:21:50 UTC] PHP Warning:  require_once(../controller/LogController.php): Failed to open stream: No such file or directory in /home/niwglkmv/public_html/view/viewLog.php on line 3
+[06-May-2024 02:21:50 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '../controller/LogController.php' (include_path='.:/opt/alt/php80/usr/share/pear:/opt/alt/php80/usr/share/php:/usr/share/pear:/usr/share/php') in /home/niwglkmv/public_html/view/viewLog.php:3
+Stack trace:
+#0 {main}
+  thrown in /home/niwglkmv/public_html/view/viewLog.php on line 3
+[06-May-2024 02:21:51 UTC] PHP Warning:  require_once(../controller/LogController.php): Failed to open stream: No such file or directory in /home/niwglkmv/public_html/view/viewLog.php on line 3
+[06-May-2024 02:21:51 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '../controller/LogController.php' (include_path='.:/opt/alt/php80/usr/share/pear:/opt/alt/php80/usr/share/php:/usr/share/pear:/usr/share/php') in /home/niwglkmv/public_html/view/viewLog.php:3
+Stack trace:
+#0 {main}
+  thrown in /home/niwglkmv/public_html/view/viewLog.php on line 3
+[06-May-2024 02:21:58 UTC] PHP Warning:  require_once(../controller/LogController.php): Failed to open stream: No such file or directory in /home/niwglkmv/public_html/view/viewLog.php on line 3
+[06-May-2024 02:21:58 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '../controller/LogController.php' (include_path='.:/opt/alt/php80/usr/share/pear:/opt/alt/php80/usr/share/php:/usr/share/pear:/usr/share/php') in /home/niwglkmv/public_html/view/viewLog.php:3
+Stack trace:
+#0 {main}
+  thrown in /home/niwglkmv/public_html/view/viewLog.php on line 3

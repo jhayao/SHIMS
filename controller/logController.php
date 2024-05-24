@@ -49,7 +49,7 @@ class Log
     {
         $db = new Connection();
         $conn = $db->connect();
-        $sql = "CREATE VIEW combined_accounts AS
+        $sql = "CREATE OR REPLACE VIEW combined_accounts AS
         SELECT * FROM (
             SELECT u.id, n.firstname, n.middlename, n.lastname, n.email, n.nurse_type as role
             FROM users AS u

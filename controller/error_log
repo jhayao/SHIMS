@@ -1,2 +1,39 @@
 [06-May-2024 02:09:42 UTC] PHP Warning:  mysqli::__construct(): (HY000/1045): Access denied for user 'root'@'localhost' (using password: NO) in /home/niwglkmv/public_html/controller/database.php on line 26
 [06-May-2024 02:09:54 UTC] PHP Warning:  mysqli::__construct(): (HY000/1045): Access denied for user 'root'@'localhost' (using password: NO) in /home/niwglkmv/public_html/controller/database.php on line 26
+[16-May-2024 04:47:56 UTC] PHP Warning:  Undefined array key "checkup_date" in /home/niwglkmv/public_html/controller/reportController.php on line 227
+[16-May-2024 04:47:56 UTC] PHP Fatal error:  Uncaught Error: Call to a member function bind_param() on bool in /home/niwglkmv/public_html/controller/reportController.php:237
+Stack trace:
+#0 /home/niwglkmv/public_html/controller/reportController.php(334): ReportController->getReportbyStudentId()
+#1 /home/niwglkmv/public_html/controller/reportController.php(353): ReportController->reportGenerator()
+#2 {main}
+  thrown in /home/niwglkmv/public_html/controller/reportController.php on line 237
+[16-May-2024 05:26:12 UTC] PHP Warning:  Undefined array key "checkup_date" in /home/niwglkmv/public_html/controller/reportController.php on line 227
+[16-May-2024 05:26:12 UTC] PHP Fatal error:  Uncaught Error: Call to a member function bind_param() on bool in /home/niwglkmv/public_html/controller/reportController.php:237
+Stack trace:
+#0 /home/niwglkmv/public_html/controller/reportController.php(334): ReportController->getReportbyStudentId()
+#1 /home/niwglkmv/public_html/controller/reportController.php(353): ReportController->reportGenerator()
+#2 {main}
+  thrown in /home/niwglkmv/public_html/controller/reportController.php on line 237
+[17-May-2024 11:15:23 UTC] PHP Warning:  Undefined array key "checkup_date" in /home/niwglkmv/public_html/controller/reportController.php on line 227
+[17-May-2024 11:15:23 UTC] PHP Fatal error:  Uncaught Error: Call to a member function bind_param() on bool in /home/niwglkmv/public_html/controller/reportController.php:237
+Stack trace:
+#0 /home/niwglkmv/public_html/controller/reportController.php(334): ReportController->getReportbyStudentId()
+#1 /home/niwglkmv/public_html/controller/reportController.php(353): ReportController->reportGenerator()
+#2 {main}
+  thrown in /home/niwglkmv/public_html/controller/reportController.php on line 237
+[22-May-2024 04:17:29 UTC] PHP Warning:  Undefined array key "checkup_date" in /home/niwglkmv/public_html/controller/reportController.php on line 227
+[22-May-2024 04:17:29 UTC] PHP Fatal error:  Uncaught Error: Call to a member function bind_param() on bool in /home/niwglkmv/public_html/controller/reportController.php:237
+Stack trace:
+#0 /home/niwglkmv/public_html/controller/reportController.php(334): ReportController->getReportbyStudentId()
+#1 /home/niwglkmv/public_html/controller/reportController.php(353): ReportController->reportGenerator()
+#2 {main}
+  thrown in /home/niwglkmv/public_html/controller/reportController.php on line 237
+[22-May-2024 04:22:26 UTC] PHP Warning:  Undefined array key 1 in /home/niwglkmv/public_html/controller/reportController.php on line 271
+[22-May-2024 04:22:26 UTC] PHP Warning:  Undefined variable $value in /home/niwglkmv/public_html/controller/reportController.php on line 102
+[22-May-2024 04:22:26 UTC] PHP Warning:  Trying to access array offset on value of type null in /home/niwglkmv/public_html/controller/reportController.php on line 102
+[22-May-2024 04:22:26 UTC] PHP Warning:  Undefined variable $value in /home/niwglkmv/public_html/controller/reportController.php on line 103
+[22-May-2024 04:22:26 UTC] PHP Warning:  Trying to access array offset on value of type null in /home/niwglkmv/public_html/controller/reportController.php on line 103
+[22-May-2024 04:22:26 UTC] PHP Warning:  Undefined variable $value in /home/niwglkmv/public_html/controller/reportController.php on line 104
+[22-May-2024 04:22:26 UTC] PHP Warning:  Trying to access array offset on value of type null in /home/niwglkmv/public_html/controller/reportController.php on line 104
+[22-May-2024 04:22:26 UTC] PHP Warning:  Undefined variable $value in /home/niwglkmv/public_html/controller/reportController.php on line 105
+[22-May-2024 04:22:26 UTC] PHP Warning:  Trying to access array offset on value of type null in /home/niwglkmv/public_html/controller/reportController.php on line 105

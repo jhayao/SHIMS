@@ -1,0 +1,25 @@
+[16-May-2024 04:47:34 UTC] PHP Fatal error:  Uncaught Error: Call to a member function bind_param() on bool in /home/niwglkmv/public_html/controller/checkupController.php:57
+Stack trace:
+#0 /home/niwglkmv/public_html/controller/checkupController.php(342): Checkup->getCheckupbyStudentId()
+#1 {main}
+  thrown in /home/niwglkmv/public_html/controller/checkupController.php on line 57
+[16-May-2024 05:27:07 UTC] PHP Fatal error:  Uncaught Error: Call to a member function bind_param() on bool in /home/niwglkmv/public_html/controller/checkupController.php:57
+Stack trace:
+#0 /home/niwglkmv/public_html/controller/checkupController.php(342): Checkup->getCheckupbyStudentId()
+#1 {main}
+  thrown in /home/niwglkmv/public_html/controller/checkupController.php on line 57
+[16-May-2024 05:28:06 UTC] PHP Fatal error:  Uncaught Error: Call to a member function bind_param() on bool in /home/niwglkmv/public_html/controller/checkupController.php:57
+Stack trace:
+#0 /home/niwglkmv/public_html/controller/checkupController.php(342): Checkup->getCheckupbyStudentId()
+#1 {main}
+  thrown in /home/niwglkmv/public_html/controller/checkupController.php on line 57
+[22-May-2024 04:19:08 UTC] PHP Fatal error:  Uncaught Error: Call to a member function bind_param() on bool in /home/niwglkmv/public_html/controller/checkupController.php:57
+Stack trace:
+#0 /home/niwglkmv/public_html/controller/checkupController.php(342): Checkup->getCheckupbyStudentId()
+#1 {main}
+  thrown in /home/niwglkmv/public_html/controller/checkupController.php on line 57
+[22-May-2024 04:20:16 UTC] PHP Fatal error:  Uncaught Error: Call to a member function bind_param() on bool in /home/niwglkmv/public_html/controller/checkupController.php:57
+Stack trace:
+#0 /home/niwglkmv/public_html/controller/checkupController.php(342): Checkup->getCheckupbyStudentId()
+#1 {main}
+  thrown in /home/niwglkmv/public_html/controller/checkupController.php on line 57

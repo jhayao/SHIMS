@@ -28,3 +28,7 @@
    php_flag zlib.output_compression Off
 </IfModule>
 # END cPanel-generated php ini directives, do not edit
+
+# php -- BEGIN cPanel-generated handler, do not edit
+# This domain inherits the “PHP” package.
+# php -- END cPanel-generated handler, do not edit

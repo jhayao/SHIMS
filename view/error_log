@@ -958,3 +958,334 @@ Stack trace:
 Stack trace:
 #0 {main}
   thrown in /home/niwglkmv/public_html/view/viewLog.php on line 3
+[07-May-2024 10:35:29 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 37
+[07-May-2024 10:35:29 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 65
+[07-May-2024 10:35:29 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 65
+[07-May-2024 10:35:29 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 96
+[07-May-2024 10:35:29 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 127
+[07-May-2024 10:35:29 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 171
+[07-May-2024 10:35:29 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 185
+[07-May-2024 10:35:29 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 185
+[07-May-2024 10:35:29 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 218
+[07-May-2024 10:35:29 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 218
+[07-May-2024 10:35:29 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 249
+[07-May-2024 10:35:29 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 249
+[07-May-2024 10:35:29 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 260
+[07-May-2024 10:35:29 UTC] PHP Warning:  Undefined array key "userInfo" in /home/niwglkmv/public_html/view/include/header.php on line 47
+[07-May-2024 10:35:29 UTC] PHP Warning:  Trying to access array offset on value of type null in /home/niwglkmv/public_html/view/include/header.php on line 47
+[07-May-2024 10:35:29 UTC] PHP Warning:  Undefined array key "userInfo" in /home/niwglkmv/public_html/view/include/header.php on line 47
+[07-May-2024 10:35:29 UTC] PHP Warning:  Trying to access array offset on value of type null in /home/niwglkmv/public_html/view/include/header.php on line 47
+[07-May-2024 10:35:29 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/header.php on line 48
+[07-May-2024 10:35:29 UTC] PHP Warning:  Undefined array key "userInfo" in /home/niwglkmv/public_html/view/include/header.php on line 50
+[07-May-2024 10:35:29 UTC] PHP Warning:  Trying to access array offset on value of type null in /home/niwglkmv/public_html/view/include/header.php on line 50
+[07-May-2024 10:35:29 UTC] PHP Warning:  Undefined array key "userInfo" in /home/niwglkmv/public_html/view/dashboard.php on line 38
+[07-May-2024 10:35:29 UTC] PHP Warning:  Trying to access array offset on value of type null in /home/niwglkmv/public_html/view/dashboard.php on line 38
+[07-May-2024 10:35:29 UTC] PHP Warning:  Undefined array key "userInfo" in /home/niwglkmv/public_html/view/dashboard.php on line 38
+[07-May-2024 10:35:29 UTC] PHP Warning:  Trying to access array offset on value of type null in /home/niwglkmv/public_html/view/dashboard.php on line 38
+[07-May-2024 18:36:30 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 37
+[07-May-2024 18:36:30 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 65
+[07-May-2024 18:36:30 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 65
+[07-May-2024 18:36:30 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 96
+[07-May-2024 18:36:30 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 127
+[07-May-2024 18:36:30 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 171
+[07-May-2024 18:36:30 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 185
+[07-May-2024 18:36:30 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 185
+[07-May-2024 18:36:30 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 218
+[07-May-2024 18:36:30 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 218
+[07-May-2024 18:36:30 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 249
+[07-May-2024 18:36:30 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 249
+[07-May-2024 18:36:30 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 260
+[07-May-2024 18:36:30 UTC] PHP Warning:  Undefined array key "userInfo" in /home/niwglkmv/public_html/view/include/header.php on line 47
+[07-May-2024 18:36:30 UTC] PHP Warning:  Trying to access array offset on value of type null in /home/niwglkmv/public_html/view/include/header.php on line 47
+[07-May-2024 18:36:30 UTC] PHP Warning:  Undefined array key "userInfo" in /home/niwglkmv/public_html/view/include/header.php on line 47
+[07-May-2024 18:36:30 UTC] PHP Warning:  Trying to access array offset on value of type null in /home/niwglkmv/public_html/view/include/header.php on line 47
+[07-May-2024 18:36:30 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/header.php on line 48
+[07-May-2024 18:36:30 UTC] PHP Warning:  Undefined array key "userInfo" in /home/niwglkmv/public_html/view/include/header.php on line 50
+[07-May-2024 18:36:30 UTC] PHP Warning:  Trying to access array offset on value of type null in /home/niwglkmv/public_html/view/include/header.php on line 50
+[07-May-2024 18:36:30 UTC] PHP Warning:  Undefined array key "userInfo" in /home/niwglkmv/public_html/view/dashboard.php on line 38
+[07-May-2024 18:36:30 UTC] PHP Warning:  Trying to access array offset on value of type null in /home/niwglkmv/public_html/view/dashboard.php on line 38
+[07-May-2024 18:36:30 UTC] PHP Warning:  Undefined array key "userInfo" in /home/niwglkmv/public_html/view/dashboard.php on line 38
+[07-May-2024 18:36:30 UTC] PHP Warning:  Trying to access array offset on value of type null in /home/niwglkmv/public_html/view/dashboard.php on line 38
+[15-May-2024 10:55:03 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 37
+[15-May-2024 10:55:03 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 65
+[15-May-2024 10:55:03 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 65
+[15-May-2024 10:55:03 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 96
+[15-May-2024 10:55:03 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 127
+[15-May-2024 10:55:03 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 171
+[15-May-2024 10:55:03 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 185
+[15-May-2024 10:55:03 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 185
+[15-May-2024 10:55:03 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 218
+[15-May-2024 10:55:03 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 218
+[15-May-2024 10:55:03 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 249
+[15-May-2024 10:55:03 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 249
+[15-May-2024 10:55:03 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 260
+[15-May-2024 10:55:03 UTC] PHP Warning:  Undefined array key "userInfo" in /home/niwglkmv/public_html/view/include/header.php on line 47
+[15-May-2024 10:55:03 UTC] PHP Warning:  Trying to access array offset on value of type null in /home/niwglkmv/public_html/view/include/header.php on line 47
+[15-May-2024 10:55:03 UTC] PHP Warning:  Undefined array key "userInfo" in /home/niwglkmv/public_html/view/include/header.php on line 47
+[15-May-2024 10:55:03 UTC] PHP Warning:  Trying to access array offset on value of type null in /home/niwglkmv/public_html/view/include/header.php on line 47
+[15-May-2024 10:55:03 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/header.php on line 48
+[15-May-2024 10:55:03 UTC] PHP Warning:  Undefined array key "userInfo" in /home/niwglkmv/public_html/view/include/header.php on line 50
+[15-May-2024 10:55:03 UTC] PHP Warning:  Trying to access array offset on value of type null in /home/niwglkmv/public_html/view/include/header.php on line 50
+[15-May-2024 10:55:25 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 37
+[15-May-2024 10:55:25 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 65
+[15-May-2024 10:55:25 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 65
+[15-May-2024 10:55:25 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 96
+[15-May-2024 10:55:25 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 127
+[15-May-2024 10:55:25 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 171
+[15-May-2024 10:55:25 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 185
+[15-May-2024 10:55:25 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 185
+[15-May-2024 10:55:25 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 218
+[15-May-2024 10:55:25 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 218
+[15-May-2024 10:55:25 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 249
+[15-May-2024 10:55:25 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 249
+[15-May-2024 10:55:25 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 260
+[15-May-2024 10:55:25 UTC] PHP Warning:  Undefined array key "firstname" in /home/niwglkmv/public_html/view/include/header.php on line 47
+[15-May-2024 10:55:25 UTC] PHP Warning:  Undefined array key "lastname" in /home/niwglkmv/public_html/view/include/header.php on line 47
+[15-May-2024 10:55:25 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/header.php on line 48
+[15-May-2024 10:55:25 UTC] PHP Warning:  Undefined array key "email" in /home/niwglkmv/public_html/view/include/header.php on line 50
+[15-May-2024 10:55:25 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/viewCheckup.php on line 87
+[15-May-2024 10:55:25 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/viewCheckup.php on line 87
+[15-May-2024 10:55:25 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/viewCheckup.php on line 126
+[15-May-2024 10:55:25 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/viewCheckup.php on line 126
+[15-May-2024 10:55:25 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/viewCheckup.php on line 272
+[15-May-2024 10:55:25 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/viewCheckup.php on line 272
+[15-May-2024 10:55:28 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 37
+[15-May-2024 10:55:28 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 65
+[15-May-2024 10:55:28 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 65
+[15-May-2024 10:55:28 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 96
+[15-May-2024 10:55:28 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 127
+[15-May-2024 10:55:28 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 171
+[15-May-2024 10:55:28 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 185
+[15-May-2024 10:55:28 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 185
+[15-May-2024 10:55:28 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 218
+[15-May-2024 10:55:28 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 218
+[15-May-2024 10:55:28 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 249
+[15-May-2024 10:55:28 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 249
+[15-May-2024 10:55:28 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 260
+[15-May-2024 10:55:28 UTC] PHP Warning:  Undefined array key "firstname" in /home/niwglkmv/public_html/view/include/header.php on line 47
+[15-May-2024 10:55:28 UTC] PHP Warning:  Undefined array key "lastname" in /home/niwglkmv/public_html/view/include/header.php on line 47
+[15-May-2024 10:55:28 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/header.php on line 48
+[15-May-2024 10:55:28 UTC] PHP Warning:  Undefined array key "email" in /home/niwglkmv/public_html/view/include/header.php on line 50
+[15-May-2024 11:06:12 UTC] PHP Warning:  Undefined array key "isVerified" in /home/niwglkmv/public_html/view/include/head.php on line 11
+[15-May-2024 11:06:15 UTC] PHP Warning:  Undefined array key "isVerified" in /home/niwglkmv/public_html/view/include/head.php on line 11
+[15-May-2024 11:06:16 UTC] PHP Warning:  Undefined array key "isVerified" in /home/niwglkmv/public_html/view/include/head.php on line 11
+[16-May-2024 04:45:00 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/accountPage.php on line 4
+[16-May-2024 04:45:00 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/accountPage.php on line 8
+[16-May-2024 04:45:00 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 37
+[16-May-2024 04:45:00 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 65
+[16-May-2024 04:45:00 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 65
+[16-May-2024 04:45:00 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 96
+[16-May-2024 04:45:00 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 127
+[16-May-2024 04:45:00 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 171
+[16-May-2024 04:45:00 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 185
+[16-May-2024 04:45:00 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 185
+[16-May-2024 04:45:00 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 218
+[16-May-2024 04:45:00 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 218
+[16-May-2024 04:45:00 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 249
+[16-May-2024 04:45:00 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 249
+[16-May-2024 04:45:00 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 260
+[16-May-2024 04:45:00 UTC] PHP Warning:  Undefined array key "userInfo" in /home/niwglkmv/public_html/view/include/header.php on line 47
+[16-May-2024 04:45:00 UTC] PHP Warning:  Trying to access array offset on value of type null in /home/niwglkmv/public_html/view/include/header.php on line 47
+[16-May-2024 04:45:00 UTC] PHP Warning:  Undefined array key "userInfo" in /home/niwglkmv/public_html/view/include/header.php on line 47
+[16-May-2024 04:45:00 UTC] PHP Warning:  Trying to access array offset on value of type null in /home/niwglkmv/public_html/view/include/header.php on line 47
+[16-May-2024 04:45:00 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/header.php on line 48
+[16-May-2024 04:45:00 UTC] PHP Warning:  Undefined array key "userInfo" in /home/niwglkmv/public_html/view/include/header.php on line 50
+[16-May-2024 04:45:00 UTC] PHP Warning:  Trying to access array offset on value of type null in /home/niwglkmv/public_html/view/include/header.php on line 50
+[16-May-2024 04:45:00 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/accountPage.php on line 74
+[16-May-2024 04:45:00 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/accountPage.php on line 137
+[16-May-2024 04:45:00 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/accountPage.php on line 304
+[16-May-2024 04:45:00 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/accountPage.php on line 448
+[16-May-2024 04:45:00 UTC] PHP Warning:  Undefined variable $nurse_details in /home/niwglkmv/public_html/view/accountPage.php on line 666
+[16-May-2024 04:45:00 UTC] PHP Warning:  Trying to access array offset on value of type null in /home/niwglkmv/public_html/view/accountPage.php on line 666
+[16-May-2024 04:45:00 UTC] PHP Warning:  Undefined variable $nurse_details in /home/niwglkmv/public_html/view/accountPage.php on line 667
+[16-May-2024 04:45:00 UTC] PHP Warning:  Trying to access array offset on value of type null in /home/niwglkmv/public_html/view/accountPage.php on line 667
+[16-May-2024 04:45:00 UTC] PHP Warning:  Undefined variable $nurse_details in /home/niwglkmv/public_html/view/accountPage.php on line 686
+[16-May-2024 04:45:00 UTC] PHP Warning:  Trying to access array offset on value of type null in /home/niwglkmv/public_html/view/accountPage.php on line 686
+[16-May-2024 04:45:00 UTC] PHP Warning:  Undefined array key "userID" in /home/niwglkmv/public_html/view/accountPage.php on line 687
+[16-May-2024 04:45:00 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/accountPage.php on line 719
+[16-May-2024 04:45:00 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/accountPage.php on line 762
+[16-May-2024 04:53:25 UTC] PHP Warning:  Undefined variable $result in /home/niwglkmv/public_html/view/accountPage.php on line 452
+[16-May-2024 04:53:25 UTC] PHP Warning:  Attempt to read property "num_rows" on null in /home/niwglkmv/public_html/view/accountPage.php on line 452
+[16-May-2024 04:53:25 UTC] PHP Warning:  Undefined variable $result in /home/niwglkmv/public_html/view/accountPage.php on line 459
+[16-May-2024 04:53:25 UTC] PHP Warning:  Attempt to read property "num_rows" on null in /home/niwglkmv/public_html/view/accountPage.php on line 459
+[16-May-2024 05:27:55 UTC] PHP Warning:  Undefined variable $result in /home/niwglkmv/public_html/view/accountPage.php on line 452
+[16-May-2024 05:27:55 UTC] PHP Warning:  Attempt to read property "num_rows" on null in /home/niwglkmv/public_html/view/accountPage.php on line 452
+[16-May-2024 05:27:55 UTC] PHP Warning:  Undefined variable $result in /home/niwglkmv/public_html/view/accountPage.php on line 459
+[16-May-2024 05:27:55 UTC] PHP Warning:  Attempt to read property "num_rows" on null in /home/niwglkmv/public_html/view/accountPage.php on line 459
+[16-May-2024 05:36:34 UTC] PHP Warning:  Undefined array key "userID" in /home/niwglkmv/public_html/view/otp-page.php on line 8
+[16-May-2024 05:36:34 UTC] PHP Warning:  Undefined array key "userInfo" in /home/niwglkmv/public_html/view/otp-page.php on line 87
+[16-May-2024 05:36:34 UTC] PHP Warning:  Trying to access array offset on value of type null in /home/niwglkmv/public_html/view/otp-page.php on line 87
+[16-May-2024 05:44:50 UTC] PHP Warning:  Undefined array key "userInfo" in /home/niwglkmv/public_html/view/otp-page.php on line 87
+[16-May-2024 05:44:50 UTC] PHP Warning:  Trying to access array offset on value of type null in /home/niwglkmv/public_html/view/otp-page.php on line 87
+[17-May-2024 11:03:05 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 37
+[17-May-2024 11:03:05 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 65
+[17-May-2024 11:03:05 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 65
+[17-May-2024 11:03:05 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 96
+[17-May-2024 11:03:05 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 127
+[17-May-2024 11:03:05 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 171
+[17-May-2024 11:03:05 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 185
+[17-May-2024 11:03:05 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 185
+[17-May-2024 11:03:05 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 218
+[17-May-2024 11:03:05 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 218
+[17-May-2024 11:03:05 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 249
+[17-May-2024 11:03:05 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 249
+[17-May-2024 11:03:05 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 260
+[17-May-2024 11:03:05 UTC] PHP Warning:  Undefined array key "userInfo" in /home/niwglkmv/public_html/view/include/header.php on line 47
+[17-May-2024 11:03:05 UTC] PHP Warning:  Trying to access array offset on value of type null in /home/niwglkmv/public_html/view/include/header.php on line 47
+[17-May-2024 11:03:05 UTC] PHP Warning:  Undefined array key "userInfo" in /home/niwglkmv/public_html/view/include/header.php on line 47
+[17-May-2024 11:03:05 UTC] PHP Warning:  Trying to access array offset on value of type null in /home/niwglkmv/public_html/view/include/header.php on line 47
+[17-May-2024 11:03:05 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/header.php on line 48
+[17-May-2024 11:03:05 UTC] PHP Warning:  Undefined array key "userInfo" in /home/niwglkmv/public_html/view/include/header.php on line 50
+[17-May-2024 11:03:05 UTC] PHP Warning:  Trying to access array offset on value of type null in /home/niwglkmv/public_html/view/include/header.php on line 50
+[17-May-2024 11:03:05 UTC] PHP Warning:  Undefined array key "userInfo" in /home/niwglkmv/public_html/view/dashboard.php on line 38
+[17-May-2024 11:03:05 UTC] PHP Warning:  Trying to access array offset on value of type null in /home/niwglkmv/public_html/view/dashboard.php on line 38
+[17-May-2024 11:03:05 UTC] PHP Warning:  Undefined array key "userInfo" in /home/niwglkmv/public_html/view/dashboard.php on line 38
+[17-May-2024 11:03:05 UTC] PHP Warning:  Trying to access array offset on value of type null in /home/niwglkmv/public_html/view/dashboard.php on line 38
+[17-May-2024 11:16:55 UTC] PHP Warning:  Undefined variable $nurse_details in /home/niwglkmv/public_html/view/accountPage.php on line 666
+[17-May-2024 11:16:55 UTC] PHP Warning:  Trying to access array offset on value of type null in /home/niwglkmv/public_html/view/accountPage.php on line 666
+[17-May-2024 11:16:55 UTC] PHP Warning:  Undefined variable $nurse_details in /home/niwglkmv/public_html/view/accountPage.php on line 667
+[17-May-2024 11:16:55 UTC] PHP Warning:  Trying to access array offset on value of type null in /home/niwglkmv/public_html/view/accountPage.php on line 667
+[17-May-2024 11:16:55 UTC] PHP Warning:  Undefined variable $nurse_details in /home/niwglkmv/public_html/view/accountPage.php on line 686
+[17-May-2024 11:16:55 UTC] PHP Warning:  Trying to access array offset on value of type null in /home/niwglkmv/public_html/view/accountPage.php on line 686
+[17-May-2024 11:17:45 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 37
+[17-May-2024 11:17:45 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 65
+[17-May-2024 11:17:45 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 65
+[17-May-2024 11:17:45 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 96
+[17-May-2024 11:17:45 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 127
+[17-May-2024 11:17:45 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 171
+[17-May-2024 11:17:45 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 185
+[17-May-2024 11:17:45 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 185
+[17-May-2024 11:17:45 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 218
+[17-May-2024 11:17:45 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 218
+[17-May-2024 11:17:45 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 249
+[17-May-2024 11:17:45 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 249
+[17-May-2024 11:17:45 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 260
+[17-May-2024 11:17:45 UTC] PHP Warning:  Undefined array key "userInfo" in /home/niwglkmv/public_html/view/include/header.php on line 47
+[17-May-2024 11:17:45 UTC] PHP Warning:  Trying to access array offset on value of type null in /home/niwglkmv/public_html/view/include/header.php on line 47
+[17-May-2024 11:17:45 UTC] PHP Warning:  Undefined array key "userInfo" in /home/niwglkmv/public_html/view/include/header.php on line 47
+[17-May-2024 11:17:45 UTC] PHP Warning:  Trying to access array offset on value of type null in /home/niwglkmv/public_html/view/include/header.php on line 47
+[17-May-2024 11:17:45 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/header.php on line 48
+[17-May-2024 11:17:45 UTC] PHP Warning:  Undefined array key "userInfo" in /home/niwglkmv/public_html/view/include/header.php on line 50
+[17-May-2024 11:17:45 UTC] PHP Warning:  Trying to access array offset on value of type null in /home/niwglkmv/public_html/view/include/header.php on line 50
+[17-May-2024 11:17:45 UTC] PHP Warning:  Undefined array key "userInfo" in /home/niwglkmv/public_html/view/dashboard.php on line 38
+[17-May-2024 11:17:45 UTC] PHP Warning:  Trying to access array offset on value of type null in /home/niwglkmv/public_html/view/dashboard.php on line 38
+[17-May-2024 11:17:45 UTC] PHP Warning:  Undefined array key "userInfo" in /home/niwglkmv/public_html/view/dashboard.php on line 38
+[17-May-2024 11:17:45 UTC] PHP Warning:  Trying to access array offset on value of type null in /home/niwglkmv/public_html/view/dashboard.php on line 38
+[17-May-2024 11:27:10 UTC] PHP Warning:  Undefined variable $result in /home/niwglkmv/public_html/view/accountPage.php on line 452
+[17-May-2024 11:27:10 UTC] PHP Warning:  Attempt to read property "num_rows" on null in /home/niwglkmv/public_html/view/accountPage.php on line 452
+[17-May-2024 11:27:10 UTC] PHP Warning:  Undefined variable $result in /home/niwglkmv/public_html/view/accountPage.php on line 459
+[17-May-2024 11:27:10 UTC] PHP Warning:  Attempt to read property "num_rows" on null in /home/niwglkmv/public_html/view/accountPage.php on line 459
+[18-May-2024 08:20:25 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/accountPage.php on line 4
+[18-May-2024 08:20:25 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/accountPage.php on line 8
+[18-May-2024 08:20:25 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 37
+[18-May-2024 08:20:25 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 65
+[18-May-2024 08:20:25 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 65
+[18-May-2024 08:20:25 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 96
+[18-May-2024 08:20:25 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 127
+[18-May-2024 08:20:25 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 171
+[18-May-2024 08:20:25 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 185
+[18-May-2024 08:20:25 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 185
+[18-May-2024 08:20:25 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 218
+[18-May-2024 08:20:25 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 218
+[18-May-2024 08:20:25 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 249
+[18-May-2024 08:20:25 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 249
+[18-May-2024 08:20:25 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 260
+[18-May-2024 08:20:25 UTC] PHP Warning:  Undefined array key "userInfo" in /home/niwglkmv/public_html/view/include/header.php on line 47
+[18-May-2024 08:20:25 UTC] PHP Warning:  Trying to access array offset on value of type null in /home/niwglkmv/public_html/view/include/header.php on line 47
+[18-May-2024 08:20:25 UTC] PHP Warning:  Undefined array key "userInfo" in /home/niwglkmv/public_html/view/include/header.php on line 47
+[18-May-2024 08:20:25 UTC] PHP Warning:  Trying to access array offset on value of type null in /home/niwglkmv/public_html/view/include/header.php on line 47
+[18-May-2024 08:20:25 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/header.php on line 48
+[18-May-2024 08:20:25 UTC] PHP Warning:  Undefined array key "userInfo" in /home/niwglkmv/public_html/view/include/header.php on line 50
+[18-May-2024 08:20:25 UTC] PHP Warning:  Trying to access array offset on value of type null in /home/niwglkmv/public_html/view/include/header.php on line 50
+[18-May-2024 08:20:25 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/accountPage.php on line 74
+[18-May-2024 08:20:25 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/accountPage.php on line 137
+[18-May-2024 08:20:25 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/accountPage.php on line 304
+[18-May-2024 08:20:25 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/accountPage.php on line 448
+[18-May-2024 08:20:25 UTC] PHP Warning:  Undefined variable $nurse_details in /home/niwglkmv/public_html/view/accountPage.php on line 666
+[18-May-2024 08:20:25 UTC] PHP Warning:  Trying to access array offset on value of type null in /home/niwglkmv/public_html/view/accountPage.php on line 666
+[18-May-2024 08:20:25 UTC] PHP Warning:  Undefined variable $nurse_details in /home/niwglkmv/public_html/view/accountPage.php on line 667
+[18-May-2024 08:20:25 UTC] PHP Warning:  Trying to access array offset on value of type null in /home/niwglkmv/public_html/view/accountPage.php on line 667
+[18-May-2024 08:20:25 UTC] PHP Warning:  Undefined variable $nurse_details in /home/niwglkmv/public_html/view/accountPage.php on line 686
+[18-May-2024 08:20:25 UTC] PHP Warning:  Trying to access array offset on value of type null in /home/niwglkmv/public_html/view/accountPage.php on line 686
+[18-May-2024 08:20:25 UTC] PHP Warning:  Undefined array key "userID" in /home/niwglkmv/public_html/view/accountPage.php on line 687
+[18-May-2024 08:20:25 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/accountPage.php on line 719
+[18-May-2024 08:20:25 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/accountPage.php on line 762
+[19-May-2024 23:09:24 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 37
+[19-May-2024 23:09:24 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 65
+[19-May-2024 23:09:24 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 65
+[19-May-2024 23:09:24 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 96
+[19-May-2024 23:09:24 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 127
+[19-May-2024 23:09:24 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 171
+[19-May-2024 23:09:24 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 185
+[19-May-2024 23:09:24 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 185
+[19-May-2024 23:09:24 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 218
+[19-May-2024 23:09:24 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 218
+[19-May-2024 23:09:24 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 249
+[19-May-2024 23:09:24 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 249
+[19-May-2024 23:09:24 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 260
+[19-May-2024 23:09:24 UTC] PHP Warning:  Undefined array key "userInfo" in /home/niwglkmv/public_html/view/include/header.php on line 47
+[19-May-2024 23:09:24 UTC] PHP Warning:  Trying to access array offset on value of type null in /home/niwglkmv/public_html/view/include/header.php on line 47
+[19-May-2024 23:09:24 UTC] PHP Warning:  Undefined array key "userInfo" in /home/niwglkmv/public_html/view/include/header.php on line 47
+[19-May-2024 23:09:24 UTC] PHP Warning:  Trying to access array offset on value of type null in /home/niwglkmv/public_html/view/include/header.php on line 47
+[19-May-2024 23:09:24 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/header.php on line 48
+[19-May-2024 23:09:24 UTC] PHP Warning:  Undefined array key "userInfo" in /home/niwglkmv/public_html/view/include/header.php on line 50
+[19-May-2024 23:09:24 UTC] PHP Warning:  Trying to access array offset on value of type null in /home/niwglkmv/public_html/view/include/header.php on line 50
+[19-May-2024 23:09:24 UTC] PHP Warning:  Undefined array key "userInfo" in /home/niwglkmv/public_html/view/dashboard.php on line 38
+[19-May-2024 23:09:24 UTC] PHP Warning:  Trying to access array offset on value of type null in /home/niwglkmv/public_html/view/dashboard.php on line 38
+[19-May-2024 23:09:24 UTC] PHP Warning:  Undefined array key "userInfo" in /home/niwglkmv/public_html/view/dashboard.php on line 38
+[19-May-2024 23:09:24 UTC] PHP Warning:  Trying to access array offset on value of type null in /home/niwglkmv/public_html/view/dashboard.php on line 38
+[22-May-2024 03:51:03 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 37
+[22-May-2024 03:51:03 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 65
+[22-May-2024 03:51:03 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 65
+[22-May-2024 03:51:03 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 96
+[22-May-2024 03:51:03 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 127
+[22-May-2024 03:51:03 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 171
+[22-May-2024 03:51:03 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 185
+[22-May-2024 03:51:03 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 185
+[22-May-2024 03:51:03 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 218
+[22-May-2024 03:51:03 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 218
+[22-May-2024 03:51:03 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 249
+[22-May-2024 03:51:03 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 249
+[22-May-2024 03:51:03 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 260
+[22-May-2024 03:51:03 UTC] PHP Warning:  Undefined array key "userInfo" in /home/niwglkmv/public_html/view/include/header.php on line 47
+[22-May-2024 03:51:03 UTC] PHP Warning:  Trying to access array offset on value of type null in /home/niwglkmv/public_html/view/include/header.php on line 47
+[22-May-2024 03:51:03 UTC] PHP Warning:  Undefined array key "userInfo" in /home/niwglkmv/public_html/view/include/header.php on line 47
+[22-May-2024 03:51:03 UTC] PHP Warning:  Trying to access array offset on value of type null in /home/niwglkmv/public_html/view/include/header.php on line 47
+[22-May-2024 03:51:03 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/header.php on line 48
+[22-May-2024 03:51:03 UTC] PHP Warning:  Undefined array key "userInfo" in /home/niwglkmv/public_html/view/include/header.php on line 50
+[22-May-2024 03:51:03 UTC] PHP Warning:  Trying to access array offset on value of type null in /home/niwglkmv/public_html/view/include/header.php on line 50
+[22-May-2024 04:14:37 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 37
+[22-May-2024 04:14:37 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 65
+[22-May-2024 04:14:37 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 65
+[22-May-2024 04:14:37 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 96
+[22-May-2024 04:14:37 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 127
+[22-May-2024 04:14:37 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 171
+[22-May-2024 04:14:37 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 185
+[22-May-2024 04:14:37 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 185
+[22-May-2024 04:14:37 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 218
+[22-May-2024 04:14:37 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 218
+[22-May-2024 04:14:37 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 249
+[22-May-2024 04:14:37 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 249
+[22-May-2024 04:14:37 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/sidebar.php on line 260
+[22-May-2024 04:14:37 UTC] PHP Warning:  Undefined array key "userInfo" in /home/niwglkmv/public_html/view/include/header.php on line 47
+[22-May-2024 04:14:37 UTC] PHP Warning:  Trying to access array offset on value of type null in /home/niwglkmv/public_html/view/include/header.php on line 47
+[22-May-2024 04:14:37 UTC] PHP Warning:  Undefined array key "userInfo" in /home/niwglkmv/public_html/view/include/header.php on line 47
+[22-May-2024 04:14:37 UTC] PHP Warning:  Trying to access array offset on value of type null in /home/niwglkmv/public_html/view/include/header.php on line 47
+[22-May-2024 04:14:37 UTC] PHP Warning:  Undefined array key "user_type" in /home/niwglkmv/public_html/view/include/header.php on line 48
+[22-May-2024 04:14:37 UTC] PHP Warning:  Undefined array key "userInfo" in /home/niwglkmv/public_html/view/include/header.php on line 50
+[22-May-2024 04:14:37 UTC] PHP Warning:  Trying to access array offset on value of type null in /home/niwglkmv/public_html/view/include/header.php on line 50
+[22-May-2024 04:14:37 UTC] PHP Warning:  Undefined array key "userInfo" in /home/niwglkmv/public_html/view/dashboard.php on line 38
+[22-May-2024 04:14:37 UTC] PHP Warning:  Trying to access array offset on value of type null in /home/niwglkmv/public_html/view/dashboard.php on line 38
+[22-May-2024 04:14:37 UTC] PHP Warning:  Undefined array key "userInfo" in /home/niwglkmv/public_html/view/dashboard.php on line 38
+[22-May-2024 04:14:37 UTC] PHP Warning:  Trying to access array offset on value of type null in /home/niwglkmv/public_html/view/dashboard.php on line 38
+[22-May-2024 04:15:05 UTC] PHP Warning:  Undefined array key "isVerified" in /home/niwglkmv/public_html/view/include/head.php on line 11
+[22-May-2024 04:48:18 UTC] PHP Warning:  Undefined variable $result in /home/niwglkmv/public_html/view/accountPage.php on line 452
+[22-May-2024 04:48:18 UTC] PHP Warning:  Attempt to read property "num_rows" on null in /home/niwglkmv/public_html/view/accountPage.php on line 452
+[22-May-2024 04:48:18 UTC] PHP Warning:  Undefined variable $result in /home/niwglkmv/public_html/view/accountPage.php on line 459
+[22-May-2024 04:48:18 UTC] PHP Warning:  Attempt to read property "num_rows" on null in /home/niwglkmv/public_html/view/accountPage.php on line 459
+[22-May-2024 04:48:46 UTC] PHP Warning:  Undefined variable $nurse_details in /home/niwglkmv/public_html/view/accountPage.php on line 666
+[22-May-2024 04:48:46 UTC] PHP Warning:  Trying to access array offset on value of type null in /home/niwglkmv/public_html/view/accountPage.php on line 666
+[22-May-2024 04:48:46 UTC] PHP Warning:  Undefined variable $nurse_details in /home/niwglkmv/public_html/view/accountPage.php on line 667
+[22-May-2024 04:48:46 UTC] PHP Warning:  Trying to access array offset on value of type null in /home/niwglkmv/public_html/view/accountPage.php on line 667
+[22-May-2024 04:48:46 UTC] PHP Warning:  Undefined variable $nurse_details in /home/niwglkmv/public_html/view/accountPage.php on line 686
+[22-May-2024 04:48:46 UTC] PHP Warning:  Trying to access array offset on value of type null in /home/niwglkmv/public_html/view/accountPage.php on line 686

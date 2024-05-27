@@ -4,7 +4,15 @@ class Dashboard
     private $db;
     public function __construct()
     {
+
+        error_reporting(E_ALL);
+        ini_set('display_errors', 1);
+        ini_set('error_log', 'error.log');
+        ini_set('display_errors', 1);
+        ini_set('display_startup_errors', 1);
+        error_reporting(E_ALL);
         include_once('database.php');
+        $this->createView();
     }
 
 
@@ -130,8 +138,9 @@ class Dashboard
         $conn = $connection->connect();
         $sicked = [];
         for ($x = 4; $x >= 0; $x--) {
-            $query = "SELECT count(student.id) FROM student, information WHERE student.id = information.student_id AND MONTH(information.created_at) = MONTH(DATE_SUB(CURDATE(), INTERVAL $x MONTH)) GROUP BY student.id;";
+            $query = "SELECT count(school_assigned.id) FROM school_assigned, information WHERE school_assigned.id = information.student_id AND MONTH(information.created_at) = MONTH(DATE_SUB(CURDATE(), INTERVAL $x MONTH)) and user_id = ? GROUP BY school_assigned.id;";
             $stmt = $conn->prepare($query);
+            $stmt->bind_param("i", $_SESSION['userID']);
             $stmt->execute();
             $result = $stmt->get_result();
             $sicked[$x] = $result->num_rows;
@@ -155,10 +164,12 @@ class Dashboard
         $conn = $connection->connect();
         $healthy = [];
         for ($x = 4; $x >= 0; $x--) {
-            $query = "SELECT count(student.id) from student where id not in (SELECT student.id FROM student, information WHERE student.id = information.student_id AND MONTH(information.created_at) = MONTH(DATE_SUB(CURDATE(), INTERVAL $x MONTH))) GROUP BY student.id;";
+            $query = "SELECT count(*) from school_assigned as student where id not in (SELECT student.id FROM student, information WHERE student.id = information.student_id AND MONTH(information.created_at) = MONTH(DATE_SUB(CURDATE(), INTERVAL $x MONTH))) and user_id = ? GROUP BY student.id;";
             $stmt = $conn->prepare($query);
+            $stmt->bind_param("i", $_SESSION['userID']);
             $stmt->execute();
             $result = $stmt->get_result();
+
             $healthy[$x] = $result->num_rows;
         }
 
@@ -179,5 +190,70 @@ class Dashboard
         $conn->close();
         $checkupCounts = [];
         return $row = $result->fetch_assoc();
+    }
+
+    private function createView()
+    {
+        $connection = new Connection();
+        $conn = $connection->connect();
+        $query = "CREATE OR REPLACE VIEW school_assigned AS 
+        SELECT
+            assigned_count as id,
+            nurse_id,
+            id as user_id
+        FROM (
+            SELECT
+                result.assigned AS assigned_count,
+                result.nurse_id,
+                users.id
+            FROM (
+                SELECT
+                    user_accounts.assigned AS assigned,
+                    user_accounts.id AS nurse_id
+                FROM
+                    shims.user_accounts
+                WHERE
+                    user_accounts.role = 'School Nurse'
+                    
+                UNION
+                
+                SELECT
+                    school.id AS assigned,
+                    user_accounts.id AS nurse_id
+                FROM
+                    shims.school
+                JOIN shims.user_accounts ON school.district_id = user_accounts.assigned
+                WHERE
+                    user_accounts.role = 'District Nurse'
+                    
+                UNION
+                
+                SELECT
+                    school.id AS assigned,
+                    user_accounts.id AS nurse_id
+                FROM
+                    shims.school
+                JOIN shims.user_accounts ON school.division_id = user_accounts.assigned
+                WHERE
+                    user_accounts.role = 'Division Nurse'
+            ) AS result
+            INNER JOIN users ON users.account_id = result.nurse_id
+            
+
+            UNION ALL
+
+            SELECT
+                student.id AS assigned_count,
+                '0' AS nurse_id,
+                (SELECT id FROM users WHERE users.user_type = 'admin' LIMIT 1) AS id
+            FROM
+                student
+        ) AS final_result
+        ORDER BY nurse_id;
+        ";
+        $stmt = $conn->prepare($query);
+        $stmt->execute();
+        $stmt->close();
+        $conn->close();
     }
 }

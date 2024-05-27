@@ -1,5 +1,5 @@
 <?php include_once('include/head.php'); ?>
-<?php echo json_encode($_SESSION) ?>
+<!-- <?php echo json_encode($_SESSION) ?> -->
 
 <body>
   <!-- Preloader -->

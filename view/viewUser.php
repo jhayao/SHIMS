@@ -79,13 +79,13 @@
     <?php include_once("./include/scripts.php"); ?>
     <script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
     <!-- <script src="../../../../../../../cdn.datatables.net/buttons/1.5.1/js/dataTables.buttons.min.js"></script> -->
-    <script src="https://cdn.datatables.net/buttons/2.4.1/js/dataTables.buttons.min.js"></script>
+    <!-- <script src="https://cdn.datatables.net/buttons/2.4.1/js/dataTables.buttons.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/1.6.5/js/buttons.flash.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
-    <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.html5.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.print.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script> -->
+    <!-- <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.print.min.js"></script> -->
 
     <!-- <script src="../dist/js/datatable/datatable-advanced.init.js"></script> -->
     <!-- Add the following code block before the closing </body> tag -->
@@ -97,10 +97,7 @@
         //onload
         $(document).ready(function() {
 
-            if (<?php echo (isset($_GET['success']) ? true : 0); ?>) {
-                noty.setText("Successfully Added", true);
-                noty.show();
-            }
+
 
             //datatable
             var table = $('#file_export').DataTable({
@@ -144,7 +141,6 @@
                             const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
                             const tooltipList = [...tooltipTriggerList].map(tooltipTrigger => new bootstrap.Tooltip(tooltipTrigger))
                             $(td).on('click', '.reset', function() {
-
                                 var id = $(this).closest('tr').find('td:eq(0)').text();
                                 Swal.fire({
                                     title: 'Are you sure?',
@@ -196,8 +192,6 @@
                     }
                 ]
             });
-            $(".buttons-copy, .buttons-csv, .buttons-print, .buttons-pdf, .buttons-excel").addClass(
-                "btn btn-primary mr-1");
 
             //delete
 

@@ -9,6 +9,7 @@ if (file_exists("../controller/dashboardController.php")) {
 <?php
 $dashboard = new Dashboard();
 $getNumberofHealthy = $dashboard->getNumberofHealthy();
+
 $healthy = "[";
 foreach ($getNumberofHealthy as $key => $value) {
   $key != 0 ? $healthy .= $value . "," : $healthy .= $value . "]";

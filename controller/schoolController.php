@@ -4,17 +4,17 @@ class School
     function __construct()
     {
         //call database.php
-        include_once ('database.php');
+        include_once('database.php');
         if (session_status() == PHP_SESSION_NONE) {
             session_start();
         }
         //enable log
-        // error_reporting(E_ALL);
-        // ini_set('display_errors', 1);
-        // ini_set('error_log', 'error.log');
-        // ini_set('display_errors', 1);
-        // ini_set('display_startup_errors', 1);
-        // error_reporting(E_ALL);
+        error_reporting(E_ALL);
+        ini_set('display_errors', 1);
+        ini_set('error_log', 'error.log');
+        ini_set('display_errors', 1);
+        ini_set('display_startup_errors', 1);
+        error_reporting(E_ALL);
     }
     function addSchool()
     {
@@ -33,6 +33,33 @@ class School
         return $result ? 'success' : $conn->error;
     }
 
+    function getAllSchoolArchived()
+    {
+        $nurse_type = $_SESSION['userInfo']['nurse_type'] ?? "";
+        $assigned = $_SESSION['userInfo']['assigned'] ?? "";
+        $where = "";
+        if ($nurse_type == 'Division Nurse') {
+            $where = "AND sch.division_id = " . $assigned;
+        } else if ($nurse_type == 'District Nurse') {
+            $where = "AND sch.district_id = " . $assigned;
+        } else if ($nurse_type == 'School Nurse') {
+            $where = "AND sch.id = " . $assigned;
+        }
+        $where = $where . " AND sch.archived = 1";
+
+        $conn = new Connection();
+        $query = "SELECT sch.id,sch.school_name,sch.address,divi.division_name,dist.district_name,dist.id as 'district_id', divi.id as 'division_id' FROM `school` sch inner join `division` divi inner join `district` dist WHERE sch.division_id = divi.id AND sch.district_id = dist.id " . $where . ";";
+
+        $connection = new Connection();
+        $conn = $connection->connect();
+        $stmt = $conn->prepare($query);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $stmt->close();
+        $conn->close();
+        return $result;
+    }
+
     function getAllSchool()
     {
         // print_r($_SESSION['userInfo']);
@@ -46,6 +73,7 @@ class School
         } else if ($nurse_type == 'School Nurse') {
             $where = "AND sch.id = " . $assigned;
         }
+        $where = $where . " AND sch.archived = 0";
 
         $conn = new Connection();
         $query = "SELECT sch.id,sch.school_name,sch.address,divi.division_name,dist.district_name,dist.id as 'district_id', divi.id as 'division_id' FROM `school` sch inner join `division` divi inner join `district` dist WHERE sch.division_id = divi.id AND sch.district_id = dist.id " . $where . ";";
@@ -122,15 +150,60 @@ class School
         $stmt->close();
         $conn->close();
         return $result;
-
     }
 
+    function archivedSchool($id = null)
+    {
+        if ($id == null) {
+            $id = $_POST['id'];
+        }
+        $connection = new Connection();
+        $conn = $connection->connect();
+        $query = "UPDATE `school` SET `archived` = '1' WHERE id = ?";
+        $stmt = $conn->prepare($query);
+        $stmt->bind_param("i", $id);
+        $result = $stmt->execute();
+        $stmt->close();
+        $conn->close();
+        return $result ? 'success' : $conn->error;
+    }
+
+    function unarchivedSchool($id = null)
+    {
+        if ($id == null) {
+            $id = $_POST['id'];
+        }
+        $connection = new Connection();
+        $conn = $connection->connect();
+        $query = "UPDATE `school` SET `archived` = '0' WHERE id = ?";
+        $stmt = $conn->prepare($query);
+        $stmt->bind_param("i", $id);
+        $result = $stmt->execute();
+        $stmt->close();
+        $conn->close();
+        return $result ? 'success' : $conn->error;
+    }
 }
 
 if (isset($_POST['function'])) {
     $function = $_POST['function'];
     $school = new School();
     switch ($function) {
+        case 'getAllSchoolArchived':
+            $result = $school->getAllSchoolArchived();
+            $schoolArray = array();
+            while ($row = $result->fetch_assoc()) {
+                array_push($schoolArray, $row);
+            }
+            $dataTable = array('data' => $schoolArray, 'draw' => 1, 'recordsTotal' => count($schoolArray), 'recordsFiltered' => count($schoolArray));
+            echo json_encode($dataTable);
+            break;
+        case 'archivedSchool':
+            echo $school->archivedSchool();
+            break;
+        case 'unarchivedSchool':
+            echo $school->unarchivedSchool();
+            break;
         case 'getSchoolbyDistrictId':
             $result = $school->getSchoolbyDistrictId();
             $schoolArray = array();
@@ -167,4 +240,3 @@ if (isset($_POST['function'])) {
             break;
     }
 }
-?>

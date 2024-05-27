@@ -7,8 +7,8 @@ class Division
     function __construct()
     {
         //call database.php
-        include_once ('database.php');
-        require_once ('logController.php');
+        include_once('database.php');
+        require_once('logController.php');
         // enable log
         error_reporting(E_ALL);
         ini_set('display_errors', 1);
@@ -21,7 +21,7 @@ class Division
     function getAllDivision()
     {
         $conn = new Connection();
-        $query = "SELECT * FROM division";
+        $query = "SELECT * FROM division WHERE archived = 0";
         $connection = new Connection();
         $conn = $connection->connect();
         $stmt = $conn->prepare($query);
@@ -120,6 +120,51 @@ class Division
         return $result ? 'success' : $conn->error;
     }
 
+    function archivedDivision($id = null)
+    {
+        if ($id == null) {
+            $id = $_POST['id'];
+        }
+        $connection = new Connection();
+        $conn = $connection->connect();
+        $query = "UPDATE `division` SET `archived` = '1' WHERE id = ?";
+        $stmt = $conn->prepare($query);
+        $stmt->bind_param("i", $id);
+        $result = $stmt->execute();
+        $stmt->close();
+        $conn->close();
+        return $result ? 'success' : $conn->error;
+    }
+
+    function unarchivedDivision($id = null)
+    {
+        if ($id == null) {
+            $id = $_POST['id'];
+        }
+        $connection = new Connection();
+        $conn = $connection->connect();
+        $query = "UPDATE `division` SET `archived` = '0' WHERE id = ?";
+        $stmt = $conn->prepare($query);
+        $stmt->bind_param("i", $id);
+        $result = $stmt->execute();
+        $stmt->close();
+        $conn->close();
+        return $result ? 'success' : $conn->error;
+    }
+
+    function getAllDivisionArchived()
+    {
+        $conn = new Connection();
+        $query = "SELECT * FROM division WHERE archived = 1";
+        $connection = new Connection();
+        $conn = $connection->connect();
+        $stmt = $conn->prepare($query);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $stmt->close();
+        $conn->close();
+        return $result;
+    }
 }
 
 if (isset($_POST['function'])) {
@@ -128,6 +173,21 @@ if (isset($_POST['function'])) {
 
     $division = new Division();
     switch ($function) {
+        case 'archivedDivision':
+            echo $division->archivedDivision();
+            break;
+        case 'unarchivedDivision':
+            echo $division->unarchivedDivision();
+            break;
+        case 'getAllDivisionArchived':
+            $result = $division->getAllDivisionArchived();
+            $divisionArray = array();
+            while ($row = $result->fetch_assoc()) {
+                array_push($divisionArray, $row);
+            }
+            $dataTable = array('data' => $divisionArray, 'draw' => 1, 'recordsTotal' => count($divisionArray), 'recordsFiltered' => count($divisionArray));
+            echo json_encode($dataTable);
+            break;
         case 'addDivision':
             echo $division->addDivision();
             break;
@@ -165,7 +225,5 @@ if (isset($_GET['function'])) {
             $row = $result->fetch_assoc();
             echo json_encode($row);
             break;
-
     }
 }
-?>

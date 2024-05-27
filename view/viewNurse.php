@@ -1,26 +1,23 @@
-<?php include_once ('include/head.php'); ?>
+<?php include_once('include/head.php'); ?>
 
 <body>
     <!-- Preloader -->
     <div class="preloader">
-        <img src="https://demos.adminmart.com/premium/bootstrap/modernize-bootstrap/package/dist/images/logos/favicon.ico"
-            alt="loader" class="lds-ripple img-fluid" />
+        <img src="https://demos.adminmart.com/premium/bootstrap/modernize-bootstrap/package/dist/images/logos/favicon.ico" alt="loader" class="lds-ripple img-fluid" />
     </div>
     <!-- Preloader -->
     <div class="preloader">
-        <img src="https://demos.adminmart.com/premium/bootstrap/modernize-bootstrap/package/dist/images/logos/favicon.ico"
-            alt="loader" class="lds-ripple img-fluid" />
+        <img src="https://demos.adminmart.com/premium/bootstrap/modernize-bootstrap/package/dist/images/logos/favicon.ico" alt="loader" class="lds-ripple img-fluid" />
     </div>
     <!--  Body Wrapper -->
-    <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-sidebartype="full"
-        data-sidebar-position="fixed" data-header-position="fixed">
+    <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-sidebartype="full" data-sidebar-position="fixed" data-header-position="fixed">
         <!-- Sidebar Start -->
-        <?php include_once ('include/sidebar.php'); ?>
+        <?php include_once('include/sidebar.php'); ?>
         <!--  Sidebar End -->
         <!--  Main wrapper -->
         <div class="body-wrapper">
             <!--  Header Start -->
-            <?php include_once ('include/header.php'); ?>
+            <?php include_once('include/header.php'); ?>
             <!--  Header End -->
             <div class="container-fluid">
                 <div class="card bg-light-info shadow-none position-relative overflow-hidden">
@@ -51,8 +48,7 @@
                         </div> -->
 
                         <div class="table-responsive">
-                            <table id="file_export"
-                                class="table border table-striped table-bordered display text-nowrap">
+                            <table id="file_export" class="table border table-striped table-bordered display text-nowrap">
                                 <thead>
                                     <!-- start row -->
                                     <tr>
@@ -75,11 +71,11 @@
             </div>
         </div>
     </div>
-    <?php include_once ("./include/extra.php"); ?>
+    <?php include_once("./include/extra.php"); ?>
     <!--  Customizer -->
 
 
-    <?php include_once ("./include/scripts.php"); ?>
+    <?php include_once("./include/scripts.php"); ?>
     <script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
     <!-- <script src="../../../../../../../cdn.datatables.net/buttons/1.5.1/js/dataTables.buttons.min.js"></script> -->
     <script src="https://cdn.datatables.net/buttons/2.4.1/js/dataTables.buttons.min.js"></script>
@@ -98,7 +94,7 @@
 
     <script>
         //onload
-        $(document).ready(function () {
+        $(document).ready(function() {
 
             if (<?php echo (isset($_GET['success']) ? true : 0); ?>) {
                 noty.setText("Successfully Added", true);
@@ -117,128 +113,128 @@
                     },
                 },
                 columns: [{
-                    "data": "id"
-                },
-                {
-                    "data": null,
-                    render: function (data, type, row) {
-                        return row.firstname + " " + row.middlename + " " + row.lastname;
-                    }
-                },
-                {
-                    "data": "nurse_type"
-                },
-                {
-                    "data": "null",
-                    render: function (data, type, row) {
-                        if (row.nurse_type == 'School Nurse')
-                            return `<a href="profileSchool.php?id=${row.assigned}" >${row.school_name}</a>`;
-                        else if (row.nurse_type == 'District Nurse')
-                            return `<a href="profileDistrict.php?id=${row.assigned}" >${row.school_name}</a>`;
-                        else if (row.nurse_type == 'Division Nurse')
-                            return `<a href="profileDivision.php?id=${row.assigned}" >${row.school_name}</a>`;
-                        else
-                            return row.school_name
-                    }
-                },
-                {
-                    "data": "id",
-                    createdCell: function (cell, cellData, rowData, rowIndex, colIndex) {
-
-                        $(cell).on('click', '.unarchived', function () {
-                            // Handle cell click event
-                            Swal.fire({
-                                title: 'Are you sure?',
-                                text: "You want to unarchive this file?",
-                                icon: 'warning',
-                                showCancelButton: true,
-                                confirmButtonColor: '#3085d6',
-                                cancelButtonColor: '#d33',
-                                confirmButtonText: 'Yes, Unarchive it!'
-                            }).then((result) => {
-                                if (result.isConfirmed) {
-
-                                    //delete reuqest ajax
-                                    $.ajax({
-                                        url: "../controller/nurseController.php",
-                                        type: "POST",
-                                        data: {
-                                            "function": "unarchivedNurse",
-                                            "id": cellData
-                                        },
-                                        success: function (data) {
-                                            if (data.trim() == "success") {
-                                                Swal.fire(
-                                                    'Unarchived!',
-                                                    'Your file has been unarchived.',
-                                                    'success'
-                                                ).then((result) => {
-                                                    if (result.isConfirmed) {
-                                                        location.reload();
-                                                    }
-                                                })
-
-                                            }
-                                        }
-                                    });
-
-                                }
-                            })
-                        });
-
-                        $(cell).on('click', '.delete', function () {
-                            // Handle cell click event
-                            Swal.fire({
-                                title: 'Are you sure?',
-                                text: "You won't be able to revert this!",
-                                icon: 'warning',
-                                showCancelButton: true,
-                                confirmButtonColor: '#3085d6',
-                                cancelButtonColor: '#d33',
-                                confirmButtonText: 'Yes, <?php echo (isset($_GET['archived']) && $_GET['archived'] == 'true') ? 'Delete' : 'Archived' ?> it!'
-                            }).then((result) => {
-                                if (result.isConfirmed) {
-
-                                    //delete reuqest ajax
-                                    $.ajax({
-                                        url: "../controller/nurseController.php",
-                                        type: "POST",
-                                        data: {
-                                            "function": "<?php echo (isset($_GET['archived']) && $_GET['archived'] == 'true') ? 'deleteNurse' : 'archivedNurse' ?>",
-                                            "id": cellData
-                                        },
-                                        success: function (data) {
-                                            if (data.trim() == "success") {
-                                                Swal.fire(
-                                                    '<?php echo (isset($_GET['archived']) && $_GET['archived'] == 'true') ? 'Deleted!' : 'Archived!' ?>',
-                                                    'Your file has been <?php echo (isset($_GET['archived']) && $_GET['archived'] == 'true') ? 'deleted' : 'archived' ?>.',
-                                                    'success'
-                                                ).then((result) => {
-                                                    if (result.isConfirmed) {
-                                                        location.reload();
-                                                    }
-                                                })
-
-                                            }
-                                        }
-                                    });
-
-                                }
-                            })
-                        });
+                        "data": "id"
                     },
-                    "render": function (data, type, row, meta) {
-                        return `<div class="d-flex justify-content-center">
+                    {
+                        "data": null,
+                        render: function(data, type, row) {
+                            return row.firstname + " " + row.middlename + " " + row.lastname;
+                        }
+                    },
+                    {
+                        "data": "nurse_type"
+                    },
+                    {
+                        "data": "null",
+                        render: function(data, type, row) {
+                            if (row.nurse_type == 'School Nurse')
+                                return `<a href="profileSchool.php?id=${row.assigned}" >${row.school_name}</a>`;
+                            else if (row.nurse_type == 'District Nurse')
+                                return `<a href="profileDistrict.php?id=${row.assigned}" >${row.school_name}</a>`;
+                            else if (row.nurse_type == 'Division Nurse')
+                                return `<a href="profileDivision.php?id=${row.assigned}" >${row.school_name}</a>`;
+                            else
+                                return row.school_name
+                        }
+                    },
+                    {
+                        "data": "id",
+                        createdCell: function(cell, cellData, rowData, rowIndex, colIndex) {
+
+                            $(cell).on('click', '.unarchived', function() {
+                                // Handle cell click event
+                                Swal.fire({
+                                    title: 'Are you sure?',
+                                    text: "You want to unarchive this file?",
+                                    icon: 'warning',
+                                    showCancelButton: true,
+                                    confirmButtonColor: '#3085d6',
+                                    cancelButtonColor: '#d33',
+                                    confirmButtonText: 'Yes, Unarchive it!'
+                                }).then((result) => {
+                                    if (result.isConfirmed) {
+
+                                        //delete reuqest ajax
+                                        $.ajax({
+                                            url: "../controller/nurseController.php",
+                                            type: "POST",
+                                            data: {
+                                                "function": "unarchivedNurse",
+                                                "id": cellData
+                                            },
+                                            success: function(data) {
+                                                if (data.trim() == "success") {
+                                                    Swal.fire(
+                                                        'Unarchived!',
+                                                        'Your file has been unarchived.',
+                                                        'success'
+                                                    ).then((result) => {
+                                                        if (result.isConfirmed) {
+                                                            location.reload();
+                                                        }
+                                                    })
+
+                                                }
+                                            }
+                                        });
+
+                                    }
+                                })
+                            });
+
+                            $(cell).on('click', '.delete', function() {
+                                // Handle cell click event
+                                Swal.fire({
+                                    title: 'Are you sure?',
+                                    text: "You won't be able to revert this!",
+                                    icon: 'warning',
+                                    showCancelButton: true,
+                                    confirmButtonColor: '#3085d6',
+                                    cancelButtonColor: '#d33',
+                                    confirmButtonText: 'Yes, <?php echo (isset($_GET['archived']) && $_GET['archived'] == 'true') ? 'Delete' : 'Archived' ?> it!'
+                                }).then((result) => {
+                                    if (result.isConfirmed) {
+
+                                        //delete reuqest ajax
+                                        $.ajax({
+                                            url: "../controller/nurseController.php",
+                                            type: "POST",
+                                            data: {
+                                                "function": "<?php echo (isset($_GET['archived']) && $_GET['archived'] == 'true') ? 'deleteNurse' : 'archivedNurse' ?>",
+                                                "id": cellData
+                                            },
+                                            success: function(data) {
+                                                if (data.trim() == "success") {
+                                                    Swal.fire(
+                                                        '<?php echo (isset($_GET['archived']) && $_GET['archived'] == 'true') ? 'Deleted!' : 'Archived!' ?>',
+                                                        'Your file has been <?php echo (isset($_GET['archived']) && $_GET['archived'] == 'true') ? 'deleted' : 'archived' ?>.',
+                                                        'success'
+                                                    ).then((result) => {
+                                                        if (result.isConfirmed) {
+                                                            location.reload();
+                                                        }
+                                                    })
+
+                                                }
+                                            }
+                                        });
+
+                                    }
+                                })
+                            });
+                        },
+                        "render": function(data, type, row, meta) {
+                            return `<div class="d-flex justify-content-center">
                             <a href="profileNurse.php?id=${data}&nurse_type=${row.nurse_type}" class="btn btn-success me-1"><i class="ti ti-eye"></i></a>
-                            <?php if (isset($_GET['archived']) && $_GET['archived'] == 'true'): ?>
+                            <?php if (isset($_GET['archived']) && $_GET['archived'] == 'true') : ?>
                                                                                                     <button id="${data}"  class="btn btn-info unarchived  me-1"><i class="ti ti-archive-off"></i></button>
-                                <?php else: ?>
+                                <?php else : ?>
                                                                                                             <a href="addNurse.php?edit=true&id=${data}" class="btn btn-primary   me-1"><i class="ti ti-edit"></i></a>
                                         <?php endif; ?>
-                                        <button id="${data}"  class="btn btn-danger delete  me-1"><i class="ti <?php echo (isset($_GET['archived']) && $_GET['archived'] == 'true') ? 'ti-trash-x' : 'ti-archive' ?>"></i></button>
+                                        <button id="${data}"   class="btn <?php echo (isset($_GET['archived']) && $_GET['archived'] == 'true') ? 'btn-danger' : 'btn-warning' ?> delete  me-1"><i class="ti <?php echo (isset($_GET['archived']) && $_GET['archived'] == 'true') ? 'ti-trash-x' : 'ti-archive' ?>"></i></button>
                                     </div>`;
+                        }
                     }
-                }
                 ]
             });
             $(".buttons-copy, .buttons-csv, .buttons-print, .buttons-pdf, .buttons-excel").addClass(

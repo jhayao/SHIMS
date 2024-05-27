@@ -5,9 +5,7 @@
     <div class="brand-logo d-flex align-items-center justify-content-between">
       <a href="../index.php" class="text-nowrap logo-img">
         <img src="../dist/images/backgrounds/deped.svg" class="dark-logo" width="180" alt="" />
-        <img
-          src="https://demos.adminmart.com/premium/bootstrap/modernize-bootstrap/package/dist/images/logos/light-logo.svg"
-          class="light-logo" width="180" alt="" />
+        <img src="https://demos.adminmart.com/premium/bootstrap/modernize-bootstrap/package/dist/images/logos/light-logo.svg" class="light-logo" width="180" alt="" />
       </a>
       <div class="close-btn d-lg-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
         <i class="ti ti-x fs-8 text-muted"></i>
@@ -34,6 +32,17 @@
             <span class="hide-menu">Home</span>
           </a>
         </li>
+        <?php
+        if ($_SESSION['user_type'] == 'admin') { ?>
+          <li class="sidebar-item">
+            <a class="sidebar-link" href="viewUser.php" aria-expanded="false">
+              <span>
+                <i class="ti ti-users"></i>
+              </span>
+              <span class="hide-menu">Users</span>
+            </a>
+          </li>
+        <?php } ?>
         <?php if ($_SESSION['user_type'] == 'admin') { ?>
           <li class="sidebar-item">
             <a class="sidebar-link has-arrow" href="#" aria-expanded="false">
@@ -242,6 +251,30 @@
                   </a>
                 </li>
               <?php } ?>
+              <li class="sidebar-item">
+                <a href="viewSchool.php?archived=true" class="sidebar-link">
+                  <div class="round-16 d-flex align-items-center justify-content-center">
+                    <i class="ti ti-circle"></i>
+                  </div>
+                  <span class="hide-menu">School</span>
+                </a>
+              </li>
+              <li class="sidebar-item">
+                <a href="viewDivision.php?archived=true" class="sidebar-link">
+                  <div class="round-16 d-flex align-items-center justify-content-center">
+                    <i class="ti ti-circle"></i>
+                  </div>
+                  <span class="hide-menu">Division</span>
+                </a>
+              </li>
+              <li class="sidebar-item">
+                <a href="viewDistrict.php?archived=true" class="sidebar-link">
+                  <div class="round-16 d-flex align-items-center justify-content-center">
+                    <i class="ti ti-circle"></i>
+                  </div>
+                  <span class="hide-menu">District</span>
+                </a>
+              </li>
             </ul>
           </li>
         <?php } ?>
@@ -294,8 +327,7 @@
           <h6 class="mb-0 fs-4 fw-semibold">Mathew</h6>
           <span class="fs-2 text-dark">Designer</span>
         </div>
-        <button class="border-0 bg-transparent text-primary ms-auto" tabindex="0" type="button" aria-label="logout"
-          data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="logout">
+        <button class="border-0 bg-transparent text-primary ms-auto" tabindex="0" type="button" aria-label="logout" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="logout">
           <i class="ti ti-power fs-6"></i>
         </button>
       </div>

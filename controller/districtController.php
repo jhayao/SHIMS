@@ -7,7 +7,7 @@ class District
     function __construct()
     {
         //call database.php
-        include_once ('database.php');
+        include_once('database.php');
 
         //enable log
         // error_reporting(E_ALL);
@@ -21,7 +21,7 @@ class District
     function getAllDistrict()
     {
         $conn = new Connection();
-        $query = "SELECT dist.id,dist.district_name,dist.address,divi.division_name,divi.id as 'division_id' FROM `district` dist inner join `division` divi  WHERE dist.division_id = divi.id;";
+        $query = "SELECT dist.id,dist.district_name,dist.address,divi.division_name,divi.id as 'division_id' FROM `district` dist inner join `division` divi  WHERE dist.division_id = divi.id and dist.archived = 0;";
         $connection = new Connection();
         $conn = $connection->connect();
         $stmt = $conn->prepare($query);
@@ -30,6 +30,50 @@ class District
         $stmt->close();
         $conn->close();
         return $result;
+    }
+
+    function getAllDistrictArchived()
+    {
+        $conn = new Connection();
+        $query = "SELECT dist.id,dist.district_name,dist.address,divi.division_name,divi.id as 'division_id' FROM `district` dist inner join `division` divi  WHERE dist.division_id = divi.id and dist.archived = 1;";
+        $connection = new Connection();
+        $conn = $connection->connect();
+        $stmt = $conn->prepare($query);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $stmt->close();
+        $conn->close();
+        return $result;
+    }
+
+    function archivedDistrict($id = null)
+    {
+        if ($id == null)
+            $id = $_POST['id'];
+        $query = "UPDATE district SET archived = 1 WHERE id = ?";
+        $connection = new Connection();
+        $conn = $connection->connect();
+        $stmt = $conn->prepare($query);
+        $stmt->bind_param("i", $id);
+        $result = $stmt->execute();
+        $stmt->close();
+        $conn->close();
+        return $result ? 'success' : $conn->error;
+    }
+
+    function unarchivedDistrict($id = null)
+    {
+        if ($id == null)
+            $id = $_POST['id'];
+        $query = "UPDATE district SET archived = 0 WHERE id = ?";
+        $connection = new Connection();
+        $conn = $connection->connect();
+        $stmt = $conn->prepare($query);
+        $stmt->bind_param("i", $id);
+        $result = $stmt->execute();
+        $stmt->close();
+        $conn->close();
+        return $result ? 'success' : $conn->error;
     }
 
     function addDistrict()
@@ -110,7 +154,6 @@ class District
         $conn->close();
         return $result;
     }
-
 }
 
 if (isset($_POST['function'])) {
@@ -119,6 +162,22 @@ if (isset($_POST['function'])) {
 
     $district = new District();
     switch ($function) {
+        case 'archivedDistrict':
+            echo $district->archivedDistrict();
+            break;
+        case 'unarchivedDistrict':
+            echo $district->unarchivedDistrict();
+            break;
+        case 'getAllDistrictArchived':
+            $result = $district->getAllDistrictArchived();
+            $districtArray = array();
+            while ($row = $result->fetch_assoc()) {
+                array_push($districtArray, $row);
+            }
+            $dataTable = array('data' => $districtArray, 'draw' => 1, 'recordsTotal' => count($districtArray), 'recordsFiltered' => count($districtArray));
+            echo json_encode($dataTable);
+            break;
+
         case 'addDistrict':
             echo $district->addDistrict();
             break;
@@ -153,8 +212,6 @@ if (isset($_POST['function'])) {
             echo json_encode($dataTable);
             break;
     }
-
-
 }
 
 if (isset($_GET['function'])) {
@@ -167,7 +224,5 @@ if (isset($_GET['function'])) {
             $row = $result->fetch_assoc();
             echo json_encode($row);
             break;
-
     }
 }
-?>

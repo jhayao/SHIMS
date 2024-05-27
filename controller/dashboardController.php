@@ -5,7 +5,6 @@ class Dashboard
     public function __construct()
     {
         include_once('database.php');
-
     }
 
 
@@ -17,11 +16,12 @@ class Dashboard
             $colors[$i] = sprintf('#%06X', mt_rand(0, 0xFFFFFF));
         }
         $colors[0] = "#5D87FF";
-        $colors[1] = "#49BEFF";
+        $colors[1] = "#FA896B";
+        // echo json_encode($colors) . 'test';
         return $colors;
     }
 
-    public function getMonthlyCheckups() : array
+    public function getMonthlyCheckups(): array
     {
         $month = date('m');
         $year = date('Y');
@@ -49,7 +49,8 @@ class Dashboard
         return $d;
     }
 
-    public function getAllSchools(){
+    public function getAllSchools()
+    {
         $connection = new Connection();
         $conn = $connection->connect();
         $query = "SELECT school_name FROM school;";
@@ -147,12 +148,9 @@ class Dashboard
         $sicked = $this->getNumberofSicked();
         $studentHealth = array('healthy' => $healthy, 'sicked' => $sicked);
         return json_encode($studentHealth);
-
     }
     public function getNumberofHealthy()
     {
-
-
         $connection = new Connection();
         $conn = $connection->connect();
         $healthy = [];
@@ -169,7 +167,8 @@ class Dashboard
         return $healthy;
     }
 
-    public function getMonthlyCheckupCounts(){
+    public function getMonthlyCheckupCounts()
+    {
         $connection = new Connection();
         $conn = $connection->connect();
         $query = "SELECT COUNT(information.id) as count FROM information  WHERE MONTH(information.created_at) = MONTH(CURRENT_DATE()) AND YEAR(information.created_at) = YEAR(CURRENT_DATE());";
@@ -182,4 +181,3 @@ class Dashboard
         return $row = $result->fetch_assoc();
     }
 }
-?>

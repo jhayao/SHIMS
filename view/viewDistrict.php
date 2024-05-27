@@ -1,26 +1,23 @@
-<?php include_once ('include/head.php'); ?>
+<?php include_once('include/head.php'); ?>
 
 <body>
     <!-- Preloader -->
     <div class="preloader">
-        <img src="https://demos.adminmart.com/premium/bootstrap/modernize-bootstrap/package/dist/images/logos/favicon.ico"
-            alt="loader" class="lds-ripple img-fluid" />
+        <img src="https://demos.adminmart.com/premium/bootstrap/modernize-bootstrap/package/dist/images/logos/favicon.ico" alt="loader" class="lds-ripple img-fluid" />
     </div>
     <!-- Preloader -->
     <div class="preloader">
-        <img src="https://demos.adminmart.com/premium/bootstrap/modernize-bootstrap/package/dist/images/logos/favicon.ico"
-            alt="loader" class="lds-ripple img-fluid" />
+        <img src="https://demos.adminmart.com/premium/bootstrap/modernize-bootstrap/package/dist/images/logos/favicon.ico" alt="loader" class="lds-ripple img-fluid" />
     </div>
     <!--  Body Wrapper -->
-    <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-sidebartype="full"
-        data-sidebar-position="fixed" data-header-position="fixed">
+    <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-sidebartype="full" data-sidebar-position="fixed" data-header-position="fixed">
         <!-- Sidebar Start -->
-        <?php include_once ('include/sidebar.php'); ?>
+        <?php include_once('include/sidebar.php'); ?>
         <!--  Sidebar End -->
         <!--  Main wrapper -->
         <div class="body-wrapper">
             <!--  Header Start -->
-            <?php include_once ('include/header.php'); ?>
+            <?php include_once('include/header.php'); ?>
             <!--  Header End -->
             <div class="container-fluid">
                 <div class="card bg-light-info shadow-none position-relative overflow-hidden">
@@ -30,8 +27,7 @@
                                 <h4 class="fw-semibold mb-8">List of Districts</h4>
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
-                                        <li class="breadcrumb-item"><a class="text-muted"
-                                                href="district.php">District</a>
+                                        <li class="breadcrumb-item"><a class="text-muted" href="district.php">District</a>
                                         </li>
                                         <li class="breadcrumb-item" aria-current="page">List of Districts</li>
                                     </ol>
@@ -52,8 +48,7 @@
                         </div> -->
 
                         <div class="table-responsive">
-                            <table id="file_export"
-                                class="table border table-striped table-bordered display text-nowrap">
+                            <table id="file_export" class="table border table-striped table-bordered display text-nowrap">
                                 <thead>
                                     <!-- start row -->
                                     <tr>
@@ -76,11 +71,11 @@
             </div>
         </div>
     </div>
-    <?php include_once ("./include/extra.php"); ?>
+    <?php include_once("./include/extra.php"); ?>
     <!--  Customizer -->
 
 
-    <?php include_once ("./include/scripts.php"); ?>
+    <?php include_once("./include/scripts.php"); ?>
     <script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
     <!-- <script src="../../../../../../../cdn.datatables.net/buttons/1.5.1/js/dataTables.buttons.min.js"></script> -->
     <script src="https://cdn.datatables.net/buttons/2.4.1/js/dataTables.buttons.min.js"></script>
@@ -99,7 +94,7 @@
 
     <script>
         //onload
-        $(document).ready(function () {
+        $(document).ready(function() {
 
             if (<?php echo (isset($_GET['success']) ? true : 0); ?>) {
                 noty.setText("Successfully Added", true);
@@ -114,80 +109,188 @@
                     "url": "../controller/districtController.php",
                     "type": "POST",
                     "data": {
-                        "function": "getAllDistrict"
+                        "function": "<?php echo (isset($_GET['archived']) && $_GET['archived'] === 'true') ? 'getAllDistrictArchived' : 'getAllDistrict' ?>"
                     },
                 },
                 columns: [{
-                    "data": "id"
-                },
-
-                {
-                    "data": "district_name"
-                },
-
-                {
-                    "data": "address"
-                },
-                {
-                    "data": null,
-                    "render": function (data, type, row) {
-                        return "<a href='profileDivision.php?id=" + data.division_id + "'>" + data.division_name +
-                            "</a>";
-                    }
-                },
-                {
-                    "data": "id",
-                    createdCell: function (cell, cellData, rowData, rowIndex, colIndex) {
-
-                        $(cell).on('click', '.delete', function () {
-                            // Handle cell click event
-                            Swal.fire({
-                                title: 'Are you sure?',
-                                text: "You won't be able to revert this!",
-                                icon: 'warning',
-                                showCancelButton: true,
-                                confirmButtonColor: '#3085d6',
-                                cancelButtonColor: '#d33',
-                                confirmButtonText: 'Yes, delete it!'
-                            }).then((result) => {
-                                if (result.isConfirmed) {
-
-                                    //delete reuqest ajax
-                                    $.ajax({
-                                        url: "../controller/districtController.php",
-                                        type: "POST",
-                                        data: {
-                                            "function": "deleteDistrict",
-                                            "id": cellData
-                                        },
-                                        success: function (data) {
-                                            if (data.trim() == "success") {
-                                                Swal.fire(
-                                                    'Deleted!',
-                                                    'Your file has been deleted.',
-                                                    'success'
-                                                ).then((result) => {
-                                                    if (result.isConfirmed) {
-                                                        location.reload();
-                                                    }
-                                                })
-
-                                            }
-                                        }
-                                    });
-
-                                }
-                            })
-                        });
+                        "data": "id"
                     },
-                    "render": function (data, type, row, meta) {
-                        return `<div class="d-flex">
+
+                    {
+                        "data": "district_name"
+                    },
+
+                    {
+                        "data": "address"
+                    },
+                    {
+                        "data": null,
+                        "render": function(data, type, row) {
+                            return "<a href='profileDivision.php?id=" + data.division_id + "'>" + data.division_name +
+                                "</a>";
+                        }
+                    },
+                    {
+                        "data": "id",
+                        createdCell: function(cell, cellData, rowData, rowIndex, colIndex) {
+                            $(cell).on('click', '.unarchived', function() {
+                                // Handle cell click event
+                                Swal.fire({
+                                    title: 'Are you sure?',
+                                    text: "You want to unarchived this student!",
+                                    icon: 'warning',
+                                    showCancelButton: true,
+                                    confirmButtonColor: '#3085d6',
+                                    cancelButtonColor: '#d33',
+                                    confirmButtonText: 'Yes, unarchived it!'
+                                }).then((result) => {
+                                    if (result.isConfirmed) {
+                                        //delete reuqest ajax
+                                        $.ajax({
+                                            url: "../controller/districtController.php",
+                                            type: "POST",
+                                            data: {
+                                                "function": "unarachivedDistrict",
+                                                "id": cellData
+                                            },
+                                            success: function(data) {
+                                                if (data.trim() ==
+                                                    "success") {
+                                                    Swal.fire(
+                                                        'Unarchived!',
+                                                        'Your file has been unarchived.',
+                                                        'success'
+                                                    ).then((
+                                                        result
+                                                    ) => {
+                                                        if (result
+                                                            .isConfirmed
+                                                        ) {
+                                                            location
+                                                                .reload();
+                                                        }
+                                                    })
+
+                                                } else {
+                                                    Swal.fire(
+                                                        'Error!',
+                                                        'District still in used',
+                                                        'error'
+                                                    )
+
+                                                }
+                                            },
+                                            error: function(data) {
+                                                Swal.fire(
+                                                    'Error!',
+                                                    'District still in used',
+                                                    'error'
+                                                )
+                                            }
+                                        });
+                                    }
+                                })
+
+                            })
+                            $(cell).on('click', '.delete', function() {
+                                // Handle cell click event
+                                Swal.fire({
+                                    title: 'Are you sure?',
+                                    text: "You won't be able to revert this!",
+                                    icon: 'warning',
+                                    showCancelButton: true,
+                                    confirmButtonColor: '#3085d6',
+                                    cancelButtonColor: '#d33',
+                                    confirmButtonText: 'Yes, <?php echo (isset($_GET['archived']) && $_GET['archived'] === 'true') ? "delete" : "archived" ?> it!'
+                                }).then((result) => {
+                                    if (result.isConfirmed) {
+                                        <?php if (isset($_GET['archived']) && $_GET['archived'] === 'true') { ?>
+                                            //delete reuqest ajax
+                                            $.ajax({
+                                                url: "../controller/districtController.php",
+                                                type: "POST",
+                                                data: {
+                                                    "function": "deleteDistrict",
+                                                    "id": cellData
+                                                },
+                                                success: function(data) {
+                                                    if (data.trim() == "success") {
+                                                        Swal.fire(
+                                                            'Deleted!',
+                                                            'Your file has been deleted.',
+                                                            'success'
+                                                        ).then((result) => {
+                                                            if (result.isConfirmed) {
+                                                                location.reload();
+                                                            }
+                                                        })
+
+                                                    } else {
+                                                        Swal.fire(
+                                                            'Error!',
+                                                            'District still in used',
+                                                            'error'
+                                                        )
+
+                                                    }
+                                                },
+                                                error: function(data) {
+                                                    Swal.fire(
+                                                        'Error!',
+                                                        'District still in used',
+                                                        'error'
+                                                    )
+                                                }
+                                            });
+
+                                        <?php } else { ?>
+                                            //delete reuqest ajax
+                                            $.ajax({
+                                                url: "../controller/districtController.php",
+                                                type: "POST",
+                                                data: {
+                                                    "function": "archivedDistrict",
+                                                    "id": cellData
+                                                },
+                                                success: function(data) {
+                                                    if (data.trim() ==
+                                                        "success") {
+                                                        Swal.fire(
+                                                            'Archived!',
+                                                            'Your file has been archived.',
+                                                            'success'
+                                                        ).then((
+                                                            result
+                                                        ) => {
+                                                            if (result
+                                                                .isConfirmed
+                                                            ) {
+                                                                location
+                                                                    .reload();
+                                                            }
+                                                        })
+
+                                                    }
+                                                }
+                                            });
+                                        <?php } ?>
+
+                                    }
+                                })
+                            });
+                        },
+                        "render": function(data, type, row, meta) {
+                            return `<div class="d-flex">
                                         <a href="profileDistrict.php?id=${data}" class="btn btn-success   me-1"><i class="ti ti-eye"></i></a>
-                                        <a href="addDistrict.php?edit=true&id=${data}" class="btn btn-primary   me-1"><i class="ti ti-edit"></i></a>
-                                        <button id="${data}"  class="btn btn-danger delete  me-1"><i class="ti ti-trash-x"></i></button>
+                                        <?php if (isset($_GET['archived']) && $_GET['archived'] === 'true') : ?>
+                                                                                    <button id="${data}"  class="btn btn-info unarchived  me-2"><i class="ti ti-archive-off"></i></button>
+                                                                                <?php else : ?>
+                                                                                            <a href="addDistrict.php?edit=true&id=${data}"  class="btn btn-primary unarchived me-2"><i class="ti <?php echo ((isset($_GET['archived']) && $_GET['archived'] === 'true') ? "ti-archive-off" : "ti-edit") ?> "></i></a>
+                                                                                    <?php endif; ?>
+                                                                                <button id="${data}"  class="btn <?php echo (isset($_GET['archived']) && $_GET['archived'] == 'true') ? 'btn-danger' : 'btn-warning' ?> delete  me-2"><i class="ti <?php echo ((isset($_GET['archived']) && $_GET['archived'] === 'true') ? "ti-trash-x" : "ti-archive") ?>"></i></button>
                                     </div>`;
+                        }
                     }
-                }
                 ]
             });
             $(".buttons-copy, .buttons-csv, .buttons-print, .buttons-pdf, .buttons-excel").addClass(

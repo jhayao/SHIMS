@@ -1,19 +1,17 @@
 <?php include_once('include/head.php'); ?>
+<?php echo json_encode($_SESSION) ?>
 
 <body>
   <!-- Preloader -->
   <div class="preloader">
-    <img src="https://demos.adminmart.com/premium/bootstrap/modernize-bootstrap/package/dist/images/logos/favicon.ico"
-      alt="loader" class="lds-ripple img-fluid" />
+    <img src="https://demos.adminmart.com/premium/bootstrap/modernize-bootstrap/package/dist/images/logos/favicon.ico" alt="loader" class="lds-ripple img-fluid" />
   </div>
   <!-- Preloader -->
   <div class="preloader">
-    <img src="https://demos.adminmart.com/premium/bootstrap/modernize-bootstrap/package/dist/images/logos/favicon.ico"
-      alt="loader" class="lds-ripple img-fluid" />
+    <img src="https://demos.adminmart.com/premium/bootstrap/modernize-bootstrap/package/dist/images/logos/favicon.ico" alt="loader" class="lds-ripple img-fluid" />
   </div>
   <!--  Body Wrapper -->
-  <div class="page-wrapper" id="main-wrapper" data-theme="blue_theme" data-layout="vertical" data-sidebartype="full"
-    data-sidebar-position="fixed" data-header-position="fixed">
+  <div class="page-wrapper" id="main-wrapper" data-theme="blue_theme" data-layout="vertical" data-sidebartype="full" data-sidebar-position="fixed" data-header-position="fixed">
     <!-- Sidebar Start -->
     <?php include_once('include/sidebar.php'); ?>
     <!--  Sidebar End -->
@@ -40,13 +38,11 @@
                     </div>
                     <div class="d-flex align-items-center">
                       <div class="border-end pe-4 border-muted border-opacity-10">
-                        <h3 class="mb-1 fw-semibold fs-8 d-flex align-content-center" id="todaysCheckups">$2,340<i
-                            class="ti ti-arrow-up-right fs-5 lh-base text-success"></i></h3>
+                        <h3 class="mb-1 fw-semibold fs-8 d-flex align-content-center" id="todaysCheckups">$2,340<i class="ti ti-arrow-up-right fs-5 lh-base text-success"></i></h3>
                         <p class="mb-0 text-dark">Today’s Checkups</p>
                       </div>
                       <div class="ps-4">
-                        <h3 class="mb-1 fw-semibold fs-8 d-flex align-content-center" id="totalsCheckup">35%<i
-                            class="ti ti-arrow-up-right fs-5 lh-base text-success"></i></h3>
+                        <h3 class="mb-1 fw-semibold fs-8 d-flex align-content-center" id="totalsCheckup">35%<i class="ti ti-arrow-up-right fs-5 lh-base text-success"></i></h3>
                         <p class="mb-0 text-dark">Total Checkups</p>
                       </div>
                     </div>
@@ -98,8 +94,7 @@
                   <div class="col-4">
                     <div class="d-flex justify-content-end">
                       <div class="p-2 bg-light-primary rounded-2 d-inline-block">
-                        <img src="../dist/images/svgs/icon-master-card-2.svg" alt="" class="img-fluid" width="24"
-                          height="24">
+                        <img src="../dist/images/svgs/icon-master-card-2.svg" alt="" class="img-fluid" width="24" height="24">
                       </div>
                     </div>
                   </div>
@@ -119,7 +114,7 @@
                     <span class="fs-2">Healthy</span>
                   </div>
                   <div>
-                    <span class="round-8 bg-secondary rounded-circle me-2 d-inline-block"></span>
+                    <span class="round-8 bg-danger rounded-circle me-2 d-inline-block"></span>
                     <span class="fs-2">Sicked</span>
                   </div>
                 </div>
@@ -164,13 +159,10 @@
   </div>
 
   <!--  Mobilenavbar -->
-  <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="mobilenavbar"
-    aria-labelledby="offcanvasWithBothOptionsLabel">
+  <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="mobilenavbar" aria-labelledby="offcanvasWithBothOptionsLabel">
     <nav class="sidebar-nav scroll-sidebar">
       <div class="offcanvas-header justify-content-between">
-        <img
-          src="https://demos.adminmart.com/premium/bootstrap/modernize-bootstrap/package/dist/images/logos/favicon.ico"
-          alt="" class="img-fluid">
+        <img src="https://demos.adminmart.com/premium/bootstrap/modernize-bootstrap/package/dist/images/logos/favicon.ico" alt="" class="img-fluid">
         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
       </div>
       <div class="offcanvas-body profile-dropdown mobile-navbar" data-simplebar="" data-simplebar>
@@ -186,9 +178,7 @@
               <li class="sidebar-item py-2">
                 <a href="#" class="d-flex align-items-center">
                   <div class="bg-light rounded-1 me-3 p-6 d-flex align-items-center justify-content-center">
-                    <img
-                      src="https://demos.adminmart.com/premium/bootstrap/modernize-bootstrap/package/dist/images/svgs/icon-dd-chat.svg"
-                      alt="" class="img-fluid" width="24" height="24">
+                    <img src="https://demos.adminmart.com/premium/bootstrap/modernize-bootstrap/package/dist/images/svgs/icon-dd-chat.svg" alt="" class="img-fluid" width="24" height="24">
                   </div>
                   <div class="d-inline-block">
                     <h6 class="mb-1 bg-hover-primary">Chat Application</h6>
@@ -199,9 +189,7 @@
               <li class="sidebar-item py-2">
                 <a href="#" class="d-flex align-items-center">
                   <div class="bg-light rounded-1 me-3 p-6 d-flex align-items-center justify-content-center">
-                    <img
-                      src="https://demos.adminmart.com/premium/bootstrap/modernize-bootstrap/package/dist/images/svgs/icon-dd-invoice.svg"
-                      alt="" class="img-fluid" width="24" height="24">
+                    <img src="https://demos.adminmart.com/premium/bootstrap/modernize-bootstrap/package/dist/images/svgs/icon-dd-invoice.svg" alt="" class="img-fluid" width="24" height="24">
                   </div>
                   <div class="d-inline-block">
                     <h6 class="mb-1 bg-hover-primary">Invoice App</h6>
@@ -212,9 +200,7 @@
               <li class="sidebar-item py-2">
                 <a href="#" class="d-flex align-items-center">
                   <div class="bg-light rounded-1 me-3 p-6 d-flex align-items-center justify-content-center">
-                    <img
-                      src="https://demos.adminmart.com/premium/bootstrap/modernize-bootstrap/package/dist/images/svgs/icon-dd-mobile.svg"
-                      alt="" class="img-fluid" width="24" height="24">
+                    <img src="https://demos.adminmart.com/premium/bootstrap/modernize-bootstrap/package/dist/images/svgs/icon-dd-mobile.svg" alt="" class="img-fluid" width="24" height="24">
                   </div>
                   <div class="d-inline-block">
                     <h6 class="mb-1 bg-hover-primary">Contact Application</h6>
@@ -225,9 +211,7 @@
               <li class="sidebar-item py-2">
                 <a href="#" class="d-flex align-items-center">
                   <div class="bg-light rounded-1 me-3 p-6 d-flex align-items-center justify-content-center">
-                    <img
-                      src="https://demos.adminmart.com/premium/bootstrap/modernize-bootstrap/package/dist/images/svgs/icon-dd-message-box.svg"
-                      alt="" class="img-fluid" width="24" height="24">
+                    <img src="https://demos.adminmart.com/premium/bootstrap/modernize-bootstrap/package/dist/images/svgs/icon-dd-message-box.svg" alt="" class="img-fluid" width="24" height="24">
                   </div>
                   <div class="d-inline-block">
                     <h6 class="mb-1 bg-hover-primary">Email App</h6>
@@ -238,9 +222,7 @@
               <li class="sidebar-item py-2">
                 <a href="#" class="d-flex align-items-center">
                   <div class="bg-light rounded-1 me-3 p-6 d-flex align-items-center justify-content-center">
-                    <img
-                      src="https://demos.adminmart.com/premium/bootstrap/modernize-bootstrap/package/dist/images/svgs/icon-dd-cart.svg"
-                      alt="" class="img-fluid" width="24" height="24">
+                    <img src="https://demos.adminmart.com/premium/bootstrap/modernize-bootstrap/package/dist/images/svgs/icon-dd-cart.svg" alt="" class="img-fluid" width="24" height="24">
                   </div>
                   <div class="d-inline-block">
                     <h6 class="mb-1 bg-hover-primary">User Profile</h6>
@@ -251,9 +233,7 @@
               <li class="sidebar-item py-2">
                 <a href="#" class="d-flex align-items-center">
                   <div class="bg-light rounded-1 me-3 p-6 d-flex align-items-center justify-content-center">
-                    <img
-                      src="https://demos.adminmart.com/premium/bootstrap/modernize-bootstrap/package/dist/images/svgs/icon-dd-date.svg"
-                      alt="" class="img-fluid" width="24" height="24">
+                    <img src="https://demos.adminmart.com/premium/bootstrap/modernize-bootstrap/package/dist/images/svgs/icon-dd-date.svg" alt="" class="img-fluid" width="24" height="24">
                   </div>
                   <div class="d-inline-block">
                     <h6 class="mb-1 bg-hover-primary">Calendar App</h6>
@@ -264,9 +244,7 @@
               <li class="sidebar-item py-2">
                 <a href="#" class="d-flex align-items-center">
                   <div class="bg-light rounded-1 me-3 p-6 d-flex align-items-center justify-content-center">
-                    <img
-                      src="https://demos.adminmart.com/premium/bootstrap/modernize-bootstrap/package/dist/images/svgs/icon-dd-lifebuoy.svg"
-                      alt="" class="img-fluid" width="24" height="24">
+                    <img src="https://demos.adminmart.com/premium/bootstrap/modernize-bootstrap/package/dist/images/svgs/icon-dd-lifebuoy.svg" alt="" class="img-fluid" width="24" height="24">
                   </div>
                   <div class="d-inline-block">
                     <h6 class="mb-1 bg-hover-primary">Contact List Table</h6>
@@ -277,9 +255,7 @@
               <li class="sidebar-item py-2">
                 <a href="#" class="d-flex align-items-center">
                   <div class="bg-light rounded-1 me-3 p-6 d-flex align-items-center justify-content-center">
-                    <img
-                      src="https://demos.adminmart.com/premium/bootstrap/modernize-bootstrap/package/dist/images/svgs/icon-dd-application.svg"
-                      alt="" class="img-fluid" width="24" height="24">
+                    <img src="https://demos.adminmart.com/premium/bootstrap/modernize-bootstrap/package/dist/images/svgs/icon-dd-application.svg" alt="" class="img-fluid" width="24" height="24">
                   </div>
                   <div class="d-inline-block">
                     <h6 class="mb-1 bg-hover-primary">Notes Application</h6>
@@ -384,8 +360,7 @@
             <li class="p-1 mb-1 bg-hover-light-black">
               <a href="#">
                 <span class="fs-3 text-black fw-normal d-block">Detail</span>
-                <span
-                  class="fs-3 text-muted d-block">/apps/blog/detail/streaming-video-way-before-it-was-cool-go-dark-tomorrow</span>
+                <span class="fs-3 text-muted d-block">/apps/blog/detail/streaming-video-way-before-it-was-cool-go-dark-tomorrow</span>
               </a>
             </li>
             <li class="p-1 mb-1 bg-hover-light-black">
@@ -421,8 +396,7 @@
             <li class="p-1 mb-1 bg-hover-light-black">
               <a href="#">
                 <span class="fs-3 text-black fw-normal d-block">Detail</span>
-                <span
-                  class="fs-3 text-muted d-block">/apps/blog/detail/streaming-video-way-before-it-was-cool-go-dark-tomorrow</span>
+                <span class="fs-3 text-muted d-block">/apps/blog/detail/streaming-video-way-before-it-was-cool-go-dark-tomorrow</span>
               </a>
             </li>
             <li class="p-1 mb-1 bg-hover-light-black">
@@ -437,7 +411,7 @@
     </div>
   </div>
   <!--  Customizer -->
-  <?php include_once("./include/extra.php");?>
+  <?php include_once("./include/extra.php"); ?>
   <!--  Customizer -->
   <?php include_once("./include/scripts.php"); ?>
   <script src="../dist/libs/owl.carousel/dist/owl.carousel.min.js"></script>

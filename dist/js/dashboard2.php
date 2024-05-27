@@ -59,12 +59,12 @@ foreach ($getMonthlyCheckups as $key => $checkup) {
 $days = json_encode($days);
 
 $getMonthlyCheckupCounts = $dashboard->getMonthlyCheckupCounts();
-$monthlyCheckupCount=  json_encode($getMonthlyCheckupCounts["count"]);
+$monthlyCheckupCount =  json_encode($getMonthlyCheckupCounts["count"]);
 
 
 ?>
 <script>
-  $(function () {
+  $(function() {
     // =====================================
     // Revenue Updates
     // =====================================
@@ -78,14 +78,15 @@ $monthlyCheckupCount=  json_encode($getMonthlyCheckupCounts["count"]);
     for (var i = 4; i >= 0; i--) {
       var month = new Date();
       month.setMonth(month.getMonth() - i);
-      months.push(month.toLocaleString("default", { month: "short" }));
+      months.push(month.toLocaleString("default", {
+        month: "short"
+      }));
     }
     var healthy = [];
     var sicked = [];
-    
+
     var options = {
-      series: [
-        {
+      series: [{
           name: "Healthy",
           data: <?php echo $healthy ?>,
         },
@@ -105,7 +106,7 @@ $monthlyCheckupCount=  json_encode($getMonthlyCheckupCounts["count"]);
         stacked: true,
         offsetX: -20,
       },
-      colors: ["var(--bs-primary)", "var(--bs-secondary)"],
+      colors: ["var(--bs-primary)", "var(--bs-danger)"],
       plotOptions: {
         bar: {
           horizontal: false,
@@ -221,13 +222,12 @@ $monthlyCheckupCount=  json_encode($getMonthlyCheckupCounts["count"]);
       series: [
         <?php
         foreach ($schoolCounts as $school => $count) {
-          ?>
-              {
+        ?> {
             name: '<?php echo $school ?>',
             data: <?php echo json_encode($count) ?>
           },
 
-          <?php
+        <?php
         }
         ?>
       ],

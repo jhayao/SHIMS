@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Feb 29, 2024 at 04:43 AM
+-- Generation Time: May 27, 2024 at 02:23 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -41,6 +41,21 @@ CREATE TABLE `checkup` (
 -- --------------------------------------------------------
 
 --
+-- Stand-in structure for view `combined_accounts`
+-- (See below for the actual view)
+--
+CREATE TABLE `combined_accounts` (
+`id` int(11)
+,`firstname` varchar(255)
+,`middlename` varchar(255)
+,`lastname` varchar(255)
+,`email` varchar(355)
+,`role` varchar(255)
+);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `district`
 --
 
@@ -48,20 +63,9 @@ CREATE TABLE `district` (
   `id` int(11) NOT NULL,
   `district_name` varchar(45) NOT NULL,
   `address` varchar(255) NOT NULL,
-  `division_id` int(11) NOT NULL
+  `division_id` int(11) NOT NULL,
+  `archived` tinyint(4) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `district`
---
-
-INSERT INTO `district` (`id`, `district_name`, `address`, `division_id`) VALUES
-(2, 'Dist1', 'Dist1', 2),
-(3, 'test', 'test', 4),
-(4, 'District 2 4', 'District2 ', 4),
-(5, 'District 3 4', 'District 3', 4),
-(6, 'District 2 2', 'District2 ', 2),
-(7, 'District 3 2', 'District 3', 2);
 
 -- --------------------------------------------------------
 
@@ -72,16 +76,9 @@ INSERT INTO `district` (`id`, `district_name`, `address`, `division_id`) VALUES
 CREATE TABLE `division` (
   `id` int(11) NOT NULL,
   `division_name` varchar(45) NOT NULL,
-  `address` varchar(255) NOT NULL
+  `address` varchar(255) NOT NULL,
+  `archived` tinyint(4) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `division`
---
-
-INSERT INTO `division` (`id`, `division_name`, `address`) VALUES
-(2, 'test2', 'testdawd'),
-(4, 'Div1', 'DIv1');
 
 -- --------------------------------------------------------
 
@@ -131,21 +128,18 @@ CREATE TABLE `information` (
   `created_at` timestamp NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+-- --------------------------------------------------------
+
 --
--- Dumping data for table `information`
+-- Table structure for table `log`
 --
 
-INSERT INTO `information` (`id`, `student_id`, `nurse_id`, `school_id`, `height`, `temperature`, `weight`, `BMI`, `heart_rate`, `height_for_age`, `vision_screening`, `auditory_screening`, `skin_scalp`, `eyes_ear_nose`, `mouth_throat_neck`, `lungs_heart`, `abdomen`, `deformities`, `immunization`, `iron_supplementation`, `deworming`, `sbfp_beneficiary`, `fourps_beneficiary`, `menarche`, `others`, `created_at`) VALUES
-(1, 3, 42, 3, 35, 53, 35, 'Normal Weight', '35', 'Normal height', 'Pass', 'Pass', 'Array', 'Array', 'Normal', 'Normal', 'Normal', 'Acquired', '34343', 1, 1, 1, 1, 1, 'dawdawdwa', '2024-02-16 06:19:56'),
-(2, 1, 42, 3, 35, 53, 35, 'Normal Weight', '35', 'Normal height', 'Pass', 'Pass', 'Normal', 'Array', 'Normal', 'Normal', 'Normal', 'Acquired', '34343', 1, 1, 1, 1, 1, 'dawdawdwa', '2024-02-16 06:21:34'),
-(3, 1, 42, 3, 35, 53, 35, 'Normal Weight', '35', 'Normal height', 'Pass', 'Pass', 'Normal,Presence of Lice', 'Array', 'Normal', 'Normal', 'Normal', 'Acquired', '34343', 1, 1, 1, 1, 1, 'dawdawdwa', '2024-02-16 06:22:15'),
-(4, 1, 42, 3, 35, 53, 35, 'Normal Weight', '35', 'Normal height', 'Pass', 'Pass', 'Normal,Presence of Lice', 'Array', 'Normal', 'Normal', 'Normal', 'Acquired', '34343', 1, 1, 1, 1, 1, 'dawdawdwa', '2024-02-16 06:22:33'),
-(5, 1, 42, 3, 35, 53, 35, 'Normal Weight', '35', 'Normal height', 'Pass', 'Pass', 'Normal,Presence of Lice', 'Normal,Eye Redness', 'Normal', 'Normal', 'Normal', 'Acquired', '34343', 1, 1, 1, 1, 1, 'dawdawdwa', '2024-02-16 06:23:01'),
-(6, 1, 42, 3, 35, 53, 35, 'Normal Weight', '35', 'Normal height', 'Pass', 'Pass', 'Normal,Presence of Lice,Skin lesions', 'Normal,Eye Redness,Ocular misalignment', 'Others', 'Normal', 'Normal', 'Acquired', '34343', 1, 1, 1, 1, 1, 'dawdawdwa', '2024-02-16 06:25:32'),
-(7, 1, 42, 3, 35, 53, 35, 'Normal Weight', '35', 'Normal height', 'Pass', 'Pass', 'Normal,Presence of Lice,Skin lesions', 'Normal,Eye Redness,Ocular misalignment', 'fawadw', 'Normal', 'Normal', 'Acquired', '34343', 1, 1, 1, 1, 1, 'dawdawdwa', '2024-02-16 06:27:33'),
-(8, 1, 42, 3, 35, 53, 35, 'Normal Weight', '35', 'Normal height', 'Pass', 'Pass', 'Normal,Presence of Lice,Skin lesions', 'Normal,Eye Redness,Ocular misalignment', 'fawadw', 'dawdawd', 'wdawdwad', 'Congenital', '34343', 1, 1, 1, 1, 1, 'dawdawdwa', '2024-02-16 06:28:41'),
-(10, 1, 42, 3, 35, 53, 35, 'Normal Weight', '35', 'Normal height', 'Pass', 'Pass', 'Normal,Presence of Lice,Skin lesions', 'Normal,Eye Redness,Ocular misalignment', 'fawadw', 'dawdawd', 'wdawdwad', 'dawdwadaw', '34343', 1, 1, 1, 0, 1, 'test', '2024-02-16 06:30:02'),
-(11, 1, 42, 3, 35, 53, 35, 'Normal Weight', '35', 'Normal height', 'Pass', 'Pass', 'Normal,Presence of Lice,Skin lesions', 'Normal,Eye Redness,Ocular misalignment', 'fawadw', 'dawdawd', 'wdawdwad', 'dawdwadaw', '34343', 1, 1, 1, 0, 0, '', '2024-02-16 06:30:04');
+CREATE TABLE `log` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `system_log` text NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -166,43 +160,10 @@ CREATE TABLE `nurse` (
   `city` varchar(45) NOT NULL,
   `province` varchar(45) NOT NULL,
   `postal` varchar(45) NOT NULL,
-  `nurse_type` varchar(45) NOT NULL,
-  `assigned` varchar(255) NOT NULL
+  `nurse_type` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `assigned` varchar(255) NOT NULL,
+  `archived` tinyint(4) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `nurse`
---
-
-INSERT INTO `nurse` (`id`, `firstname`, `middlename`, `lastname`, `email`, `sex`, `contact`, `street`, `barangay`, `city`, `province`, `postal`, `nurse_type`, `assigned`) VALUES
-(5, 'Junriel', 'Ordiniza', 'Hayao', 'junriel.hayao@ustp.edu.ph', 'Male', '09386767657', 'Purok 5', 'Mobod', 'Ozamiz', 'Misamis Occidental', '7207', 'School Nurse', '3'),
-(15, 'dawdawd', 'awdwad', 'wadawdaw', 'liernuj25@gmail.com', 'Female', 'dawdwadw', 'dawdwad', 'awdwadwa', 'Ozamiz', 'Misamis Occidental', '7211', '', ''),
-(16, 'dawdawd', 'awdwad', 'wadawdaw', 'a@a.c', 'Male', 'dawdwadw', 'dawdwad', 'awdwadwa', 'Oroquieta', 'Misamis Occidental', 'wadwa', 'School Nurse', ''),
-(18, 'Junriel', 'Ordiniza', 'Hayao', 'junriel.hayao@ustp.edu.ph', 'Male', '09386767657', 'Purok 5', 'Mobod', 'Oroquieta', 'Misamis Occidental', '72078', 'School Nurse', ''),
-(19, 'Junriel', 'Ordiniza', 'Hayao', 'junriel.hayao@ustp.edu.ph', '1', '09386767657', 'Purok 5', 'Mobod', 'Oroquieta', 'Misamis Occidental', '72078', 'School Nurse', ''),
-(20, 'Junriel', 'Ordiniza', 'Hayao', 'junriel.hayao@ustp.edu.ph', 'Male', '09386767657', 'Purok 5', 'Mobod', 'Oroquieta', 'Misamis Occidental', '72078', 'School Nurse', ''),
-(21, 'Junriel', 'Ordiniza', 'Hayao', 'junriel.hayao@ustp.edu.ph', 'Male', '09386767657', 'Purok 5', 'Mobod', 'Oroquieta', 'Misamis Occidental', '72078', 'School Nurse', ''),
-(22, 'Junriel', 'Ordiniza', 'Hayao', 'junriel.hayao@ustp.edu.ph', 'Male', '09386767657', 'Purok 5', 'Mobod', 'Oroquieta', 'Misamis Occidental', '72078', 'School Nurse', ''),
-(23, 'Junriel', 'Ordiniza', 'Hayao', 'junriel.hayao@ustp.edu.ph', 'Male', '09386767657', 'Purok 5', 'Mobod', 'Oroquieta', 'Misamis Occidental', '72078', 'School Nurse', ''),
-(24, 'Junriel', 'Ordiniza', 'Hayao', 'junriel.hayao@ustp.edu.ph', 'Male', '09386767657', 'Purok 5', 'Mobod', 'Oroquieta', 'Misamis Occidental', '72078', 'School Nurse', ''),
-(25, 'Junriel', 'Ordiniza', 'Hayao', 'junriel.hayao@ustp.edu.ph', 'Male', '09386767657', 'Purok 5', 'Mobod', 'Oroquieta', 'Misamis Occidental', '72078', 'School Nurse', ''),
-(26, 'Junriel', 'Ordiniza', 'Hayao', 'junriel.hayao@ustp.edu.ph', 'Male', '09386767657', 'Purok 5', 'Mobod', 'Oroquieta', 'Misamis Occidental', '72078', 'School Nurse', ''),
-(27, 'Junriel', 'Ordiniza', 'Hayao', 'junriel.hayao@ustp.edu.ph', 'Male', '09386767657', 'Purok 5', 'Mobod', 'Oroquieta', 'Misamis Occidental', '72078', 'School Nurse', ''),
-(28, 'Junriel', 'Ordiniza', 'Hayao', 'junriel.hayao@ustp.edu.ph', 'Male', '09386767657', 'Purok 5', 'Mobod', 'Oroquieta City', 'Misamis Occidental', '7207', 'Admin', ''),
-(29, 'Junriel', 'Ordiniza', 'Hayao', 'junriel.hayao@ustp.edu.ph', 'Male', '09386767657', 'Purok 5', 'Mobod', 'Oroquieta City', 'Misamis Occidental', '7207', 'Admin', ''),
-(30, 'Junriel', 'Ordiniza', 'Hayao', 'junriel.hayao@ustp.edu.ph', 'Male', '09386767657', 'Purok 5', 'Mobod', 'Oroquieta', 'Misamis Occidental', '72078', 'School Nurse', ''),
-(31, 'Junriel', 'Ordiniza', 'Hayao', 'junriel.hayao@ustp.edu.ph', 'Male', '09386767657', 'Purok 5', 'Mobod', 'Oroquieta', 'Misamis Occidental', '72078', 'School Nurse', ''),
-(32, 'Junriel', 'Ordiniza', 'Hayao', 'junriel.hayao@ustp.edu.ph', 'Male', '09386767657', 'Purok 5', 'Mobod', 'Tangub', 'Misamis Occidental', '7207', 'School Nurse', ''),
-(33, 'Junriel', 'Ordiniza', 'Hayao', 'junriel.hayao@ustp.edu.ph', 'Male', '09386767657', 'Purok 5', 'Mobod', 'Tangub', 'Misamis Occidental', '7207', 'School Nurse', ''),
-(35, 'Junriel', 'Ordiniza', 'Hayao', 'junriel.hayao@ustp.edu.ph', 'Male', '09386767657', 'Purok 5', 'Mobod', '', 'Misamis Occidental', '7207', '', ''),
-(37, 'Genelyn', 'Cajan', 'Naquira', 'a@a.com', 'Male', '09176721014', 'Purok 3', 'Looc', 'Plaridel', 'Misamis Occidental', '7209', 'Division Nurse', '2'),
-(38, 'test', 'test', 'test', 'junriel.hayao@ustp.edu.ph', 'Male', '3121212121', 'test', 'test', 'Tangub', 'Misamis Occidental', 'test', 'School Nurse', '1'),
-(39, 'jun', 'jun', 'jun', 'liernuj25@gmail.com', 'Male', 'adawadawdaw', 'jun', 'jun', 'Tangub', 'Misamis Occidental', 'jun', 'School Nurse', '3'),
-(40, 'jun', 'jun', 'jun', 'liernuj25@gmail.com', 'Male', 'adawadawdaw', 'jun', 'jun', 'Tangub', 'Misamis Occidental', 'jun', 'School Nurse', '3'),
-(41, 'jun', 'jun', 'jun', 'liernuj25@gmail.com', 'Male', 'adawadawdaw', 'jun', 'jun', 'Tangub', 'Misamis Occidental', 'jun', 'School Nurse', '3'),
-(42, 'jun', 'jun', 'jun', 'liernuj25@gmail.com', 'Male', 'adawadawdaw', 'jun', 'jun', 'Tangub', 'Misamis Occidental', 'jun', 'School Nurse', '3'),
-(43, 'jun', 'jun', 'jun', 'liernuj25@gmail.com', 'Male', 'adawadawdaw', 'jun', 'jun', 'Tangub', 'Misamis Occidental', 'jun', 'School Nurse', '3'),
-(44, 'test', 'test', 'test', 'kathriel143@gmail.com', 'Male', '09176721014', 'daw', 'dwa', 'Tangub', 'Misamis Occidental', '23232', 'District Nurse', '2');
 
 -- --------------------------------------------------------
 
@@ -217,55 +178,6 @@ CREATE TABLE `otp` (
   `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `valid_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `otp`
---
-
-INSERT INTO `otp` (`id`, `user_id`, `OTP`, `created_at`, `valid_at`) VALUES
-(1, 1002, 363083, '2023-11-28 08:16:24', '2023-11-28 08:21:24'),
-(3, 1002, 507665, '2023-11-28 08:27:10', '2023-11-28 08:32:10'),
-(4, 1002, 658063, '2023-11-29 03:09:04', '2023-11-29 03:14:04'),
-(5, 1002, 233691, '2023-11-29 03:09:19', '2023-11-29 03:14:19'),
-(6, 1002, 760642, '2023-11-29 07:25:40', '2023-11-29 07:30:40'),
-(7, 1002, 888598, '2023-11-29 07:27:49', '2023-11-29 07:32:49'),
-(8, 1002, 318266, '2023-11-29 07:35:03', '2023-11-29 07:40:03'),
-(9, 1002, 993877, '2023-11-29 07:35:07', '2023-11-29 07:40:07'),
-(10, 1002, 139946, '2023-11-29 07:50:47', '2023-11-29 07:55:47'),
-(11, 1002, 972129, '2023-11-29 07:50:50', '2023-11-29 07:55:50'),
-(12, 1002, 517291, '2023-11-30 00:11:36', '2023-11-30 00:16:36'),
-(13, 1002, 810619, '2023-11-30 00:12:17', '2023-11-30 00:17:17'),
-(14, 1002, 876086, '2023-11-30 00:13:54', '2023-11-30 00:18:54'),
-(15, 1002, 708796, '2023-11-30 00:21:34', '2023-11-30 00:26:34'),
-(16, 1002, 171675, '2023-11-30 00:22:13', '2023-11-30 00:27:13'),
-(17, 1002, 535050, '2023-11-30 00:27:18', '2023-11-30 00:32:18'),
-(18, 1002, 129641, '2023-11-30 01:39:38', '2023-11-30 01:44:38'),
-(19, 1002, 663583, '2023-11-30 05:21:44', '2023-11-30 05:26:44'),
-(20, 1002, 224749, '2023-11-30 05:28:08', '2023-11-30 05:33:08'),
-(21, 1002, 925760, '2023-11-30 05:58:37', '2023-11-30 06:03:37'),
-(26, 1011, 756601, '2023-11-30 06:03:13', '2023-11-30 06:08:13'),
-(27, 1011, 876543, '2023-11-30 06:03:29', '2023-11-30 06:08:29'),
-(28, 1020, 675091, '2023-11-30 06:14:29', '2023-11-30 06:19:29'),
-(29, 1011, 395872, '2023-12-29 08:16:50', '2023-12-29 16:21:50'),
-(30, 1020, 354698, '2023-12-29 08:18:47', '2023-12-29 16:23:47'),
-(31, 1011, 105182, '2024-01-10 23:15:12', '2024-01-11 07:20:12'),
-(32, 1011, 719639, '2024-01-10 23:15:26', '2024-01-11 07:20:26'),
-(33, 1011, 206294, '2024-01-10 23:18:46', '2024-01-11 07:23:46'),
-(34, 1022, 896275, '2024-01-10 23:20:13', '2024-01-11 07:25:13'),
-(35, 1011, 650696, '2024-01-15 06:21:36', '2024-01-15 14:26:36'),
-(36, 1011, 136856, '2024-02-16 02:41:07', '2024-02-16 10:46:07'),
-(37, 1011, 523220, '2024-02-16 02:42:17', '2024-02-16 10:47:17'),
-(38, 1011, 166037, '2024-02-16 02:42:39', '2024-02-16 10:47:39'),
-(39, 1011, 948232, '2024-02-16 02:46:15', '2024-02-16 10:51:15'),
-(40, 1020, 225016, '2024-02-16 02:48:06', '2024-02-16 10:53:06'),
-(41, 1020, 431424, '2024-02-16 02:48:10', '2024-02-16 10:53:10'),
-(42, 1020, 134654, '2024-02-16 23:08:58', '2024-02-17 07:13:58'),
-(43, 1020, 751234, '2024-02-19 00:47:00', '2024-02-19 08:52:00'),
-(44, 1020, 859681, '2024-02-21 01:37:34', '2024-02-21 09:42:34'),
-(45, 1020, 662027, '2024-02-24 01:39:21', '2024-02-24 09:44:21'),
-(46, 1020, 584932, '2024-02-29 00:41:16', '2024-02-29 08:46:16'),
-(47, 1020, 339110, '2024-02-29 02:44:50', '2024-02-29 10:49:50'),
-(48, 1020, 376179, '2024-02-29 02:44:53', '2024-02-29 10:49:53');
 
 -- --------------------------------------------------------
 
@@ -292,16 +204,21 @@ CREATE TABLE `school` (
   `school_name` varchar(255) NOT NULL,
   `address` varchar(255) NOT NULL,
   `division_id` int(11) NOT NULL,
-  `district_id` int(11) NOT NULL
+  `district_id` int(11) NOT NULL,
+  `archived` tinyint(4) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `school`
---
+-- --------------------------------------------------------
 
-INSERT INTO `school` (`id`, `school_name`, `address`, `division_id`, `district_id`) VALUES
-(1, 'test', 'aw', 4, 3),
-(3, 'school1', 'school1', 2, 2);
+--
+-- Stand-in structure for view `school_assigned`
+-- (See below for the actual view)
+--
+CREATE TABLE `school_assigned` (
+`id` varchar(255)
+,`nurse_id` varchar(11)
+,`user_id` int(11)
+);
 
 -- --------------------------------------------------------
 
@@ -340,19 +257,9 @@ CREATE TABLE `student` (
   `city` varchar(255) NOT NULL,
   `province` varchar(255) NOT NULL,
   `postal` varchar(255) NOT NULL,
-  `school_id` int(11) NOT NULL
+  `school_id` int(11) NOT NULL,
+  `archived` tinyint(4) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `student`
---
-
-INSERT INTO `student` (`id`, `firstname`, `middlename`, `lastname`, `sex`, `dob`, `contact`, `email`, `guardian`, `street`, `barangay`, `city`, `province`, `postal`, `school_id`) VALUES
-(1, 'Junriel', 'Ordinizas', 'Hayao', 'Male', '2023-08-23', '+639386767657', 'junriel.hayao@ustp.edu.ph', 'Elma Hayao', 'Purok 5', 'Mobod', 'Ozamiz', 'Misamis Occidental', '7207', 3),
-(3, 'Junriel', 'Ordiniza', 'Hayao', 'Male', '2023-08-23', '+639386767658', 'junriel.hayao@ustp.edu.ph', 'Elma Hayao', 'Purok 5', 'Mobod', 'Ozamiz', 'Misamis Occidental', '7207', 1),
-(44, 'Junriel', 'Ordiniza', 'Hayao', 'Male', '2023-11-02', '091236547', 't@t.com', 'test', 'Rose', 'Anod', 'Tangub', 'Misamis Occidental', '1234', 1),
-(49, 'a', 'a', 'a', 'Male', '2023-11-29', 'a', 'c@c.c', 'a', 'a', 'a', 'Tangub', 'Misamis Occidental', 'a', 1),
-(50, 'h', 'h', 'h', 'Male', '2023-12-19', 'h', 'h@h.h', 'h', 'h', 'h', 'Tangub', 'Misamis Occidental', 'dawdaw', 1);
 
 -- --------------------------------------------------------
 
@@ -368,18 +275,47 @@ CREATE TABLE `users` (
   `user_type` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `users`
---
+-- --------------------------------------------------------
 
-INSERT INTO `users` (`id`, `email`, `password`, `account_id`, `user_type`) VALUES
-(1002, 'test', '05a671c66aefea124cc08b76ea6d30bb', 15, 'nurse'),
-(1010, 'test2', 'ad0234829205b9033196ba818f7a872b', 5, 'nurse'),
-(1011, 'admin', '21232f297a57a5a743894a0e4a801fc3', 0, 'admin'),
-(1018, 'c@c.c', '6d9eedc31525befc60af5b6dbbd9f3e5', 49, 'student'),
-(1019, 'h@h.h', 'acf31b7fa7f7b831b216f01991515227', 50, 'student'),
-(1020, 'liernuj25@gmail.com', '21232f297a57a5a743894a0e4a801fc3', 42, 'nurse'),
-(1022, 'kathriel143@gmail.com', '999131b39bd6ca8a10967f8b989cba5a', 44, 'nurse');
+--
+-- Stand-in structure for view `user_accounts`
+-- (See below for the actual view)
+--
+CREATE TABLE `user_accounts` (
+`id` int(11)
+,`fullname` varchar(94)
+,`assigned` varchar(255)
+,`role` varchar(255)
+,`email` varchar(255)
+,`assignment` varchar(255)
+);
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `combined_accounts`
+--
+DROP TABLE IF EXISTS `combined_accounts`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `combined_accounts`  AS SELECT `nurse_accounts`.`id` AS `id`, `nurse_accounts`.`firstname` AS `firstname`, `nurse_accounts`.`middlename` AS `middlename`, `nurse_accounts`.`lastname` AS `lastname`, `nurse_accounts`.`email` AS `email`, `nurse_accounts`.`role` AS `role` FROM (select `u`.`id` AS `id`,`n`.`firstname` AS `firstname`,`n`.`middlename` AS `middlename`,`n`.`lastname` AS `lastname`,`n`.`email` AS `email`,`n`.`nurse_type` AS `role` from (`users` `u` join `nurse` `n` on(`n`.`id` = `u`.`account_id`)) where `u`.`user_type` = 'nurse') AS `nurse_accounts`union select `student_accounts`.`id` AS `id`,`student_accounts`.`firstname` AS `firstname`,`student_accounts`.`middlename` AS `middlename`,`student_accounts`.`lastname` AS `lastname`,`student_accounts`.`email` AS `email`,`student_accounts`.`role` AS `role` from (select `u`.`id` AS `id`,`n`.`firstname` AS `firstname`,`n`.`middlename` AS `middlename`,`n`.`lastname` AS `lastname`,`n`.`email` AS `email`,'student' AS `role` from (`users` `u` join `student` `n` on(`n`.`id` = `u`.`account_id`)) where `u`.`user_type` = 'student') `student_accounts` union select `admin_account`.`id` AS `id`,`admin_account`.`firstname` AS `firstname`,`admin_account`.`middlename` AS `middlename`,`admin_account`.`lastname` AS `lastname`,`admin_account`.`email` AS `email`,`admin_account`.`role` AS `role` from (select `u`.`id` AS `id`,'Admin' AS `firstname`,'' AS `middlename`,'' AS `lastname`,`u`.`email` AS `email`,'admin' AS `role` from `users` `u` where `u`.`user_type` = 'admin' limit 1) `admin_account`  ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `school_assigned`
+--
+DROP TABLE IF EXISTS `school_assigned`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `school_assigned`  AS SELECT `final_result`.`assigned_count` AS `id`, `final_result`.`nurse_id` AS `nurse_id`, `final_result`.`id` AS `user_id` FROM (select `result`.`assigned` AS `assigned_count`,`result`.`nurse_id` AS `nurse_id`,`users`.`id` AS `id` from ((select `user_accounts`.`assigned` AS `assigned`,`user_accounts`.`id` AS `nurse_id` from `user_accounts` where `user_accounts`.`role` = 'School Nurse' union select `school`.`id` AS `assigned`,`user_accounts`.`id` AS `nurse_id` from (`school` join `user_accounts` on(`school`.`district_id` = `user_accounts`.`assigned`)) where `user_accounts`.`role` = 'District Nurse' union select `school`.`id` AS `assigned`,`user_accounts`.`id` AS `nurse_id` from (`school` join `user_accounts` on(`school`.`division_id` = `user_accounts`.`assigned`)) where `user_accounts`.`role` = 'Division Nurse') `result` join `users` on(`users`.`account_id` = `result`.`nurse_id`)) union all select `student`.`id` AS `assigned_count`,'0' AS `nurse_id`,(select `users`.`id` from `users` where `users`.`user_type` = 'admin' limit 1) AS `id` from `student`) AS `final_result` ORDER BY `final_result`.`nurse_id` ASC ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `user_accounts`
+--
+DROP TABLE IF EXISTS `user_accounts`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `user_accounts`  AS SELECT `school_nurse`.`id` AS `id`, `school_nurse`.`fullname` AS `fullname`, `school_nurse`.`assigned` AS `assigned`, `school_nurse`.`role` AS `role`, `school_nurse`.`email` AS `email`, `school_nurse`.`assignment` AS `assignment` FROM (select `n`.`id` AS `id`,concat(`n`.`firstname`,' ',substr(`n`.`middlename`,1,1),'. ',`n`.`lastname`) AS `fullname`,`n`.`assigned` AS `assigned`,`n`.`nurse_type` AS `role`,`n`.`email` AS `email`,`s`.`school_name` AS `assignment` from (`nurse` `n` join `school` `s` on(`s`.`id` = `n`.`assigned`)) where `n`.`nurse_type` = 'School Nurse') AS `school_nurse`union select `district_nurse`.`id` AS `id`,`district_nurse`.`fullname` AS `fullname`,`district_nurse`.`assigned` AS `assigned`,`district_nurse`.`role` AS `role`,`district_nurse`.`email` AS `email`,`district_nurse`.`assignment` AS `assignment` from (select `n`.`id` AS `id`,concat(`n`.`firstname`,' ',substr(`n`.`middlename`,1,1),' ',`n`.`lastname`) AS `fullname`,`n`.`assigned` AS `assigned`,`n`.`nurse_type` AS `role`,`n`.`email` AS `email`,`d`.`district_name` AS `assignment` from (`nurse` `n` join `district` `d` on(`d`.`id` = `n`.`assigned`)) where `n`.`nurse_type` = 'District Nurse') `district_nurse` union select `division_nurse`.`id` AS `id`,`division_nurse`.`fullname` AS `fullname`,`division_nurse`.`assigned` AS `assigned`,`division_nurse`.`role` AS `role`,`division_nurse`.`email` AS `email`,`division_nurse`.`assignment` AS `assignment` from (select `n`.`id` AS `id`,concat(`n`.`firstname`,' ',substr(`n`.`middlename`,1,1),' ',`n`.`lastname`) AS `fullname`,`n`.`assigned` AS `assigned`,`n`.`nurse_type` AS `role`,`n`.`email` AS `email`,`d`.`division_name` AS `assignment` from (`nurse` `n` join `division` `d` on(`d`.`id` = `n`.`assigned`)) where `n`.`nurse_type` = 'Division Nurse') `division_nurse`  ;
 
 --
 -- Indexes for dumped tables
@@ -419,6 +355,12 @@ ALTER TABLE `information`
   ADD KEY `nurse_id` (`nurse_id`),
   ADD KEY `student_id` (`student_id`),
   ADD KEY `school_id` (`school_id`);
+
+--
+-- Indexes for table `log`
+--
+ALTER TABLE `log`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `nurse`
@@ -487,13 +429,13 @@ ALTER TABLE `checkup`
 -- AUTO_INCREMENT for table `district`
 --
 ALTER TABLE `district`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `division`
 --
 ALTER TABLE `division`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `grade`
@@ -505,19 +447,25 @@ ALTER TABLE `grade`
 -- AUTO_INCREMENT for table `information`
 --
 ALTER TABLE `information`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `log`
+--
+ALTER TABLE `log`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `nurse`
 --
 ALTER TABLE `nurse`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `otp`
 --
 ALTER TABLE `otp`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `report`
@@ -529,19 +477,19 @@ ALTER TABLE `report`
 -- AUTO_INCREMENT for table `school`
 --
 ALTER TABLE `school`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `student`
 --
 ALTER TABLE `student`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1023;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables
